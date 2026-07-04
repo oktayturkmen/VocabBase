@@ -58,7 +58,7 @@ export class ListService {
     const created = await this.getById(result.lastInsertRowId);
 
     if (!created) {
-      throw new Error('Failed to create list');
+      throw new Error('Liste oluşturulamadı');
     }
 
     return created;
@@ -81,7 +81,7 @@ export class ListService {
     if (updates.length === 0) {
       const existing = await this.getById(id);
       if (!existing) {
-        throw new Error('List not found');
+        throw new Error('Liste bulunamadı');
       }
       return existing;
     }
@@ -98,7 +98,7 @@ export class ListService {
     const updated = await this.getById(id);
 
     if (!updated) {
-      throw new Error('Failed to update list');
+      throw new Error('Liste güncellenemedi');
     }
 
     return updated;

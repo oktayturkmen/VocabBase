@@ -1,7 +1,12 @@
 import { create } from 'zustand';
 
 import { getReviewService } from '@/services/review/review.service';
+import { useStatisticStore } from '@/store/statistic.store';
 import type { ReviewQuality, ReviewWithWord } from '@/types/review';
+
+function getTodayDateString(): string {
+  return new Date().toISOString().split('T')[0];
+}
 
 type ReviewStoreState = {
   dueReviews: ReviewWithWord[];
@@ -57,7 +62,7 @@ export const useReviewStore = create<ReviewStore>((set, get) => ({
     } catch (error) {
       set({
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Failed to load due reviews',
+        error: error instanceof Error ? error.message : 'Tekrarlar yüklenemedi',
       });
     }
   },
@@ -91,7 +96,7 @@ export const useReviewStore = create<ReviewStore>((set, get) => ({
       set({
         isLoading: false,
         status: 'idle',
-        error: error instanceof Error ? error.message : 'Failed to start review session',
+        error: error instanceof Error ? error.message : 'Tekrar oturumu başlatılamadı',
       });
     }
   },
@@ -111,9 +116,13 @@ export const useReviewStore = create<ReviewStore>((set, get) => ({
     try {
       const service = await getReviewService();
       await service.submitReview(currentReview.wordId, quality);
+
+      // İstatistik kaydı
+      const today = getTodayDateString();
+      void useStatisticStore.getState().incrementWordsReviewed(today);
     } catch (error) {
       set({
-        error: error instanceof Error ? error.message : 'Failed to submit review',
+        error: error instanceof Error ? error.message : 'Tekrar kaydedilemedi',
       });
     }
   },

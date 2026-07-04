@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { Alert, Pressable, ScrollView, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Alert, Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button, Card, EmptyState, Input, Loading } from '@/components';
 import type { ListWithWordCount } from '@/services/list';
+import { getWordListService } from '@/services/word-list';
 import { useListStore } from '@/store/list.store';
+import { useWordStore } from '@/store/word.store';
+import type { Word } from '@/types/word';
 
 type ListCardProps = {
   list: ListWithWordCount;
   isSelected: boolean;
   onDelete: (id: number) => void;
   onSelect: (id: number) => void;
+  onEditWords: (list: ListWithWordCount) => void;
 };
 
-function ListCard({ list, isSelected, onDelete, onSelect }: ListCardProps) {
+function ListCard({ list, isSelected, onDelete, onSelect, onEditWords }: ListCardProps) {
   return (
     <Card
       className={`mb-sm border p-md ${isSelected ? 'border-primary bg-primary/5' : 'border-border bg-card'}`}
@@ -33,11 +37,213 @@ function ListCard({ list, isSelected, onDelete, onSelect }: ListCardProps) {
             {list.wordCount} {list.wordCount === 1 ? 'kelime' : 'kelime'}
           </Text>
         </Pressable>
-        <Pressable onPress={() => onDelete(list.id)} className="ml-sm">
-          <Text className="text-error text-sm font-semibold">Sil</Text>
-        </Pressable>
+        <View className="flex-row items-center gap-sm ml-sm">
+          <Pressable
+            onPress={() => onEditWords(list)}
+            accessibilityRole="button"
+            accessibilityLabel={`${list.name} listesinin kelimelerini düzenle`}
+            className="rounded-md bg-primary/10 px-sm py-xs active:bg-primary/20"
+            hitSlop={8}
+          >
+            <Text className="text-xs font-semibold text-primary">Düzenle</Text>
+          </Pressable>
+          <Pressable onPress={() => onDelete(list.id)} hitSlop={8}>
+            <Text className="text-error text-sm font-semibold">Sil</Text>
+          </Pressable>
+        </View>
       </View>
     </Card>
+  );
+}
+
+type EditWordsModalProps = {
+  visible: boolean;
+  list: ListWithWordCount | null;
+  onClose: () => void;
+  onSaved: () => void;
+};
+
+function EditWordsModal({ visible, list, onClose, onSaved }: EditWordsModalProps) {
+  const insets = useSafeAreaInsets();
+  const { words, isLoading: wordsLoading, fetchWords } = useWordStore();
+  const { fetchLists } = useListStore();
+
+  // `key` prop ile her liste seçiminde component yeniden mount edildiği için
+  // initial state doğrudan kurulur; effect içinde senkron setState'e gerek kalmaz.
+  const [selectedWordIds, setSelectedWordIds] = useState<Set<number>>(new Set());
+  const [initialWordIds, setInitialWordIds] = useState<Set<number>>(new Set());
+  const [isSaving, setIsSaving] = useState(false);
+  const [isLoadingAssignments, setIsLoadingAssignments] = useState(true);
+
+  useEffect(() => {
+    if (!visible || !list) {
+      return;
+    }
+
+    let cancelled = false;
+    void fetchWords();
+
+    (async () => {
+      try {
+        const service = await getWordListService();
+        const assignedWordIds = await service.getWordsForList(list.id);
+        if (cancelled) {
+          return;
+        }
+        const assignedSet = new Set(assignedWordIds);
+        setSelectedWordIds(assignedSet);
+        setInitialWordIds(assignedSet);
+      } catch (error) {
+        Alert.alert(
+          'Hata',
+          error instanceof Error ? error.message : 'Liste kelimeleri yüklenemedi.',
+        );
+      } finally {
+        if (!cancelled) {
+          setIsLoadingAssignments(false);
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [visible, list, fetchWords]);
+
+  const toggleWord = useCallback((wordId: number) => {
+    setSelectedWordIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(wordId)) {
+        next.delete(wordId);
+      } else {
+        next.add(wordId);
+      }
+      return next;
+    });
+  }, []);
+
+  const handleSave = useCallback(async () => {
+    if (!list) return;
+
+    setIsSaving(true);
+    try {
+      const service = await getWordListService();
+      await service.setWordsForList(list.id, Array.from(selectedWordIds));
+      await fetchLists();
+      onSaved();
+    } catch (error) {
+      Alert.alert(
+        'Kaydetme Hatası',
+        error instanceof Error ? error.message : 'Kelimeler listeye atanamadı.',
+      );
+    } finally {
+      setIsSaving(false);
+    }
+  }, [list, selectedWordIds, fetchLists, onSaved]);
+
+  const handleClose = useCallback(() => {
+    if (isSaving) return;
+    onClose();
+  }, [isSaving, onClose]);
+
+  const hasChanges = selectedWordIds.size !== initialWordIds.size ||
+    Array.from(selectedWordIds).some((id) => !initialWordIds.has(id));
+
+  if (!list) return null;
+
+  return (
+    <Modal visible={visible} transparent animationType="slide" onRequestClose={handleClose}>
+      <View className="flex-1 bg-black/50">
+        <View
+          className="mt-auto bg-background rounded-t-3xl"
+          style={{ paddingBottom: insets.bottom + 16 }}
+        >
+          {/* Modal Header */}
+          <View className="px-md pt-md pb-sm border-b border-border">
+            <View className="flex-row items-center justify-between mb-xs">
+              <Text className="text-xl font-bold text-foreground">Kelimeleri Düzenle</Text>
+              <Pressable
+                onPress={handleClose}
+                accessibilityRole="button"
+                accessibilityLabel="Kapat"
+                hitSlop={12}
+                disabled={isSaving}
+              >
+                <Text className="text-2xl text-muted-foreground">✕</Text>
+              </Pressable>
+            </View>
+            <Text className="text-sm text-muted-foreground">
+              {list.name} — {selectedWordIds.size} kelime seçili
+            </Text>
+          </View>
+
+          {/* Word List */}
+          <ScrollView className="max-h-96" showsVerticalScrollIndicator={false}>
+            <View className="px-md py-sm">
+              {wordsLoading || isLoadingAssignments ? (
+                <Loading message="Kelimeler yükleniyor..." />
+              ) : words.length === 0 ? (
+                <View className="py-md items-center">
+                  <Text className="text-center text-muted-foreground mb-sm">
+                    Henüz kelime yok. Önce kelime ekleyin.
+                  </Text>
+                </View>
+              ) : (
+                words.map((word: Word) => {
+                  const isSelected = selectedWordIds.has(word.id);
+                  return (
+                    <Pressable
+                      key={word.id}
+                      onPress={() => toggleWord(word.id)}
+                      accessibilityRole="checkbox"
+                      accessibilityState={{ checked: isSelected }}
+                      accessibilityLabel={`${word.word} kelimesini ${isSelected ? 'kaldır' : 'ekle'}`}
+                      className={`mb-sm flex-row items-center rounded-lg border p-sm ${
+                        isSelected ? 'border-primary bg-primary/5' : 'border-border bg-card'
+                      }`}
+                    >
+                      <View
+                        className={`mr-sm h-5 w-5 items-center justify-center rounded border-2 ${
+                          isSelected ? 'border-primary bg-primary' : 'border-muted-foreground'
+                        }`}
+                      >
+                        {isSelected ? (
+                          <Text className="text-xs font-bold text-primary-foreground">✓</Text>
+                        ) : null}
+                      </View>
+                      <View className="flex-1">
+                        <Text className="text-base font-semibold text-foreground">{word.word}</Text>
+                        <Text className="text-sm text-muted-foreground">{word.meaning}</Text>
+                      </View>
+                    </Pressable>
+                  );
+                })
+              )}
+            </View>
+          </ScrollView>
+
+          {/* Modal Footer */}
+          <View className="px-md pt-sm border-t border-border">
+            <View className="flex-row gap-sm">
+              <Button
+                title="İptal"
+                variant="outline"
+                onPress={handleClose}
+                disabled={isSaving}
+                className="flex-1"
+              />
+              <Button
+                title={isSaving ? 'Kaydediliyor...' : 'Kaydet'}
+                onPress={handleSave}
+                loading={isSaving}
+                disabled={!hasChanges || isSaving}
+                className="flex-1"
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </Modal>
   );
 }
 
@@ -56,6 +262,7 @@ export default function ListsScreen() {
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [newListName, setNewListName] = useState('');
   const [newListDescription, setNewListDescription] = useState('');
+  const [editingList, setEditingList] = useState<ListWithWordCount | null>(null);
 
   useEffect(() => {
     void fetchLists();
@@ -164,11 +371,23 @@ export default function ListsScreen() {
                 isSelected={selectedListId === list.id}
                 onDelete={handleDeleteList}
                 onSelect={handleSelectList}
+                onEditWords={(selectedList) => setEditingList(selectedList)}
               />
             ))}
           </View>
         )}
       </ScrollView>
+
+      <EditWordsModal
+        key={editingList?.id ?? 'none'}
+        visible={editingList !== null}
+        list={editingList}
+        onClose={() => setEditingList(null)}
+        onSaved={() => {
+          setEditingList(null);
+          Alert.alert('Başarılı', 'Liste kelimeleri güncellendi.');
+        }}
+      />
     </View>
   );
 }

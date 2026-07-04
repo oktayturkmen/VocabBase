@@ -2,11 +2,17 @@ import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
 export class NotificationService {
-  constructor() {
-    this.configure();
-  }
+  private isInitialized = false;
 
-  private configure(): void {
+  /**
+   * Notification handler'ı yapılandırır. Constructor side-effect'i
+   * önlemek için bu metodu uygulama başlangıcında açıkça çağırın.
+   */
+  initialize(): void {
+    if (this.isInitialized) {
+      return;
+    }
+
     Notifications.setNotificationHandler({
       handleNotification: async () => ({
         shouldShowAlert: true,
@@ -16,6 +22,8 @@ export class NotificationService {
         shouldShowList: true,
       }),
     });
+
+    this.isInitialized = true;
   }
 
   async requestPermissions(): Promise<boolean> {
@@ -33,7 +41,7 @@ export class NotificationService {
 
     if (Platform.OS === 'android') {
       await Notifications.setNotificationChannelAsync('daily-reminder', {
-        name: 'Daily Reminder',
+        name: 'Günlük Hatırlatma',
         importance: Notifications.AndroidImportance.HIGH,
         vibrationPattern: [0, 250, 250, 250],
         lightColor: '#FF231F7C',
@@ -47,20 +55,13 @@ export class NotificationService {
     const hasPermission = await this.requestPermissions();
 
     if (!hasPermission) {
-      throw new Error('Notification permissions not granted');
-    }
-
-    const trigger = new Date();
-    trigger.setHours(hour, minute, 0, 0);
-
-    if (trigger <= new Date()) {
-      trigger.setDate(trigger.getDate() + 1);
+      throw new Error('Bildirim izinleri verilmedi');
     }
 
     const identifier = await Notifications.scheduleNotificationAsync({
       content: {
-        title: 'Time to Review! 🧠',
-        body: 'You have words due for review today. Keep your memory strong!',
+        title: 'Tekrar Zamanı! 🧠',
+        body: 'Bugün tekrar etmeniz gereken kelimeler var. Hafızanızı güçlü tutun!',
         sound: true,
         priority: Notifications.AndroidNotificationPriority.HIGH,
       },
@@ -74,6 +75,10 @@ export class NotificationService {
     return identifier;
   }
 
+  /**
+   * Belirli bir zamanlanmış bildirimi identifier ile iptal eder.
+   * `scheduleDailyReminder` tarafından döndürülen identifier kullanılmalıdır.
+   */
   async cancelDailyReminder(identifier: string): Promise<void> {
     await Notifications.cancelScheduledNotificationAsync(identifier);
   }
@@ -84,14 +89,6 @@ export class NotificationService {
 
   async getScheduledNotifications(): Promise<Notifications.NotificationRequest[]> {
     return Notifications.getAllScheduledNotificationsAsync();
-  }
-
-  async addBadge(): Promise<void> {
-    await Notifications.setBadgeCountAsync(1);
-  }
-
-  async clearBadge(): Promise<void> {
-    await Notifications.setBadgeCountAsync(0);
   }
 }
 

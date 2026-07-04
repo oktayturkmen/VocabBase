@@ -58,6 +58,45 @@ export class LearningService {
     return result?.count ?? 0;
   }
 
+  async getRandomWords(limit = 5, listId?: number): Promise<Word[]> {
+    if (listId !== undefined) {
+      const rows = await this.database.getAllAsync<WordRow>(
+        `SELECT ${TABLES.WORDS}.*
+         FROM ${TABLES.WORDS}
+         INNER JOIN ${TABLES.WORD_LISTS} ON ${TABLES.WORD_LISTS}.word_id = ${TABLES.WORDS}.id
+         WHERE ${TABLES.WORD_LISTS}.list_id = ?
+         ORDER BY RANDOM()
+         LIMIT ?`,
+        listId,
+        limit,
+      );
+
+      return rows.map(mapRowToWord);
+    }
+
+    const rows = await this.database.getAllAsync<WordRow>(
+      `SELECT * FROM ${TABLES.WORDS}
+       ORDER BY RANDOM()
+       LIMIT ?`,
+      limit,
+    );
+
+    return rows.map(mapRowToWord);
+  }
+
+  async getAllWordsFromList(listId: number): Promise<Word[]> {
+    const rows = await this.database.getAllAsync<WordRow>(
+      `SELECT ${TABLES.WORDS}.*
+       FROM ${TABLES.WORDS}
+       INNER JOIN ${TABLES.WORD_LISTS} ON ${TABLES.WORD_LISTS}.word_id = ${TABLES.WORDS}.id
+       WHERE ${TABLES.WORD_LISTS}.list_id = ?
+       ORDER BY ${TABLES.WORDS}.created_at ASC`,
+      listId,
+    );
+
+    return rows.map(mapRowToWord);
+  }
+
   async markAsLearned(wordId: number): Promise<void> {
     const timestamp = Date.now();
     // 1 day in milliseconds

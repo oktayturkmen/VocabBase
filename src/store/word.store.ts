@@ -8,17 +8,20 @@ type WordStoreState = {
   selectedWord: Word | null;
   isLoading: boolean;
   error: string | null;
+  selectedListId: number | null;
 };
 
 type WordStoreActions = {
-  fetchWords: () => Promise<void>;
+  fetchWords: (listId?: number) => Promise<void>;
   fetchWordById: (id: number) => Promise<void>;
   createWord: (input: CreateWordInput) => Promise<Word>;
   updateWord: (id: number, input: UpdateWordInput) => Promise<Word | null>;
   deleteWord: (id: number) => Promise<boolean>;
+  deleteWords: (ids: number[]) => Promise<number>;
   clearError: () => void;
   clearSelectedWord: () => void;
   reset: () => void;
+  setSelectedListId: (listId: number | null) => void;
 };
 
 export type WordStore = WordStoreState & WordStoreActions;
@@ -28,30 +31,31 @@ const initialState: WordStoreState = {
   selectedWord: null,
   isLoading: false,
   error: null,
+  selectedListId: null,
 };
 
 function getErrorMessage(error: unknown, fallbackMessage: string): string {
   return error instanceof Error ? error.message : fallbackMessage;
 }
 
-function sortWords(words: Word[]): Word[] {
-  return [...words].sort((firstWord, secondWord) => firstWord.word.localeCompare(secondWord.word));
-}
-
 export const useWordStore = create<WordStore>((set) => ({
   ...initialState,
 
-  fetchWords: async () => {
-    set({ isLoading: true, error: null });
+  fetchWords: async (listId?: number) => {
+    set({ isLoading: true, error: null, selectedListId: listId ?? null });
 
     try {
       const wordService = await getWordService();
-      const words = await wordService.getAll();
+      const words = listId !== undefined
+        ? await wordService.getByListId(listId)
+        : await wordService.getAll();
+      // Service katmanı created_at DESC sıralamasıyla döndürür;
+      // store bu kronolojik sıralamayı korur, ekstra sıralama yapmaz.
       set({ words, isLoading: false });
     } catch (error) {
       set({
         isLoading: false,
-        error: getErrorMessage(error, 'Failed to fetch words'),
+        error: getErrorMessage(error, 'Kelimeler yüklenemedi'),
       });
     }
   },
@@ -66,7 +70,7 @@ export const useWordStore = create<WordStore>((set) => ({
     } catch (error) {
       set({
         isLoading: false,
-        error: getErrorMessage(error, 'Failed to fetch word'),
+        error: getErrorMessage(error, 'Kelime yüklenemedi'),
       });
     }
   },
@@ -78,8 +82,9 @@ export const useWordStore = create<WordStore>((set) => ({
       const wordService = await getWordService();
       const createdWord = await wordService.create(input);
 
+      // Yeni kelimeyi listenin başına ekle (created_at DESC sıralamasını korumak için).
       set((state) => ({
-        words: sortWords([...state.words, createdWord]),
+        words: [createdWord, ...state.words],
         isLoading: false,
       }));
 
@@ -87,7 +92,7 @@ export const useWordStore = create<WordStore>((set) => ({
     } catch (error) {
       set({
         isLoading: false,
-        error: getErrorMessage(error, 'Failed to create word'),
+        error: getErrorMessage(error, 'Kelime oluşturulamadı'),
       });
       throw error;
     }
@@ -101,8 +106,9 @@ export const useWordStore = create<WordStore>((set) => ({
       const updatedWord = await wordService.update(id, input);
 
       if (updatedWord) {
+        // Sıralamayı koruyarak güncellenmiş kelimeyi yerine koy.
         set((state) => ({
-          words: sortWords(state.words.map((word) => (word.id === id ? updatedWord : word))),
+          words: state.words.map((word) => (word.id === id ? updatedWord : word)),
           selectedWord: state.selectedWord?.id === id ? updatedWord : state.selectedWord,
           isLoading: false,
         }));
@@ -114,7 +120,7 @@ export const useWordStore = create<WordStore>((set) => ({
     } catch (error) {
       set({
         isLoading: false,
-        error: getErrorMessage(error, 'Failed to update word'),
+        error: getErrorMessage(error, 'Kelime güncellenemedi'),
       });
       throw error;
     }
@@ -141,7 +147,34 @@ export const useWordStore = create<WordStore>((set) => ({
     } catch (error) {
       set({
         isLoading: false,
-        error: getErrorMessage(error, 'Failed to delete word'),
+        error: getErrorMessage(error, 'Kelime silinemedi'),
+      });
+      throw error;
+    }
+  },
+
+  deleteWords: async (ids: number[]) => {
+    if (ids.length === 0) {
+      return 0;
+    }
+
+    set({ isLoading: true, error: null });
+
+    try {
+      const wordService = await getWordService();
+      const deletedCount = await wordService.deleteMany(ids);
+
+      set((state) => ({
+        words: state.words.filter((word) => !ids.includes(word.id)),
+        selectedWord: ids.includes(state.selectedWord?.id ?? -1) ? null : state.selectedWord,
+        isLoading: false,
+      }));
+
+      return deletedCount;
+    } catch (error) {
+      set({
+        isLoading: false,
+        error: getErrorMessage(error, 'Kelimeler silinemedi'),
       });
       throw error;
     }
@@ -150,6 +183,8 @@ export const useWordStore = create<WordStore>((set) => ({
   clearError: () => set({ error: null }),
 
   clearSelectedWord: () => set({ selectedWord: null }),
+
+  setSelectedListId: (listId: number | null) => set({ selectedListId: listId }),
 
   reset: () => set(initialState),
 }));

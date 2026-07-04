@@ -2,6 +2,11 @@ import { create } from 'zustand';
 
 import { isAnswerCorrect, type QuizType } from '@/features/quiz/utils/answer.utils';
 import { getQuizService } from '@/services/quiz/quiz.service';
+import { useStatisticStore } from '@/store/statistic.store';
+
+function getTodayDateString(): string {
+  return new Date().toISOString().split('T')[0];
+}
 
 export type { QuizType };
 
@@ -30,6 +35,7 @@ type QuizStoreState = {
   status: 'idle' | 'loading' | 'active' | 'completed';
   error: string | null;
   isLoading: boolean;
+  sessionStartTime: number | null;
 };
 
 type QuizStoreActions = {
@@ -52,6 +58,7 @@ const initialState: QuizStoreState = {
   status: 'idle',
   error: null,
   isLoading: false,
+  sessionStartTime: null,
 };
 
 function shuffleArray<T>(array: T[]): T[] {
@@ -81,7 +88,8 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
           score: 0,
           status: 'idle',
           isLoading: false,
-          error: 'No words available to generate a quiz. Please add some words first.',
+          error: 'Quiz oluşturmak için yeterli kelime yok. Lütfen önce kelime ekleyin.',
+          sessionStartTime: null,
         });
         return;
       }
@@ -107,12 +115,14 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
         score: 0,
         status: 'active',
         isLoading: false,
+        sessionStartTime: Date.now(),
       });
     } catch (error) {
       set({
         isLoading: false,
         status: 'idle',
-        error: error instanceof Error ? error.message : 'Failed to start quiz session',
+        error: error instanceof Error ? error.message : 'Quiz oturumu başlatılamadı',
+        sessionStartTime: null,
       });
     }
   },
@@ -132,7 +142,8 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
           score: 0,
           status: 'idle',
           isLoading: false,
-          error: 'No words available to generate a quiz. Please add some words first.',
+          error: 'Quiz oluşturmak için yeterli kelime yok. Lütfen önce kelime ekleyin.',
+          sessionStartTime: null,
         });
         return;
       }
@@ -152,12 +163,14 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
         score: 0,
         status: 'active',
         isLoading: false,
+        sessionStartTime: Date.now(),
       });
     } catch (error) {
       set({
         isLoading: false,
         status: 'idle',
-        error: error instanceof Error ? error.message : 'Failed to start quiz session',
+        error: error instanceof Error ? error.message : 'Quiz oturumu başlatılamadı',
+        sessionStartTime: null,
       });
     }
   },
@@ -184,17 +197,33 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
       answers: [...answers, record],
       score: isCorrect ? score + 1 : score,
     });
+
+    // İstatistik kaydı
+    const today = getTodayDateString();
+    if (isCorrect) {
+      void useStatisticStore.getState().incrementQuizCorrect(today);
+    } else {
+      void useStatisticStore.getState().incrementQuizIncorrect(today);
+    }
   },
 
   nextQuestion: () => {
-    const { questions, currentIndex } = get();
+    const { questions, currentIndex, sessionStartTime } = get();
     const nextIndex = currentIndex + 1;
 
     if (nextIndex >= questions.length) {
+      // Quiz completed - record time spent
+      if (sessionStartTime) {
+        const timeSpentSeconds = Math.floor((Date.now() - sessionStartTime) / 1000);
+        const today = getTodayDateString();
+        void useStatisticStore.getState().addTimeSpent(today, timeSpentSeconds);
+      }
+
       set({
         currentIndex: nextIndex,
         status: 'completed',
         selectedAnswer: null,
+        sessionStartTime: null,
       });
     } else {
       set({

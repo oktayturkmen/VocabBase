@@ -3,35 +3,42 @@ import axios from 'axios';
 import { getDatabase } from '@/database/client';
 import { TABLES } from '@/database/tables';
 
+export class AIExampleGenerationError extends Error {
+  constructor(
+    message: string,
+    public readonly cause?: unknown,
+  ) {
+    super(message);
+    this.name = 'AIExampleGenerationError';
+  }
+}
+
+export class AICacheError extends Error {
+  constructor(
+    message: string,
+    public readonly cause?: unknown,
+  ) {
+    super(message);
+    this.name = 'AICacheError';
+  }
+}
+
+const AI_API_KEY = process.env.EXPO_PUBLIC_AI_API_KEY;
+
 export class AIService {
-  private apiKey: string | null = null;
-
-  constructor() {
-    // API key should be stored in MMKV in production
-    // For now, we'll use a placeholder
-    this.apiKey = null;
-  }
-
-  setApiKey(key: string): void {
-    this.apiKey = key;
-  }
-
   async generateExampleSentence(word: string, meaning: string): Promise<string> {
-    // Check cache first
     const cached = await this.getCachedExample(word);
     if (cached) {
       return cached;
     }
 
-    // If no API key is set, return a simple template
-    if (!this.apiKey) {
+    if (!AI_API_KEY) {
       const example = `The word "${word}" means "${meaning}".`;
       await this.cacheExample(word, example);
       return example;
     }
 
     try {
-      // Call AI API (example with OpenAI format)
       const response = await axios.post(
         'https://api.openai.com/v1/chat/completions',
         {
@@ -53,7 +60,7 @@ export class AIService {
         {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${this.apiKey}`,
+            Authorization: `Bearer ${AI_API_KEY}`,
           },
         },
       );
@@ -65,9 +72,9 @@ export class AIService {
       }
 
       return example;
-    } catch (error) {
-      console.error('Failed to generate example sentence:', error);
-      // Fallback to template
+    } catch {
+      // API hatası durumunda güvenli fallback döndür ve cache'le.
+      // Uygulamayı çökertmek yerine kullanıcının örneği görmesi sağlanır.
       const fallback = `The word "${word}" means "${meaning}".`;
       await this.cacheExample(word, fallback);
       return fallback;
@@ -84,7 +91,10 @@ export class AIService {
         Date.now(),
       );
     } catch (error) {
-      console.error('Failed to cache example:', error);
+      throw new AICacheError(
+        error instanceof Error ? error.message : 'Örnek önbelleğe alınamadı',
+        error,
+      );
     }
   }
 
@@ -97,8 +107,10 @@ export class AIService {
       );
       return row?.example || null;
     } catch (error) {
-      console.error('Failed to get cached example:', error);
-      return null;
+      throw new AICacheError(
+        error instanceof Error ? error.message : 'Önbelleğe alınmış örnek alınamadı',
+        error,
+      );
     }
   }
 
@@ -107,7 +119,10 @@ export class AIService {
       const database = await getDatabase();
       await database.runAsync(`DELETE FROM ${TABLES.AI_EXAMPLE_CACHE}`);
     } catch (error) {
-      console.error('Failed to clear cache:', error);
+      throw new AICacheError(
+        error instanceof Error ? error.message : 'Önbellek temizlenemedi',
+        error,
+      );
     }
   }
 
@@ -119,8 +134,10 @@ export class AIService {
       );
       return result?.count ?? 0;
     } catch (error) {
-      console.error('Failed to get cache size:', error);
-      return 0;
+      throw new AICacheError(
+        error instanceof Error ? error.message : 'Önbellek boyutu alınamadı',
+        error,
+      );
     }
   }
 }

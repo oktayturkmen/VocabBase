@@ -43,7 +43,7 @@ export const useListStore = create<ListStore>((set, get) => ({
     } catch (error) {
       set({
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Failed to load lists',
+        error: error instanceof Error ? error.message : 'Listeler yüklenemedi',
       });
     }
   },
@@ -65,7 +65,7 @@ export const useListStore = create<ListStore>((set, get) => ({
     } catch (error) {
       set({
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Failed to create list',
+        error: error instanceof Error ? error.message : 'Liste oluşturulamadı',
       });
     }
   },
@@ -85,7 +85,7 @@ export const useListStore = create<ListStore>((set, get) => ({
     } catch (error) {
       set({
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Failed to update list',
+        error: error instanceof Error ? error.message : 'Liste güncellenemedi',
       });
     }
   },
@@ -104,7 +104,7 @@ export const useListStore = create<ListStore>((set, get) => ({
     } catch (error) {
       set({
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Failed to delete list',
+        error: error instanceof Error ? error.message : 'Liste silinemedi',
       });
     }
   },

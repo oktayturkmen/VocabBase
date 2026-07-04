@@ -17,6 +17,7 @@ export function useWordForm(wordId?: number) {
   const fetchWordById = useWordStore((state) => state.fetchWordById);
   const createWord = useWordStore((state) => state.createWord);
   const updateWord = useWordStore((state) => state.updateWord);
+  const deleteWord = useWordStore((state) => state.deleteWord);
   const clearSelectedWord = useWordStore((state) => state.clearSelectedWord);
   const clearError = useWordStore((state) => state.clearError);
 
@@ -45,7 +46,7 @@ export function useWordForm(wordId?: number) {
         }
       })
       .catch((error: unknown) => {
-        console.error('Failed to fetch word list assignments:', error);
+        console.error('Kelime-liste atamaları alınamadı:', error);
       });
 
     return () => {
@@ -63,7 +64,7 @@ export function useWordForm(wordId?: number) {
         const updatedWord = await updateWord(wordId, input);
 
         if (!updatedWord) {
-          throw new Error('Word not found');
+          throw new Error('Kelime bulunamadı');
         }
 
         await wordListService.setListsForWord(updatedWord.id, listIds);
@@ -88,6 +89,15 @@ export function useWordForm(wordId?: number) {
     );
   }, []);
 
+  const handleDelete = useCallback(async (): Promise<boolean> => {
+    if (wordId === undefined) {
+      return false;
+    }
+    clearError();
+    const isDeleted = await deleteWord(wordId);
+    return isDeleted;
+  }, [clearError, deleteWord, wordId]);
+
   return {
     isEditMode,
     selectedWord,
@@ -97,5 +107,6 @@ export function useWordForm(wordId?: number) {
     error,
     submit,
     clearError,
+    deleteWord: handleDelete,
   };
 }

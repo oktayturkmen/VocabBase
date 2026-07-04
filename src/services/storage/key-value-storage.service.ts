@@ -44,11 +44,9 @@ function createNativeStorage(id: string): KeyValueStorage | null {
 
     return {
       isPersistent: true,
-      getString: storage.getString,
-      set: storage.set,
-      remove: (key) => {
-        storage.remove(key);
-      },
+      getString: (key) => storage.getString(key),
+      set: (key, value) => storage.set(key, value),
+      remove: (key) => storage.remove(key),
     };
   } catch {
     return null;

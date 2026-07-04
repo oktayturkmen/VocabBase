@@ -1,5 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useCallback, useMemo } from 'react';
+import { Alert } from 'react-native';
 
 import { Button, EmptyState, Loading } from '@/components';
 
@@ -22,6 +23,7 @@ export default function WordFormScreen({ wordId }: WordFormScreenProps) {
     isLoading,
     error,
     submit,
+    deleteWord,
   } = useWordForm(wordId);
 
   const defaultValues = useMemo(
@@ -37,6 +39,39 @@ export default function WordFormScreen({ wordId }: WordFormScreenProps) {
     [router, submit],
   );
 
+  const handleDelete = useCallback(() => {
+    if (!selectedWord) {
+      return;
+    }
+
+    Alert.alert(
+      'Kelimeyi Sil',
+      `"${selectedWord.word}" kelimesini silmek istediğinize emin misiniz? Bu işlem geri alınamaz.`,
+      [
+        { text: 'İptal', style: 'cancel' },
+        {
+          text: 'Sil',
+          style: 'destructive',
+          onPress: () => {
+            void deleteWord()
+              .then((isDeleted) => {
+                if (isDeleted) {
+                  router.back();
+                }
+              })
+              .catch((deleteError: unknown) => {
+                const message =
+                  deleteError instanceof Error
+                    ? deleteError.message
+                    : 'Kelime silinirken bir hata oluştu';
+                Alert.alert('Hata', message);
+              });
+          },
+        },
+      ],
+    );
+  }, [deleteWord, router, selectedWord]);
+
   if (isEditMode && isLoading && !selectedWord) {
     return <Loading message="Kelime yükleniyor..." fullScreen />;
   }
@@ -47,7 +82,7 @@ export default function WordFormScreen({ wordId }: WordFormScreenProps) {
         className="flex-1"
         title="Kelime bulunamadı"
         description="Bu kelime silinmiş olabilir."
-        action={<Button title="Geri dön" variant="outline" onPress={() => router.back()} />}
+        action={<Button title="Geri Dön" variant="outline" onPress={() => router.back()} />}
       />
     );
   }
@@ -60,6 +95,7 @@ export default function WordFormScreen({ wordId }: WordFormScreenProps) {
       onSubmit={handleSubmit}
       submitLabel={isEditMode ? 'Değişiklikleri Kaydet' : 'Kelime Ekle'}
       error={error}
+      onDelete={isEditMode ? handleDelete : undefined}
     />
   );
 }

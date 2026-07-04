@@ -1,12 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Controller, useForm, useWatch } from 'react-hook-form';
 import { KeyboardAvoidingView, Platform, ScrollView, Text, View, Pressable } from 'react-native';
 
 import { Button, Input } from '@/components';
-import { getAIService } from '@/services/ai';
 import { useListStore } from '@/store/list.store';
 
+import { useGenerateExample } from '../hooks/useGenerateExample';
 import { wordFormSchema, type WordFormValues } from '../schemas/word-form.schema';
 
 type WordFormProps = {
@@ -16,6 +16,7 @@ type WordFormProps = {
   onSubmit: (values: WordFormValues, listIds: number[]) => Promise<void>;
   submitLabel: string;
   error?: string | null;
+  onDelete?: () => void;
 };
 
 const emptyDefaultValues: WordFormValues = {
@@ -32,6 +33,7 @@ export function WordForm({
   onSubmit,
   submitLabel,
   error,
+  onDelete,
 }: WordFormProps) {
   const {
     control,
@@ -44,12 +46,12 @@ export function WordForm({
     defaultValues: defaultValues ?? emptyDefaultValues,
   });
 
-  const [isGenerating, setIsGenerating] = useState(false);
-
   const { lists, fetchLists } = useListStore();
 
   const wordValue = useWatch({ control, name: 'word' });
   const meaningValue = useWatch({ control, name: 'meaning' });
+
+  const generateExample = useGenerateExample();
 
   useEffect(() => {
     if (defaultValues) {
@@ -61,21 +63,22 @@ export function WordForm({
     void fetchLists();
   }, [fetchLists]);
 
-  const handleGenerateExample = async () => {
+  const handleGenerateExample = () => {
     if (!wordValue || !meaningValue) {
       return;
     }
 
-    setIsGenerating(true);
-    try {
-      const aiService = getAIService();
-      const example = await aiService.generateExampleSentence(wordValue, meaningValue);
-      setValue('example', example);
-    } catch (err) {
-      console.error('Failed to generate example:', err);
-    } finally {
-      setIsGenerating(false);
-    }
+    generateExample.mutate(
+      { word: wordValue, meaning: meaningValue },
+      {
+        onSuccess: (example) => {
+          setValue('example', example);
+        },
+        onError: (err) => {
+          console.error('Failed to generate example:', err);
+        },
+      },
+    );
   };
 
   return (
@@ -138,15 +141,15 @@ export function WordForm({
                 />
                 <Pressable
                   onPress={handleGenerateExample}
-                  disabled={!wordValue || !meaningValue || isGenerating}
+                  disabled={!wordValue || !meaningValue || generateExample.isPending}
                   className={`mt-xs py-sm px-md rounded-lg ${
-                    !wordValue || !meaningValue || isGenerating
+                    !wordValue || !meaningValue || generateExample.isPending
                       ? 'bg-muted opacity-50'
                       : 'bg-primary'
                   }`}
                 >
                   <Text className="text-sm font-semibold text-center text-primary-foreground">
-                    {isGenerating ? 'Oluşturuluyor...' : '✨ AI ile Oluştur'}
+                    {generateExample.isPending ? 'Oluşturuluyor...' : '✨ AI ile Oluştur'}
                   </Text>
                 </Pressable>
               </View>
@@ -206,6 +209,16 @@ export function WordForm({
             loading={isSubmitting}
             onPress={handleSubmit((values) => onSubmit(values, selectedListIds))}
           />
+
+          {onDelete ? (
+            <Pressable
+              onPress={onDelete}
+              className="mt-sm py-sm items-center"
+              hitSlop={12}
+            >
+              <Text className="text-sm font-medium text-error">Kelimeyi Sil</Text>
+            </Pressable>
+          ) : null}
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

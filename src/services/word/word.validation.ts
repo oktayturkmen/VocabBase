@@ -7,6 +7,10 @@ export class WordValidationError extends Error {
   }
 }
 
+const WORD_REQUIRED = 'Kelime alanı zorunludur';
+const MEANING_REQUIRED = 'Anlam alanı zorunludur';
+const AT_LEAST_ONE_FIELD = 'En az bir alan güncellenmelidir';
+
 function normalizeOptionalText(value: string | null | undefined): string | null {
   if (value === undefined || value === null) {
     return null;
@@ -21,11 +25,11 @@ export function validateCreateWordInput(input: CreateWordInput): CreateWordInput
   const meaning = input.meaning.trim();
 
   if (!word) {
-    throw new WordValidationError('Word is required');
+    throw new WordValidationError(WORD_REQUIRED);
   }
 
   if (!meaning) {
-    throw new WordValidationError('Meaning is required');
+    throw new WordValidationError(MEANING_REQUIRED);
   }
 
   return {
@@ -43,7 +47,7 @@ export function validateUpdateWordInput(input: UpdateWordInput): UpdateWordInput
     const word = input.word.trim();
 
     if (!word) {
-      throw new WordValidationError('Word is required');
+      throw new WordValidationError(WORD_REQUIRED);
     }
 
     validatedInput.word = word;
@@ -53,7 +57,7 @@ export function validateUpdateWordInput(input: UpdateWordInput): UpdateWordInput
     const meaning = input.meaning.trim();
 
     if (!meaning) {
-      throw new WordValidationError('Meaning is required');
+      throw new WordValidationError(MEANING_REQUIRED);
     }
 
     validatedInput.meaning = meaning;
@@ -68,7 +72,7 @@ export function validateUpdateWordInput(input: UpdateWordInput): UpdateWordInput
   }
 
   if (Object.keys(validatedInput).length === 0) {
-    throw new WordValidationError('At least one field is required to update');
+    throw new WordValidationError(AT_LEAST_ONE_FIELD);
   }
 
   return validatedInput;

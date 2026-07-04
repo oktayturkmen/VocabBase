@@ -14,8 +14,9 @@ export default function WordsLayout() {
         contentStyle: { backgroundColor: colors.background },
       }}
     >
-      <Stack.Screen name="new" options={{ title: 'Add Word' }} />
-      <Stack.Screen name="[id]" options={{ title: 'Edit Word' }} />
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="new" options={{ title: 'Kelime Ekle' }} />
+      <Stack.Screen name="[id]" options={{ title: 'Kelime Düzenle' }} />
     </Stack>
   );
 }

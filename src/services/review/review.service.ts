@@ -91,6 +91,10 @@ export class ReviewService {
     return rows.map(mapDueReviewRow);
   }
 
+  async deleteAll(): Promise<void> {
+    await this.database.runAsync(`DELETE FROM ${TABLES.REVIEWS}`);
+  }
+
   async submitReview(wordId: number, quality: ReviewQuality): Promise<Review> {
     const existingReview = await this.getByWordId(wordId);
 

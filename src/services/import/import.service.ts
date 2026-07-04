@@ -1,5 +1,4 @@
 import * as DocumentPicker from 'expo-document-picker';
-import * as FileSystem from 'expo-file-system';
 import { extractText, isAvailable } from 'expo-pdf-text-extract';
 
 import { getWordService } from '../word';
@@ -18,6 +17,26 @@ export type ParsedWord = {
   pronunciation?: string;
 };
 
+export class ImportFilePickerError extends Error {
+  constructor(
+    message: string,
+    public readonly cause?: unknown,
+  ) {
+    super(message);
+    this.name = 'ImportFilePickerError';
+  }
+}
+
+export class ImportParseError extends Error {
+  constructor(
+    message: string,
+    public readonly cause?: unknown,
+  ) {
+    super(message);
+    this.name = 'ImportParseError';
+  }
+}
+
 export class ImportService {
   async pickCSVFile(): Promise<string | null> {
     try {
@@ -32,8 +51,10 @@ export class ImportService {
 
       return result.assets[0].uri;
     } catch (error) {
-      console.error('Failed to pick CSV file:', error);
-      return null;
+      throw new ImportFilePickerError(
+        error instanceof Error ? error.message : 'CSV dosyası seçilemedi',
+        error,
+      );
     }
   }
 
@@ -50,87 +71,162 @@ export class ImportService {
 
       return result.assets[0].uri;
     } catch (error) {
-      console.error('Failed to pick PDF file:', error);
-      return null;
+      throw new ImportFilePickerError(
+        error instanceof Error ? error.message : 'PDF dosyası seçilemedi',
+        error,
+      );
     }
   }
 
   async parseCSV(uri: string): Promise<ParsedWord[]> {
     try {
-      const content = await FileSystem.readAsStringAsync(uri);
-      const lines = content.split('\n').filter((line) => line.trim());
+      const response = await fetch(uri);
+      const content = await response.text();
 
       const words: ParsedWord[] = [];
+      const rows = this.parseCSVContent(content);
 
-      for (const line of lines) {
-        // Skip header if it contains "word" or "meaning"
-        if (line.toLowerCase().includes('word') && line.toLowerCase().includes('meaning')) {
+      for (const row of rows) {
+        // Boş satırları atla
+        if (row.length === 0 || (row.length === 1 && !row[0].trim())) {
           continue;
         }
 
-        // Parse CSV line (handle quoted values)
-        const parts = this.parseCSVLine(line);
+        // Header satırını atla
+        const firstCell = row[0]?.toLowerCase() ?? '';
+        const secondCell = row[1]?.toLowerCase() ?? '';
+        if (firstCell.includes('word') && secondCell.includes('meaning')) {
+          continue;
+        }
 
-        if (parts.length >= 2) {
+        if (row.length >= 2) {
           words.push({
-            word: parts[0].trim(),
-            meaning: parts[1].trim(),
-            example: parts[2]?.trim(),
-            pronunciation: parts[3]?.trim(),
+            word: row[0].trim(),
+            meaning: row[1].trim(),
+            example: row[2]?.trim(),
+            pronunciation: row[3]?.trim(),
           });
         }
       }
 
       return words;
     } catch (error) {
-      console.error('Failed to parse CSV:', error);
-      return [];
+      throw new ImportParseError(
+        error instanceof Error ? error.message : 'CSV dosyası ayrıştırılamadı',
+        error,
+      );
     }
   }
 
-  private parseCSVLine(line: string): string[] {
-    const parts: string[] = [];
-    let current = '';
+  /**
+   * CSV içeriğini satır satır parse eder.
+   * Tırnak içine alınmış ve birden fazla satıra yayılan (multi-line quoted)
+   * alanları güvenli bir şekilde destekler.
+   */
+  private parseCSVContent(content: string): string[][] {
+    const rows: string[][] = [];
+    let currentRow: string[] = [];
+    let currentField = '';
     let inQuotes = false;
+    let i = 0;
 
-    for (let i = 0; i < line.length; i++) {
-      const char = line[i];
+    while (i < content.length) {
+      const char = content[i];
 
-      if (char === '"') {
-        inQuotes = !inQuotes;
-      } else if (char === ',' && !inQuotes) {
-        parts.push(current);
-        current = '';
-      } else {
-        current += char;
+      if (inQuotes) {
+        // Tırnak içindeyken: çift tırnak kaçışı kontrol et
+        if (char === '"') {
+          if (content[i + 1] === '"') {
+            // Çift tırnak kaçışı: tek tırnak olarak ekle
+            currentField += '"';
+            i += 2;
+            continue;
+          }
+          // Tırnak kapanışı
+          inQuotes = false;
+          i += 1;
+          continue;
+        }
+        // Tırnak içindeki her karakter (newline dahil) olduğu gibi eklenir
+        currentField += char;
+        i += 1;
+        continue;
       }
+
+      // Tırnak dışında
+      if (char === '"') {
+        inQuotes = true;
+        i += 1;
+        continue;
+      }
+
+      if (char === ',') {
+        currentRow.push(currentField);
+        currentField = '';
+        i += 1;
+        continue;
+      }
+
+      if (char === '\r') {
+        // \r\n veya \r: satır sonu olarak işle
+        currentRow.push(currentField);
+        currentField = '';
+        rows.push(currentRow);
+        currentRow = [];
+        // \r\n durumunda \n'i atla
+        if (content[i + 1] === '\n') {
+          i += 2;
+        } else {
+          i += 1;
+        }
+        continue;
+      }
+
+      if (char === '\n') {
+        currentRow.push(currentField);
+        currentField = '';
+        rows.push(currentRow);
+        currentRow = [];
+        i += 1;
+        continue;
+      }
+
+      currentField += char;
+      i += 1;
     }
 
-    parts.push(current);
-    return parts;
+    // Son alan/satırı ekle (dosya sonu)
+    if (currentField !== '' || currentRow.length > 0) {
+      currentRow.push(currentField);
+      rows.push(currentRow);
+    }
+
+    return rows;
   }
 
   async parsePDF(uri: string): Promise<ParsedWord[]> {
-    // Check if PDF extraction is available
     if (!isAvailable()) {
-      console.warn('PDF extraction is not available. Requires a development build.');
-      return [];
+      throw new ImportParseError(
+        'PDF metin çıkarma kullanılamıyor. Geliştirici derlemesi gereklidir.',
+      );
     }
 
     try {
-      // Extract text from PDF
       const text = await extractText(uri);
 
       if (!text || text.trim().length === 0) {
-        console.warn('No text found in PDF');
-        return [];
+        throw new ImportParseError('PDF dosyasında metin bulunamadı');
       }
 
-      // Parse the extracted text to find word-meaning pairs
       return this.parseTextToWords(text);
     } catch (error) {
-      console.error('Failed to parse PDF:', error);
-      return [];
+      if (error instanceof ImportParseError) {
+        throw error;
+      }
+      throw new ImportParseError(
+        error instanceof Error ? error.message : 'PDF dosyası ayrıştırılamadı',
+        error,
+      );
     }
   }
 
@@ -139,12 +235,10 @@ export class ImportService {
     const lines = text.split('\n').filter((line) => line.trim());
 
     for (const line of lines) {
-      // Skip header lines
       if (line.toLowerCase().includes('word') && line.toLowerCase().includes('meaning')) {
         continue;
       }
 
-      // Try different separators: -, :, =, or tab
       const separators = [' - ', ' – ', ' : ', ' :" ', ' = ', '\t'];
       let parsed: ParsedWord | null = null;
 
@@ -161,7 +255,6 @@ export class ImportService {
         }
       }
 
-      // If no separator found, try comma (common in CSV-like PDFs)
       if (!parsed && line.includes(',')) {
         const parts = line.split(',');
         if (parts.length >= 2) {
@@ -172,7 +265,6 @@ export class ImportService {
         }
       }
 
-      // If still no separator, try space (first word is the word, rest is meaning)
       if (!parsed) {
         const parts = line.trim().split(/\s+/);
         if (parts.length >= 2) {
@@ -226,7 +318,20 @@ export class ImportService {
   }
 
   async importFromCSV(): Promise<ImportResult> {
-    const uri = await this.pickCSVFile();
+    let uri: string | null;
+    try {
+      uri = await this.pickCSVFile();
+    } catch (error) {
+      return {
+        success: false,
+        imported: 0,
+        failed: 0,
+        errors: [
+          error instanceof Error ? error.message : 'Dosya seçimi başarısız oldu',
+        ],
+      };
+    }
+
     if (!uri) {
       return {
         success: false,
@@ -236,7 +341,20 @@ export class ImportService {
       };
     }
 
-    const words = await this.parseCSV(uri);
+    let words: ParsedWord[];
+    try {
+      words = await this.parseCSV(uri);
+    } catch (error) {
+      return {
+        success: false,
+        imported: 0,
+        failed: 0,
+        errors: [
+          error instanceof Error ? error.message : 'CSV dosyası ayrıştırılamadı',
+        ],
+      };
+    }
+
     if (words.length === 0) {
       return {
         success: false,
@@ -250,7 +368,20 @@ export class ImportService {
   }
 
   async importFromPDF(): Promise<ImportResult> {
-    const uri = await this.pickPDFFile();
+    let uri: string | null;
+    try {
+      uri = await this.pickPDFFile();
+    } catch (error) {
+      return {
+        success: false,
+        imported: 0,
+        failed: 0,
+        errors: [
+          error instanceof Error ? error.message : 'Dosya seçimi başarısız oldu',
+        ],
+      };
+    }
+
     if (!uri) {
       return {
         success: false,
@@ -260,7 +391,22 @@ export class ImportService {
       };
     }
 
-    const words = await this.parsePDF(uri);
+    let words: ParsedWord[];
+    try {
+      words = await this.parsePDF(uri);
+    } catch (error) {
+      return {
+        success: false,
+        imported: 0,
+        failed: 0,
+        errors: [
+          error instanceof Error
+            ? error.message
+            : 'PDF dosyası ayrıştırılamadı',
+        ],
+      };
+    }
+
     if (words.length === 0) {
       return {
         success: false,

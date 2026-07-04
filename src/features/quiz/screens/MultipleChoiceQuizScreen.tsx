@@ -54,7 +54,7 @@ export default function MultipleChoiceQuizScreen() {
       {/* Header and Progress */}
       <View className="mt-sm">
         <View className="flex-row justify-between items-center mb-xs">
-          <Text className="text-sm font-semibold text-muted-foreground">ÇOKTAN SEÇMELİ QUIZ</Text>
+          <Text className="text-sm font-semibold text-slate-400">Çoktan Seçmeli Quiz</Text>
           <Text className="text-sm font-semibold text-primary">
             {currentIndex + 1}. / {questions.length} Soru
           </Text>
@@ -64,7 +64,7 @@ export default function MultipleChoiceQuizScreen() {
 
       {/* Question Card */}
       <Card className="flex-1 justify-center my-lg border border-border shadow-sm p-lg bg-card rounded-2xl">
-        <View className="items-center justify-center mb-lg">
+        <View className="items-center justify-center mb-md">
           <Text className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-xs">
             Şu kelimenin anlamı nedir:
           </Text>
@@ -74,26 +74,26 @@ export default function MultipleChoiceQuizScreen() {
         </View>
 
         {/* Options */}
-        <View className="w-full space-y-sm mt-md">
+        <View className="w-full space-y-3 mt-md">
           {currentQuestion.options.map((option, index) => {
             const isSelected = selectedAnswer === option;
             const isCorrectOption = option === currentQuestion.correctAnswer;
 
-            let optionClassName = 'border border-border bg-card p-md rounded-xl mb-sm';
+            let optionClassName = 'border border-border bg-slate-50 py-4 px-md rounded-xl mb-sm';
             let textClassName = 'text-base font-medium text-foreground';
 
             if (isAnswered) {
               if (isCorrectOption) {
                 // Correct option highlights green
-                optionClassName = 'border-success bg-success/15 p-md rounded-xl mb-sm';
+                optionClassName = 'border-success bg-success/15 py-4 px-md rounded-xl mb-sm';
                 textClassName = 'text-base font-semibold text-success';
               } else if (isSelected) {
                 // Incorrect selected option highlights red
-                optionClassName = 'border-error bg-error/15 p-md rounded-xl mb-sm';
+                optionClassName = 'border-error bg-error/15 py-4 px-md rounded-xl mb-sm';
                 textClassName = 'text-base font-semibold text-error';
               } else {
                 // Other options are dimmed
-                optionClassName = 'border-border/30 bg-card p-md rounded-xl mb-sm opacity-50';
+                optionClassName = 'border-border/30 bg-slate-50 py-4 px-md rounded-xl mb-sm opacity-50';
                 textClassName = 'text-base text-foreground/50';
               }
             }
@@ -129,17 +129,16 @@ export default function MultipleChoiceQuizScreen() {
           <View className="h-[48px]" /> // Spacer to preserve layout structure
         )}
 
-        <Button
-          title="Quizi Sonlandır"
-          variant="ghost"
+        <Pressable
           onPress={() => {
             resetQuiz();
             router.dismissAll();
             router.replace('/(tabs)/learn');
           }}
-          className="mt-xs py-sm"
-          textClassName="text-muted-foreground text-sm font-medium"
-        />
+          className="mt-xs border border-slate-200 rounded-xl py-2.5 px-4"
+        >
+          <Text className="text-red-500 text-sm font-medium text-center">Quizi Sonlandır</Text>
+        </Pressable>
       </View>
     </View>
   );

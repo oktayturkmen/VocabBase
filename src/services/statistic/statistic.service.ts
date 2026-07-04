@@ -31,7 +31,7 @@ export class StatisticService {
     const created = await this.getByDate(data.date);
 
     if (!created) {
-      throw new Error('Failed to create statistic');
+      throw new Error('İstatistik oluşturulamadı');
     }
 
     return created;
@@ -65,7 +65,7 @@ export class StatisticService {
     if (updates.length === 0) {
       const existing = await this.getByDate(date);
       if (!existing) {
-        throw new Error('Statistic not found');
+        throw new Error('İstatistik bulunamadı');
       }
       return existing;
     }
@@ -80,7 +80,7 @@ export class StatisticService {
     const updated = await this.getByDate(date);
 
     if (!updated) {
-      throw new Error('Failed to update statistic');
+      throw new Error('İstatistik güncellenemedi');
     }
 
     return updated;
@@ -179,6 +179,10 @@ export class StatisticService {
     return this.update(date, {
       time_spent_seconds: existing.time_spent_seconds + seconds,
     });
+  }
+
+  async deleteAll(): Promise<void> {
+    await this.database.runAsync(`DELETE FROM ${TABLES.STATISTICS}`);
   }
 
   async getRecent(days: number = 7): Promise<StatisticRow[]> {

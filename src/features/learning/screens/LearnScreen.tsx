@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Speech from 'expo-speech';
 
 import { Button, Card, Loading, ProgressBar } from '@/components';
@@ -10,16 +11,19 @@ import { useLearningStore } from '@/store/learning.store';
 
 export default function LearnScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const {
     sessionWords,
     currentIndex,
-    currentStep,
+    isFlipped,
     status,
     unlearnedCount,
     isLoading,
     fetchUnlearnedCount,
     startSession,
-    nextStep,
+    flipCard,
+    unflipCard,
+    markLearned,
     finishSession,
   } = useLearningStore();
   const { lists, selectedListId, fetchLists } = useListStore();
@@ -29,14 +33,26 @@ export default function LearnScreen() {
   const selectedList = lists.find((list) => list.id === selectedListId) ?? null;
   const selectedListFilter = selectedListId ?? undefined;
 
-  const handleSpeak = useCallback(() => {
-    if (currentWord) {
-      void Speech.speak(currentWord.word, {
+  const handleSpeak = useCallback(
+    (text: string) => {
+      void Speech.speak(text, {
         language: 'en-US',
         rate: speechSpeed,
       });
+    },
+    [speechSpeed],
+  );
+
+  // Auto-play speech when a new word card appears (front face)
+  useEffect(() => {
+    if (status === 'active' && currentWord && !isFlipped) {
+      // Small delay to ensure UI is ready
+      const timer = setTimeout(() => {
+        handleSpeak(currentWord.word);
+      }, 300);
+      return () => clearTimeout(timer);
     }
-  }, [currentWord, speechSpeed]);
+  }, [status, currentWord, isFlipped, handleSpeak]);
 
   useEffect(() => {
     void fetchLists();
@@ -53,7 +69,7 @@ export default function LearnScreen() {
   // Idle state: Screen explaining the learning session
   if (status === 'idle') {
     return (
-      <View className="flex-1 justify-center p-md bg-background">
+      <View className="flex-1 justify-center p-md bg-background" style={{ paddingTop: insets.top + 16 }}>
         <View className="items-center mb-lg">
           <View className="bg-primary/10 p-lg rounded-full mb-md">
             <Text className="text-4xl">📚</Text>
@@ -62,8 +78,8 @@ export default function LearnScreen() {
             Yeni Kelimeler Öğren
           </Text>
           <Text className="text-base text-muted-foreground text-center px-md">
-            Yeni kelimeleri adım adım çalışın: önce kelime, sonra çevirisi ve son olarak bir
-            örnek cümle.
+            Yeni kelimeleri kart çevirerek çalışın: kelimeyi dinleyin, kartı çevirin ve
+            anlamı ile örnek cümleyi birlikte görün.
           </Text>
         </View>
 
@@ -112,7 +128,7 @@ export default function LearnScreen() {
   if (status === 'completed') {
     const wordsLearned = sessionWords.length;
     return (
-      <View className="flex-1 justify-center items-center p-md bg-background">
+      <View className="flex-1 justify-center items-center p-md bg-background" style={{ paddingTop: insets.top + 16 }}>
         <View className="bg-success/10 p-xl rounded-full mb-lg">
           <Text className="text-5xl">🎉</Text>
         </View>
@@ -144,7 +160,7 @@ export default function LearnScreen() {
   }
 
   return (
-    <View className="flex-1 justify-between p-md bg-background">
+    <View className="flex-1 justify-between p-md bg-background" style={{ paddingTop: insets.top + 16 }}>
       {/* Top Header & Progress */}
       <View className="mt-sm">
         <View className="flex-row justify-between items-center mb-xs">
@@ -162,50 +178,57 @@ export default function LearnScreen() {
       {/* Main Flashcard Card */}
       <Card className="flex-1 justify-center my-lg border border-border shadow-md p-lg bg-card rounded-2xl">
         <View className="items-center justify-center">
-          {/* Step 0: Word */}
-          <View className="items-center mb-md">
-            <View className="flex-row items-center justify-center">
-              <Text className="text-4xl font-extrabold text-foreground tracking-wide mr-sm">
-                {currentWord.word}
-              </Text>
-              <Pressable
-                onPress={handleSpeak}
-                className="bg-primary/10 p-xs rounded-full active:bg-primary/20"
-                hitSlop={12}
-              >
-                <Text className="text-xl">🔊</Text>
-              </Pressable>
-            </View>
-            {currentWord.pronunciation ? (
-              <Text className="text-base text-muted-foreground mt-xs font-mono">
-                {currentWord.pronunciation}
-              </Text>
-            ) : null}
-          </View>
-
-          {/* Step 1: Meaning */}
-          {currentStep >= 1 && (
-            <View className="w-full items-center border-t border-border/50 pt-md mt-sm">
-              <Text className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-xs">
-                Anlamı
-              </Text>
-              <Text className="text-2xl font-bold text-primary text-center">
-                {currentWord.meaning}
-              </Text>
+          {/* Front Face: Word */}
+          {!isFlipped && (
+            <View className="items-center mb-md">
+              <View className="flex-row items-center justify-center">
+                <Text className="text-4xl font-extrabold text-foreground tracking-wide mr-sm">
+                  {currentWord.word}
+                </Text>
+                <Pressable
+                  onPress={() => handleSpeak(currentWord.word)}
+                  accessibilityRole="button"
+                  accessibilityLabel={`${currentWord.word} kelimesini seslendir`}
+                  className="bg-primary/10 p-xs rounded-full active:bg-primary/20"
+                  hitSlop={12}
+                >
+                  <Text className="text-xl">🔊</Text>
+                </Pressable>
+              </View>
+              {currentWord.pronunciation ? (
+                <Text className="text-base text-muted-foreground mt-xs font-mono">
+                  {currentWord.pronunciation}
+                </Text>
+              ) : null}
             </View>
           )}
 
-          {/* Step 2: Example */}
-          {currentStep >= 2 && currentWord.example && (
-            <View className="w-full items-center border-t border-border/50 pt-md mt-sm">
-              <Text className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-xs">
-                Örnek Cümle
-              </Text>
-              <Text className="text-lg italic text-foreground text-center px-sm leading-relaxed">
-                {'"'}
-                {currentWord.example}
-                {'"'}
-              </Text>
+          {/* Back Face: Meaning + Example */}
+          {isFlipped && (
+            <View className="w-full items-center">
+              {/* Meaning */}
+              <View className="w-full items-center mb-md">
+                <Text className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-xs">
+                  Anlamı
+                </Text>
+                <Text className="text-2xl font-bold text-primary text-center">
+                  {currentWord.meaning}
+                </Text>
+              </View>
+
+              {/* Example */}
+              {currentWord.example ? (
+                <View className="w-full items-center border-t border-border/50 pt-md mt-sm">
+                  <Text className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-xs">
+                    Örnek Cümle
+                  </Text>
+                  <Text className="text-lg italic text-foreground text-center px-sm leading-relaxed">
+                    {'"'}
+                    {currentWord.example}
+                    {'"'}
+                  </Text>
+                </View>
+              ) : null}
             </View>
           )}
         </View>
@@ -213,30 +236,35 @@ export default function LearnScreen() {
 
       {/* Bottom Button Actions */}
       <View className="mb-sm">
-        {currentStep === 0 && (
+        {/* Front face: Flip button */}
+        {!isFlipped && (
           <Button
-            title="Anlamı Göster"
-            onPress={() => void nextStep()}
+            title="Kartı Çevir"
+            onPress={flipCard}
             size="lg"
             className="w-full shadow-sm"
           />
         )}
-        {currentStep === 1 && (
-          <Button
-            title={currentWord.example ? 'Örneği Göster' : 'Anladım'}
-            onPress={() => void nextStep()}
-            size="lg"
-            className="w-full shadow-sm"
-          />
+
+        {/* Back face: Decision buttons */}
+        {isFlipped && (
+          <View className="flex-row gap-sm">
+            <Button
+              title="Tekrar Et"
+              variant="outline"
+              onPress={unflipCard}
+              size="lg"
+              className="flex-1"
+            />
+            <Button
+              title="Öğrendim"
+              onPress={() => void markLearned()}
+              size="lg"
+              className="flex-1"
+            />
+          </View>
         )}
-        {currentStep === 2 && (
-          <Button
-            title="Anladım"
-            onPress={() => void nextStep()}
-            size="lg"
-            className="w-full shadow-sm"
-          />
-        )}
+
         <Button
           title="Oturumu Sonlandır"
           variant="ghost"

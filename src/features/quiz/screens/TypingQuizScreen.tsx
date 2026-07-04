@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { View, Text, TextInput, Keyboard } from 'react-native';
+import { View, Text, TextInput, Keyboard, Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
 
 import { Button, Card, Loading, ProgressBar } from '@/components';
@@ -76,7 +76,7 @@ export default function TypingQuizScreen() {
       {/* Header and Progress */}
       <View className="mt-sm">
         <View className="flex-row justify-between items-center mb-xs">
-          <Text className="text-sm font-semibold text-muted-foreground">YAZMA QUIZ</Text>
+          <Text className="text-sm font-semibold text-slate-400">Yazma Quiz</Text>
           <Text className="text-sm font-semibold text-primary">
             {currentIndex + 1}. / {questions.length} Soru
           </Text>
@@ -85,8 +85,8 @@ export default function TypingQuizScreen() {
       </View>
 
       {/* Question Card */}
-      <Card className="flex-1 justify-center my-lg border border-border shadow-sm p-lg bg-card rounded-2xl">
-        <View className="items-center mb-lg">
+      <Card className="flex-1 justify-start my-lg border border-border shadow-sm p-lg bg-card rounded-2xl">
+        <View className="items-center mt-md mb-md space-y-5">
           <Text className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-xs">
             Şu kelimenin Türkçe anlamını yazın:
           </Text>
@@ -108,8 +108,8 @@ export default function TypingQuizScreen() {
           placeholder="Anlamı buraya yazın..."
           placeholderTextColor={colors.mutedForeground}
           className={[
-            'rounded-xl border px-md py-sm text-lg text-foreground text-center mb-md',
-            !isAnswered && 'border-border bg-background',
+            'rounded-2xl border px-md py-4 text-lg text-foreground text-center mb-md',
+            !isAnswered && 'border-border bg-slate-50',
             isAnswered && isCorrect && 'border-success bg-success/10 text-success',
             isAnswered && !isCorrect && 'border-error bg-error/10 text-error',
           ]
@@ -142,7 +142,7 @@ export default function TypingQuizScreen() {
             title="Cevabı Gönder"
             onPress={handleSubmit}
             size="lg"
-            className="w-full shadow-sm"
+            className="w-full shadow-sm rounded-2xl"
             disabled={!inputValue.trim()}
           />
         ) : (
@@ -153,17 +153,16 @@ export default function TypingQuizScreen() {
             className="w-full shadow-sm"
           />
         )}
-        <Button
-          title="Quizi Sonlandır"
-          variant="ghost"
+        <Pressable
           onPress={() => {
             resetQuiz();
             router.dismissAll();
             router.replace('/(tabs)/learn');
           }}
-          className="mt-xs py-sm"
-          textClassName="text-muted-foreground text-sm font-medium"
-        />
+          className="mt-xs border border-slate-200 rounded-xl py-2.5 px-4"
+        >
+          <Text className="text-red-500 text-sm font-medium text-center">Quizi Sonlandır</Text>
+        </Pressable>
       </View>
     </View>
   );

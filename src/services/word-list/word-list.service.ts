@@ -40,7 +40,7 @@ export class WordListService {
         listId,
       );
       if (!existing) {
-        throw new Error('Failed to add word to list');
+        throw new Error('Kelime listeye eklenemedi');
       }
       return existing;
     }
@@ -51,7 +51,7 @@ export class WordListService {
     );
 
     if (!created) {
-      throw new Error('Failed to add word to list');
+      throw new Error('Kelime listeye eklenemedi');
     }
 
     return created;
@@ -95,6 +95,30 @@ export class WordListService {
 
   async removeAllWordsFromList(listId: number): Promise<void> {
     await this.database.runAsync(`DELETE FROM ${TABLES.WORD_LISTS} WHERE list_id = ?`, listId);
+  }
+
+  async setWordsForList(listId: number, wordIds: number[]): Promise<void> {
+    const uniqueWordIds = Array.from(new Set(wordIds));
+
+    await this.database.withTransactionAsync(async () => {
+      await this.removeAllWordsFromList(listId);
+
+      if (uniqueWordIds.length === 0) {
+        return;
+      }
+
+      const now = Date.now();
+      await Promise.all(
+        uniqueWordIds.map((wordId) =>
+          this.database.runAsync(
+            `INSERT OR IGNORE INTO ${TABLES.WORD_LISTS} (word_id, list_id, created_at) VALUES (?, ?, ?)`,
+            wordId,
+            listId,
+            now,
+          ),
+        ),
+      );
+    });
   }
 
   async getWordsForList(listId: number): Promise<number[]> {

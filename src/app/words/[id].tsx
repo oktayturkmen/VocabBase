@@ -21,9 +21,9 @@ export default function EditWordScreen() {
     return (
       <EmptyState
         className="flex-1"
-        title="Invalid word"
-        description="The selected word could not be opened."
-        action={<Button title="Go back" variant="outline" onPress={() => router.back()} />}
+        title="Geçersiz Kelime"
+        description="Seçilen kelime açılamadı."
+        action={<Button title="Geri Dön" variant="outline" onPress={() => router.back()} />}
       />
     );
   }

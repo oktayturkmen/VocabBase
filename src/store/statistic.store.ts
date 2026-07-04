@@ -61,7 +61,7 @@ export const useStatisticStore = create<StatisticStore>((set, get) => ({
     } catch (error) {
       set({
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Failed to load today statistic',
+        error: error instanceof Error ? error.message : 'Bugünün istatistikleri yüklenemedi',
       });
     }
   },
@@ -79,7 +79,7 @@ export const useStatisticStore = create<StatisticStore>((set, get) => ({
     } catch (error) {
       set({
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Failed to load recent statistics',
+        error: error instanceof Error ? error.message : 'Son istatistikler yüklenemedi',
       });
     }
   },
@@ -97,7 +97,7 @@ export const useStatisticStore = create<StatisticStore>((set, get) => ({
     } catch (error) {
       set({
         isLoading: false,
-        error: error instanceof Error ? error.message : 'Failed to load total statistics',
+        error: error instanceof Error ? error.message : 'Toplam istatistikler yüklenemedi',
       });
     }
   },
@@ -112,7 +112,7 @@ export const useStatisticStore = create<StatisticStore>((set, get) => ({
       }));
     } catch (error) {
       set({
-        error: error instanceof Error ? error.message : 'Failed to increment words learned',
+        error: error instanceof Error ? error.message : 'Öğrenilen kelime sayısı artırılamadı',
       });
     }
   },
@@ -127,7 +127,7 @@ export const useStatisticStore = create<StatisticStore>((set, get) => ({
       }));
     } catch (error) {
       set({
-        error: error instanceof Error ? error.message : 'Failed to increment words reviewed',
+        error: error instanceof Error ? error.message : 'Tekrar edilen kelime sayısı artırılamadı',
       });
     }
   },
@@ -142,7 +142,7 @@ export const useStatisticStore = create<StatisticStore>((set, get) => ({
       }));
     } catch (error) {
       set({
-        error: error instanceof Error ? error.message : 'Failed to increment quiz correct',
+        error: error instanceof Error ? error.message : 'Doğru quiz sayısı artırılamadı',
       });
     }
   },
@@ -157,7 +157,7 @@ export const useStatisticStore = create<StatisticStore>((set, get) => ({
       }));
     } catch (error) {
       set({
-        error: error instanceof Error ? error.message : 'Failed to increment quiz incorrect',
+        error: error instanceof Error ? error.message : 'Yanlış quiz sayısı artırılamadı',
       });
     }
   },
@@ -172,7 +172,7 @@ export const useStatisticStore = create<StatisticStore>((set, get) => ({
       }));
     } catch (error) {
       set({
-        error: error instanceof Error ? error.message : 'Failed to add time spent',
+        error: error instanceof Error ? error.message : 'Harcanan süre eklenemedi',
       });
     }
   },

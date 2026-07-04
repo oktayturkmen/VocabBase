@@ -12,7 +12,7 @@ export class WordService {
 
   async getAll(): Promise<Word[]> {
     const rows = await this.database.getAllAsync<WordRow>(
-      `SELECT * FROM ${TABLES.WORDS} ORDER BY word ASC`,
+      `SELECT * FROM ${TABLES.WORDS} ORDER BY created_at DESC`,
     );
 
     return rows.map(mapRowToWord);
@@ -24,7 +24,7 @@ export class WordService {
        FROM ${TABLES.WORDS}
        INNER JOIN ${TABLES.WORD_LISTS} ON ${TABLES.WORD_LISTS}.word_id = ${TABLES.WORDS}.id
        WHERE ${TABLES.WORD_LISTS}.list_id = ?
-       ORDER BY ${TABLES.WORDS}.word ASC`,
+       ORDER BY ${TABLES.WORDS}.created_at DESC`,
       listId,
     );
 
@@ -58,7 +58,7 @@ export class WordService {
     const createdWord = await this.getById(result.lastInsertRowId);
 
     if (!createdWord) {
-      throw new Error('Failed to create word');
+      throw new Error('Kelime oluşturulamadı');
     }
 
     return createdWord;
@@ -102,9 +102,52 @@ export class WordService {
   }
 
   async delete(id: number): Promise<boolean> {
-    const result = await this.database.runAsync(`DELETE FROM ${TABLES.WORDS} WHERE id = ?`, id);
+    let changes = 0;
 
-    return result.changes > 0;
+    await this.database.withTransactionAsync(async () => {
+      // 1. Clean up all word-list relationships for this word
+      await this.database.runAsync(
+        `DELETE FROM ${TABLES.WORD_LISTS} WHERE word_id = ?`,
+        id,
+      );
+
+      // 2. Delete the word itself
+      const result = await this.database.runAsync(
+        `DELETE FROM ${TABLES.WORDS} WHERE id = ?`,
+        id,
+      );
+
+      changes = result.changes;
+    });
+
+    return changes > 0;
+  }
+
+  async deleteMany(ids: number[]): Promise<number> {
+    if (ids.length === 0) {
+      return 0;
+    }
+
+    const placeholders = ids.map(() => '?').join(', ');
+    let changes = 0;
+
+    await this.database.withTransactionAsync(async () => {
+      // 1. Clean up all word-list relationships for these words
+      await this.database.runAsync(
+        `DELETE FROM ${TABLES.WORD_LISTS} WHERE word_id IN (${placeholders})`,
+        ...ids,
+      );
+
+      // 2. Delete the words themselves
+      const result = await this.database.runAsync(
+        `DELETE FROM ${TABLES.WORDS} WHERE id IN (${placeholders})`,
+        ...ids,
+      );
+
+      changes = result.changes;
+    });
+
+    return changes;
   }
 }
 

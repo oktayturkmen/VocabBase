@@ -12,7 +12,7 @@ export {
   LearningService,
   createLearningService,
   getLearningService,
-} from './learning/learning.service';
+} from './learning';
 
 export { QuizService, createQuizService, getQuizService } from './quiz/quiz.service';
 
