@@ -1,5 +1,7 @@
 import * as DocumentPicker from 'expo-document-picker';
+import * as FileSystem from 'expo-file-system';
 import { extractText, isAvailable } from 'expo-pdf-text-extract';
+import { Platform } from 'react-native';
 
 import { getWordService } from '../word';
 
@@ -40,17 +42,37 @@ export class ImportParseError extends Error {
 export class ImportService {
   async pickCSVFile(): Promise<string | null> {
     try {
+      // Mobilde bazı dosya yöneticileri CSV dosyaları için doğru MIME type
+      // bildirmediğinden, tüm dosyaları gösterip uzantıyı manuel kontrol ediyoruz.
+      // Web'de ise daha spesifik filtreleme yapıyoruz.
       const result = await DocumentPicker.getDocumentAsync({
-        type: ['text/csv', 'application/vnd.ms-excel', 'application/csv'],
+        type: Platform.OS === 'web' ? ['text/csv', '.csv'] : '*/*',
         copyToCacheDirectory: true,
+        multiple: false,
       });
 
       if (result.canceled || !result.assets || result.assets.length === 0) {
         return null;
       }
 
-      return result.assets[0].uri;
+      const asset = result.assets[0];
+
+      // Mobilde tüm dosyalar gösterildiği için uzantıyı kontrol et
+      if (Platform.OS !== 'web') {
+        const name = asset.name ?? '';
+        const lowerName = name.toLowerCase();
+        if (!lowerName.endsWith('.csv')) {
+          throw new ImportFilePickerError(
+            'Lütfen .csv uzantılı bir dosya seçin.',
+          );
+        }
+      }
+
+      return asset.uri;
     } catch (error) {
+      if (error instanceof ImportFilePickerError) {
+        throw error;
+      }
       throw new ImportFilePickerError(
         error instanceof Error ? error.message : 'CSV dosyası seçilemedi',
         error,
@@ -60,17 +82,36 @@ export class ImportService {
 
   async pickPDFFile(): Promise<string | null> {
     try {
+      // Mobilde bazı dosya yöneticileri PDF için doğru MIME type bildirmeyebilir;
+      // bu yüzden hem MIME type hem de uzantı filtresi birlikte kullanılır.
       const result = await DocumentPicker.getDocumentAsync({
-        type: ['application/pdf'],
+        type: Platform.OS === 'web' ? ['application/pdf', '.pdf'] : '*/*',
         copyToCacheDirectory: true,
+        multiple: false,
       });
 
       if (result.canceled || !result.assets || result.assets.length === 0) {
         return null;
       }
 
-      return result.assets[0].uri;
+      const asset = result.assets[0];
+
+      // Mobilde tüm dosyalar gösterildiği için uzantıyı kontrol et
+      if (Platform.OS !== 'web') {
+        const name = asset.name ?? '';
+        const lowerName = name.toLowerCase();
+        if (!lowerName.endsWith('.pdf')) {
+          throw new ImportFilePickerError(
+            'Lütfen .pdf uzantılı bir dosya seçin.',
+          );
+        }
+      }
+
+      return asset.uri;
     } catch (error) {
+      if (error instanceof ImportFilePickerError) {
+        throw error;
+      }
       throw new ImportFilePickerError(
         error instanceof Error ? error.message : 'PDF dosyası seçilemedi',
         error,
@@ -78,10 +119,27 @@ export class ImportService {
     }
   }
 
+  /**
+   * URI'den dosya içeriğini okur.
+   * Mobil platformlarda (Android/iOS) `fetch` `file://` şemasını desteklemediği
+   * için `expo-file-system` kullanılır. Web'de ise `fetch` tercih edilir.
+   */
+  private async readFileContent(uri: string): Promise<string> {
+    if (Platform.OS === 'web') {
+      const response = await fetch(uri);
+      return response.text();
+    }
+
+    // Mobilde content:// veya file:// şemalarını güvenle okumak için
+    // expo-file-system kullanılır.
+    return FileSystem.readAsStringAsync(uri, {
+      encoding: FileSystem.EncodingType.UTF8,
+    });
+  }
+
   async parseCSV(uri: string): Promise<ParsedWord[]> {
     try {
-      const response = await fetch(uri);
-      const content = await response.text();
+      const content = await this.readFileContent(uri);
 
       const words: ParsedWord[] = [];
       const rows = this.parseCSVContent(content);
