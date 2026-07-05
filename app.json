@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "VocabBase",
-    "slug": "vocabbase",
+    "slug": "inglizce-kelimeler",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -48,6 +48,7 @@
     },
     "updates": {
       "url": "https://u.expo.dev/fda5efb7-6194-48e5-81c6-346a4ec9b042"
-    }
+    },
+    "owner": "oktay10"
   }
 }

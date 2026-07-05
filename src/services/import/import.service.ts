@@ -1,5 +1,5 @@
 import * as DocumentPicker from 'expo-document-picker';
-import * as FileSystem from 'expo-file-system';
+import { File } from 'expo-file-system';
 import { extractText, isAvailable } from 'expo-pdf-text-extract';
 import { Platform } from 'react-native';
 
@@ -123,6 +123,9 @@ export class ImportService {
    * URI'den dosya içeriğini okur.
    * Mobil platformlarda (Android/iOS) `fetch` `file://` şemasını desteklemediği
    * için `expo-file-system` kullanılır. Web'de ise `fetch` tercih edilir.
+   *
+   * SDK 56'da `FileSystem.readAsStringAsync` deprecated oldu; yerine
+   * yeni `File` sınıfının `.text()` metodu kullanılır.
    */
   private async readFileContent(uri: string): Promise<string> {
     if (Platform.OS === 'web') {
@@ -131,10 +134,9 @@ export class ImportService {
     }
 
     // Mobilde content:// veya file:// şemalarını güvenle okumak için
-    // expo-file-system kullanılır.
-    return FileSystem.readAsStringAsync(uri, {
-      encoding: FileSystem.EncodingType.UTF8,
-    });
+    // SDK 56 File sınıfı kullanılır.
+    const file = new File(uri);
+    return file.text();
   }
 
   async parseCSV(uri: string): Promise<ParsedWord[]> {
