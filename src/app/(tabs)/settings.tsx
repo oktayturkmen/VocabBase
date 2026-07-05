@@ -484,7 +484,7 @@ function SettingsScreen() {
         {/* Versiyon Bilgisi */}
         <View className="items-center px-md">
           <Text className="text-xs text-muted-foreground">
-            İngilizce Kelimeler • Sürüm 1.0.0 • {Platform.OS}
+            VocabBase • Sürüm 1.0.0 • {Platform.OS}
           </Text>
         </View>
       </ScrollView>

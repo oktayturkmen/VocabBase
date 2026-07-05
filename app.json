@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Ingilizce Kelimeler",
-    "slug": "inglizce-kelimeler",
+    "name": "VocabBase",
+    "slug": "vocabbase",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "scheme": "inglizce-kelimeler",
+    "scheme": "vocabbase",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
