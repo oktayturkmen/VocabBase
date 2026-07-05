@@ -9,6 +9,7 @@ import { Button, FadeIn } from '@/components';
 import type { ListWithWordCount } from '@/services/list';
 import { getSpeechRecognitionService } from '@/services/speech-recognition';
 import { getWordService } from '@/services/word';
+import { useAppSettingsStore } from '@/store/app-settings.store';
 import { useLearningStore } from '@/store/learning.store';
 import { useListStore } from '@/store/list.store';
 import { useTheme } from '@/theme/useTheme';
@@ -127,6 +128,7 @@ export function LearnAndQuizHub() {
   const { colors } = useTheme();
   const { startRandomSession, startSessionWithAllListWords } = useLearningStore();
   const { lists, fetchLists } = useListStore();
+  const { speechSpeed } = useAppSettingsStore();
   const [showListModal, setShowListModal] = useState(false);
   const [exerciseMode, setExerciseMode] = useState<MemoryExerciseMode | null>(null);
   const [activeExercise, setActiveExercise] = useState<MemoryExerciseMode | null>(null);
@@ -196,7 +198,7 @@ export function LearnAndQuizHub() {
 
       Speech.speak(word.word, {
         language: 'en-US',
-        rate: 0.85,
+        rate: speechSpeed,
         onDone: () => {
           if (!listeningLoopActiveRef.current) {
             return;
@@ -204,7 +206,7 @@ export function LearnAndQuizHub() {
 
           Speech.speak(word.meaning, {
             language: 'tr-TR',
-            rate: 0.9,
+            rate: speechSpeed,
             onDone: () => {
               if (!listeningLoopActiveRef.current) {
                 return;
@@ -218,7 +220,7 @@ export function LearnAndQuizHub() {
         },
       });
     };
-  }, []);
+  }, [speechSpeed]);
 
   const startListeningLoop = useCallback(
     (words: Word[]) => {
@@ -615,7 +617,7 @@ export function LearnAndQuizHub() {
                     if (currentExerciseWord) {
                       Speech.speak(currentExerciseWord.word, {
                         language: 'en-US',
-                        rate: 0.85,
+                        rate: speechSpeed,
                       });
                     }
                   }}
