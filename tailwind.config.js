@@ -29,6 +29,7 @@ module.exports = {
         tabBar: tokens.colors.tabBar,
         'tab-bar-active': tokens.colors.tabBarActive,
         'tab-bar-inactive': tokens.colors.tabBarInactive,
+        quizBackground: tokens.colors.quizBackground,
       },
       fontSize: {
         xs: ['12px', { lineHeight: '16px' }],

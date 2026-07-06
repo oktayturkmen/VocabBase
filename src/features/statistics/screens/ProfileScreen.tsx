@@ -46,12 +46,12 @@ export default function ProfileScreen() {
     fetchTodayStatistic,
     fetchRecentStatistics,
   } = useStatisticStore();
-  const { unlearnedCount, fetchUnlearnedCount } = useLearningStore();
+  const { totalWordCount, fetchTotalWordCount } = useLearningStore();
 
   useEffect(() => {
     void fetchTodayStatistic();
-    void fetchUnlearnedCount();
-  }, [fetchTodayStatistic, fetchUnlearnedCount]);
+    void fetchTotalWordCount();
+  }, [fetchTodayStatistic, fetchTotalWordCount]);
 
   useEffect(() => {
     if (timePeriod === 'week') {
@@ -202,7 +202,7 @@ export default function ProfileScreen() {
                   Öğrenilen Kelimeler
                 </Text>
                 <Text className="text-3xl font-bold text-foreground">
-                  {todayStatistic.words_learned} / {unlearnedCount}
+                  {todayStatistic.words_learned} / {totalWordCount}
                 </Text>
               </View>
             </Card>

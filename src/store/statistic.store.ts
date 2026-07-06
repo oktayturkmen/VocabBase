@@ -2,6 +2,7 @@ import { create } from 'zustand';
 
 import { getStatisticService } from '@/services/statistic/statistic.service';
 import type { StatisticRow } from '@/types/statistic';
+import { getLocalDateString } from '@/utils/date';
 
 type StatisticStoreState = {
   todayStatistic: StatisticRow | null;
@@ -39,11 +40,6 @@ const initialState: StatisticStoreState = {
   error: null,
 };
 
-const getTodayDateString = (): string => {
-  const today = new Date();
-  return today.toISOString().split('T')[0];
-};
-
 export const useStatisticStore = create<StatisticStore>((set, get) => ({
   ...initialState,
 
@@ -51,7 +47,7 @@ export const useStatisticStore = create<StatisticStore>((set, get) => ({
     set({ isLoading: true, error: null });
     try {
       const service = await getStatisticService();
-      const today = getTodayDateString();
+      const today = getLocalDateString();
       const todayStatistic = await service.getByDate(today);
 
       set({
@@ -108,7 +104,7 @@ export const useStatisticStore = create<StatisticStore>((set, get) => ({
       const updated = await service.incrementWordsLearned(date);
 
       set((state) => ({
-        todayStatistic: date === getTodayDateString() ? updated : state.todayStatistic,
+        todayStatistic: date === getLocalDateString() ? updated : state.todayStatistic,
       }));
     } catch (error) {
       set({
@@ -123,7 +119,7 @@ export const useStatisticStore = create<StatisticStore>((set, get) => ({
       const updated = await service.incrementWordsReviewed(date);
 
       set((state) => ({
-        todayStatistic: date === getTodayDateString() ? updated : state.todayStatistic,
+        todayStatistic: date === getLocalDateString() ? updated : state.todayStatistic,
       }));
     } catch (error) {
       set({
@@ -138,7 +134,7 @@ export const useStatisticStore = create<StatisticStore>((set, get) => ({
       const updated = await service.incrementQuizCorrect(date);
 
       set((state) => ({
-        todayStatistic: date === getTodayDateString() ? updated : state.todayStatistic,
+        todayStatistic: date === getLocalDateString() ? updated : state.todayStatistic,
       }));
     } catch (error) {
       set({
@@ -153,7 +149,7 @@ export const useStatisticStore = create<StatisticStore>((set, get) => ({
       const updated = await service.incrementQuizIncorrect(date);
 
       set((state) => ({
-        todayStatistic: date === getTodayDateString() ? updated : state.todayStatistic,
+        todayStatistic: date === getLocalDateString() ? updated : state.todayStatistic,
       }));
     } catch (error) {
       set({
@@ -168,7 +164,7 @@ export const useStatisticStore = create<StatisticStore>((set, get) => ({
       const updated = await service.addTimeSpent(date, seconds);
 
       set((state) => ({
-        todayStatistic: date === getTodayDateString() ? updated : state.todayStatistic,
+        todayStatistic: date === getLocalDateString() ? updated : state.todayStatistic,
       }));
     } catch (error) {
       set({

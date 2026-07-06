@@ -64,8 +64,10 @@ export function ActiveReviewSession() {
   const handleRating = useCallback(
     async (quality: ReviewQuality) => {
       if (currentReview) {
-        await submitReview(quality);
-        advanceReview();
+        const wasSaved = await submitReview(quality);
+        if (wasSaved) {
+          advanceReview();
+        }
       }
     },
     [currentReview, submitReview, advanceReview],

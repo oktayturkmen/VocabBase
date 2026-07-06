@@ -3,10 +3,7 @@ import { create } from 'zustand';
 import { getReviewService } from '@/services/review/review.service';
 import { useStatisticStore } from '@/store/statistic.store';
 import type { ReviewQuality, ReviewWithWord } from '@/types/review';
-
-function getTodayDateString(): string {
-  return new Date().toISOString().split('T')[0];
-}
+import { getLocalDateString } from '@/utils/date';
 
 type ReviewStoreState = {
   dueReviews: ReviewWithWord[];
@@ -23,7 +20,7 @@ type ReviewStoreActions = {
   fetchDueReviews: () => Promise<void>;
   startSession: (limit?: number) => Promise<void>;
   revealMeaning: () => void;
-  submitReview: (quality: ReviewQuality) => Promise<void>;
+  submitReview: (quality: ReviewQuality) => Promise<boolean>;
   advanceReview: () => void;
   finishSession: () => void;
   reset: () => void;
@@ -110,7 +107,7 @@ export const useReviewStore = create<ReviewStore>((set, get) => ({
     const currentReview = sessionReviews[currentIndex];
 
     if (!currentReview) {
-      return;
+      return false;
     }
 
     try {
@@ -118,12 +115,14 @@ export const useReviewStore = create<ReviewStore>((set, get) => ({
       await service.submitReview(currentReview.wordId, quality);
 
       // İstatistik kaydı
-      const today = getTodayDateString();
+      const today = getLocalDateString();
       void useStatisticStore.getState().incrementWordsReviewed(today);
+      return true;
     } catch (error) {
       set({
         error: error instanceof Error ? error.message : 'Tekrar kaydedilemedi',
       });
+      return false;
     }
   },
 

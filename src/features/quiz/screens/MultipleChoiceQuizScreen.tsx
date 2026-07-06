@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, Pressable, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 
 import { Button, Card, Loading, ProgressBar } from '@/components';
 import { useQuizStore } from '@/store/quiz.store';
+import { useTheme } from '@/theme/useTheme';
 
 export default function MultipleChoiceQuizScreen() {
   const router = useRouter();
+  const { colors } = useTheme();
   const {
     questions,
     currentIndex,
@@ -55,9 +58,34 @@ export default function MultipleChoiceQuizScreen() {
       <View className="mt-sm">
         <View className="flex-row justify-between items-center mb-xs">
           <Text className="text-sm font-semibold text-slate-400">Çoktan Seçmeli Quiz</Text>
-          <Text className="text-sm font-semibold text-primary">
-            {currentIndex + 1}. / {questions.length} Soru
-          </Text>
+          <View className="flex-row items-center gap-2">
+            <Text className="text-sm font-semibold text-primary">
+              {currentIndex + 1}. / {questions.length} Soru
+            </Text>
+            <Pressable
+              onPress={() => {
+                Alert.alert(
+                  'Quizi Sonlandır?',
+                  'Quizi sonlandırmak istediğinizden emin misiniz?',
+                  [
+                    { text: 'Hayır', style: 'cancel' },
+                    {
+                      text: 'Evet',
+                      style: 'destructive',
+                      onPress: () => {
+                        resetQuiz();
+                        router.back();
+                      },
+                    },
+                  ],
+                );
+              }}
+              hitSlop={8}
+              className="ml-2"
+            >
+              <Ionicons name="close" size={24} color={colors.mutedForeground} />
+            </Pressable>
+          </View>
         </View>
         <ProgressBar progress={((currentIndex + 1) / questions.length) * 100} className="mt-xs" />
       </View>
@@ -79,7 +107,7 @@ export default function MultipleChoiceQuizScreen() {
             const isSelected = selectedAnswer === option;
             const isCorrectOption = option === currentQuestion.correctAnswer;
 
-            let optionClassName = 'border border-border bg-slate-50 py-4 px-md rounded-xl mb-sm';
+            let optionClassName = 'border border-border bg-quizBackground py-4 px-md rounded-xl mb-sm';
             let textClassName = 'text-base font-medium text-foreground';
 
             if (isAnswered) {
@@ -128,17 +156,6 @@ export default function MultipleChoiceQuizScreen() {
         ) : (
           <View className="h-[48px]" /> // Spacer to preserve layout structure
         )}
-
-        <Pressable
-          onPress={() => {
-            resetQuiz();
-            router.dismissAll();
-            router.replace('/(tabs)/learn');
-          }}
-          className="mt-xs border border-slate-200 rounded-xl py-2.5 px-4"
-        >
-          <Text className="text-red-500 text-sm font-medium text-center">Quizi Sonlandır</Text>
-        </Pressable>
       </View>
     </View>
   );

@@ -8,6 +8,14 @@ import type { Word, WordRow } from '@/types/word';
 export class QuizService {
   constructor(private readonly database: SQLiteDatabase) {}
 
+  async getWordCount(): Promise<number> {
+    const result = await this.database.getFirstAsync<{ count: number }>(
+      `SELECT COUNT(*) AS count FROM ${TABLES.WORDS}`,
+    );
+
+    return result?.count ?? 0;
+  }
+
   async getQuizWords(limit = 10): Promise<Word[]> {
     // 1. Fetch learned words
     const learnedRows = await this.database.getAllAsync<WordRow>(
@@ -36,13 +44,16 @@ export class QuizService {
     return words;
   }
 
-  async getDistractors(wordId: number, limit = 3): Promise<string[]> {
+  async getDistractors(wordId: number, correctAnswer: string, limit = 3): Promise<string[]> {
     const rows = await this.database.getAllAsync<{ meaning: string }>(
       `SELECT meaning FROM ${TABLES.WORDS}
        WHERE id != ?
+         AND meaning != ?
+       GROUP BY meaning
        ORDER BY RANDOM()
        LIMIT ?`,
       wordId,
+      correctAnswer,
       limit,
     );
 

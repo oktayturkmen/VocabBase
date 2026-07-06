@@ -2,12 +2,9 @@ import { create } from 'zustand';
 
 import { getLearningService } from '@/services/learning';
 import { useStatisticStore } from '@/store/statistic.store';
+import { getLocalDateString } from '@/utils/date';
 import { logger } from '@/utils/logger';
 import type { Word } from '@/types/word';
-
-function getTodayDateString(): string {
-  return new Date().toISOString().split('T')[0];
-}
 
 type LearningStoreState = {
   sessionWords: Word[];
@@ -15,6 +12,7 @@ type LearningStoreState = {
   isFlipped: boolean; // false: front (word), true: back (meaning + example)
   status: 'idle' | 'loading' | 'active' | 'completed';
   unlearnedCount: number;
+  totalWordCount: number;
   isLoading: boolean;
   error: string | null;
   isPracticeSession: boolean; // true for random/list practice, false for learning new words
@@ -23,6 +21,7 @@ type LearningStoreState = {
 
 type LearningStoreActions = {
   fetchUnlearnedCount: (listId?: number) => Promise<void>;
+  fetchTotalWordCount: () => Promise<void>;
   startSession: (limit?: number, listId?: number) => Promise<void>;
   startRandomSession: (limit?: number, listId?: number) => Promise<void>;
   startSessionWithAllListWords: (listId: number) => Promise<void>;
@@ -43,6 +42,7 @@ const initialState: LearningStoreState = {
   isFlipped: false,
   status: 'idle',
   unlearnedCount: 0,
+  totalWordCount: 0,
   isLoading: false,
   error: null,
   isPracticeSession: false,
@@ -59,6 +59,16 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
       set({ unlearnedCount: count });
     } catch (error) {
       logger.error('LearningStore', 'Öğrenilmemiş kelime sayısı alınamadı', error);
+    }
+  },
+
+  fetchTotalWordCount: async () => {
+    try {
+      const service = await getLearningService();
+      const count = await service.getTotalWordCount();
+      set({ totalWordCount: count });
+    } catch (error) {
+      logger.error('LearningStore', 'Toplam kelime sayısı alınamadı', error);
     }
   },
 
@@ -202,8 +212,7 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
       await service.markAsLearned(wordId);
 
       // İstatistik kaydı
-      const today = getTodayDateString();
-      void useStatisticStore.getState().incrementWordsLearned(today);
+      const today = getLocalDateString();
 
       const nextIndex = currentIndex + 1;
       if (nextIndex >= sessionWords.length) {
@@ -245,7 +254,7 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
       // Session complete - record time spent for practice sessions
       if (sessionStartTime) {
         const timeSpentSeconds = Math.floor((Date.now() - sessionStartTime) / 1000);
-        const today = getTodayDateString();
+        const today = getLocalDateString();
         void useStatisticStore.getState().addTimeSpent(today, timeSpentSeconds);
       }
 

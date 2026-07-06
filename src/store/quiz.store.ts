@@ -3,10 +3,7 @@ import { create } from 'zustand';
 import { isAnswerCorrect, type QuizType } from '@/features/quiz/utils/answer.utils';
 import { getQuizService } from '@/services/quiz/quiz.service';
 import { useStatisticStore } from '@/store/statistic.store';
-
-function getTodayDateString(): string {
-  return new Date().toISOString().split('T')[0];
-}
+import { getLocalDateString } from '@/utils/date';
 
 export type { QuizType };
 
@@ -77,6 +74,23 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
     set({ isLoading: true, error: null, status: 'loading', quizType: 'multiple-choice' });
     try {
       const service = await getQuizService();
+      const wordCount = await service.getWordCount();
+
+      if (wordCount < 4) {
+        set({
+          questions: [],
+          currentIndex: 0,
+          selectedAnswer: null,
+          answers: [],
+          score: 0,
+          status: 'idle',
+          isLoading: false,
+          error: 'Çoktan seçmeli quiz için en az 4 kelime gerekiyor. Lütfen önce daha fazla kelime ekleyin.',
+          sessionStartTime: null,
+        });
+        return;
+      }
+
       const quizWords = await service.getQuizWords(limit);
 
       if (quizWords.length === 0) {
@@ -97,7 +111,22 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
       // Generate options for each word
       const questions: QuizQuestion[] = [];
       for (const word of quizWords) {
-        const distractors = await service.getDistractors(word.id, 3);
+        const distractors = await service.getDistractors(word.id, word.meaning, 3);
+        if (distractors.length < 3) {
+          set({
+            questions: [],
+            currentIndex: 0,
+            selectedAnswer: null,
+            answers: [],
+            score: 0,
+            status: 'idle',
+            isLoading: false,
+            error: 'Çoktan seçmeli quiz için farklı anlamlara sahip en az 4 kelime gerekiyor.',
+            sessionStartTime: null,
+          });
+          return;
+        }
+
         const options = shuffleArray([word.meaning, ...distractors]);
         questions.push({
           wordId: word.id,
@@ -199,7 +228,7 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
     });
 
     // İstatistik kaydı
-    const today = getTodayDateString();
+    const today = getLocalDateString();
     if (isCorrect) {
       void useStatisticStore.getState().incrementQuizCorrect(today);
     } else {
@@ -215,7 +244,7 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
       // Quiz completed - record time spent
       if (sessionStartTime) {
         const timeSpentSeconds = Math.floor((Date.now() - sessionStartTime) / 1000);
-        const today = getTodayDateString();
+        const today = getLocalDateString();
         void useStatisticStore.getState().addTimeSpent(today, timeSpentSeconds);
       }
 

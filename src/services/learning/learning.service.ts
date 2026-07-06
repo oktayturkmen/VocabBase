@@ -4,6 +4,7 @@ import { getDatabase } from '@/database/client';
 import { TABLES } from '@/database/tables';
 import { mapRowToWord } from '@/services/word/word.mapper';
 import type { Word, WordRow } from '@/types/word';
+import { getLocalDateString } from '@/utils/date';
 
 export class LearningService {
   constructor(private readonly database: SQLiteDatabase) {}
@@ -58,6 +59,14 @@ export class LearningService {
     return result?.count ?? 0;
   }
 
+  async getTotalWordCount(): Promise<number> {
+    const result = await this.database.getFirstAsync<{ count: number }>(
+      `SELECT COUNT(*) AS count FROM ${TABLES.WORDS}`,
+    );
+
+    return result?.count ?? 0;
+  }
+
   async getRandomWords(limit = 5, listId?: number): Promise<Word[]> {
     if (listId !== undefined) {
       const rows = await this.database.getAllAsync<WordRow>(
@@ -103,12 +112,7 @@ export class LearningService {
     const oneDayMs = 24 * 60 * 60 * 1000;
     const nextReviewAt = timestamp + oneDayMs;
 
-    // Get today's local date in YYYY-MM-DD
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    const dateStr = `${year}-${month}-${day}`;
+    const dateStr = getLocalDateString();
 
     await this.database.withTransactionAsync(async () => {
       // 1. Insert review record

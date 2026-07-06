@@ -7,8 +7,7 @@ type AppSettings = {
   speechSpeed: number;
   dailyGoal: number;
   notificationEnabled: boolean;
-  notificationHour: number;
-  notificationMinute: number;
+  notificationTime: string;
 };
 
 export type AppSettingsStore = AppSettings & {
@@ -22,8 +21,7 @@ const DEFAULT_SETTINGS: AppSettings = {
   speechSpeed: 0.8,
   dailyGoal: 10,
   notificationEnabled: false,
-  notificationHour: 20,
-  notificationMinute: 0,
+  notificationTime: '20:00',
 };
 
 const settingsStorage = getKeyValueStorage({ id: 'app-settings' });
@@ -43,7 +41,7 @@ export const useAppSettingsStore = create<AppSettingsStore>()(
       setDailyGoal: (goal) => set({ dailyGoal: goal }),
       setNotificationEnabled: (enabled) => set({ notificationEnabled: enabled }),
       setNotificationTime: (hour, minute) =>
-        set({ notificationHour: hour, notificationMinute: minute }),
+        set({ notificationTime: `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}` }),
     }),
     {
       name: 'app-settings-store',
@@ -52,8 +50,7 @@ export const useAppSettingsStore = create<AppSettingsStore>()(
         speechSpeed: state.speechSpeed,
         dailyGoal: state.dailyGoal,
         notificationEnabled: state.notificationEnabled,
-        notificationHour: state.notificationHour,
-        notificationMinute: state.notificationMinute,
+        notificationTime: state.notificationTime,
       }),
     },
   ),

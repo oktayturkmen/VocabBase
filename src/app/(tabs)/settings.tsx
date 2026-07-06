@@ -54,8 +54,7 @@ function SettingsScreen() {
     setSpeechSpeed,
     setDailyGoal,
     notificationEnabled,
-    notificationHour,
-    notificationMinute,
+    notificationTime,
     setNotificationEnabled,
     setNotificationTime,
   } = useAppSettingsStore();
@@ -92,9 +91,10 @@ function SettingsScreen() {
     setIsSaving(true);
     try {
       const service = getNotificationService();
+      const { hour, minute } = parseTime(notificationTime);
 
       if (value) {
-        await service.scheduleDailyReminder(notificationHour, notificationMinute);
+        await service.scheduleDailyReminder(hour, minute);
       } else {
         await service.cancelAllNotifications();
       }
@@ -133,7 +133,8 @@ function SettingsScreen() {
   };
 
   const openTimePicker = () => {
-    setTempTime(new Date(2000, 0, 1, notificationHour, notificationMinute));
+    const { hour, minute } = parseTime(notificationTime);
+    setTempTime(new Date(2000, 0, 1, hour, minute));
     setShowTimePicker(true);
   };
 
@@ -141,7 +142,23 @@ function SettingsScreen() {
     if (Platform.OS === 'android') {
       setShowTimePicker(false);
       if (event.type === 'set' && selectedDate) {
-        void updateTime(selectedDate.getHours(), selectedDate.getMinutes());
+        // On Android, use the timestamp and utcOffset from nativeEvent to get exact local time
+        const timestamp = event.nativeEvent?.timestamp;
+        const utcOffset = event.nativeEvent?.utcOffset;
+        
+        if (timestamp !== undefined && utcOffset !== undefined) {
+          // Create a Date object from the timestamp (which is in UTC)
+          const utcDate = new Date(timestamp);
+          // Apply the UTC offset to get local time
+          const localHours = (utcDate.getUTCHours() + Math.floor(utcOffset / 60) + 24) % 24;
+          const localMinutes = utcDate.getUTCMinutes();
+          void updateTime(localHours, localMinutes);
+        } else {
+          // Fallback: use selectedDate methods
+          const hours = selectedDate.getHours();
+          const minutes = selectedDate.getMinutes();
+          void updateTime(hours, minutes);
+        }
       }
     } else if (selectedDate) {
       setTempTime(selectedDate);
@@ -150,7 +167,10 @@ function SettingsScreen() {
 
   const confirmTimePicker = () => {
     setShowTimePicker(false);
-    void updateTime(tempTime.getHours(), tempTime.getMinutes());
+    // Use local time methods to get the actual selected time
+    const hours = tempTime.getHours();
+    const minutes = tempTime.getMinutes();
+    void updateTime(hours, minutes);
   };
 
   const handleOfflineCheck = async () => {
@@ -167,9 +187,20 @@ function SettingsScreen() {
     }
   };
 
+  const refreshImportedWordData = () => {
+    void useWordStore.getState().fetchWords();
+    void useListStore.getState().fetchLists();
+    void useLearningStore.getState().fetchUnlearnedCount();
+    void useLearningStore.getState().fetchTotalWordCount();
+  };
+
   const handleImportCSV = () => {
     importMutation.mutate('csv', {
       onSuccess: (result) => {
+        if (result.imported > 0) {
+          refreshImportedWordData();
+        }
+
         if (result.success) {
           Alert.alert('İçe Aktarma Başarılı', `Başarıyla ${result.imported} kelime içe aktarıldı.`);
         } else {
@@ -188,6 +219,10 @@ function SettingsScreen() {
   const handleImportPDF = () => {
     importMutation.mutate('pdf', {
       onSuccess: (result) => {
+        if (result.imported > 0) {
+          refreshImportedWordData();
+        }
+
         if (result.success) {
           Alert.alert('İçe Aktarma Başarılı', `Başarıyla ${result.imported} kelime içe aktarıldı.`);
         } else {
@@ -250,6 +285,7 @@ function SettingsScreen() {
       void useStatisticStore.getState().fetchTodayStatistic();
       void useStatisticStore.getState().fetchRecentStatistics(30);
       void useLearningStore.getState().fetchUnlearnedCount();
+      void useLearningStore.getState().fetchTotalWordCount();
 
       Alert.alert('Başarılı', 'Tüm öğrenme ilerlemeniz sıfırlandı.');
     } catch (error) {
@@ -260,6 +296,12 @@ function SettingsScreen() {
     } finally {
       setIsSaving(false);
     }
+  };
+
+  const parseTime = (timeString: string): { hour: number; minute: number } => {
+    const time = timeString || '20:00';
+    const [hour, minute] = time.split(':').map(Number);
+    return { hour, minute };
   };
 
   const formatTime = (h: number, m: number): string => {
@@ -354,7 +396,7 @@ function SettingsScreen() {
                 <Text className="text-base font-medium text-foreground">Hatırlatma Saati</Text>
                 <View className="flex-row items-center">
                   <Text className="text-sm text-muted-foreground mr-sm">
-                    {formatTime(notificationHour, notificationMinute)}
+                    {notificationTime}
                   </Text>
                   <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
                 </View>

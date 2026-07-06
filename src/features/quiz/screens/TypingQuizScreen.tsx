@@ -1,14 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { View, Text, TextInput, Keyboard, Pressable } from 'react-native';
+import { View, Text, TextInput, Keyboard, Pressable, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 
 import { Button, Card, Loading, ProgressBar } from '@/components';
 import { normaliseAnswer } from '@/features/quiz/utils/answer.utils';
 import { colors } from '@/theme/colors';
 import { useQuizStore } from '@/store/quiz.store';
+import { useTheme } from '@/theme/useTheme';
 
 export default function TypingQuizScreen() {
   const router = useRouter();
+  const { colors } = useTheme();
   const [inputValue, setInputValue] = useState('');
   const inputRef = useRef<TextInput>(null);
 
@@ -77,9 +80,34 @@ export default function TypingQuizScreen() {
       <View className="mt-sm">
         <View className="flex-row justify-between items-center mb-xs">
           <Text className="text-sm font-semibold text-slate-400">Yazma Quiz</Text>
-          <Text className="text-sm font-semibold text-primary">
-            {currentIndex + 1}. / {questions.length} Soru
-          </Text>
+          <View className="flex-row items-center gap-2">
+            <Text className="text-sm font-semibold text-primary">
+              {currentIndex + 1}. / {questions.length} Soru
+            </Text>
+            <Pressable
+              onPress={() => {
+                Alert.alert(
+                  'Quizi Sonlandır?',
+                  'Quizi sonlandırmak istediğinizden emin misiniz?',
+                  [
+                    { text: 'Hayır', style: 'cancel' },
+                    {
+                      text: 'Evet',
+                      style: 'destructive',
+                      onPress: () => {
+                        resetQuiz();
+                        router.back();
+                      },
+                    },
+                  ],
+                );
+              }}
+              hitSlop={8}
+              className="ml-2"
+            >
+              <Ionicons name="close" size={24} color={colors.mutedForeground} />
+            </Pressable>
+          </View>
         </View>
         <ProgressBar progress={((currentIndex + 1) / questions.length) * 100} className="mt-xs" />
       </View>
@@ -109,7 +137,7 @@ export default function TypingQuizScreen() {
           placeholderTextColor={colors.mutedForeground}
           className={[
             'rounded-2xl border px-md py-4 text-lg text-foreground text-center mb-md',
-            !isAnswered && 'border-border bg-slate-50',
+            !isAnswered && 'border-border bg-quizBackground',
             isAnswered && isCorrect && 'border-success bg-success/10 text-success',
             isAnswered && !isCorrect && 'border-error bg-error/10 text-error',
           ]
@@ -153,16 +181,6 @@ export default function TypingQuizScreen() {
             className="w-full shadow-sm"
           />
         )}
-        <Pressable
-          onPress={() => {
-            resetQuiz();
-            router.dismissAll();
-            router.replace('/(tabs)/learn');
-          }}
-          className="mt-xs border border-slate-200 rounded-xl py-2.5 px-4"
-        >
-          <Text className="text-red-500 text-sm font-medium text-center">Quizi Sonlandır</Text>
-        </Pressable>
       </View>
     </View>
   );
