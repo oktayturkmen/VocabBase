@@ -20,3 +20,12 @@ export type {
   Word,
   WordRow,
 } from './word';
+export type {
+  BackupData,
+  BackupWord,
+  BackupList,
+  BackupWordList,
+  BackupReview,
+  BackupStatistic,
+  BackupAiExampleCache,
+} from './backup';

@@ -6,6 +6,7 @@ import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/dat
 
 import { FadeIn } from '@/components/animations/FadeIn';
 import { useImportWords } from '@/hooks/useImportWords';
+import { useBackupRestore } from '@/hooks/useBackupRestore';
 import { runOfflineReadinessCheck } from '@/services/offline';
 import { useTheme, useThemeContext } from '@/theme/useTheme';
 import { useAppSettingsStore } from '@/store/app-settings.store';
@@ -40,11 +41,13 @@ function SettingsScreen() {
   const [permissionStatus, setPermissionStatus] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [isCheckingOffline, setIsCheckingOffline] = useState(false);
+  const [isBackupRestoring, setIsBackupRestoring] = useState(false);
   const [activeSheet, setActiveSheet] = useState<SheetType>(null);
   const [showTimePicker, setShowTimePicker] = useState(false);
   const [tempTime, setTempTime] = useState<Date>(new Date(2000, 0, 1, 20, 0));
 
   const importMutation = useImportWords();
+  const { exportBackup, importBackup } = useBackupRestore();
 
   const { themeMode, toggleTheme } = useThemeContext();
   const { colors } = useTheme();
@@ -142,23 +145,9 @@ function SettingsScreen() {
     if (Platform.OS === 'android') {
       setShowTimePicker(false);
       if (event.type === 'set' && selectedDate) {
-        // On Android, use the timestamp and utcOffset from nativeEvent to get exact local time
-        const timestamp = event.nativeEvent?.timestamp;
-        const utcOffset = event.nativeEvent?.utcOffset;
-        
-        if (timestamp !== undefined && utcOffset !== undefined) {
-          // Create a Date object from the timestamp (which is in UTC)
-          const utcDate = new Date(timestamp);
-          // Apply the UTC offset to get local time
-          const localHours = (utcDate.getUTCHours() + Math.floor(utcOffset / 60) + 24) % 24;
-          const localMinutes = utcDate.getUTCMinutes();
-          void updateTime(localHours, localMinutes);
-        } else {
-          // Fallback: use selectedDate methods
-          const hours = selectedDate.getHours();
-          const minutes = selectedDate.getMinutes();
-          void updateTime(hours, minutes);
-        }
+        const hours = selectedDate.getHours();
+        const minutes = selectedDate.getMinutes();
+        void updateTime(hours, minutes);
       }
     } else if (selectedDate) {
       setTempTime(selectedDate);
@@ -296,6 +285,54 @@ function SettingsScreen() {
     } finally {
       setIsSaving(false);
     }
+  };
+
+  const handleExportBackup = async () => {
+    try {
+      await exportBackup();
+      Alert.alert('Başarılı', 'Yedek dosyası oluşturuldu ve paylaşıldı.');
+    } catch (error) {
+      Alert.alert(
+        'Yedek Hatası',
+        error instanceof Error ? error.message : 'Yedek oluşturulamadı.',
+      );
+    }
+  };
+
+  const handleImportBackup = async () => {
+    Alert.alert(
+      'Yedek Geri Yükle',
+      'Bu işlem mevcut verilerinizin üzerine yazacak. Devam etmek istiyor musunuz?',
+      [
+        { text: 'İptal', style: 'cancel' },
+        {
+          text: 'Evet, yükle',
+          style: 'destructive',
+          onPress: async () => {
+            setIsBackupRestoring(true);
+            try {
+              await importBackup();
+              // Tüm store'ları yenile
+              void useWordStore.getState().fetchWords();
+              void useListStore.getState().fetchLists();
+              void useReviewStore.getState().fetchDueReviews();
+              void useStatisticStore.getState().fetchTodayStatistic();
+              void useStatisticStore.getState().fetchRecentStatistics(30);
+              void useLearningStore.getState().fetchUnlearnedCount();
+              void useLearningStore.getState().fetchTotalWordCount();
+              Alert.alert('Başarılı', 'Yedek başarıyla geri yüklendi.');
+            } catch (error) {
+              Alert.alert(
+                'Yedek Yükleme Hatası',
+                error instanceof Error ? error.message : 'Yedek yüklenemedi.',
+              );
+            } finally {
+              setIsBackupRestoring(false);
+            }
+          },
+        },
+      ],
+    );
   };
 
   const parseTime = (timeString: string): { hour: number; minute: number } => {
@@ -510,6 +547,39 @@ function SettingsScreen() {
             Hesap veya Veri
           </Text>
           <View className="rounded-2xl border border-slate-100 border-border bg-card shadow-sm overflow-hidden">
+            {/* Yedek Dışa Aktar */}
+            <Pressable
+              onPress={handleExportBackup}
+              accessibilityRole="button"
+              accessibilityLabel="Yedek dışa aktar"
+              className="flex-row items-center justify-between px-md py-md border-b border-border active:opacity-60"
+            >
+              <Text className="text-base font-medium text-foreground">Yedek Dışa Aktar</Text>
+              <View className="flex-row items-center">
+                {isSaving ? (
+                  <Text className="text-sm text-muted-foreground mr-sm">Dışa aktarılıyor...</Text>
+                ) : null}
+                <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+              </View>
+            </Pressable>
+
+            {/* Yedek Geri Yükle */}
+            <Pressable
+              onPress={handleImportBackup}
+              accessibilityRole="button"
+              accessibilityLabel="Yedek geri yükle"
+              disabled={isBackupRestoring}
+              className="flex-row items-center justify-between px-md py-md border-b border-border active:opacity-60"
+            >
+              <Text className="text-base font-medium text-foreground">Yedek Geri Yükle</Text>
+              <View className="flex-row items-center">
+                {isBackupRestoring ? (
+                  <Text className="text-sm text-muted-foreground mr-sm">Yükleniyor...</Text>
+                ) : null}
+                <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+              </View>
+            </Pressable>
+
             {/* Tüm İlerlemeyi Sıfırla */}
             <Pressable
               onPress={handleResetProgress}
