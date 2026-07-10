@@ -38,10 +38,19 @@ export class SpeechRecognitionService {
       const status = await ExpoSpeechRecognitionModule.getPermissionsAsync();
       return {
         granted: status.granted,
-        canRequest: !status.granted && !status.canAskAgain === false,
+        canRequest: !status.granted && status.canAskAgain,
       };
     } catch {
       return { granted: false, canRequest: false };
+    }
+  }
+
+  async isAvailable(): Promise<boolean> {
+    try {
+      await ExpoSpeechRecognitionModule.getPermissionsAsync();
+      return true;
+    } catch {
+      return false;
     }
   }
 
