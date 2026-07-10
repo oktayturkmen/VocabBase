@@ -3,7 +3,7 @@ import * as SQLite from 'expo-sqlite';
 import { DATABASE_NAME } from '@/constants/database';
 
 import { runMigrations } from './migrate';
-import { seedWords } from './seed/seed-words';
+import { seedInitialPackage } from './seed/seed-initial-package';
 
 let databaseInstance: SQLite.SQLiteDatabase | null = null;
 let initializationPromise: Promise<SQLite.SQLiteDatabase> | null = null;
@@ -25,12 +25,18 @@ export async function initializeDatabase(): Promise<SQLite.SQLiteDatabase> {
   }
 
   initializationPromise = (async () => {
-    const database = await SQLite.openDatabaseAsync(DATABASE_NAME);
-    await configureDatabase(database);
-    await runMigrations(database);
-    await seedWords(database);
-    databaseInstance = database;
-    return database;
+    try {
+      const database = await SQLite.openDatabaseAsync(DATABASE_NAME);
+      await configureDatabase(database);
+      await runMigrations(database);
+      await seedInitialPackage(database);
+      databaseInstance = database;
+      return database;
+    } catch (error) {
+      // Reset initialization promise on error to allow retry
+      initializationPromise = null;
+      throw error;
+    }
   })();
 
   return initializationPromise;

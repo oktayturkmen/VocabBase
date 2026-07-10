@@ -2,10 +2,12 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Dimensions, Platform, Pressable, ScrollView, Text, View } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 
-import { Card, EmptyState, Loading } from '@/components';
+import { Card, EmptyState, Loading, ProgressBar } from '@/components';
 import { useStatisticStore } from '@/store/statistic.store';
 import { useLearningStore } from '@/store/learning.store';
+import { useGamificationStore, getXpToNextLevel } from '@/store/gamification.store';
 import { useTheme, useThemeContext } from '@/theme/useTheme';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
@@ -33,6 +35,45 @@ function formatTime(seconds: number): string {
   return `${minutes}dk`;
 }
 
+// Badge component for gamification UI
+function BadgeItem({
+  id,
+  name,
+  icon,
+  color,
+  unlocked,
+}: {
+  id: string;
+  name: string;
+  icon: keyof typeof Ionicons.glyphMap;
+  color: string;
+  unlocked: boolean;
+}) {
+  return (
+    <View
+      className={`flex-row items-center gap-xs px-sm py-xs rounded-lg border ${
+        unlocked
+          ? 'bg-primary/10 border-primary/30'
+          : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 opacity-40'
+      }`}
+    >
+      <Ionicons
+        name={unlocked ? icon : 'lock-closed'}
+        size={20}
+        color={unlocked ? undefined : '#9ca3af'}
+        className={unlocked ? color : 'text-slate-400'}
+      />
+      <Text
+        className={`text-sm font-medium ${
+          unlocked ? 'text-foreground' : 'text-muted-foreground'
+        }`}
+      >
+        {name}
+      </Text>
+    </View>
+  );
+}
+
 export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
   const colors = useTheme().colors;
@@ -47,6 +88,10 @@ export default function ProfileScreen() {
     fetchRecentStatistics,
   } = useStatisticStore();
   const { totalWordCount, fetchTotalWordCount } = useLearningStore();
+  const { xp, level, badges } = useGamificationStore();
+  const xpToNextLevel = getXpToNextLevel();
+  const currentLevelXp = (level - 1) * 100;
+  const progressToNextLevel = ((xp - currentLevelXp) / (level * 100 - currentLevelXp)) * 100;
 
   useEffect(() => {
     void fetchTodayStatistic();
@@ -167,6 +212,56 @@ export default function ProfileScreen() {
             Günlük, haftalık ve aylık öğrenme istatistikleriniz.
           </Text>
         </View>
+
+        {/* Gamification Section: Level & XP */}
+        <Card className="mx-md mb-md border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-md shadow-sm rounded-2xl">
+          <View className="flex-row items-center justify-between mb-sm">
+            <View>
+              <Text className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                Seviye
+              </Text>
+              <Text className="text-3xl font-bold text-primary">{level}</Text>
+            </View>
+            <View className="text-right">
+              <Text className="text-sm font-semibold text-foreground">XP</Text>
+              <Text className="text-lg font-bold text-foreground">{xp}</Text>
+            </View>
+          </View>
+          <ProgressBar progress={Math.min(100, Math.max(0, progressToNextLevel))} className="mt-sm" />
+          <Text className="text-xs text-muted-foreground mt-xs">
+            Sonraki seviyeye {xpToNextLevel} XP kaldı
+          </Text>
+        </Card>
+
+        {/* Gamification Section: Badges */}
+        <Card className="mx-md mb-md border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-md shadow-sm rounded-2xl">
+          <Text className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-sm">
+            Başarı Rozetleri
+          </Text>
+          <View className="flex-row flex-wrap gap-sm">
+            <BadgeItem
+              id="streak_7"
+              name="7 Günlük Seri"
+              icon="flame"
+              color="text-orange-500"
+              unlocked={badges.includes('streak_7')}
+            />
+            <BadgeItem
+              id="words_100"
+              name="Kelime Avcısı"
+              icon="book"
+              color="text-cyan-500"
+              unlocked={badges.includes('words_100')}
+            />
+            <BadgeItem
+              id="quiz_master"
+              name="Quiz Ustası"
+              icon="trophy"
+              color="text-amber-500"
+              unlocked={badges.includes('quiz_master')}
+            />
+          </View>
+        </Card>
 
         <View className="mb-md px-md mt-4">
           <View className="flex-row bg-slate-50 dark:bg-slate-900 rounded-xl p-1">

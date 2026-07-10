@@ -4,6 +4,7 @@ export type WordRow = {
   meaning: string;
   example: string | null;
   pronunciation: string | null;
+  package_name: string;
   created_at: number;
   updated_at: number;
 };
@@ -20,6 +21,7 @@ export type Word = {
   meaning: string;
   example: string | null;
   pronunciation: string | null;
+  packageName: string;
   createdAt: number;
   updatedAt: number;
 };
@@ -29,6 +31,7 @@ export type CreateWordInput = {
   meaning: string;
   example?: string | null;
   pronunciation?: string | null;
+  packageName?: string;
 };
 
 export type UpdateWordInput = {

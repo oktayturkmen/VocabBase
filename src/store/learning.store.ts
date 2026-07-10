@@ -2,6 +2,7 @@ import { create } from 'zustand';
 
 import { getLearningService } from '@/services/learning';
 import { useStatisticStore } from '@/store/statistic.store';
+import { useGamificationStore } from '@/store/gamification.store';
 import { getLocalDateString } from '@/utils/date';
 import { logger } from '@/utils/logger';
 import type { Word } from '@/types/word';
@@ -213,6 +214,13 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
 
       // İstatistik kaydı
       const today = getLocalDateString();
+
+      // Gamification: Add XP for learning a word (+10 XP)
+      void useGamificationStore.getState().addXp(10);
+
+      // Check for words_100 badge (total learned words >= 100)
+      const totalWordCount = await service.getTotalWordCount();
+      void useGamificationStore.getState().checkAndUnlockBadge('words_100', totalWordCount >= 100);
 
       const nextIndex = currentIndex + 1;
       if (nextIndex >= sessionWords.length) {

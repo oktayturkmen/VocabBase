@@ -1,0 +1,1 @@
+export { RoleplayChatScreen as default } from '@/features/roleplay';

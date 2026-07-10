@@ -7,6 +7,7 @@ export function mapRowToWord(row: WordRow): Word {
     meaning: row.meaning,
     example: row.example,
     pronunciation: row.pronunciation,
+    packageName: row.package_name,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
   };

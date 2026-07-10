@@ -4,10 +4,12 @@ import { DATABASE_VERSION } from '@/constants/database';
 
 import { migration001 } from './migrations/001_initial';
 import { migration002 } from './migrations/002_add_ai_cache';
+import { migration003 } from './migrations/003_add_package_name';
+import { migration004 } from './migrations/004_add_installed_packages';
 
 type Migration = (database: SQLiteDatabase) => Promise<void>;
 
-const migrations: Migration[] = [migration001, migration002];
+const migrations: Migration[] = [migration001, migration002, migration003, migration004];
 
 async function getCurrentVersion(database: SQLiteDatabase): Promise<number> {
   const result = await database.getFirstAsync<{ user_version: number }>('PRAGMA user_version');

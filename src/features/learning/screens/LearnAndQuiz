@@ -11,6 +11,7 @@ import { getSpeechRecognitionService } from '@/services/speech-recognition';
 import { getWordService } from '@/services/word';
 import { useLearningStore } from '@/store/learning.store';
 import { useListStore } from '@/store/list.store';
+import { usePackageStore } from '@/store/package.store';
 import { useTheme } from '@/theme/useTheme';
 import type { Word } from '@/types/word';
 
@@ -127,6 +128,7 @@ export function LearnAndQuizHub() {
   const { colors } = useTheme();
   const { startRandomSession, startSessionWithAllListWords } = useLearningStore();
   const { lists, fetchLists } = useListStore();
+  const { activePackageName } = usePackageStore();
   const [showListModal, setShowListModal] = useState(false);
   const [exerciseMode, setExerciseMode] = useState<MemoryExerciseMode | null>(null);
   const [activeExercise, setActiveExercise] = useState<MemoryExerciseMode | null>(null);
@@ -502,7 +504,8 @@ export function LearnAndQuizHub() {
               <ListSelectionItem
                 onPress={handleStartExerciseAll}
                 icon="layers-outline"
-                title="Tüm Kelimeler"
+                title="Aktif Paket Kelimeleri"
+                subtitle={`Aktif: ${activePackageName}`}
                 disabled={isLoadingExercise}
               />
 
@@ -681,7 +684,8 @@ export function LearnAndQuizHub() {
               <ListSelectionItem
                 onPress={handleSelectAllLists}
                 icon="layers-outline"
-                title="Tüm Kelimeler"
+                title="Aktif Paket Kelimeleri"
+                subtitle={`Aktif: ${activePackageName}`}
               />
 
               {lists.length > 0 ? (

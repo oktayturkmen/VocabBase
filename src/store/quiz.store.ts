@@ -3,6 +3,7 @@ import { create } from 'zustand';
 import { isAnswerCorrect, type QuizType } from '@/features/quiz/utils/answer.utils';
 import { getQuizService } from '@/services/quiz/quiz.service';
 import { useStatisticStore } from '@/store/statistic.store';
+import { useGamificationStore } from '@/store/gamification.store';
 import { getLocalDateString } from '@/utils/date';
 
 export type { QuizType };
@@ -237,7 +238,7 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
   },
 
   nextQuestion: () => {
-    const { questions, currentIndex, sessionStartTime } = get();
+    const { questions, currentIndex, sessionStartTime, answers } = get();
     const nextIndex = currentIndex + 1;
 
     if (nextIndex >= questions.length) {
@@ -246,6 +247,17 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
         const timeSpentSeconds = Math.floor((Date.now() - sessionStartTime) / 1000);
         const today = getLocalDateString();
         void useStatisticStore.getState().addTimeSpent(today, timeSpentSeconds);
+      }
+
+      // Gamification: Add XP for completing quiz (+30 XP)
+      void useGamificationStore.getState().addXp(30);
+
+      // Check if quiz was 100% correct for bonus XP (+20 XP)
+      const allCorrect = answers.length > 0 && answers.every((answer) => answer.isCorrect);
+      if (allCorrect) {
+        void useGamificationStore.getState().addXp(20);
+        // Check and unlock quiz_master badge
+        void useGamificationStore.getState().checkAndUnlockBadge('quiz_master', true);
       }
 
       set({

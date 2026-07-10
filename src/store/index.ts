@@ -18,3 +18,9 @@ export type { StatisticStore } from './statistic.store';
 
 export { useAppSettingsStore } from './app-settings.store';
 export type { AppSettingsStore } from './app-settings.store';
+
+export { useGamificationStore } from './gamification.store';
+export type { GamificationStore } from './gamification.store';
+
+export { useRoleplayStore } from './roleplay.store';
+export type { RoleplayStore } from './roleplay.store';

@@ -1,0 +1,1 @@
+export { RoleplayScenarioScreen as default } from '@/features/roleplay';

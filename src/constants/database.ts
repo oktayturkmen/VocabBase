@@ -1,3 +1,3 @@
 export const DATABASE_NAME = 'vocabbase.db';
 
-export const DATABASE_VERSION = 2;
+export const DATABASE_VERSION = 4;

@@ -80,16 +80,16 @@ export class WordListService {
       }
 
       const now = Date.now();
-      await Promise.all(
-        uniqueListIds.map((listId) =>
-          this.database.runAsync(
-            `INSERT INTO ${TABLES.WORD_LISTS} (word_id, list_id, created_at) VALUES (?, ?, ?)`,
-            wordId,
-            listId,
-            now,
-          ),
-        ),
-      );
+      // SQLite single-writer olduğu için transaction içinde paralel insert
+      // (Promise.all) deadlock riski taşır. Sıralı insert güvenlidir.
+      for (const listId of uniqueListIds) {
+        await this.database.runAsync(
+          `INSERT INTO ${TABLES.WORD_LISTS} (word_id, list_id, created_at) VALUES (?, ?, ?)`,
+          wordId,
+          listId,
+          now,
+        );
+      }
     });
   }
 
@@ -108,16 +108,16 @@ export class WordListService {
       }
 
       const now = Date.now();
-      await Promise.all(
-        uniqueWordIds.map((wordId) =>
-          this.database.runAsync(
-            `INSERT OR IGNORE INTO ${TABLES.WORD_LISTS} (word_id, list_id, created_at) VALUES (?, ?, ?)`,
-            wordId,
-            listId,
-            now,
-          ),
-        ),
-      );
+      // SQLite single-writer olduğu için transaction içinde paralel insert
+      // (Promise.all) deadlock riski taşır. Sıralı insert güvenlidir.
+      for (const wordId of uniqueWordIds) {
+        await this.database.runAsync(
+          `INSERT OR IGNORE INTO ${TABLES.WORD_LISTS} (word_id, list_id, created_at) VALUES (?, ?, ?)`,
+          wordId,
+          listId,
+          now,
+        );
+      }
     });
   }
 

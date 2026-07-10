@@ -1,9 +1,15 @@
 import * as DocumentPicker from 'expo-document-picker';
 import { File } from 'expo-file-system';
 import { extractText, isAvailable } from 'expo-pdf-text-extract';
-import { Platform } from 'react-native';
+import { Alert, Platform } from 'react-native';
 
-import { getWordService } from '../word';
+import type { LocalPackageWord, PackageLoadResult } from '@/constants/word-packages';
+import {
+  isPackageInstalled,
+  markPackageInstalled,
+} from '@/services/package/package-install.service';
+import { getDatabase } from '@/database/client';
+import { createWordService, PackageAlreadyLoadedError } from '../word';
 
 export type ImportResult = {
   success: boolean;
@@ -351,7 +357,8 @@ export class ImportService {
       errors: [],
     };
 
-    const wordService = await getWordService();
+    const database = await getDatabase();
+    const wordService = createWordService(database);
 
     for (const parsedWord of words) {
       try {
@@ -477,6 +484,114 @@ export class ImportService {
     }
 
     return this.importWords(words);
+  }
+
+  async loadLocalPackage(fileAsset: unknown, packageName: string): Promise<PackageLoadResult> {
+    try {
+      if (!packageName.trim()) {
+        throw new Error('Paket adı geçersiz.');
+      }
+
+      const database = await getDatabase();
+
+      if (await isPackageInstalled(database, packageName)) {
+        const message = `"${packageName}" paketi zaten yüklü.`;
+        Alert.alert('Paket yüklenemedi', message);
+        return {
+          success: false,
+          imported: 0,
+          skipped: 0,
+          error: message,
+        };
+      }
+
+      const words = this.parseLocalPackageAsset(fileAsset);
+
+      if (words.length === 0) {
+        throw new Error('Paket dosyasında geçerli kelime bulunamadı.');
+      }
+
+      const wordService = createWordService(database);
+
+      if (await wordService.isPackageLoaded(packageName)) {
+        await markPackageInstalled(database, packageName);
+        const message = `"${packageName}" paketi zaten yüklü.`;
+        Alert.alert('Paket yüklenemedi', message);
+        return {
+          success: false,
+          imported: 0,
+          skipped: 0,
+          error: message,
+        };
+      }
+
+      const { imported, skipped } = await wordService.loadPackageWords(words, packageName);
+      await markPackageInstalled(database, packageName);
+
+      return {
+        success: true,
+        imported,
+        skipped,
+      };
+    } catch (error) {
+      console.error('[ImportService] loadLocalPackage failed:', error);
+
+      const message =
+        error instanceof PackageAlreadyLoadedError
+          ? error.message
+          : 'Paket yüklenirken teknik bir hata oluştu';
+
+      Alert.alert('Paket yüklenemedi', message);
+
+      return {
+        success: false,
+        imported: 0,
+        skipped: 0,
+        error: message,
+      };
+    }
+  }
+
+  private parseLocalPackageAsset(fileAsset: unknown): LocalPackageWord[] {
+    let data: unknown = fileAsset;
+
+    if (
+      fileAsset &&
+      typeof fileAsset === 'object' &&
+      'default' in fileAsset &&
+      (fileAsset as { default: unknown }).default !== undefined
+    ) {
+      data = (fileAsset as { default: unknown }).default;
+    }
+
+    if (!Array.isArray(data)) {
+      throw new Error('Paket dosyası geçerli bir JSON dizisi değil.');
+    }
+
+    const words: LocalPackageWord[] = [];
+
+    for (const item of data) {
+      if (!item || typeof item !== 'object') {
+        continue;
+      }
+
+      const record = item as Record<string, unknown>;
+      const word = record.word;
+      const meaning = record.meaning;
+      const example = record.example;
+
+      if (typeof word !== 'string' || typeof meaning !== 'string') {
+        continue;
+      }
+
+      words.push({
+        word,
+        meaning,
+        example: typeof example === 'string' ? example : undefined,
+      });
+    }
+
+    return words;
   }
 }
 

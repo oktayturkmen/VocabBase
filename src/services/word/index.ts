@@ -1,4 +1,8 @@
-export { WordService, createWordService, getWordService } from './word.service';
+export {
+  WordService,
+  PackageAlreadyLoadedError,
+  createWordService,
+} from './word.service';
 export { mapRowToWord } from './word.mapper';
 export {
   WordValidationError,

@@ -21,6 +21,7 @@ type DueReviewRow = {
   meaning: string;
   example: string | null;
   pronunciation: string | null;
+  package_name: string;
   created_at: number;
   updated_at: number;
 };
@@ -32,6 +33,7 @@ function mapDueReviewRow(row: DueReviewRow): ReviewWithWord {
     meaning: row.meaning,
     example: row.example,
     pronunciation: row.pronunciation,
+    package_name: row.package_name,
     created_at: row.created_at,
     updated_at: row.updated_at,
   };
@@ -77,6 +79,7 @@ export class ReviewService {
          w.meaning,
          w.example,
          w.pronunciation,
+         w.package_name,
          w.created_at,
          w.updated_at
        FROM ${TABLES.REVIEWS} AS r

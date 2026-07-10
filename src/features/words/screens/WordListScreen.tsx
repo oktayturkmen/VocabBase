@@ -1,10 +1,11 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
 import { Alert, Pressable, RefreshControl, ScrollView, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button, EmptyState, Loading } from '@/components';
+import { useListStore } from '@/store/list.store';
 import { useWordStore } from '@/store';
 import { useTheme } from '@/theme/useTheme';
 import type { Word } from '@/types/word';
@@ -16,8 +17,25 @@ export default function WordListScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { colors } = useTheme();
-  const { words, isLoading, error, refetch, clearError } = useWordList();
+
+  // Route params: listId 'all' ise tüm kelimeler, sayı ise belirli liste
+  const params = useLocalSearchParams<{ listId?: string }>();
+  const listIdParam = params.listId;
+  const listId: number | 'all' | undefined =
+    listIdParam === 'all' ? 'all' : listIdParam ? Number(listIdParam) : undefined;
+
+  const { words, isLoading, error, refetch, clearError } = useWordList(listId);
   const deleteWords = useWordStore((state) => state.deleteWords);
+  const { lists } = useListStore();
+
+  // Başlık belirleme: "Tüm Kelimeler" veya liste adı
+  const screenTitle = useMemo(() => {
+    if (listId === 'all' || listId === undefined) {
+      return 'Tüm Kelimeler';
+    }
+    const foundList = lists.find((l) => l.id === listId);
+    return foundList?.name ?? 'Kelimelerim';
+  }, [listId, lists]);
 
   const [isSelectionMode, setIsSelectionMode] = useState(false);
   const [selectedWordIds, setSelectedWordIds] = useState<number[]>([]);
@@ -117,12 +135,28 @@ export default function WordListScreen() {
 
   if (!isLoading && words.length === 0) {
     return (
-      <EmptyState
-        className="flex-1"
-        title="Henüz kelime yok"
-        description="Kelime listeniz boş. Başlamak için kelimeler ekleyin."
-        action={<Button title="Kelime Ekle" onPress={handleAddWord} />}
-      />
+      <View className="flex-1 bg-background">
+        <View
+          className="flex-row items-center px-md pt-md pb-sm"
+          style={{ paddingTop: insets.top + 16 }}
+        >
+          <Pressable
+            onPress={() => router.back()}
+            hitSlop={12}
+            accessibilityRole="button"
+            accessibilityLabel="Geri dön"
+          >
+            <Ionicons name="arrow-back" size={24} color={colors.foreground} />
+          </Pressable>
+          <Text className="ml-3 text-2xl font-bold text-foreground">{screenTitle}</Text>
+        </View>
+        <EmptyState
+          className="flex-1"
+          title="Henüz kelime yok"
+          description="Kelime listeniz boş. Başlamak için kelimeler ekleyin."
+          action={<Button title="Kelime Ekle" onPress={handleAddWord} />}
+        />
+      </View>
     );
   }
 
@@ -143,7 +177,7 @@ export default function WordListScreen() {
             <Ionicons name="arrow-back" size={24} color={colors.foreground} />
           </Pressable>
           <Text className="ml-3 text-2xl font-bold text-foreground">
-            {isSelectionMode ? `${selectedWordIds.length} seçili` : 'Kelimelerim'}
+            {isSelectionMode ? `${selectedWordIds.length} seçili` : screenTitle}
           </Text>
         </View>
         {isSelectionMode ? (

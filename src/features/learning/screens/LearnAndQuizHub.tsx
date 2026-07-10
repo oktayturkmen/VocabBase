@@ -1,3 +1,4 @@
+
 import { Ionicons } from '@expo/vector-icons';
 import * as Speech from 'expo-speech';
 import { useRouter } from 'expo-router';
@@ -5,13 +6,18 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Alert, Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Button, FadeIn } from '@/components';
+import { Button, FadeIn, Loading } from '@/components';
+import { StoryCard } from '@/features/learning/components/StoryCard';
+import { WordDetailSheet } from '@/features/learning/components/WordDetailSheet';
+import { getAIService } from '@/services/ai';
 import type { ListWithWordCount } from '@/services/list';
 import { getSpeechRecognitionService } from '@/services/speech-recognition';
-import { getWordService } from '@/services/word';
+import { getDatabase } from '@/database/client';
+import { createWordService } from '@/services/word';
 import { useAppSettingsStore } from '@/store/app-settings.store';
 import { useLearningStore } from '@/store/learning.store';
 import { useListStore } from '@/store/list.store';
+import { usePackageStore } from '@/store/package.store';
 import { useTheme } from '@/theme/useTheme';
 import type { Word } from '@/types/word';
 
@@ -129,6 +135,7 @@ export function LearnAndQuizHub() {
   const { startRandomSession, startSessionWithAllListWords } = useLearningStore();
   const { lists, fetchLists } = useListStore();
   const { speechSpeed } = useAppSettingsStore();
+  const { activePackageName } = usePackageStore();
   const [showListModal, setShowListModal] = useState(false);
   const [exerciseMode, setExerciseMode] = useState<MemoryExerciseMode | null>(null);
   const [activeExercise, setActiveExercise] = useState<MemoryExerciseMode | null>(null);
@@ -139,6 +146,12 @@ export function LearnAndQuizHub() {
   const [isRecognizing, setIsRecognizing] = useState(false);
   const [lastTranscript, setLastTranscript] = useState<string | null>(null);
   const [pronunciationFeedback, setPronunciationFeedback] = useState<string | null>(null);
+
+  // AI Story Mode state
+  const [story, setStory] = useState<string | null>(null);
+  const [isLoadingStory, setIsLoadingStory] = useState(false);
+  const [showStory, setShowStory] = useState(false);
+  const [selectedWordForDetail, setSelectedWordForDetail] = useState<string | null>(null);
 
   const currentExerciseWord = exerciseWords[currentExerciseIndex] ?? null;
   const listeningLoopActiveRef = useRef(false);
@@ -157,8 +170,8 @@ export function LearnAndQuizHub() {
     setShowListModal(false);
 
     if (listId === null) {
-      // "Tüm Kelimeler" selected: get random 5 words from entire pool
-      void startRandomSession(5, undefined);
+      // "Tüm Kelimeler" selected: get random words from entire pool
+      void startRandomSession(NEW_WORD_SESSION_SIZE, undefined);
     } else {
       // Specific list selected: get ALL words from that list
       void startSessionWithAllListWords(listId);
@@ -255,15 +268,22 @@ export function LearnAndQuizHub() {
       setPronunciationFeedback(null);
 
       try {
-        const wordService = await getWordService();
-        const words = listId ? await wordService.getByListId(listId) : await wordService.getAll();
+        const database = await getDatabase();
+        const wordService = createWordService(database);
+        let words: Word[];
+
+        if (listId) {
+          words = await wordService.getByListId(listId);
+        } else {
+          words = await wordService.getWordsByPackageName(activePackageName);
+        }
 
         if (words.length === 0) {
           Alert.alert(
             'Kelime bulunamadı',
             listId
               ? 'Bu listede henüz kelime yok. Başka bir liste seçin veya yeni kelime ekleyin.'
-              : 'Henüz çalışılacak kelime yok. Önce kelime ekleyin.',
+              : 'Bu pakette kelime yok. Başka bir paket seçin.',
           );
           return;
         }
@@ -285,7 +305,7 @@ export function LearnAndQuizHub() {
         setIsLoadingExercise(false);
       }
     },
-    [exerciseMode, startListeningLoop],
+    [exerciseMode, startListeningLoop, activePackageName],
   );
 
   const handleStartExerciseAll = useCallback(() => {
@@ -323,7 +343,8 @@ export function LearnAndQuizHub() {
 
     const recognitionService = getSpeechRecognitionService();
 
-    if (!recognitionService.isAvailable()) {
+    const isAvailable = await recognitionService.isAvailable();
+    if (!isAvailable) {
       const setupText = recognitionService
         .getSetupSteps()
         .map((step, index) => `${index + 1}. ${step.title}: ${step.detail}`)
@@ -355,6 +376,54 @@ export function LearnAndQuizHub() {
     }
   }, [currentExerciseWord]);
 
+  const handleGenerateStory = useCallback(async () => {
+    setIsLoadingStory(true);
+    setShowStory(true);
+    setStory(null);
+
+    try {
+      const database = await getDatabase();
+      const wordService = createWordService(database);
+      const randomWords = await wordService.getRandomWordsByPackageName(activePackageName, NEW_WORD_SESSION_SIZE);
+
+      if (randomWords.length === 0) {
+        Alert.alert(
+          'Kelime yok',
+          'Bu pakette hikaye üretmek için yeterli kelime yok.',
+        );
+        setShowStory(false);
+        return;
+      }
+
+      const selectedWords = randomWords.map((w: Word) => w.word);
+
+      const aiService = getAIService();
+      const generatedStory = await aiService.generateStoryFromWords(selectedWords);
+      setStory(generatedStory);
+    } catch (storyError) {
+      Alert.alert(
+        'Hikaye üretilemedi',
+        storyError instanceof Error ? storyError.message : 'Bilinmeyen hata oluştu.',
+      );
+      setShowStory(false);
+    } finally {
+      setIsLoadingStory(false);
+    }
+  }, [activePackageName]);
+
+  const handleWordPressInStory = useCallback((word: string) => {
+    setSelectedWordForDetail(word);
+  }, []);
+
+  const handleCloseWordDetailSheet = useCallback(() => {
+    setSelectedWordForDetail(null);
+  }, []);
+
+  const handleCloseStory = useCallback(() => {
+    setShowStory(false);
+    setStory(null);
+  }, []);
+
   useEffect(() => stopListeningLoop, [stopListeningLoop]);
 
   return (
@@ -370,6 +439,33 @@ export function LearnAndQuizHub() {
             Kelimeleri keşfet, tekrar et ve pekiştir
           </Text>
         </View>
+
+        {/* Kelime Paketleri */}
+        <FadeIn duration={500} delay={50}>
+          <View className="px-md mt-lg">
+            <View className="relative overflow-hidden rounded-3xl bg-violet-50/70 dark:bg-violet-950/30 p-xl shadow-sm">
+              <View className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-violet-200/30 dark:bg-violet-800/20" />
+              <View className="relative flex-row items-center">
+                <View className="mr-md h-14 w-14 items-center justify-center rounded-2xl bg-violet-200/70 dark:bg-violet-900/50">
+                  <Ionicons name="cube-outline" size={28} color="#7c3aed" />
+                </View>
+                <View className="flex-1">
+                  <Text className="text-lg font-bold text-foreground">Kelime Paketleri</Text>
+                  <Text className="mt-xs text-sm text-muted-foreground/80">
+                    A1, A2 ve tema paketlerini yükle
+                  </Text>
+                </View>
+              </View>
+              <Button
+                title="Paketleri Gör"
+                size="lg"
+                onPress={() => router.push('/packages')}
+                className="mt-lg w-full rounded-2xl bg-violet-600 active:opacity-90"
+                textClassName="text-white font-bold text-lg"
+              />
+            </View>
+          </View>
+        </FadeIn>
 
         {/* Hero Card - Kelime Öğren */}
         <FadeIn duration={600} delay={100}>
@@ -438,8 +534,65 @@ export function LearnAndQuizHub() {
           </View>
         </View>
 
-        {/* Quiz & Egzersiz */}
+        {/* AI Story Mode */}
+        <FadeIn duration={500} delay={350}>
+          <View className="px-md mt-xl">
+            <Text className="mb-md text-xl font-bold text-foreground">AI Öykü Modu</Text>
+            <View className="relative overflow-hidden rounded-3xl bg-indigo-50/70 dark:bg-indigo-950/30 p-xl shadow-sm">
+              <View className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-indigo-200/30 dark:bg-indigo-800/20" />
+              <View className="relative flex-row items-center">
+                <View className="mr-md h-14 w-14 items-center justify-center rounded-2xl bg-indigo-200/70 dark:bg-indigo-900/50">
+                  <Ionicons name="bookmarks-outline" size={28} color="#4f46e5" />
+                </View>
+                <View className="flex-1">
+                  <Text className="text-lg font-bold text-foreground">Hikaye Üret</Text>
+                  <Text className="mt-xs text-sm text-muted-foreground/80">
+                    Kelimelerin bağlam içinde akılda kalması için AI ile kısa hikaye üret
+                  </Text>
+                </View>
+              </View>
+              <Button
+                title="Hikaye Üret"
+                size="lg"
+                onPress={handleGenerateStory}
+                loading={isLoadingStory}
+                className="mt-lg w-full rounded-2xl bg-indigo-500 active:opacity-90"
+                textClassName="text-white font-bold text-lg"
+              />
+            </View>
+          </View>
+        </FadeIn>
+
+        {/* AI Chat Partner (Roleplay) */}
         <FadeIn duration={500} delay={400}>
+          <View className="px-md mt-xl">
+            <Text className="mb-md text-xl font-bold text-foreground">AI Canlı Chat</Text>
+            <View className="relative overflow-hidden rounded-3xl bg-emerald-50/70 dark:bg-emerald-950/30 p-xl shadow-sm">
+              <View className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-emerald-200/30 dark:bg-emerald-800/20" />
+              <View className="relative flex-row items-center">
+                <View className="mr-md h-14 w-14 items-center justify-center rounded-2xl bg-emerald-200/70 dark:bg-emerald-900/50">
+                  <Ionicons name="chatbubbles-outline" size={28} color="#059669" />
+                </View>
+                <View className="flex-1">
+                  <Text className="text-lg font-bold text-foreground">AI Chat Partner</Text>
+                  <Text className="mt-xs text-sm text-muted-foreground/80">
+                    Öğrendiğin kelimeleri canlı senaryolarda pratik et
+                  </Text>
+                </View>
+              </View>
+              <Button
+                title="Sohbete Başla"
+                size="lg"
+                onPress={() => router.push('/roleplay')}
+                className="mt-lg w-full rounded-2xl bg-emerald-600 active:opacity-90"
+                textClassName="text-white font-bold text-lg"
+              />
+            </View>
+          </View>
+        </FadeIn>
+
+        {/* Quiz & Egzersiz */}
+        <FadeIn duration={500} delay={500}>
           <View className="px-md mt-xl">
             <Text className="mb-md text-xl font-bold text-foreground">Quiz & Egzersiz</Text>
             <View className="relative overflow-hidden rounded-3xl bg-cyan-50/70 dark:bg-cyan-950/30 p-xl shadow-sm">
@@ -504,7 +657,8 @@ export function LearnAndQuizHub() {
               <ListSelectionItem
                 onPress={handleStartExerciseAll}
                 icon="layers-outline"
-                title="Tüm Kelimeler"
+                title="Aktif Paket Kelimeleri"
+                subtitle={`Aktif: ${activePackageName}`}
                 disabled={isLoadingExercise}
               />
 
@@ -683,7 +837,8 @@ export function LearnAndQuizHub() {
               <ListSelectionItem
                 onPress={handleSelectAllLists}
                 icon="layers-outline"
-                title="Tüm Kelimeler"
+                title="Aktif Paket Kelimeleri"
+                subtitle={`Aktif: ${activePackageName}`}
               />
 
               {lists.length > 0 ? (
@@ -706,6 +861,71 @@ export function LearnAndQuizHub() {
           </Pressable>
         </Pressable>
       </Modal>
+
+      {/* AI Story Modal */}
+      <Modal
+        animationType="slide"
+        transparent
+        visible={showStory}
+        onRequestClose={handleCloseStory}
+      >
+        <Pressable className="flex-1 bg-black/50" onPress={handleCloseStory}>
+          <Pressable
+            className="absolute bottom-0 left-0 right-0 rounded-t-3xl bg-card shadow-xl"
+            style={{ paddingBottom: insets.bottom + 16, maxHeight: '80%' }}
+            onPress={(e) => e.stopPropagation()}
+          >
+            {/* Grab handle */}
+            <View className="self-center w-10 h-1 rounded-full bg-muted-foreground/30 mt-sm mb-md" />
+
+            {/* Header */}
+            <View className="flex-row items-center justify-between px-md pb-md">
+              <View className="flex-row items-center gap-2">
+                <Ionicons name="bookmarks" size={24} color="#4f46e5" />
+                <Text className="text-lg font-bold text-foreground">AI Öykü Modu</Text>
+              </View>
+              <Pressable
+                onPress={handleCloseStory}
+                accessibilityRole="button"
+                accessibilityLabel="Kapat"
+                hitSlop={8}
+                className="h-9 w-9 items-center justify-center rounded-full bg-muted"
+              >
+                <Ionicons name="close" size={20} color={colors.foreground} />
+              </Pressable>
+            </View>
+
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 16 }}
+            >
+              {isLoadingStory ? (
+                <View className="py-xl">
+                  <Loading message="Hikaye üretiliyor..." />
+                </View>
+              ) : story ? (
+                <View>
+                  <StoryCard story={story} onWordPress={handleWordPressInStory} />
+                  <Text className="mt-md text-center text-xs text-muted-foreground">
+                    Kalın yazılı kelimelere dokunarak anlamını görebilirsin.
+                  </Text>
+                </View>
+              ) : (
+                <Text className="text-center text-sm text-muted-foreground py-lg">
+                  Hikaye bulunamadı.
+                </Text>
+              )}
+            </ScrollView>
+          </Pressable>
+        </Pressable>
+      </Modal>
+
+      {/* Word Detail Bottom Sheet */}
+      <WordDetailSheet
+        visible={selectedWordForDetail !== null}
+        word={selectedWordForDetail}
+        onClose={handleCloseWordDetailSheet}
+      />
     </View>
   );
 }

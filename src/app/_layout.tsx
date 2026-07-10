@@ -29,6 +29,8 @@ function RootNavigator() {
         <Stack.Screen name="lists" options={{ headerShown: false }} />
         <Stack.Screen name="words" options={{ headerShown: false }} />
         <Stack.Screen name="quiz" options={{ headerShown: false }} />
+        <Stack.Screen name="roleplay" options={{ headerShown: false }} />
+        <Stack.Screen name="packages" options={{ headerShown: false }} />
       </Stack>
     </>
   );

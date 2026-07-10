@@ -1,17 +1,21 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
-import { Button, EmptyState, FadeIn, Loading } from '@/components';
+import { FadeIn, Loading } from '@/components';
 import { OwlMascot } from '@/components/illustrations/OwlMascot';
 import { useTheme } from '@/theme/useTheme';
 import { useWordStore } from '@/store/word.store';
 import { useListStore } from '@/store/list.store';
 import { useStatisticStore } from '@/store/statistic.store';
+import { useGamificationStore } from '@/store/gamification.store';
+import { usePackageStore } from '@/store/package.store';
 import type { StatisticRow } from '@/types/statistic';
-import type { Word } from '@/types/word';
+import { getLocalDateString } from '@/utils/date';
+import { getDatabase } from '@/database/client';
+import { TABLES } from '@/database/tables';
 
 function getGreeting(): string {
   const hour = new Date().getHours();
@@ -72,7 +76,7 @@ function calculateStreak(statistics: StatisticRow[]): number {
   let currentDate = new Date(today);
 
   for (let i = 0; i < 365; i++) {
-    const dateStr = currentDate.toISOString().split('T')[0];
+    const dateStr = getLocalDateString(currentDate);
     const hasActivity = statistics.some(
       (stat) =>
         stat.date === dateStr &&
@@ -109,7 +113,7 @@ function getWeeklyActivity(statistics: StatisticRow[]): boolean[] {
   for (let i = 0; i < 7; i++) {
     const checkDate = new Date(monday);
     checkDate.setDate(monday.getDate() + i);
-    const dateStr = checkDate.toISOString().split('T')[0];
+    const dateStr = getLocalDateString(checkDate);
 
     const hasActivity = statistics.some(
       (stat) =>
@@ -125,39 +129,21 @@ function getWeeklyActivity(statistics: StatisticRow[]): boolean[] {
 
 const WEEKDAY_LABELS = ['P', 'S', 'Ç', 'P', 'C', 'C', 'P'];
 
-function RecentWordItem({
-  word,
-  onPress,
-}: {
-  word: Word;
-  onPress: () => void;
-}) {
-  const { colors } = useTheme();
-  return (
-    <Pressable
-      onPress={onPress}
-      accessibilityRole="button"
-      accessibilityLabel={`${word.word} kelimesini görüntüle`}
-      className="flex-row items-center justify-between rounded-xl bg-slate-50 dark:bg-slate-800 px-md py-sm active:opacity-70"
-    >
-      <View className="flex-1">
-        <Text className="text-base font-bold text-foreground">{word.word}</Text>
-        <Text className="mt-xs text-sm text-muted-foreground">{word.meaning}</Text>
-      </View>
-      <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
-    </Pressable>
-  );
-}
-
 export default function DashboardScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { colors } = useTheme();
-  const { words, isLoading, error, fetchWords, selectedListId, setSelectedListId } = useWordStore();
+  const { words, isLoading, fetchWords } = useWordStore();
   const { lists, fetchLists } = useListStore();
   const { recentStatistics, fetchRecentStatistics } = useStatisticStore();
+  const { checkAndUnlockBadge, level } = useGamificationStore();
+  const { activePackageName } = usePackageStore();
 
-  const [showListModal, setShowListModal] = useState(false);
+  const dailyBonusAwardedRef = useRef(false);
+  const [packageProgress, setPackageProgress] = useState<{
+    totalCount: number;
+    learnedCount: number;
+  } | null>(null);
 
   const greeting = useMemo(() => getGreeting(), []);
   const formattedDate = useMemo(() => formatDate(), []);
@@ -169,25 +155,69 @@ export default function DashboardScreen() {
     void fetchRecentStatistics(30);
   }, [fetchWords, fetchLists, fetchRecentStatistics]);
 
-  const handleWordPress = useCallback(
-    (wordId: number) => {
-      router.push(`/words/${wordId}`);
+  // Fetch active package progress data
+  useEffect(() => {
+    const fetchPackageProgress = async () => {
+      try {
+        const database = await getDatabase();
+        
+        // Get total word count for active package
+        const totalResult = await database.getFirstAsync<{ count: number }>(
+          `SELECT COUNT(*) AS count FROM ${TABLES.WORDS} WHERE package_name = ?`,
+          activePackageName
+        );
+        const totalCount = totalResult?.count ?? 0;
+
+        if (totalCount === 0) {
+          setPackageProgress(null);
+          return;
+        }
+
+        // Get learned word count for active package (words that have at least one review)
+        const learnedResult = await database.getFirstAsync<{ count: number }>(
+          `SELECT COUNT(DISTINCT ${TABLES.WORDS}.id) AS count 
+           FROM ${TABLES.WORDS} 
+           INNER JOIN ${TABLES.REVIEWS} ON ${TABLES.WORDS}.id = ${TABLES.REVIEWS}.word_id 
+           WHERE ${TABLES.WORDS}.package_name = ?`,
+          activePackageName
+        );
+        const learnedCount = learnedResult?.count ?? 0;
+
+        setPackageProgress({ totalCount, learnedCount });
+      } catch (error) {
+        console.error('Failed to fetch package progress:', error);
+        setPackageProgress(null);
+      }
+    };
+
+    void fetchPackageProgress();
+  }, [activePackageName]);
+
+  // Daily streak bonus XP trigger and badge check
+  useEffect(() => {
+    if (!dailyBonusAwardedRef.current && recentStatistics.length > 0) {
+      const streakCount = calculateStreak(recentStatistics);
+      if (streakCount > 0) {
+        // Award +50 XP for daily login bonus
+        void useGamificationStore.getState().addXp(50);
+        dailyBonusAwardedRef.current = true;
+      }
+      // Check for streak_7 badge
+      void checkAndUnlockBadge('streak_7', streakCount >= 7);
+    }
+  }, [recentStatistics, checkAndUnlockBadge]);
+
+  const handleAllWordsPress = useCallback(() => {
+    router.push('/words?listId=all');
+  }, [router]);
+
+  const handleListPress = useCallback(
+    (listId: number) => {
+      router.push(`/words?listId=${listId}`);
     },
     [router],
   );
 
-  const handleClearFilter = useCallback(() => {
-    setSelectedListId(null);
-    void fetchWords();
-  }, [setSelectedListId, fetchWords]);
-
-  const handleSelectList = useCallback((listId: number) => {
-    setSelectedListId(listId);
-    void fetchWords(listId);
-    setShowListModal(false);
-  }, [setSelectedListId, fetchWords]);
-
-  const recentWords = useMemo(() => words.slice(-10).reverse(), [words]);
   const streakCount = useMemo(() => calculateStreak(recentStatistics), [recentStatistics]);
   const weeklyActivity = useMemo(() => getWeeklyActivity(recentStatistics), [recentStatistics]);
 
@@ -195,18 +225,10 @@ export default function DashboardScreen() {
     return <Loading message="Yükleniyor..." fullScreen />;
   }
 
-  if (error) {
-    return (
-      <View className="flex-1 items-center justify-center bg-background p-md">
-        <Text className="mb-sm text-center text-sm text-error">{error}</Text>
-      </View>
-    );
-  }
-
   return (
     <View className="flex-1 bg-white dark:bg-slate-950">
       <ScrollView
-        contentContainerStyle={{ paddingBottom: insets.bottom + 24 }}
+        contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}
         showsVerticalScrollIndicator={false}
       >
         {/* Üst Bölüm - Karşılama (Soft Panel) */}
@@ -214,9 +236,14 @@ export default function DashboardScreen() {
           {/* Selamlama ve Streak - En Üst Satır */}
           <View className="flex-row items-center justify-between mb-4">
             <View>
-              <Text className="text-2xl font-bold text-foreground">
-                {greeting}! 👋
-              </Text>
+              <View className="flex-row items-center gap-2">
+                <Text className="text-2xl font-bold text-foreground">
+                  {greeting}! 👋
+                </Text>
+                <View className="bg-primary/10 border border-primary/30 px-2 py-0.5 rounded-full">
+                  <Text className="text-xs font-semibold text-primary">Lvl {level}</Text>
+                </View>
+              </View>
               <Text className="mt-xs text-sm text-muted-foreground">{formattedDate}</Text>
             </View>
             {/* Günlük Seri (Streak) */}
@@ -288,80 +315,101 @@ export default function DashboardScreen() {
           </View>
         </View>
 
-        {/* Alt Bölüm - Son Eklenenler */}
-        <View className="px-md pt-md mb-md">
-          <View className="rounded-2xl bg-white dark:bg-slate-900 p-md shadow-sm border border-slate-100 dark:border-slate-800">
-            <View className="mb-md flex-row items-center justify-between">
-              <Text className="text-xl font-bold text-foreground">
-                {selectedListId ? (
-                  <>
-                    {lists.find((l) => l.id === selectedListId)?.name ?? 'Son Eklenen Kelimeler'}{' '}
-                    <Text className="text-sm font-normal text-muted-foreground">
-                      ({words.length})
-                    </Text>
-                  </>
-                ) : (
-                  'Son Eklenen Kelimeler'
-                )}
-              </Text>
-              <View className="flex-row items-center">
-                {selectedListId && (
-                  <Pressable
-                    onPress={handleClearFilter}
-                    accessibilityRole="button"
-                    accessibilityLabel="Tüm kelimeleri gör"
-                    hitSlop={12}
-                    className="mr-lg"
-                  >
-                    <Text className="text-sm text-muted-foreground">Tümünü Gör</Text>
-                  </Pressable>
-                )}
-                <Pressable
-                  onPress={() => setShowListModal(true)}
-                  accessibilityRole="button"
-                  accessibilityLabel="Kelime listeleri"
-                  hitSlop={12}
-                >
-                  <Ionicons name="folder-outline" size={24} color={colors.mutedForeground} />
-                </Pressable>
+        {/* Aktif Paket İlerleme Kartı */}
+        {packageProgress && (
+          <FadeIn duration={600} delay={300}>
+            <View className="mx-md mt-4 bg-white dark:bg-slate-900 rounded-2xl p-md shadow-sm border border-slate-100 dark:border-slate-800">
+              <View className="flex-row items-center justify-between mb-2">
+                <Text className="text-base font-semibold text-foreground">
+                  🎯 {activePackageName}
+                </Text>
+                <Text className="text-sm text-muted-foreground">
+                  {packageProgress.learnedCount} / {packageProgress.totalCount} Kelime
+                </Text>
               </View>
-            </View>
-            {recentWords.length > 0 ? (
-              <View className="gap-sm">
-                {recentWords.map((word) => (
-                  <RecentWordItem
-                    key={word.id}
-                    word={word}
-                    onPress={() => handleWordPress(word.id)}
-                  />
-                ))}
-                <Button
-                  title="Tüm Kelimelerimi Gör"
-                  onPress={() => router.push('/words')}
-                  variant="ghost"
-                  className="mt-sm rounded-xl bg-primary/5 py-sm"
-                  textClassName="text-primary font-semibold"
+              {/* Progress Bar */}
+              <View className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <View
+                  className="h-full bg-primary rounded-full"
+                  style={{
+                    width: `${(packageProgress.learnedCount / packageProgress.totalCount) * 100}%`,
+                  }}
                 />
               </View>
-            ) : (
-              <EmptyState
-                className="rounded-xl border border-border bg-muted/30"
-                title="Henüz kelime eklenmedi"
-                description="İlk kelimenizi ekleyerek öğrenme yolculuğunuzu başlatın."
-                action={
-                  <Button
-                    title="Kelime Ekle"
-                    onPress={() => router.push('/words/new')}
-                    variant="primary"
-                  />
-                }
-              />
-            )}
+            </View>
+          </FadeIn>
+        )}
+
+        {/* Alt Bölüm - Kelime Listelerim (Yatay ScrollView) */}
+        <View className="mt-6">
+          <View className="flex-row items-center justify-between px-md mb-sm">
+            <Text className="text-xl font-bold text-foreground">
+              Kelime Listelerim
+            </Text>
+            <Pressable
+              onPress={() => router.push('/lists')}
+              accessibilityRole="button"
+              accessibilityLabel="Kelime listelerini yönet"
+              hitSlop={12}
+            >
+              <Text className="text-sm font-semibold text-primary">Yönet</Text>
+            </Pressable>
           </View>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingHorizontal: 16, gap: 12 }}
+          >
+            {/* "Tüm Kelimeler" — Sabit Sistem Kartı (vurgulu renk) */}
+            <Pressable
+              onPress={handleAllWordsPress}
+              accessibilityRole="button"
+              accessibilityLabel="Tüm kelimeleri gör"
+              className="active:opacity-80"
+            >
+              <View className="w-40 rounded-2xl bg-primary p-4 shadow-md">
+                <View className="flex-row items-center justify-between mb-2">
+                  <Ionicons name="library-outline" size={22} color={colors.primaryForeground} />
+                  <Text className="text-xs font-semibold text-primary-foreground/80">
+                    Sistem
+                  </Text>
+                </View>
+                <Text className="text-base font-bold text-primary-foreground">
+                  Tüm Kelimeler
+                </Text>
+                <Text className="mt-xs text-sm text-primary-foreground/80">
+                  {words.length} kelime
+                </Text>
+              </View>
+            </Pressable>
+
+            {/* Kullanıcı Listeleri */}
+            {lists.map((list) => (
+              <Pressable
+                key={list.id}
+                onPress={() => handleListPress(list.id)}
+                accessibilityRole="button"
+                accessibilityLabel={`${list.name} listesini aç`}
+                className="active:opacity-80"
+              >
+                <View className="w-40 rounded-2xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800">
+                  <View className="flex-row items-center justify-between mb-2">
+                    <Ionicons name="folder-outline" size={22} color={colors.mutedForeground} />
+                  </View>
+                  <Text className="text-base font-bold text-foreground" numberOfLines={1}>
+                    {list.name}
+                  </Text>
+                  <Text className="mt-xs text-sm text-muted-foreground">
+                    {list.wordCount} kelime
+                  </Text>
+                </View>
+              </Pressable>
+            ))}
+          </ScrollView>
         </View>
       </ScrollView>
 
-      {/* FAB Button */}
+      {/* FAB Button — İzole, temiz, tek başına */}
       <Pressable
         onPress={() => router.push('/words/new')}
         accessibilityRole="button"
@@ -372,89 +420,6 @@ export default function DashboardScreen() {
       >
         <Text className="text-3xl font-bold text-primary-foreground">+</Text>
       </Pressable>
-
-      {/* List Selection Modal */}
-      <Modal
-        visible={showListModal}
-        transparent
-        animationType="slide"
-        onRequestClose={() => setShowListModal(false)}
-      >
-        <Pressable className="flex-1 bg-black/50" onPress={() => setShowListModal(false)}>
-          <Pressable
-            className="mt-auto bg-background rounded-t-3xl p-md"
-            style={{ paddingBottom: insets.bottom + 16 }}
-            onPress={(e) => e.stopPropagation()}
-          >
-            <View className="mb-md flex-row items-center justify-between">
-              <Text className="text-xl font-bold text-foreground">Kelime Listeleri</Text>
-              <Pressable
-                onPress={() => setShowListModal(false)}
-                accessibilityRole="button"
-                accessibilityLabel="Kapat"
-                hitSlop={12}
-              >
-                <Text className="text-2xl text-muted-foreground">✕</Text>
-              </Pressable>
-            </View>
-            
-            <ScrollView className="max-h-80">
-              {lists.length === 0 ? (
-                <View className="py-md">
-                  <Text className="text-center text-muted-foreground">Henüz liste yok</Text>
-                  <Button
-                    title="Listeleri Yönet"
-                    onPress={() => {
-                      setShowListModal(false);
-                      router.push('/lists');
-                    }}
-                    className="mt-sm"
-                  />
-                </View>
-              ) : (
-                <>
-                  {lists.map((list) => (
-                    <Pressable
-                      key={list.id}
-                      onPress={() => handleSelectList(list.id)}
-                      accessibilityRole="button"
-                      accessibilityLabel={`${list.name} listesini seç`}
-                      accessibilityState={{ selected: selectedListId === list.id }}
-                      className={`mb-sm rounded-lg border p-md ${
-                        selectedListId === list.id ? 'border-primary bg-primary/5' : 'border-border bg-card'
-                      }`}
-                    >
-                      <View className="flex-row items-center justify-between">
-                        <View className="flex-1">
-                          <Text className="text-base font-semibold text-foreground">{list.name}</Text>
-                          {list.description && (
-                            <Text className="text-sm text-muted-foreground">{list.description}</Text>
-                          )}
-                          <Text className="text-xs text-muted-foreground">
-                            {list.wordCount} kelime
-                          </Text>
-                        </View>
-                        {selectedListId === list.id ? (
-                          <Text className="text-xs font-semibold text-primary">Seçili</Text>
-                        ) : null}
-                      </View>
-                    </Pressable>
-                  ))}
-                  
-                  <Button
-                    title="Listeleri Yönet"
-                    onPress={() => {
-                      setShowListModal(false);
-                      router.push('/lists');
-                    }}
-                    className="mt-sm"
-                  />
-                </>
-              )}
-            </ScrollView>
-          </Pressable>
-        </Pressable>
-      </Modal>
     </View>
   );
 }

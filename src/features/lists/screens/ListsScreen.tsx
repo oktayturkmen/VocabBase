@@ -11,32 +11,25 @@ import type { Word } from '@/types/word';
 
 type ListCardProps = {
   list: ListWithWordCount;
-  isSelected: boolean;
   onDelete: (id: number) => void;
-  onSelect: (id: number) => void;
   onEditWords: (list: ListWithWordCount) => void;
 };
 
-function ListCard({ list, isSelected, onDelete, onSelect, onEditWords }: ListCardProps) {
+function ListCard({ list, onDelete, onEditWords }: ListCardProps) {
   return (
     <Card
-      className={`mb-sm border p-md ${isSelected ? 'border-primary bg-primary/5' : 'border-border bg-card'}`}
+      className="mb-sm border border-border bg-card p-md"
     >
       <View className="flex-row justify-between items-start">
-        <Pressable className="flex-1" onPress={() => onSelect(list.id)}>
-          <View className="flex-row items-center justify-between gap-sm">
-            <Text className="flex-1 text-lg font-bold text-foreground mb-xs">{list.name}</Text>
-            {isSelected ? (
-              <Text className="text-xs font-semibold text-primary">Seçildi</Text>
-            ) : null}
-          </View>
+        <View className="flex-1">
+          <Text className="text-lg font-bold text-foreground mb-xs">{list.name}</Text>
           {list.description ? (
             <Text className="text-sm text-muted-foreground mb-xs">{list.description}</Text>
           ) : null}
           <Text className="text-xs font-medium text-muted-foreground">
             {list.wordCount} {list.wordCount === 1 ? 'kelime' : 'kelime'}
           </Text>
-        </Pressable>
+        </View>
         <View className="flex-row items-center gap-sm ml-sm">
           <Pressable
             onPress={() => onEditWords(list)}
@@ -251,13 +244,11 @@ export default function ListsScreen() {
   const insets = useSafeAreaInsets();
   const {
     lists,
-    selectedListId,
     isLoading,
     error,
     fetchLists,
     createList,
     deleteList,
-    selectList,
   } = useListStore();
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [newListName, setNewListName] = useState('');
@@ -292,17 +283,6 @@ export default function ListsScreen() {
           onPress: () => void deleteList(id),
         },
       ],
-    );
-  };
-
-  const handleSelectList = (id: number) => {
-    const nextSelectedListId = selectedListId === id ? null : id;
-    selectList(nextSelectedListId);
-    Alert.alert(
-      nextSelectedListId ? 'Liste Seçildi' : 'Liste Temizlendi',
-      nextSelectedListId
-        ? 'Artık Öğren sekmesinden bu listedeki kelimeleri öğrenebilirsiniz.'
-        : 'Öğrenme oturumları tüm mevcut kelimeleri kullanacak.',
     );
   };
 
@@ -368,9 +348,7 @@ export default function ListsScreen() {
               <ListCard
                 key={list.id}
                 list={list}
-                isSelected={selectedListId === list.id}
                 onDelete={handleDeleteList}
-                onSelect={handleSelectList}
                 onEditWords={(selectedList) => setEditingList(selectedList)}
               />
             ))}

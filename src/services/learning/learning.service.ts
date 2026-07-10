@@ -6,6 +6,12 @@ import { mapRowToWord } from '@/services/word/word.mapper';
 import type { Word, WordRow } from '@/types/word';
 import { getLocalDateString } from '@/utils/date';
 
+const INSTALLED_PACKAGES_TABLE = 'installed_packages';
+
+function buildActivePackageClause(): string {
+  return `package_name IN (SELECT package_name FROM ${INSTALLED_PACKAGES_TABLE} WHERE is_active = 1)`;
+}
+
 export class LearningService {
   constructor(private readonly database: SQLiteDatabase) {}
 
@@ -26,9 +32,11 @@ export class LearningService {
       return rows.map(mapRowToWord);
     }
 
+    const clause = buildActivePackageClause();
     const rows = await this.database.getAllAsync<WordRow>(
       `SELECT * FROM ${TABLES.WORDS}
-       WHERE id NOT IN (SELECT word_id FROM ${TABLES.REVIEWS})
+       WHERE ${clause}
+         AND id NOT IN (SELECT word_id FROM ${TABLES.REVIEWS})
        ORDER BY created_at ASC
        LIMIT ?`,
       limit,
@@ -51,17 +59,20 @@ export class LearningService {
       return result?.count ?? 0;
     }
 
+    const clause = buildActivePackageClause();
     const result = await this.database.getFirstAsync<{ count: number }>(
       `SELECT COUNT(*) AS count FROM ${TABLES.WORDS}
-       WHERE id NOT IN (SELECT word_id FROM ${TABLES.REVIEWS})`,
+       WHERE ${clause}
+         AND id NOT IN (SELECT word_id FROM ${TABLES.REVIEWS})`,
     );
 
     return result?.count ?? 0;
   }
 
   async getTotalWordCount(): Promise<number> {
+    const clause = buildActivePackageClause();
     const result = await this.database.getFirstAsync<{ count: number }>(
-      `SELECT COUNT(*) AS count FROM ${TABLES.WORDS}`,
+      `SELECT COUNT(*) AS count FROM ${TABLES.WORDS} WHERE ${clause}`,
     );
 
     return result?.count ?? 0;
@@ -83,8 +94,10 @@ export class LearningService {
       return rows.map(mapRowToWord);
     }
 
+    const clause = buildActivePackageClause();
     const rows = await this.database.getAllAsync<WordRow>(
       `SELECT * FROM ${TABLES.WORDS}
+       WHERE ${clause}
        ORDER BY RANDOM()
        LIMIT ?`,
       limit,

@@ -1,0 +1,4362 @@
+[
+  {
+    "word": "ability",
+    "meaning": "yetenek",
+    "example": "This is my ability."
+  },
+  {
+    "word": "able",
+    "meaning": "yapabilen",
+    "example": "My friend is able."
+  },
+  {
+    "word": "abroad",
+    "meaning": "yurt dışında",
+    "example": "We will finish it abroad."
+  },
+  {
+    "word": "accept",
+    "meaning": "kabul etmek",
+    "example": "Do you accept every day?"
+  },
+  {
+    "word": "accident",
+    "meaning": "kaza",
+    "example": "She likes her accident."
+  },
+  {
+    "word": "according to",
+    "meaning": "-e göre",
+    "example": "According to the weather report, it will rain."
+  },
+  {
+    "word": "achieve",
+    "meaning": "başarmak",
+    "example": "We achieve together at the weekend."
+  },
+  {
+    "word": "act",
+    "meaning": "davranmak, hareket etmek",
+    "example": "They often act in the morning."
+  },
+  {
+    "word": "active",
+    "meaning": "aktif",
+    "example": "I feel active today."
+  },
+  {
+    "word": "actually",
+    "meaning": "aslında",
+    "example": "He always speaks actually."
+  },
+  {
+    "word": "adult",
+    "meaning": "yetişkin",
+    "example": "She is very adult."
+  },
+  {
+    "word": "advantage",
+    "meaning": "avantaj",
+    "example": "I can see an advantage over there."
+  },
+  {
+    "word": "adventure",
+    "meaning": "macera",
+    "example": "This is my adventure."
+  },
+  {
+    "word": "advertise",
+    "meaning": "reklamını yapmak",
+    "example": "Do you advertise every day?"
+  },
+  {
+    "word": "advertisement",
+    "meaning": "reklam",
+    "example": "Look at that advertisement!"
+  },
+  {
+    "word": "advertising",
+    "meaning": "reklamcılık",
+    "example": "We need the advertising."
+  },
+  {
+    "word": "affect",
+    "meaning": "etkilemek",
+    "example": "We affect together at the weekend."
+  },
+  {
+    "word": "after",
+    "meaning": "sonra",
+    "example": "We ate dinner after the film."
+  },
+  {
+    "word": "against",
+    "meaning": "karşı",
+    "example": "The ladder is leaning against the wall."
+  },
+  {
+    "word": "ah",
+    "meaning": "ah",
+    "example": "Ah, now I understand!"
+  },
+  {
+    "word": "airline",
+    "meaning": "havayolu",
+    "example": "Look at that airline!"
+  },
+  {
+    "word": "alive",
+    "meaning": "canlı, hayatta",
+    "example": "My friend is alive."
+  },
+  {
+    "word": "all",
+    "meaning": "tamamen",
+    "example": "All my friends are here."
+  },
+  {
+    "word": "all right",
+    "meaning": "iyi, tamam",
+    "example": "Don't worry, everything is all right."
+  },
+  {
+    "word": "allow",
+    "meaning": "izin vermek",
+    "example": "I like to allow in my free time."
+  },
+  {
+    "word": "almost",
+    "meaning": "neredeyse",
+    "example": "He always speaks almost."
+  },
+  {
+    "word": "alone",
+    "meaning": "yalnız",
+    "example": "My friend is alone."
+  },
+  {
+    "word": "along",
+    "meaning": "boyunca",
+    "example": "We walked along the river."
+  },
+  {
+    "word": "already",
+    "meaning": "zaten, çoktan",
+    "example": "She did it already."
+  },
+  {
+    "word": "alternative",
+    "meaning": "alternatif",
+    "example": "I can see an alternative over there."
+  },
+  {
+    "word": "although",
+    "meaning": "gerçi, olmasına rağmen",
+    "example": "Although it was cold, we went outside."
+  },
+  {
+    "word": "among",
+    "meaning": "arasında",
+    "example": "She was sitting among her friends."
+  },
+  {
+    "word": "amount",
+    "meaning": "miktar",
+    "example": "Look at that amount!"
+  },
+  {
+    "word": "ancient",
+    "meaning": "antik, eski",
+    "example": "I feel ancient today."
+  },
+  {
+    "word": "ankle",
+    "meaning": "ayak bileği",
+    "example": "She likes her ankle."
+  },
+  {
+    "word": "any",
+    "meaning": "hiç",
+    "example": "Do you have any brothers?"
+  },
+  {
+    "word": "anybody",
+    "meaning": "herhangi biri",
+    "example": "Is anybody there?"
+  },
+  {
+    "word": "any more",
+    "meaning": "artık",
+    "example": "He always speaks any more."
+  },
+  {
+    "word": "anyway",
+    "meaning": "her neyse",
+    "example": "We will finish it anyway."
+  },
+  {
+    "word": "anywhere",
+    "meaning": "herhangi bir yer",
+    "example": "You can sit anywhere you like."
+  },
+  {
+    "word": "app",
+    "meaning": "uygulama",
+    "example": "She likes her app."
+  },
+  {
+    "word": "appear",
+    "meaning": "görünmek, ortaya çıkmak",
+    "example": "We appear together at the weekend."
+  },
+  {
+    "word": "appearance",
+    "meaning": "görünüm",
+    "example": "This is my appearance."
+  },
+  {
+    "word": "apply",
+    "meaning": "başvurmak, uygulamak",
+    "example": "Do you apply every day?"
+  },
+  {
+    "word": "architect",
+    "meaning": "mimar",
+    "example": "Look at that architect!"
+  },
+  {
+    "word": "architecture",
+    "meaning": "mimari",
+    "example": "We need the architecture."
+  },
+  {
+    "word": "argue",
+    "meaning": "tartışmak, kavga etmek",
+    "example": "We argue together at the weekend."
+  },
+  {
+    "word": "argument",
+    "meaning": "tartışma, kavga",
+    "example": "I can see an argument over there."
+  },
+  {
+    "word": "army",
+    "meaning": "ordu",
+    "example": "This is my army."
+  },
+  {
+    "word": "arrange",
+    "meaning": "düzenlemek, ayarlamak",
+    "example": "I like to arrange in my free time."
+  },
+  {
+    "word": "arrangement",
+    "meaning": "düzenleme, plan",
+    "example": "Look at that arrangement!"
+  },
+  {
+    "word": "as",
+    "meaning": "iken, olarak",
+    "example": "He works as a teacher."
+  },
+  {
+    "word": "asleep",
+    "meaning": "uykuda",
+    "example": "The film was asleep."
+  },
+  {
+    "word": "assistant",
+    "meaning": "asistan",
+    "example": "I can see an assistant over there."
+  },
+  {
+    "word": "athlete",
+    "meaning": "atlet, sporcu",
+    "example": "This is my athlete."
+  },
+  {
+    "word": "attack",
+    "meaning": "saldırı; saldırmak",
+    "example": "I have a nice attack."
+  },
+  {
+    "word": "attend",
+    "meaning": "katılmak (etkinliğe)",
+    "example": "We attend together at the weekend."
+  },
+  {
+    "word": "attention",
+    "meaning": "dikkat",
+    "example": "Attention, please! The train is leaving."
+  },
+  {
+    "word": "attractive",
+    "meaning": "çekici",
+    "example": "I feel attractive today."
+  },
+  {
+    "word": "audience",
+    "meaning": "izleyici, dinleyici kitlesi",
+    "example": "I can see an audience over there."
+  },
+  {
+    "word": "author",
+    "meaning": "yazar",
+    "example": "This is my author."
+  },
+  {
+    "word": "available",
+    "meaning": "mevcut, müsait",
+    "example": "My friend is available."
+  },
+  {
+    "word": "average",
+    "meaning": "ortalama",
+    "example": "The film was average."
+  },
+  {
+    "word": "avoid",
+    "meaning": "kaçınmak",
+    "example": "Do you avoid every day?"
+  },
+  {
+    "word": "award",
+    "meaning": "ödül",
+    "example": "She likes her award."
+  },
+  {
+    "word": "awful",
+    "meaning": "berbat",
+    "example": "She is very awful."
+  },
+  {
+    "word": "back",
+    "meaning": "arka",
+    "example": "My friend is back."
+  },
+  {
+    "word": "background",
+    "meaning": "arka plan, geçmiş",
+    "example": "I have a nice background."
+  },
+  {
+    "word": "badly",
+    "meaning": "kötü bir şekilde",
+    "example": "She did it badly."
+  },
+  {
+    "word": "bar",
+    "meaning": "bar",
+    "example": "We need the bar."
+  },
+  {
+    "word": "baseball",
+    "meaning": "beyzbol",
+    "example": "She likes her baseball."
+  },
+  {
+    "word": "based",
+    "meaning": "dayanan, tabanlı",
+    "example": "My friend is based."
+  },
+  {
+    "word": "basketball",
+    "meaning": "basketbol",
+    "example": "This is my basketball."
+  },
+  {
+    "word": "bean",
+    "meaning": "fasulye",
+    "example": "I have a nice bean."
+  },
+  {
+    "word": "bear (animal)",
+    "meaning": "ayı",
+    "example": "Look at that bear!"
+  },
+  {
+    "word": "beat",
+    "meaning": "yenmek, dövmek",
+    "example": "I beat every day."
+  },
+  {
+    "word": "beef",
+    "meaning": "sığır eti",
+    "example": "She likes her beef."
+  },
+  {
+    "word": "before",
+    "meaning": "önce",
+    "example": "Wash your hands before dinner."
+  },
+  {
+    "word": "behave",
+    "meaning": "davranmak",
+    "example": "Do you behave every day?"
+  },
+  {
+    "word": "behaviour",
+    "meaning": "davranış",
+    "example": "I have a nice behaviour."
+  },
+  {
+    "word": "belong",
+    "meaning": "ait olmak",
+    "example": "I belong every day."
+  },
+  {
+    "word": "belt",
+    "meaning": "kemer",
+    "example": "We need the belt."
+  },
+  {
+    "word": "benefit",
+    "meaning": "fayda, yarar",
+    "example": "She likes her benefit."
+  },
+  {
+    "word": "best",
+    "meaning": "en iyi (şekilde)",
+    "example": "I saw them best."
+  },
+  {
+    "word": "better",
+    "meaning": "daha iyi (şekilde)",
+    "example": "She did it better."
+  },
+  {
+    "word": "between",
+    "meaning": "arasında",
+    "example": "The shop is between the bank and the school."
+  },
+  {
+    "word": "billion",
+    "meaning": "milyar",
+    "example": "I have billion books."
+  },
+  {
+    "word": "bin",
+    "meaning": "çöp kutusu",
+    "example": "We need the bin."
+  },
+  {
+    "word": "biology",
+    "meaning": "biyoloji",
+    "example": "She likes her biology."
+  },
+  {
+    "word": "birth",
+    "meaning": "doğum",
+    "example": "I can see a birth over there."
+  },
+  {
+    "word": "biscuit",
+    "meaning": "bisküvi",
+    "example": "This is my biscuit."
+  },
+  {
+    "word": "bit",
+    "meaning": "biraz, parça",
+    "example": "I have a nice bit."
+  },
+  {
+    "word": "blank",
+    "meaning": "boş",
+    "example": "The film was blank."
+  },
+  {
+    "word": "blood",
+    "meaning": "kan",
+    "example": "We need the blood."
+  },
+  {
+    "word": "blow",
+    "meaning": "üflemek, esmek",
+    "example": "I like to blow in my free time."
+  },
+  {
+    "word": "board",
+    "meaning": "tahta, kurul",
+    "example": "I can see a board over there."
+  },
+  {
+    "word": "boil",
+    "meaning": "kaynatmak",
+    "example": "We boil together at the weekend."
+  },
+  {
+    "word": "bone",
+    "meaning": "kemik",
+    "example": "I have a nice bone."
+  },
+  {
+    "word": "book",
+    "meaning": "rezervasyon yaptırmak",
+    "example": "Do you book every day?"
+  },
+  {
+    "word": "borrow",
+    "meaning": "ödünç almak",
+    "example": "I like to borrow in my free time."
+  },
+  {
+    "word": "boss",
+    "meaning": "patron",
+    "example": "She likes her boss."
+  },
+  {
+    "word": "bottom",
+    "meaning": "alt, dip",
+    "example": "I can see a bottom over there."
+  },
+  {
+    "word": "bowl",
+    "meaning": "kase",
+    "example": "This is my bowl."
+  },
+  {
+    "word": "brain",
+    "meaning": "beyin",
+    "example": "I have a nice brain."
+  },
+  {
+    "word": "bridge",
+    "meaning": "köprü",
+    "example": "Look at that bridge!"
+  },
+  {
+    "word": "bright",
+    "meaning": "parlak, zeki",
+    "example": "She is very bright."
+  },
+  {
+    "word": "brilliant",
+    "meaning": "harika, parlak",
+    "example": "My friend is brilliant."
+  },
+  {
+    "word": "broken",
+    "meaning": "kırık, bozuk",
+    "example": "The film was broken."
+  },
+  {
+    "word": "brush",
+    "meaning": "fırça; fırçalamak",
+    "example": "Do you brush every day?"
+  },
+  {
+    "word": "burn",
+    "meaning": "yakmak, yanmak",
+    "example": "I like to burn in my free time."
+  },
+  {
+    "word": "businessman",
+    "meaning": "iş adamı",
+    "example": "Look at that businessman!"
+  },
+  {
+    "word": "button",
+    "meaning": "düğme",
+    "example": "We need the button."
+  },
+  {
+    "word": "camp",
+    "meaning": "kamp; kamp yapmak",
+    "example": "She likes her camp."
+  },
+  {
+    "word": "camping",
+    "meaning": "kamp yapma",
+    "example": "I can see a camping over there."
+  },
+  {
+    "word": "can2",
+    "meaning": "teneke kutu",
+    "example": "This is my can."
+  },
+  {
+    "word": "care",
+    "meaning": "önemsemek; özen",
+    "example": "I have a nice care."
+  },
+  {
+    "word": "careful",
+    "meaning": "dikkatli",
+    "example": "My friend is careful."
+  },
+  {
+    "word": "carefully",
+    "meaning": "dikkatlice",
+    "example": "He always speaks carefully."
+  },
+  {
+    "word": "carpet",
+    "meaning": "halı",
+    "example": "She likes her carpet."
+  },
+  {
+    "word": "cartoon",
+    "meaning": "çizgi film",
+    "example": "I can see a cartoon over there."
+  },
+  {
+    "word": "case",
+    "meaning": "durum, dava, kutu",
+    "example": "This is my case."
+  },
+  {
+    "word": "cash",
+    "meaning": "nakit",
+    "example": "I have a nice cash."
+  },
+  {
+    "word": "castle",
+    "meaning": "kale",
+    "example": "Look at that castle!"
+  },
+  {
+    "word": "catch",
+    "meaning": "yakalamak",
+    "example": "Do you catch it every day?"
+  },
+  {
+    "word": "cause",
+    "meaning": "sebep; sebep olmak",
+    "example": "She likes her cause."
+  },
+  {
+    "word": "celebrate",
+    "meaning": "kutlamak",
+    "example": "I celebrate every day."
+  },
+  {
+    "word": "celebrity",
+    "meaning": "ünlü kişi",
+    "example": "This is my celebrity."
+  },
+  {
+    "word": "certain",
+    "meaning": "kesin, emin",
+    "example": "The film was certain."
+  },
+  {
+    "word": "certainly",
+    "meaning": "kesinlikle",
+    "example": "She did it certainly."
+  },
+  {
+    "word": "chance",
+    "meaning": "şans, fırsat",
+    "example": "We need the chance."
+  },
+  {
+    "word": "character",
+    "meaning": "karakter",
+    "example": "She likes her character."
+  },
+  {
+    "word": "charity",
+    "meaning": "hayır kurumu",
+    "example": "I can see a charity over there."
+  },
+  {
+    "word": "chat",
+    "meaning": "sohbet etmek; sohbet",
+    "example": "They often chat in the morning."
+  },
+  {
+    "word": "check",
+    "meaning": "hesap, çek",
+    "example": "I have a nice check."
+  },
+  {
+    "word": "chef",
+    "meaning": "aşçı, şef",
+    "example": "Look at that chef!"
+  },
+  {
+    "word": "chemistry",
+    "meaning": "kimya",
+    "example": "We need the chemistry."
+  },
+  {
+    "word": "chip",
+    "meaning": "cips, çip",
+    "example": "She likes her chip."
+  },
+  {
+    "word": "choice",
+    "meaning": "seçim",
+    "example": "I can see a choice over there."
+  },
+  {
+    "word": "church",
+    "meaning": "kilise",
+    "example": "This is my church."
+  },
+  {
+    "word": "cigarette",
+    "meaning": "sigara",
+    "example": "I have a nice cigarette."
+  },
+  {
+    "word": "circle",
+    "meaning": "daire; daire çizmek",
+    "example": "Look at that circle!"
+  },
+  {
+    "word": "classical",
+    "meaning": "klasik",
+    "example": "My friend is classical."
+  },
+  {
+    "word": "clear",
+    "meaning": "açık, net",
+    "example": "The film was clear."
+  },
+  {
+    "word": "clearly",
+    "meaning": "açıkça",
+    "example": "I saw them clearly."
+  },
+  {
+    "word": "clever",
+    "meaning": "zeki",
+    "example": "It was a clever day."
+  },
+  {
+    "word": "climate",
+    "meaning": "iklim",
+    "example": "I have a nice climate."
+  },
+  {
+    "word": "close2",
+    "meaning": "yakın",
+    "example": "My friend is close."
+  },
+  {
+    "word": "closed",
+    "meaning": "kapalı",
+    "example": "The film was closed."
+  },
+  {
+    "word": "clothing",
+    "meaning": "giyim",
+    "example": "She likes her clothing."
+  },
+  {
+    "word": "cloud",
+    "meaning": "bulut",
+    "example": "I can see a cloud over there."
+  },
+  {
+    "word": "coach",
+    "meaning": "koç, otobüs",
+    "example": "This is my coach."
+  },
+  {
+    "word": "coast",
+    "meaning": "kıyı, sahil",
+    "example": "I have a nice coast."
+  },
+  {
+    "word": "code",
+    "meaning": "kod",
+    "example": "Look at that code!"
+  },
+  {
+    "word": "colleague",
+    "meaning": "meslektaş",
+    "example": "We need the colleague."
+  },
+  {
+    "word": "collect",
+    "meaning": "toplamak",
+    "example": "I like to collect in my free time."
+  },
+  {
+    "word": "column",
+    "meaning": "sütun",
+    "example": "I can see a column over there."
+  },
+  {
+    "word": "comedy",
+    "meaning": "komedi",
+    "example": "This is my comedy."
+  },
+  {
+    "word": "comfortable",
+    "meaning": "rahat",
+    "example": "The film was comfortable."
+  },
+  {
+    "word": "comment",
+    "meaning": "yorum",
+    "example": "Look at that comment!"
+  },
+  {
+    "word": "communicate",
+    "meaning": "iletişim kurmak",
+    "example": "I like to communicate in my free time."
+  },
+  {
+    "word": "community",
+    "meaning": "topluluk",
+    "example": "She likes her community."
+  },
+  {
+    "word": "compete",
+    "meaning": "yarışmak",
+    "example": "We compete together at the weekend."
+  },
+  {
+    "word": "competition",
+    "meaning": "yarışma",
+    "example": "This is my competition."
+  },
+  {
+    "word": "complain",
+    "meaning": "şikayet etmek",
+    "example": "Do you complain every day?"
+  },
+  {
+    "word": "completely",
+    "meaning": "tamamen",
+    "example": "She did it completely."
+  },
+  {
+    "word": "condition",
+    "meaning": "durum, koşul",
+    "example": "We need the condition."
+  },
+  {
+    "word": "conference",
+    "meaning": "konferans",
+    "example": "She likes her conference."
+  },
+  {
+    "word": "connect",
+    "meaning": "bağlamak",
+    "example": "They often connect in the morning."
+  },
+  {
+    "word": "connected",
+    "meaning": "bağlı",
+    "example": "I feel connected today."
+  },
+  {
+    "word": "consider",
+    "meaning": "düşünmek, göz önünde bulundurmak",
+    "example": "I like to consider in my free time."
+  },
+  {
+    "word": "contain",
+    "meaning": "içermek",
+    "example": "I contain it every day."
+  },
+  {
+    "word": "context",
+    "meaning": "bağlam",
+    "example": "We need the context."
+  },
+  {
+    "word": "continent",
+    "meaning": "kıta",
+    "example": "She likes her continent."
+  },
+  {
+    "word": "continue",
+    "meaning": "devam etmek",
+    "example": "Do you continue every day?"
+  },
+  {
+    "word": "control",
+    "meaning": "kontrol; kontrol etmek",
+    "example": "This is my control."
+  },
+  {
+    "word": "cook",
+    "meaning": "aşçı",
+    "example": "I have a nice cook."
+  },
+  {
+    "word": "cooker",
+    "meaning": "ocak, fırın",
+    "example": "Look at that cooker!"
+  },
+  {
+    "word": "copy",
+    "meaning": "kopya; kopyalamak",
+    "example": "We need the copy."
+  },
+  {
+    "word": "corner",
+    "meaning": "köşe",
+    "example": "She likes her corner."
+  },
+  {
+    "word": "correctly",
+    "meaning": "doğru bir şekilde",
+    "example": "I saw them correctly."
+  },
+  {
+    "word": "count",
+    "meaning": "saymak",
+    "example": "I count every day."
+  },
+  {
+    "word": "couple",
+    "meaning": "çift",
+    "example": "I have a nice couple."
+  },
+  {
+    "word": "cover",
+    "meaning": "örtmek, kapsamak",
+    "example": "They often cover in the morning."
+  },
+  {
+    "word": "crazy",
+    "meaning": "çılgın, deli",
+    "example": "I feel crazy today."
+  },
+  {
+    "word": "creative",
+    "meaning": "yaratıcı",
+    "example": "It was a creative day."
+  },
+  {
+    "word": "credit",
+    "meaning": "kredi",
+    "example": "I can see a credit over there."
+  },
+  {
+    "word": "crime",
+    "meaning": "suç",
+    "example": "This is my crime."
+  },
+  {
+    "word": "criminal",
+    "meaning": "suçlu",
+    "example": "I have a nice criminal."
+  },
+  {
+    "word": "cross",
+    "meaning": "geçmek, karşıya geçmek",
+    "example": "Do you cross every day?"
+  },
+  {
+    "word": "crowd",
+    "meaning": "kalabalık",
+    "example": "We need the crowd."
+  },
+  {
+    "word": "crowded",
+    "meaning": "kalabalık (adj)",
+    "example": "She is very crowded."
+  },
+  {
+    "word": "cry",
+    "meaning": "ağlamak",
+    "example": "We cry together at the weekend."
+  },
+  {
+    "word": "cupboard",
+    "meaning": "dolap",
+    "example": "This is my cupboard."
+  },
+  {
+    "word": "curly",
+    "meaning": "kıvırcık",
+    "example": "I feel curly today."
+  },
+  {
+    "word": "cycle",
+    "meaning": "döngü; bisiklete binmek",
+    "example": "Look at that cycle!"
+  },
+  {
+    "word": "daily",
+    "meaning": "günlük",
+    "example": "She is very daily."
+  },
+  {
+    "word": "danger",
+    "meaning": "tehlike",
+    "example": "She likes her danger."
+  },
+  {
+    "word": "dark",
+    "meaning": "karanlık (isim)",
+    "example": "I can see a dark over there."
+  },
+  {
+    "word": "data",
+    "meaning": "veri",
+    "example": "This is my data."
+  },
+  {
+    "word": "dead",
+    "meaning": "ölü",
+    "example": "It was a dead day."
+  },
+  {
+    "word": "deal",
+    "meaning": "anlaşma yapmak, ele almak",
+    "example": "I deal every day."
+  },
+  {
+    "word": "dear",
+    "meaning": "ah, aman (ünlem)",
+    "example": "Dear Anna, thank you for your letter."
+  },
+  {
+    "word": "death",
+    "meaning": "ölüm",
+    "example": "She likes her death."
+  },
+  {
+    "word": "decision",
+    "meaning": "karar",
+    "example": "I can see a decision over there."
+  },
+  {
+    "word": "deep",
+    "meaning": "derin",
+    "example": "It was a deep day."
+  },
+  {
+    "word": "definitely",
+    "meaning": "kesinlikle",
+    "example": "He always speaks definitely."
+  },
+  {
+    "word": "degree",
+    "meaning": "derece, üniversite diploması",
+    "example": "Look at that degree!"
+  },
+  {
+    "word": "dentist",
+    "meaning": "diş hekimi",
+    "example": "We need the dentist."
+  },
+  {
+    "word": "department",
+    "meaning": "bölüm, departman",
+    "example": "She likes her department."
+  },
+  {
+    "word": "depend",
+    "meaning": "bağlı olmak, güvenmek",
+    "example": "I like to depend in my free time."
+  },
+  {
+    "word": "desert",
+    "meaning": "çöl",
+    "example": "This is my desert."
+  },
+  {
+    "word": "designer",
+    "meaning": "tasarımcı",
+    "example": "I have a nice designer."
+  },
+  {
+    "word": "destroy",
+    "meaning": "yok etmek",
+    "example": "They often destroy it in the morning."
+  },
+  {
+    "word": "detective",
+    "meaning": "dedektif",
+    "example": "We need the detective."
+  },
+  {
+    "word": "develop",
+    "meaning": "geliştirmek",
+    "example": "I like to develop in my free time."
+  },
+  {
+    "word": "device",
+    "meaning": "cihaz",
+    "example": "I can see a device over there."
+  },
+  {
+    "word": "diary",
+    "meaning": "günlük (defter)",
+    "example": "This is my diary."
+  },
+  {
+    "word": "differently",
+    "meaning": "farklı bir şekilde",
+    "example": "He always speaks differently."
+  },
+  {
+    "word": "digital",
+    "meaning": "dijital",
+    "example": "I feel digital today."
+  },
+  {
+    "word": "direct",
+    "meaning": "doğrudan",
+    "example": "It was a direct day."
+  },
+  {
+    "word": "direction",
+    "meaning": "yön",
+    "example": "She likes her direction."
+  },
+  {
+    "word": "director",
+    "meaning": "yönetici, yönetmen",
+    "example": "I can see a director over there."
+  },
+  {
+    "word": "disagree",
+    "meaning": "aynı fikirde olmamak",
+    "example": "They often disagree in the morning."
+  },
+  {
+    "word": "disappear",
+    "meaning": "ortadan kaybolmak",
+    "example": "Do you disappear every day?"
+  },
+  {
+    "word": "disaster",
+    "meaning": "felaket",
+    "example": "Look at that disaster!"
+  },
+  {
+    "word": "discover",
+    "meaning": "keşfetmek",
+    "example": "I discover it every day."
+  },
+  {
+    "word": "discovery",
+    "meaning": "keşif",
+    "example": "She likes her discovery."
+  },
+  {
+    "word": "discussion",
+    "meaning": "tartışma, görüşme",
+    "example": "I can see a discussion over there."
+  },
+  {
+    "word": "disease",
+    "meaning": "hastalık",
+    "example": "This is my disease."
+  },
+  {
+    "word": "distance",
+    "meaning": "mesafe",
+    "example": "I have a nice distance."
+  },
+  {
+    "word": "divorced",
+    "meaning": "boşanmış",
+    "example": "She is very divorced."
+  },
+  {
+    "word": "document",
+    "meaning": "belge",
+    "example": "We need the document."
+  },
+  {
+    "word": "double",
+    "meaning": "çift, iki katı",
+    "example": "Can I have a double room, please?"
+  },
+  {
+    "word": "download",
+    "meaning": "indirmek (dosya)",
+    "example": "Do you download it every day?"
+  },
+  {
+    "word": "downstairs",
+    "meaning": "alt kattaki",
+    "example": "It was a downstairs day."
+  },
+  {
+    "word": "drama",
+    "meaning": "drama",
+    "example": "I have a nice drama."
+  },
+  {
+    "word": "drawing",
+    "meaning": "çizim",
+    "example": "Look at that drawing!"
+  },
+  {
+    "word": "dream",
+    "meaning": "rüya; hayal etmek",
+    "example": "We need the dream."
+  },
+  {
+    "word": "drive",
+    "meaning": "sürüş, araba yolculuğu",
+    "example": "She likes her drive."
+  },
+  {
+    "word": "driving",
+    "meaning": "araba kullanma",
+    "example": "I can see a driving over there."
+  },
+  {
+    "word": "drop",
+    "meaning": "düşürmek",
+    "example": "I drop every day."
+  },
+  {
+    "word": "drug",
+    "meaning": "ilaç, uyuşturucu",
+    "example": "I have a nice drug."
+  },
+  {
+    "word": "dry",
+    "meaning": "kuru; kurutmak",
+    "example": "The film was dry."
+  },
+  {
+    "word": "earn",
+    "meaning": "kazanmak (para)",
+    "example": "Do you earn every day?"
+  },
+  {
+    "word": "earth",
+    "meaning": "dünya, toprak",
+    "example": "She likes her earth."
+  },
+  {
+    "word": "easily",
+    "meaning": "kolayca",
+    "example": "He always speaks easily."
+  },
+  {
+    "word": "education",
+    "meaning": "eğitim",
+    "example": "She likes her education."
+  },
+  {
+    "word": "effect",
+    "meaning": "etki",
+    "example": "I have a nice effect."
+  },
+  {
+    "word": "either",
+    "meaning": "her iki, ya da",
+    "example": "You can have either tea or coffee."
+  },
+  {
+    "word": "electric",
+    "meaning": "elektrikli",
+    "example": "It was an electric day."
+  },
+  {
+    "word": "electrical",
+    "meaning": "elektrikle ilgili",
+    "example": "She is very electrical."
+  },
+  {
+    "word": "electricity",
+    "meaning": "elektrik",
+    "example": "I like electricity."
+  },
+  {
+    "word": "electronic",
+    "meaning": "elektronik",
+    "example": "The film was electronic."
+  },
+  {
+    "word": "employ",
+    "meaning": "istihdam etmek",
+    "example": "Do you employ every day?"
+  },
+  {
+    "word": "employee",
+    "meaning": "çalışan",
+    "example": "Look at that employee!"
+  },
+  {
+    "word": "employer",
+    "meaning": "işveren",
+    "example": "We need the employer."
+  },
+  {
+    "word": "empty",
+    "meaning": "boş",
+    "example": "My friend is empty."
+  },
+  {
+    "word": "ending",
+    "meaning": "son, bitiş",
+    "example": "I can see an ending over there."
+  },
+  {
+    "word": "energy",
+    "meaning": "enerji",
+    "example": "She likes her energy."
+  },
+  {
+    "word": "engine",
+    "meaning": "motor",
+    "example": "I have a nice engine."
+  },
+  {
+    "word": "engineer",
+    "meaning": "mühendis",
+    "example": "Look at that engineer!"
+  },
+  {
+    "word": "enormous",
+    "meaning": "muazzam, kocaman",
+    "example": "My friend is enormous."
+  },
+  {
+    "word": "enter",
+    "meaning": "girmek",
+    "example": "They often enter in the morning."
+  },
+  {
+    "word": "environment",
+    "meaning": "çevre",
+    "example": "I can see an environment over there."
+  },
+  {
+    "word": "equipment",
+    "meaning": "ekipman",
+    "example": "This is my equipment."
+  },
+  {
+    "word": "error",
+    "meaning": "hata",
+    "example": "I have a nice error."
+  },
+  {
+    "word": "especially",
+    "meaning": "özellikle",
+    "example": "We will finish it especially."
+  },
+  {
+    "word": "essay",
+    "meaning": "deneme, makale",
+    "example": "We need the essay."
+  },
+  {
+    "word": "everyday",
+    "meaning": "günlük, her günkü",
+    "example": "I feel everyday today."
+  },
+  {
+    "word": "everywhere",
+    "meaning": "her yerde",
+    "example": "He always speaks everywhere."
+  },
+  {
+    "word": "evidence",
+    "meaning": "kanıt",
+    "example": "She likes her evidence."
+  },
+  {
+    "word": "exact",
+    "meaning": "tam, kesin",
+    "example": "My friend is exact."
+  },
+  {
+    "word": "exactly",
+    "meaning": "tam olarak",
+    "example": "She did it exactly."
+  },
+  {
+    "word": "excellent",
+    "meaning": "mükemmel",
+    "example": "I feel excellent today."
+  },
+  {
+    "word": "except",
+    "meaning": "hariç",
+    "example": "Everyone came to the party except John."
+  },
+  {
+    "word": "exist",
+    "meaning": "var olmak",
+    "example": "I exist every day."
+  },
+  {
+    "word": "expect",
+    "meaning": "beklemek",
+    "example": "We expect together at the weekend."
+  },
+  {
+    "word": "experience",
+    "meaning": "deneyim",
+    "example": "We need the experience."
+  },
+  {
+    "word": "experiment",
+    "meaning": "deney",
+    "example": "Look at that experiment!"
+  },
+  {
+    "word": "expert",
+    "meaning": "uzman",
+    "example": "We need the expert."
+  },
+  {
+    "word": "explanation",
+    "meaning": "açıklama",
+    "example": "She likes her explanation."
+  },
+  {
+    "word": "express",
+    "meaning": "ifade etmek",
+    "example": "We express it together at the weekend."
+  },
+  {
+    "word": "expression",
+    "meaning": "ifade",
+    "example": "This is my expression."
+  },
+  {
+    "word": "extreme",
+    "meaning": "aşırı, uç",
+    "example": "I feel extreme today."
+  },
+  {
+    "word": "extremely",
+    "meaning": "aşırı derecede",
+    "example": "She did it extremely."
+  },
+  {
+    "word": "factor",
+    "meaning": "etken, faktör",
+    "example": "We need the factor."
+  },
+  {
+    "word": "factory",
+    "meaning": "fabrika",
+    "example": "She likes her factory."
+  },
+  {
+    "word": "fail",
+    "meaning": "başarısız olmak",
+    "example": "They often fail in the morning."
+  },
+  {
+    "word": "fair",
+    "meaning": "adil, dürüst",
+    "example": "I feel fair today."
+  },
+  {
+    "word": "fall",
+    "meaning": "sonbahar (Amerikan İngilizcesi)",
+    "example": "I have a nice fall."
+  },
+  {
+    "word": "fan",
+    "meaning": "hayran, fan",
+    "example": "Look at that fan!"
+  },
+  {
+    "word": "farm",
+    "meaning": "çiftlik işi yapmak",
+    "example": "We farm together at the weekend."
+  },
+  {
+    "word": "farming",
+    "meaning": "çiftçilik",
+    "example": "She likes her farming."
+  },
+  {
+    "word": "fashion",
+    "meaning": "moda",
+    "example": "I can see a fashion over there."
+  },
+  {
+    "word": "fat",
+    "meaning": "yağ",
+    "example": "This is my fat."
+  },
+  {
+    "word": "fear",
+    "meaning": "korku",
+    "example": "I have a nice fear."
+  },
+  {
+    "word": "feature",
+    "meaning": "özellik",
+    "example": "Look at that feature!"
+  },
+  {
+    "word": "feed",
+    "meaning": "beslemek",
+    "example": "They often feed it in the morning."
+  },
+  {
+    "word": "female",
+    "meaning": "dişi, kadın",
+    "example": "I feel female today."
+  },
+  {
+    "word": "fiction",
+    "meaning": "kurgu, roman",
+    "example": "I can see a fiction over there."
+  },
+  {
+    "word": "field",
+    "meaning": "alan, tarla",
+    "example": "This is my field."
+  },
+  {
+    "word": "fight",
+    "meaning": "kavga; kavga etmek",
+    "example": "We fight together at the weekend."
+  },
+  {
+    "word": "figure",
+    "meaning": "rakam, şekil",
+    "example": "Look at that figure!"
+  },
+  {
+    "word": "film",
+    "meaning": "filme çekmek",
+    "example": "Do you film every day?"
+  },
+  {
+    "word": "final",
+    "meaning": "final, son",
+    "example": "She likes her final."
+  },
+  {
+    "word": "finally",
+    "meaning": "sonunda",
+    "example": "He always speaks finally."
+  },
+  {
+    "word": "finger",
+    "meaning": "parmak",
+    "example": "This is my finger."
+  },
+  {
+    "word": "finish",
+    "meaning": "bitiş",
+    "example": "I have a nice finish."
+  },
+  {
+    "word": "first",
+    "meaning": "birinci, ilk kişi",
+    "example": "This is the first time I have visited Paris."
+  },
+  {
+    "word": "firstly",
+    "meaning": "ilk olarak",
+    "example": "He always speaks firstly."
+  },
+  {
+    "word": "fish",
+    "meaning": "balık tutmak",
+    "example": "I fish every day."
+  },
+  {
+    "word": "fishing",
+    "meaning": "balıkçılık",
+    "example": "I can see a fishing over there."
+  },
+  {
+    "word": "fit",
+    "meaning": "uymak, formda",
+    "example": "They often fit in the morning."
+  },
+  {
+    "word": "fix",
+    "meaning": "tamir etmek",
+    "example": "Do you fix it every day?"
+  },
+  {
+    "word": "flat",
+    "meaning": "düz",
+    "example": "It was a flat day."
+  },
+  {
+    "word": "flu",
+    "meaning": "grip",
+    "example": "We need the flu."
+  },
+  {
+    "word": "fly",
+    "meaning": "sinek",
+    "example": "She likes her fly."
+  },
+  {
+    "word": "flying",
+    "meaning": "uçma",
+    "example": "I can see a flying over there."
+  },
+  {
+    "word": "focus",
+    "meaning": "odaklanmak; odak",
+    "example": "Do you focus every day?"
+  },
+  {
+    "word": "following",
+    "meaning": "takip eden, aşağıdaki",
+    "example": "It was a following day."
+  },
+  {
+    "word": "foreign",
+    "meaning": "yabancı",
+    "example": "She is very foreign."
+  },
+  {
+    "word": "forest",
+    "meaning": "orman",
+    "example": "We need the forest."
+  },
+  {
+    "word": "fork",
+    "meaning": "çatal",
+    "example": "She likes her fork."
+  },
+  {
+    "word": "formal",
+    "meaning": "resmi",
+    "example": "I feel formal today."
+  },
+  {
+    "word": "fortunately",
+    "meaning": "neyse ki",
+    "example": "She did it fortunately."
+  },
+  {
+    "word": "forward",
+    "meaning": "ileri",
+    "example": "He always speaks forward."
+  },
+  {
+    "word": "free",
+    "meaning": "ücretsiz olarak",
+    "example": "We will finish it free."
+  },
+  {
+    "word": "fresh",
+    "meaning": "taze",
+    "example": "The film was fresh."
+  },
+  {
+    "word": "fridge",
+    "meaning": "buzdolabı",
+    "example": "She likes her fridge."
+  },
+  {
+    "word": "frog",
+    "meaning": "kurbağa",
+    "example": "I can see a frog over there."
+  },
+  {
+    "word": "fun",
+    "meaning": "eğlenceli",
+    "example": "She is very fun."
+  },
+  {
+    "word": "furniture",
+    "meaning": "mobilya",
+    "example": "I like furniture."
+  },
+  {
+    "word": "further",
+    "meaning": "daha ileri, ek",
+    "example": "The film was further."
+  },
+  {
+    "word": "future",
+    "meaning": "geleceğe ait",
+    "example": "I feel future today."
+  },
+  {
+    "word": "gallery",
+    "meaning": "galeri",
+    "example": "She likes her gallery."
+  },
+  {
+    "word": "gap",
+    "meaning": "boşluk, açık",
+    "example": "I can see a gap over there."
+  },
+  {
+    "word": "gas",
+    "meaning": "gaz, benzin",
+    "example": "This is my gas."
+  },
+  {
+    "word": "gate",
+    "meaning": "kapı, geçit",
+    "example": "I have a nice gate."
+  },
+  {
+    "word": "general",
+    "meaning": "genel",
+    "example": "I feel general today."
+  },
+  {
+    "word": "gift",
+    "meaning": "hediye",
+    "example": "We need the gift."
+  },
+  {
+    "word": "goal",
+    "meaning": "hedef, gol",
+    "example": "She likes her goal."
+  },
+  {
+    "word": "god",
+    "meaning": "tanrı",
+    "example": "I can see a god over there."
+  },
+  {
+    "word": "gold",
+    "meaning": "altın",
+    "example": "This is my gold."
+  },
+  {
+    "word": "golf",
+    "meaning": "golf",
+    "example": "I have a nice golf."
+  },
+  {
+    "word": "good",
+    "meaning": "iyilik",
+    "example": "Look at that good!"
+  },
+  {
+    "word": "government",
+    "meaning": "hükümet",
+    "example": "We need the government."
+  },
+  {
+    "word": "grass",
+    "meaning": "çim, ot",
+    "example": "She likes her grass."
+  },
+  {
+    "word": "greet",
+    "meaning": "selamlamak",
+    "example": "They often greet in the morning."
+  },
+  {
+    "word": "ground",
+    "meaning": "zemin, yer",
+    "example": "This is my ground."
+  },
+  {
+    "word": "guest",
+    "meaning": "misafir",
+    "example": "I have a nice guest."
+  },
+  {
+    "word": "guide",
+    "meaning": "rehber; rehberlik etmek",
+    "example": "Look at that guide!"
+  },
+  {
+    "word": "gun",
+    "meaning": "silah, tabanca",
+    "example": "We need the gun."
+  },
+  {
+    "word": "guy",
+    "meaning": "adam, herif",
+    "example": "She likes her guy."
+  },
+  {
+    "word": "habit",
+    "meaning": "alışkanlık",
+    "example": "I can see a habit over there."
+  },
+  {
+    "word": "half",
+    "meaning": "yarı yarıya",
+    "example": "I ate half of the cake."
+  },
+  {
+    "word": "hall",
+    "meaning": "salon, koridor",
+    "example": "I have a nice hall."
+  },
+  {
+    "word": "happily",
+    "meaning": "mutlu bir şekilde",
+    "example": "She did it happily."
+  },
+  {
+    "word": "have",
+    "meaning": "yaptırmak, sahip olmak (yardımcı fiil)",
+    "example": "I have two brothers."
+  },
+  {
+    "word": "headache",
+    "meaning": "baş ağrısı",
+    "example": "She likes her headache."
+  },
+  {
+    "word": "heart",
+    "meaning": "kalp",
+    "example": "I can see a heart over there."
+  },
+  {
+    "word": "heat",
+    "meaning": "ısı; ısıtmak",
+    "example": "This is my heat."
+  },
+  {
+    "word": "heavy",
+    "meaning": "ağır",
+    "example": "My friend is heavy."
+  },
+  {
+    "word": "height",
+    "meaning": "yükseklik, boy",
+    "example": "Look at that height!"
+  },
+  {
+    "word": "helpful",
+    "meaning": "yardımsever",
+    "example": "I feel helpful today."
+  },
+  {
+    "word": "hero",
+    "meaning": "kahraman",
+    "example": "She likes her hero."
+  },
+  {
+    "word": "hers",
+    "meaning": "onunki (kadın)",
+    "example": "This umbrella isn't mine, it's hers."
+  },
+  {
+    "word": "herself",
+    "meaning": "kendisi (kadın)",
+    "example": "She made this cake herself."
+  },
+  {
+    "word": "hide",
+    "meaning": "saklanmak, saklamak",
+    "example": "They often hide it in the morning."
+  },
+  {
+    "word": "high",
+    "meaning": "yüksekte",
+    "example": "She did it high."
+  },
+  {
+    "word": "hill",
+    "meaning": "tepe",
+    "example": "We need the hill."
+  },
+  {
+    "word": "himself",
+    "meaning": "kendisi (erkek)",
+    "example": "He fixed the car himself."
+  },
+  {
+    "word": "his",
+    "meaning": "onunki (erkek)",
+    "example": "This is his car."
+  },
+  {
+    "word": "hit",
+    "meaning": "vurmak",
+    "example": "They often hit it in the morning."
+  },
+  {
+    "word": "hockey",
+    "meaning": "hokey",
+    "example": "I have a nice hockey."
+  },
+  {
+    "word": "hold",
+    "meaning": "tutmak",
+    "example": "I like to hold in my free time."
+  },
+  {
+    "word": "hole",
+    "meaning": "delik",
+    "example": "We need the hole."
+  },
+  {
+    "word": "home",
+    "meaning": "ev ile ilgili",
+    "example": "My friend is home."
+  },
+  {
+    "word": "hope",
+    "meaning": "umut",
+    "example": "I can see a hope over there."
+  },
+  {
+    "word": "huge",
+    "meaning": "kocaman",
+    "example": "I feel huge today."
+  },
+  {
+    "word": "human",
+    "meaning": "insan",
+    "example": "It was a human day."
+  },
+  {
+    "word": "hurt",
+    "meaning": "incitmek, acımak",
+    "example": "I hurt every day."
+  },
+  {
+    "word": "ideal",
+    "meaning": "ideal",
+    "example": "My friend is ideal."
+  },
+  {
+    "word": "identify",
+    "meaning": "tanımlamak, tespit etmek",
+    "example": "They often identify it in the morning."
+  },
+  {
+    "word": "ill",
+    "meaning": "hasta",
+    "example": "I feel ill today."
+  },
+  {
+    "word": "illness",
+    "meaning": "hastalık",
+    "example": "This is my illness."
+  },
+  {
+    "word": "image",
+    "meaning": "görüntü, imaj",
+    "example": "I have a nice image."
+  },
+  {
+    "word": "immediately",
+    "meaning": "hemen",
+    "example": "We will finish it immediately."
+  },
+  {
+    "word": "impossible",
+    "meaning": "imkansız",
+    "example": "The film was impossible."
+  },
+  {
+    "word": "included",
+    "meaning": "dahil edilmiş",
+    "example": "I feel included today."
+  },
+  {
+    "word": "including",
+    "meaning": "dahil",
+    "example": "Everyone came, including my grandparents."
+  },
+  {
+    "word": "increase",
+    "meaning": "artırmak; artış",
+    "example": "I increase every day."
+  },
+  {
+    "word": "incredible",
+    "meaning": "inanılmaz",
+    "example": "My friend is incredible."
+  },
+  {
+    "word": "independent",
+    "meaning": "bağımsız",
+    "example": "The film was independent."
+  },
+  {
+    "word": "individual",
+    "meaning": "birey; bireysel",
+    "example": "We need the individual."
+  },
+  {
+    "word": "industry",
+    "meaning": "sanayi, endüstri",
+    "example": "She likes her industry."
+  },
+  {
+    "word": "informal",
+    "meaning": "gayri resmi",
+    "example": "She is very informal."
+  },
+  {
+    "word": "injury",
+    "meaning": "yaralanma",
+    "example": "This is my injury."
+  },
+  {
+    "word": "insect",
+    "meaning": "böcek",
+    "example": "I have a nice insect."
+  },
+  {
+    "word": "inside",
+    "meaning": "içinde",
+    "example": "Let's go inside, it's cold outside."
+  },
+  {
+    "word": "instead",
+    "meaning": "onun yerine",
+    "example": "I saw them instead."
+  },
+  {
+    "word": "instruction",
+    "meaning": "talimat",
+    "example": "She likes her instruction."
+  },
+  {
+    "word": "instructor",
+    "meaning": "eğitmen",
+    "example": "I can see an instructor over there."
+  },
+  {
+    "word": "instrument",
+    "meaning": "alet, enstrüman",
+    "example": "This is my instrument."
+  },
+  {
+    "word": "intelligent",
+    "meaning": "zeki",
+    "example": "I feel intelligent today."
+  },
+  {
+    "word": "international",
+    "meaning": "uluslararası",
+    "example": "It was an international day."
+  },
+  {
+    "word": "introduction",
+    "meaning": "giriş, tanıtım",
+    "example": "We need the introduction."
+  },
+  {
+    "word": "invent",
+    "meaning": "icat etmek",
+    "example": "We invent it together at the weekend."
+  },
+  {
+    "word": "invention",
+    "meaning": "icat",
+    "example": "I can see an invention over there."
+  },
+  {
+    "word": "invitation",
+    "meaning": "davet",
+    "example": "This is my invitation."
+  },
+  {
+    "word": "invite",
+    "meaning": "davet etmek",
+    "example": "I like to invite it in my free time."
+  },
+  {
+    "word": "involve",
+    "meaning": "içermek, dahil etmek",
+    "example": "I involve every day."
+  },
+  {
+    "word": "item",
+    "meaning": "madde, ürün",
+    "example": "We need the item."
+  },
+  {
+    "word": "itself",
+    "meaning": "kendisi (nesne)",
+    "example": "The dog looked at itself in the mirror."
+  },
+  {
+    "word": "jam",
+    "meaning": "reçel",
+    "example": "I can see a jam over there."
+  },
+  {
+    "word": "jazz",
+    "meaning": "caz",
+    "example": "This is my jazz."
+  },
+  {
+    "word": "jewellery",
+    "meaning": "mücevher",
+    "example": "I have a nice jewellery."
+  },
+  {
+    "word": "joke",
+    "meaning": "şaka; şaka yapmak",
+    "example": "Look at that joke!"
+  },
+  {
+    "word": "journalist",
+    "meaning": "gazeteci",
+    "example": "We need the journalist."
+  },
+  {
+    "word": "jump",
+    "meaning": "atlamak; atlama",
+    "example": "Do you jump every day?"
+  },
+  {
+    "word": "kid",
+    "meaning": "çocuk",
+    "example": "I can see a kid over there."
+  },
+  {
+    "word": "kill",
+    "meaning": "öldürmek",
+    "example": "I kill it every day."
+  },
+  {
+    "word": "king",
+    "meaning": "kral",
+    "example": "I have a nice king."
+  },
+  {
+    "word": "knee",
+    "meaning": "diz",
+    "example": "Look at that knee!"
+  },
+  {
+    "word": "knife",
+    "meaning": "bıçak",
+    "example": "We need the knife."
+  },
+  {
+    "word": "knock",
+    "meaning": "kapıyı çalmak",
+    "example": "I like to knock in my free time."
+  },
+  {
+    "word": "knowledge",
+    "meaning": "bilgi",
+    "example": "We need the knowledge."
+  },
+  {
+    "word": "lab",
+    "meaning": "laboratuvar",
+    "example": "This is my lab."
+  },
+  {
+    "word": "lady",
+    "meaning": "hanımefendi",
+    "example": "I have a nice lady."
+  },
+  {
+    "word": "lake",
+    "meaning": "göl",
+    "example": "Look at that lake!"
+  },
+  {
+    "word": "lamp",
+    "meaning": "lamba",
+    "example": "We need the lamp."
+  },
+  {
+    "word": "land",
+    "meaning": "kara ya inmek (uçak)",
+    "example": "I land every day."
+  },
+  {
+    "word": "laptop",
+    "meaning": "dizüstü bilgisayar",
+    "example": "I can see a laptop over there."
+  },
+  {
+    "word": "last1 (final)",
+    "meaning": "sonuncu, geçen",
+    "example": "This is the last bus tonight."
+  },
+  {
+    "word": "last1 (taking time)",
+    "meaning": "sürmek",
+    "example": "Do you last every day?"
+  },
+  {
+    "word": "later",
+    "meaning": "sonraki",
+    "example": "It was a later day."
+  },
+  {
+    "word": "laughter",
+    "meaning": "kahkaha",
+    "example": "I like laughter."
+  },
+  {
+    "word": "law",
+    "meaning": "kanun, hukuk",
+    "example": "She likes her law."
+  },
+  {
+    "word": "lawyer",
+    "meaning": "avukat",
+    "example": "I can see a lawyer over there."
+  },
+  {
+    "word": "lazy",
+    "meaning": "tembel",
+    "example": "I feel lazy today."
+  },
+  {
+    "word": "lead1",
+    "meaning": "yönetmek, öncülük etmek",
+    "example": "I like to lead in my free time."
+  },
+  {
+    "word": "leader",
+    "meaning": "lider",
+    "example": "Look at that leader!"
+  },
+  {
+    "word": "learning",
+    "meaning": "öğrenme",
+    "example": "We need the learning."
+  },
+  {
+    "word": "least",
+    "meaning": "en az",
+    "example": "This is the least expensive hotel in town."
+  },
+  {
+    "word": "lecture",
+    "meaning": "ders, konferans",
+    "example": "I can see a lecture over there."
+  },
+  {
+    "word": "lemon",
+    "meaning": "limon",
+    "example": "This is my lemon."
+  },
+  {
+    "word": "lend",
+    "meaning": "ödünç vermek",
+    "example": "I lend it every day."
+  },
+  {
+    "word": "less",
+    "meaning": "daha az",
+    "example": "I eat less sugar now."
+  },
+  {
+    "word": "level",
+    "meaning": "seviye",
+    "example": "We need the level."
+  },
+  {
+    "word": "lifestyle",
+    "meaning": "yaşam tarzı",
+    "example": "She likes her lifestyle."
+  },
+  {
+    "word": "lift",
+    "meaning": "kaldırmak; asansör",
+    "example": "I like to lift in my free time."
+  },
+  {
+    "word": "light (from the sun/a lamp)",
+    "meaning": "aydınlatmak, yakmak",
+    "example": "I light every day."
+  },
+  {
+    "word": "light (not heavy)",
+    "meaning": "hafif",
+    "example": "My friend is light."
+  },
+  {
+    "word": "likely",
+    "meaning": "muhtemel",
+    "example": "The film was likely."
+  },
+  {
+    "word": "link",
+    "meaning": "bağlantı; bağlamak",
+    "example": "We need the link."
+  },
+  {
+    "word": "listener",
+    "meaning": "dinleyici",
+    "example": "She likes her listener."
+  },
+  {
+    "word": "little",
+    "meaning": "az",
+    "example": "There is little milk left in the bottle."
+  },
+  {
+    "word": "lock",
+    "meaning": "kilitlemek; kilit",
+    "example": "We lock it together at the weekend."
+  },
+  {
+    "word": "look",
+    "meaning": "görünüm, bakış",
+    "example": "I have a nice look."
+  },
+  {
+    "word": "lorry",
+    "meaning": "kamyon",
+    "example": "Look at that lorry!"
+  },
+  {
+    "word": "lost",
+    "meaning": "kayıp, kaybolmuş",
+    "example": "It was a lost day."
+  },
+  {
+    "word": "loud",
+    "meaning": "gürültülü, yüksek sesli",
+    "example": "She is very loud."
+  },
+  {
+    "word": "loudly",
+    "meaning": "yüksek sesle",
+    "example": "He always speaks loudly."
+  },
+  {
+    "word": "lovely",
+    "meaning": "hoş, sevimli",
+    "example": "The film was lovely."
+  },
+  {
+    "word": "low",
+    "meaning": "alçak, düşük",
+    "example": "I feel low today."
+  },
+  {
+    "word": "luck",
+    "meaning": "şans",
+    "example": "This is my luck."
+  },
+  {
+    "word": "lucky",
+    "meaning": "şanslı",
+    "example": "She is very lucky."
+  },
+  {
+    "word": "mail",
+    "meaning": "posta; postalamak",
+    "example": "She likes her mail."
+  },
+  {
+    "word": "major",
+    "meaning": "büyük, önemli",
+    "example": "The film was major."
+  },
+  {
+    "word": "male",
+    "meaning": "erkek",
+    "example": "I feel male today."
+  },
+  {
+    "word": "manage",
+    "meaning": "yönetmek, başarmak",
+    "example": "I like to manage in my free time."
+  },
+  {
+    "word": "manager",
+    "meaning": "yönetici",
+    "example": "Look at that manager!"
+  },
+  {
+    "word": "manner",
+    "meaning": "tavır, tarz",
+    "example": "We need the manner."
+  },
+  {
+    "word": "mark",
+    "meaning": "işaret; işaretlemek",
+    "example": "They often mark in the morning."
+  },
+  {
+    "word": "marry",
+    "meaning": "evlenmek",
+    "example": "Do you marry every day?"
+  },
+  {
+    "word": "material",
+    "meaning": "malzeme, kumaş",
+    "example": "This is my material."
+  },
+  {
+    "word": "mathematics",
+    "meaning": "matematik",
+    "example": "I have a nice mathematics."
+  },
+  {
+    "word": "maths",
+    "meaning": "matematik",
+    "example": "Look at that maths!"
+  },
+  {
+    "word": "matter",
+    "meaning": "mesele; önemli olmak",
+    "example": "We need the matter."
+  },
+  {
+    "word": "may",
+    "meaning": "-ebilir (modal fiil)",
+    "example": "May I open the window?"
+  },
+  {
+    "word": "media",
+    "meaning": "medya",
+    "example": "I can see a media over there."
+  },
+  {
+    "word": "medical",
+    "meaning": "tıbbi",
+    "example": "She is very medical."
+  },
+  {
+    "word": "medicine",
+    "meaning": "ilaç, tıp",
+    "example": "I have a nice medicine."
+  },
+  {
+    "word": "memory",
+    "meaning": "hafıza, anı",
+    "example": "Look at that memory!"
+  },
+  {
+    "word": "mention",
+    "meaning": "bahsetmek",
+    "example": "Do you mention it every day?"
+  },
+  {
+    "word": "metal",
+    "meaning": "metal",
+    "example": "She likes her metal."
+  },
+  {
+    "word": "method",
+    "meaning": "yöntem",
+    "example": "I can see a method over there."
+  },
+  {
+    "word": "middle",
+    "meaning": "orta",
+    "example": "This is my middle."
+  },
+  {
+    "word": "might",
+    "meaning": "-ebilirdi (modal fiil)",
+    "example": "It might rain later today."
+  },
+  {
+    "word": "mind",
+    "meaning": "zihin; umursamak",
+    "example": "Look at that mind!"
+  },
+  {
+    "word": "mine (belongs to me)",
+    "meaning": "benimki",
+    "example": "This pen is mine."
+  },
+  {
+    "word": "mirror",
+    "meaning": "ayna",
+    "example": "She likes her mirror."
+  },
+  {
+    "word": "missing",
+    "meaning": "kayıp, eksik",
+    "example": "My friend is missing."
+  },
+  {
+    "word": "mobile",
+    "meaning": "cep telefonu; hareketli",
+    "example": "The film was mobile."
+  },
+  {
+    "word": "monkey",
+    "meaning": "maymun",
+    "example": "I have a nice monkey."
+  },
+  {
+    "word": "moon",
+    "meaning": "ay (gökyüzü)",
+    "example": "Look at that moon!"
+  },
+  {
+    "word": "mostly",
+    "meaning": "çoğunlukla",
+    "example": "I saw them mostly."
+  },
+  {
+    "word": "motorcycle",
+    "meaning": "motosiklet",
+    "example": "She likes her motorcycle."
+  },
+  {
+    "word": "movement",
+    "meaning": "hareket",
+    "example": "I can see a movement over there."
+  },
+  {
+    "word": "musical",
+    "meaning": "müzikal",
+    "example": "I feel musical today."
+  },
+  {
+    "word": "musician",
+    "meaning": "müzisyen",
+    "example": "I have a nice musician."
+  },
+  {
+    "word": "myself",
+    "meaning": "kendim",
+    "example": "I made this dinner myself."
+  },
+  {
+    "word": "narrow",
+    "meaning": "dar",
+    "example": "My friend is narrow."
+  },
+  {
+    "word": "national",
+    "meaning": "ulusal",
+    "example": "The film was national."
+  },
+  {
+    "word": "nature",
+    "meaning": "doğa",
+    "example": "I can see a nature over there."
+  },
+  {
+    "word": "nearly",
+    "meaning": "neredeyse",
+    "example": "She did it nearly."
+  },
+  {
+    "word": "necessary",
+    "meaning": "gerekli",
+    "example": "She is very necessary."
+  },
+  {
+    "word": "neck",
+    "meaning": "boyun",
+    "example": "Look at that neck!"
+  },
+  {
+    "word": "need",
+    "meaning": "ihtiyaç",
+    "example": "We need the need."
+  },
+  {
+    "word": "neither",
+    "meaning": "ikisi de değil",
+    "example": "Neither of us likes coffee."
+  },
+  {
+    "word": "nervous",
+    "meaning": "gergin",
+    "example": "It was a nervous day."
+  },
+  {
+    "word": "network",
+    "meaning": "ağ, şebeke",
+    "example": "This is my network."
+  },
+  {
+    "word": "noise",
+    "meaning": "gürültü",
+    "example": "I have a nice noise."
+  },
+  {
+    "word": "noisy",
+    "meaning": "gürültülü",
+    "example": "The film was noisy."
+  },
+  {
+    "word": "none",
+    "meaning": "hiçbiri",
+    "example": "None of the students were late."
+  },
+  {
+    "word": "normal",
+    "meaning": "normal",
+    "example": "It was a normal day."
+  },
+  {
+    "word": "normally",
+    "meaning": "normalde",
+    "example": "I saw them normally."
+  },
+  {
+    "word": "notice",
+    "meaning": "fark etmek; ilan",
+    "example": "We notice it together at the weekend."
+  },
+  {
+    "word": "novel",
+    "meaning": "roman",
+    "example": "I have a nice novel."
+  },
+  {
+    "word": "nowhere",
+    "meaning": "hiçbir yerde",
+    "example": "We will finish it nowhere."
+  },
+  {
+    "word": "number",
+    "meaning": "numaralandırmak",
+    "example": "I like to number in my free time."
+  },
+  {
+    "word": "nut",
+    "meaning": "kuruyemiş, somun",
+    "example": "She likes her nut."
+  },
+  {
+    "word": "ocean",
+    "meaning": "okyanus",
+    "example": "I can see an ocean over there."
+  },
+  {
+    "word": "offer",
+    "meaning": "teklif etmek; teklif",
+    "example": "They often offer it in the morning."
+  },
+  {
+    "word": "officer",
+    "meaning": "memur, subay",
+    "example": "I have a nice officer."
+  },
+  {
+    "word": "oil",
+    "meaning": "yağ, petrol",
+    "example": "This is my oil."
+  },
+  {
+    "word": "onto",
+    "meaning": "üzerine",
+    "example": "The cat jumped onto the table."
+  },
+  {
+    "word": "opportunity",
+    "meaning": "fırsat",
+    "example": "She likes her opportunity."
+  },
+  {
+    "word": "option",
+    "meaning": "seçenek",
+    "example": "I can see an option over there."
+  },
+  {
+    "word": "ordinary",
+    "meaning": "sıradan",
+    "example": "I feel ordinary today."
+  },
+  {
+    "word": "organization",
+    "meaning": "organizasyon, kuruluş",
+    "example": "I have a nice organization."
+  },
+  {
+    "word": "organize",
+    "meaning": "düzenlemek",
+    "example": "I organize every day."
+  },
+  {
+    "word": "original",
+    "meaning": "orijinal",
+    "example": "My friend is original."
+  },
+  {
+    "word": "ourselves",
+    "meaning": "kendimiz",
+    "example": "We enjoyed ourselves at the party."
+  },
+  {
+    "word": "outside",
+    "meaning": "dışında",
+    "example": "The children are playing outside."
+  },
+  {
+    "word": "oven",
+    "meaning": "fırın",
+    "example": "This is my oven."
+  },
+  {
+    "word": "own",
+    "meaning": "sahip olmak",
+    "example": "She has her own room."
+  },
+  {
+    "word": "owner",
+    "meaning": "sahip",
+    "example": "Look at that owner!"
+  },
+  {
+    "word": "pack",
+    "meaning": "paketlemek",
+    "example": "They often pack in the morning."
+  },
+  {
+    "word": "pain",
+    "meaning": "acı, ağrı",
+    "example": "She likes her pain."
+  },
+  {
+    "word": "painter",
+    "meaning": "ressam",
+    "example": "I can see a painter over there."
+  },
+  {
+    "word": "palace",
+    "meaning": "saray",
+    "example": "This is my palace."
+  },
+  {
+    "word": "pants",
+    "meaning": "külot, pantolon",
+    "example": "I have a nice pants."
+  },
+  {
+    "word": "parking",
+    "meaning": "park etme",
+    "example": "Look at that parking!"
+  },
+  {
+    "word": "particular",
+    "meaning": "belirli, özel",
+    "example": "I feel particular today."
+  },
+  {
+    "word": "pass",
+    "meaning": "geçmek",
+    "example": "I like to pass in my free time."
+  },
+  {
+    "word": "passenger",
+    "meaning": "yolcu",
+    "example": "I can see a passenger over there."
+  },
+  {
+    "word": "past",
+    "meaning": "geçmişte",
+    "example": "It is half past six."
+  },
+  {
+    "word": "patient",
+    "meaning": "hasta (isim)",
+    "example": "I have a nice patient."
+  },
+  {
+    "word": "pattern",
+    "meaning": "desen, model",
+    "example": "Look at that pattern!"
+  },
+  {
+    "word": "pay",
+    "meaning": "maaş, ödeme",
+    "example": "We need the pay."
+  },
+  {
+    "word": "peace",
+    "meaning": "barış",
+    "example": "She likes her peace."
+  },
+  {
+    "word": "penny",
+    "meaning": "peni",
+    "example": "I can see a penny over there."
+  },
+  {
+    "word": "per",
+    "meaning": "başına",
+    "example": "The ticket costs ten dollars per person."
+  },
+  {
+    "word": "per cent",
+    "meaning": "yüzde",
+    "example": "I have a nice per cent."
+  },
+  {
+    "word": "perform",
+    "meaning": "performans sergilemek",
+    "example": "I like to perform in my free time."
+  },
+  {
+    "word": "perhaps",
+    "meaning": "belki",
+    "example": "I saw them perhaps."
+  },
+  {
+    "word": "permission",
+    "meaning": "izin",
+    "example": "This is my permission."
+  },
+  {
+    "word": "personality",
+    "meaning": "kişilik",
+    "example": "I can see a personality over there."
+  },
+  {
+    "word": "pet",
+    "meaning": "evcil hayvan",
+    "example": "This is my pet."
+  },
+  {
+    "word": "petrol",
+    "meaning": "benzin",
+    "example": "I have a nice petrol."
+  },
+  {
+    "word": "photograph",
+    "meaning": "fotoğraflamak",
+    "example": "I photograph every day."
+  },
+  {
+    "word": "physical",
+    "meaning": "fiziksel",
+    "example": "My friend is physical."
+  },
+  {
+    "word": "physics",
+    "meaning": "fizik",
+    "example": "She likes her physics."
+  },
+  {
+    "word": "pick",
+    "meaning": "seçmek, toplamak",
+    "example": "Do you pick it every day?"
+  },
+  {
+    "word": "pilot",
+    "meaning": "pilot",
+    "example": "This is my pilot."
+  },
+  {
+    "word": "planet",
+    "meaning": "gezegen",
+    "example": "I have a nice planet."
+  },
+  {
+    "word": "plant",
+    "meaning": "dikmek (bitki)",
+    "example": "We plant it together at the weekend."
+  },
+  {
+    "word": "plastic",
+    "meaning": "plastik",
+    "example": "We need the plastic."
+  },
+  {
+    "word": "plate",
+    "meaning": "tabak",
+    "example": "She likes her plate."
+  },
+  {
+    "word": "platform",
+    "meaning": "peron, platform",
+    "example": "I can see a platform over there."
+  },
+  {
+    "word": "please",
+    "meaning": "memnun etmek",
+    "example": "Close the door, please."
+  },
+  {
+    "word": "pleased",
+    "meaning": "memnun",
+    "example": "My friend is pleased."
+  },
+  {
+    "word": "pocket",
+    "meaning": "cep",
+    "example": "Look at that pocket!"
+  },
+  {
+    "word": "polite",
+    "meaning": "kibar",
+    "example": "I feel polite today."
+  },
+  {
+    "word": "pollution",
+    "meaning": "kirlilik",
+    "example": "She likes her pollution."
+  },
+  {
+    "word": "pop",
+    "meaning": "pop müzik",
+    "example": "I can see a pop over there."
+  },
+  {
+    "word": "population",
+    "meaning": "nüfus",
+    "example": "This is my population."
+  },
+  {
+    "word": "position",
+    "meaning": "pozisyon, konum",
+    "example": "I have a nice position."
+  },
+  {
+    "word": "possession",
+    "meaning": "sahip olma, mülk",
+    "example": "Look at that possession!"
+  },
+  {
+    "word": "possibility",
+    "meaning": "olasılık",
+    "example": "We need the possibility."
+  },
+  {
+    "word": "poster",
+    "meaning": "poster",
+    "example": "She likes her poster."
+  },
+  {
+    "word": "power",
+    "meaning": "güç",
+    "example": "I can see a power over there."
+  },
+  {
+    "word": "predict",
+    "meaning": "tahmin etmek",
+    "example": "They often predict in the morning."
+  },
+  {
+    "word": "present",
+    "meaning": "sunmak",
+    "example": "Do you present every day?"
+  },
+  {
+    "word": "president",
+    "meaning": "başkan",
+    "example": "Look at that president!"
+  },
+  {
+    "word": "prevent",
+    "meaning": "önlemek",
+    "example": "I prevent every day."
+  },
+  {
+    "word": "print",
+    "meaning": "yazdırmak",
+    "example": "We print it together at the weekend."
+  },
+  {
+    "word": "printer",
+    "meaning": "yazıcı",
+    "example": "I can see a printer over there."
+  },
+  {
+    "word": "prison",
+    "meaning": "hapishane",
+    "example": "This is my prison."
+  },
+  {
+    "word": "prize",
+    "meaning": "ödül",
+    "example": "I have a nice prize."
+  },
+  {
+    "word": "process",
+    "meaning": "süreç",
+    "example": "Look at that process!"
+  },
+  {
+    "word": "produce",
+    "meaning": "üretmek",
+    "example": "We produce it together at the weekend."
+  },
+  {
+    "word": "professional",
+    "meaning": "profesyonel",
+    "example": "The film was professional."
+  },
+  {
+    "word": "professor",
+    "meaning": "profesör",
+    "example": "I can see a professor over there."
+  },
+  {
+    "word": "profile",
+    "meaning": "profil",
+    "example": "This is my profile."
+  },
+  {
+    "word": "program",
+    "meaning": "program (bilgisayar)",
+    "example": "I have a nice program."
+  },
+  {
+    "word": "progress",
+    "meaning": "ilerleme",
+    "example": "This is my progress."
+  },
+  {
+    "word": "promise",
+    "meaning": "söz vermek; söz",
+    "example": "They often promise it in the morning."
+  },
+  {
+    "word": "pronounce",
+    "meaning": "telaffuz etmek",
+    "example": "Do you pronounce every day?"
+  },
+  {
+    "word": "protect",
+    "meaning": "korumak",
+    "example": "I like to protect it in my free time."
+  },
+  {
+    "word": "provide",
+    "meaning": "sağlamak",
+    "example": "I provide it every day."
+  },
+  {
+    "word": "pub",
+    "meaning": "meyhane, bar",
+    "example": "I have a nice pub."
+  },
+  {
+    "word": "public",
+    "meaning": "halk, kamu",
+    "example": "The film was public."
+  },
+  {
+    "word": "publish",
+    "meaning": "yayınlamak",
+    "example": "Do you publish every day?"
+  },
+  {
+    "word": "pull",
+    "meaning": "çekmek",
+    "example": "I like to pull it in my free time."
+  },
+  {
+    "word": "purpose",
+    "meaning": "amaç",
+    "example": "I can see a purpose over there."
+  },
+  {
+    "word": "push",
+    "meaning": "itmek",
+    "example": "We push it together at the weekend."
+  },
+  {
+    "word": "quality",
+    "meaning": "kalite",
+    "example": "I have a nice quality."
+  },
+  {
+    "word": "quantity",
+    "meaning": "miktar",
+    "example": "Look at that quantity!"
+  },
+  {
+    "word": "queen",
+    "meaning": "kraliçe",
+    "example": "We need the queen."
+  },
+  {
+    "word": "question",
+    "meaning": "soru sormak",
+    "example": "I question it every day."
+  },
+  {
+    "word": "quietly",
+    "meaning": "sessizce",
+    "example": "I saw them quietly."
+  },
+  {
+    "word": "race (competition)",
+    "meaning": "yarış; yarışmak",
+    "example": "This is my race."
+  },
+  {
+    "word": "railway",
+    "meaning": "demiryolu",
+    "example": "I have a nice railway."
+  },
+  {
+    "word": "raise",
+    "meaning": "kaldırmak, yükseltmek",
+    "example": "I like to raise it in my free time."
+  },
+  {
+    "word": "rate",
+    "meaning": "oran, hız",
+    "example": "We need the rate."
+  },
+  {
+    "word": "rather",
+    "meaning": "oldukça, daha çok",
+    "example": "She did it rather."
+  },
+  {
+    "word": "reach",
+    "meaning": "ulaşmak",
+    "example": "They often reach it in the morning."
+  },
+  {
+    "word": "react",
+    "meaning": "tepki vermek",
+    "example": "Do you react every day?"
+  },
+  {
+    "word": "realize",
+    "meaning": "fark etmek, anlamak",
+    "example": "I like to realize it in my free time."
+  },
+  {
+    "word": "receive",
+    "meaning": "almak (bir şey)",
+    "example": "I receive it every day."
+  },
+  {
+    "word": "recent",
+    "meaning": "yakın zamanlı",
+    "example": "My friend is recent."
+  },
+  {
+    "word": "recently",
+    "meaning": "son zamanlarda",
+    "example": "We will finish it recently."
+  },
+  {
+    "word": "reception",
+    "meaning": "resepsiyon",
+    "example": "I can see a reception over there."
+  },
+  {
+    "word": "recipe",
+    "meaning": "tarif (yemek)",
+    "example": "This is my recipe."
+  },
+  {
+    "word": "recognize",
+    "meaning": "tanımak",
+    "example": "I recognize it every day."
+  },
+  {
+    "word": "recommend",
+    "meaning": "tavsiye etmek",
+    "example": "We recommend it together at the weekend."
+  },
+  {
+    "word": "record",
+    "meaning": "kayıt; kaydetmek",
+    "example": "We need the record."
+  },
+  {
+    "word": "recording",
+    "meaning": "kayıt (ses/video)",
+    "example": "She likes her recording."
+  },
+  {
+    "word": "recycle",
+    "meaning": "geri dönüştürmek",
+    "example": "I like to recycle in my free time."
+  },
+  {
+    "word": "reduce",
+    "meaning": "azaltmak",
+    "example": "I reduce it every day."
+  },
+  {
+    "word": "refer",
+    "meaning": "atıfta bulunmak",
+    "example": "We refer together at the weekend."
+  },
+  {
+    "word": "refuse1",
+    "meaning": "reddetmek",
+    "example": "They often refuse in the morning."
+  },
+  {
+    "word": "region",
+    "meaning": "bölge",
+    "example": "We need the region."
+  },
+  {
+    "word": "regular",
+    "meaning": "düzenli",
+    "example": "It was a regular day."
+  },
+  {
+    "word": "relationship",
+    "meaning": "ilişki",
+    "example": "I can see a relationship over there."
+  },
+  {
+    "word": "remove",
+    "meaning": "kaldırmak, çıkarmak",
+    "example": "We remove it together at the weekend."
+  },
+  {
+    "word": "repair",
+    "meaning": "tamir etmek",
+    "example": "They often repair in the morning."
+  },
+  {
+    "word": "replace",
+    "meaning": "değiştirmek, yerine koymak",
+    "example": "Do you replace it every day?"
+  },
+  {
+    "word": "reply",
+    "meaning": "yanıtlamak; yanıt",
+    "example": "I like to reply in my free time."
+  },
+  {
+    "word": "report",
+    "meaning": "rapor vermek, bildirmek",
+    "example": "I report every day."
+  },
+  {
+    "word": "reporter",
+    "meaning": "muhabir",
+    "example": "I can see a reporter over there."
+  },
+  {
+    "word": "request",
+    "meaning": "istek, talep",
+    "example": "This is my request."
+  },
+  {
+    "word": "research",
+    "meaning": "araştırma; araştırmak",
+    "example": "I like research."
+  },
+  {
+    "word": "researcher",
+    "meaning": "araştırmacı",
+    "example": "Look at that researcher!"
+  },
+  {
+    "word": "respond",
+    "meaning": "yanıt vermek",
+    "example": "I respond every day."
+  },
+  {
+    "word": "response",
+    "meaning": "yanıt",
+    "example": "She likes her response."
+  },
+  {
+    "word": "rest (remaining part)",
+    "meaning": "geri kalan",
+    "example": "I can see a rest over there."
+  },
+  {
+    "word": "rest (sleep/relax)",
+    "meaning": "dinlenme; dinlenmek",
+    "example": "This is my rest."
+  },
+  {
+    "word": "review",
+    "meaning": "inceleme; incelemek",
+    "example": "I have a nice review."
+  },
+  {
+    "word": "ride",
+    "meaning": "biniş, yolculuk",
+    "example": "Look at that ride!"
+  },
+  {
+    "word": "ring1",
+    "meaning": "yüzük",
+    "example": "We need the ring."
+  },
+  {
+    "word": "ring2",
+    "meaning": "çalmak (zil)",
+    "example": "They often ring in the morning."
+  },
+  {
+    "word": "rise",
+    "meaning": "yükselmek",
+    "example": "Do you rise every day?"
+  },
+  {
+    "word": "rock (stone)",
+    "meaning": "kaya",
+    "example": "This is my rock."
+  },
+  {
+    "word": "rock (music)",
+    "meaning": "rock müziği",
+    "example": "I have a nice rock."
+  },
+  {
+    "word": "role",
+    "meaning": "rol",
+    "example": "Look at that role!"
+  },
+  {
+    "word": "roof",
+    "meaning": "çatı",
+    "example": "We need the roof."
+  },
+  {
+    "word": "round",
+    "meaning": "yuvarlak",
+    "example": "The children sat in a round circle."
+  },
+  {
+    "word": "route",
+    "meaning": "rota, güzergah",
+    "example": "I can see a route over there."
+  },
+  {
+    "word": "rubbish",
+    "meaning": "çöp",
+    "example": "This is my rubbish."
+  },
+  {
+    "word": "rude",
+    "meaning": "kaba",
+    "example": "My friend is rude."
+  },
+  {
+    "word": "run",
+    "meaning": "koşu",
+    "example": "Look at that run!"
+  },
+  {
+    "word": "runner",
+    "meaning": "koşucu",
+    "example": "We need the runner."
+  },
+  {
+    "word": "running",
+    "meaning": "koşu (isim)",
+    "example": "She likes her running."
+  },
+  {
+    "word": "sadly",
+    "meaning": "üzülerek",
+    "example": "He always speaks sadly."
+  },
+  {
+    "word": "safe",
+    "meaning": "güvenli",
+    "example": "My friend is safe."
+  },
+  {
+    "word": "sail",
+    "meaning": "yelken açmak",
+    "example": "They often sail in the morning."
+  },
+  {
+    "word": "sailing",
+    "meaning": "yelkencilik",
+    "example": "Look at that sailing!"
+  },
+  {
+    "word": "salary",
+    "meaning": "maaş",
+    "example": "We need the salary."
+  },
+  {
+    "word": "sale",
+    "meaning": "satış",
+    "example": "She likes her sale."
+  },
+  {
+    "word": "sauce",
+    "meaning": "sos",
+    "example": "I can see a sauce over there."
+  },
+  {
+    "word": "save",
+    "meaning": "kurtarmak, biriktirmek",
+    "example": "They often save in the morning."
+  },
+  {
+    "word": "scared",
+    "meaning": "korkmuş",
+    "example": "I feel scared today."
+  },
+  {
+    "word": "scary",
+    "meaning": "korkutucu",
+    "example": "It was a scary day."
+  },
+  {
+    "word": "scene",
+    "meaning": "sahne",
+    "example": "We need the scene."
+  },
+  {
+    "word": "schedule",
+    "meaning": "program, çizelge",
+    "example": "She likes her schedule."
+  },
+  {
+    "word": "score",
+    "meaning": "skor, puan; gol atmak",
+    "example": "They often score in the morning."
+  },
+  {
+    "word": "screen",
+    "meaning": "ekran",
+    "example": "This is my screen."
+  },
+  {
+    "word": "search",
+    "meaning": "arama; aramak",
+    "example": "I have a nice search."
+  },
+  {
+    "word": "season",
+    "meaning": "mevsim, sezon",
+    "example": "Look at that season!"
+  },
+  {
+    "word": "seat",
+    "meaning": "koltuk",
+    "example": "We need the seat."
+  },
+  {
+    "word": "second1 (next after the first)",
+    "meaning": "ikinci olarak",
+    "example": "She finished in second place."
+  },
+  {
+    "word": "secondly",
+    "meaning": "ikinci olarak",
+    "example": "I saw them secondly."
+  },
+  {
+    "word": "secret",
+    "meaning": "sır; gizli",
+    "example": "It was a secret day."
+  },
+  {
+    "word": "secretary",
+    "meaning": "sekreter",
+    "example": "I have a nice secretary."
+  },
+  {
+    "word": "seem",
+    "meaning": "görünmek (gibi görünmek)",
+    "example": "We seem together at the weekend."
+  },
+  {
+    "word": "sense",
+    "meaning": "duyu, anlam",
+    "example": "We need the sense."
+  },
+  {
+    "word": "separate",
+    "meaning": "ayrı; ayırmak",
+    "example": "I feel separate today."
+  },
+  {
+    "word": "series",
+    "meaning": "dizi, seri",
+    "example": "I can see a series over there."
+  },
+  {
+    "word": "serious",
+    "meaning": "ciddi",
+    "example": "She is very serious."
+  },
+  {
+    "word": "serve",
+    "meaning": "hizmet etmek",
+    "example": "We serve together at the weekend."
+  },
+  {
+    "word": "service",
+    "meaning": "hizmet",
+    "example": "Look at that service!"
+  },
+  {
+    "word": "several",
+    "meaning": "birkaç",
+    "example": "I have read several books this month."
+  },
+  {
+    "word": "shake",
+    "meaning": "sallamak",
+    "example": "I like to shake in my free time."
+  },
+  {
+    "word": "shall",
+    "meaning": "-ecek (modal fiil)",
+    "example": "Shall we go to the cinema tonight?"
+  },
+  {
+    "word": "shape",
+    "meaning": "şekil",
+    "example": "This is my shape."
+  },
+  {
+    "word": "sheet",
+    "meaning": "çarşaf, kağıt",
+    "example": "I have a nice sheet."
+  },
+  {
+    "word": "ship",
+    "meaning": "gemi",
+    "example": "Look at that ship!"
+  },
+  {
+    "word": "shoulder",
+    "meaning": "omuz",
+    "example": "We need the shoulder."
+  },
+  {
+    "word": "shout",
+    "meaning": "bağırmak",
+    "example": "I shout every day."
+  },
+  {
+    "word": "shut",
+    "meaning": "kapatmak; kapalı",
+    "example": "We shut it together at the weekend."
+  },
+  {
+    "word": "side",
+    "meaning": "taraf, yan",
+    "example": "This is my side."
+  },
+  {
+    "word": "sign",
+    "meaning": "işaret, tabela; imzalamak",
+    "example": "I have a nice sign."
+  },
+  {
+    "word": "silver",
+    "meaning": "gümüş",
+    "example": "Look at that silver!"
+  },
+  {
+    "word": "simple",
+    "meaning": "basit",
+    "example": "She is very simple."
+  },
+  {
+    "word": "since",
+    "meaning": "-den beri, çünkü",
+    "example": "I have lived here since 2019."
+  },
+  {
+    "word": "singing",
+    "meaning": "şarkı söyleme",
+    "example": "I can see a singing over there."
+  },
+  {
+    "word": "single",
+    "meaning": "tek, bekar",
+    "example": "I feel single today."
+  },
+  {
+    "word": "sir",
+    "meaning": "efendim, bay",
+    "example": "I have a nice sir."
+  },
+  {
+    "word": "site",
+    "meaning": "site, alan",
+    "example": "Look at that site!"
+  },
+  {
+    "word": "size",
+    "meaning": "boyut",
+    "example": "We need the size."
+  },
+  {
+    "word": "ski",
+    "meaning": "kayak yapmak",
+    "example": "They often ski in the morning."
+  },
+  {
+    "word": "skiing",
+    "meaning": "kayak yapma",
+    "example": "I can see a skiing over there."
+  },
+  {
+    "word": "skin",
+    "meaning": "cilt, deri",
+    "example": "This is my skin."
+  },
+  {
+    "word": "sky",
+    "meaning": "gökyüzü",
+    "example": "I have a nice sky."
+  },
+  {
+    "word": "sleep",
+    "meaning": "uyku",
+    "example": "This is my sleep."
+  },
+  {
+    "word": "slowly",
+    "meaning": "yavaşça",
+    "example": "He always speaks slowly."
+  },
+  {
+    "word": "smartphone",
+    "meaning": "akıllı telefon",
+    "example": "She likes her smartphone."
+  },
+  {
+    "word": "smell",
+    "meaning": "koklamak; koku",
+    "example": "I like to smell in my free time."
+  },
+  {
+    "word": "smile",
+    "meaning": "gülümsemek; gülümseme",
+    "example": "I smile every day."
+  },
+  {
+    "word": "smoke",
+    "meaning": "duman; sigara içmek",
+    "example": "I have a nice smoke."
+  },
+  {
+    "word": "smoking",
+    "meaning": "sigara içme",
+    "example": "Look at that smoking!"
+  },
+  {
+    "word": "soap",
+    "meaning": "sabun",
+    "example": "We need the soap."
+  },
+  {
+    "word": "soccer",
+    "meaning": "futbol (Amerikan İngilizcesi)",
+    "example": "She likes her soccer."
+  },
+  {
+    "word": "social",
+    "meaning": "sosyal",
+    "example": "She is very social."
+  },
+  {
+    "word": "society",
+    "meaning": "toplum",
+    "example": "This is my society."
+  },
+  {
+    "word": "sock",
+    "meaning": "çorap",
+    "example": "I have a nice sock."
+  },
+  {
+    "word": "soft",
+    "meaning": "yumuşak",
+    "example": "I feel soft today."
+  },
+  {
+    "word": "soldier",
+    "meaning": "asker",
+    "example": "We need the soldier."
+  },
+  {
+    "word": "solution",
+    "meaning": "çözüm",
+    "example": "She likes her solution."
+  },
+  {
+    "word": "solve",
+    "meaning": "çözmek",
+    "example": "We solve it together at the weekend."
+  },
+  {
+    "word": "somewhere",
+    "meaning": "bir yerde",
+    "example": "Let's go somewhere warm this winter."
+  },
+  {
+    "word": "sort",
+    "meaning": "tür, çeşit",
+    "example": "I have a nice sort."
+  },
+  {
+    "word": "source",
+    "meaning": "kaynak",
+    "example": "Look at that source!"
+  },
+  {
+    "word": "speaker",
+    "meaning": "konuşmacı, hoparlör",
+    "example": "We need the speaker."
+  },
+  {
+    "word": "specific",
+    "meaning": "özel, belirli",
+    "example": "My friend is specific."
+  },
+  {
+    "word": "speech",
+    "meaning": "konuşma",
+    "example": "I can see a speech over there."
+  },
+  {
+    "word": "speed",
+    "meaning": "hız",
+    "example": "This is my speed."
+  },
+  {
+    "word": "spider",
+    "meaning": "örümcek",
+    "example": "I have a nice spider."
+  },
+  {
+    "word": "spoon",
+    "meaning": "kaşık",
+    "example": "Look at that spoon!"
+  },
+  {
+    "word": "square",
+    "meaning": "kare, meydan",
+    "example": "My friend is square."
+  },
+  {
+    "word": "stage",
+    "meaning": "sahne, aşama",
+    "example": "She likes her stage."
+  },
+  {
+    "word": "stair",
+    "meaning": "merdiven basamağı",
+    "example": "I can see a stair over there."
+  },
+  {
+    "word": "stamp",
+    "meaning": "pul",
+    "example": "This is my stamp."
+  },
+  {
+    "word": "star",
+    "meaning": "yıldız olmak (başrolü oynamak)",
+    "example": "I star every day."
+  },
+  {
+    "word": "start",
+    "meaning": "başlangıç",
+    "example": "Look at that start!"
+  },
+  {
+    "word": "state",
+    "meaning": "devlet, eyalet, durum",
+    "example": "We need the state."
+  },
+  {
+    "word": "stay",
+    "meaning": "kalış",
+    "example": "She likes her stay."
+  },
+  {
+    "word": "steal",
+    "meaning": "çalmak (hırsızlık)",
+    "example": "I like to steal in my free time."
+  },
+  {
+    "word": "step",
+    "meaning": "adım",
+    "example": "This is my step."
+  },
+  {
+    "word": "stomach",
+    "meaning": "mide, karın",
+    "example": "I have a nice stomach."
+  },
+  {
+    "word": "stone",
+    "meaning": "taş",
+    "example": "Look at that stone!"
+  },
+  {
+    "word": "store",
+    "meaning": "mağaza",
+    "example": "We need the store."
+  },
+  {
+    "word": "storm",
+    "meaning": "fırtına",
+    "example": "She likes her storm."
+  },
+  {
+    "word": "straight",
+    "meaning": "düz, doğru",
+    "example": "I saw them straight."
+  },
+  {
+    "word": "strange",
+    "meaning": "garip",
+    "example": "My friend is strange."
+  },
+  {
+    "word": "strategy",
+    "meaning": "strateji",
+    "example": "I have a nice strategy."
+  },
+  {
+    "word": "stress",
+    "meaning": "stres",
+    "example": "Look at that stress!"
+  },
+  {
+    "word": "structure",
+    "meaning": "yapı",
+    "example": "We need the structure."
+  },
+  {
+    "word": "stupid",
+    "meaning": "aptal",
+    "example": "She is very stupid."
+  },
+  {
+    "word": "succeed",
+    "meaning": "başarmak",
+    "example": "We succeed together at the weekend."
+  },
+  {
+    "word": "successful",
+    "meaning": "başarılı",
+    "example": "The film was successful."
+  },
+  {
+    "word": "such",
+    "meaning": "böyle, bu tür",
+    "example": "It was such a beautiful day."
+  },
+  {
+    "word": "suddenly",
+    "meaning": "aniden",
+    "example": "She did it suddenly."
+  },
+  {
+    "word": "suggest",
+    "meaning": "önermek",
+    "example": "I suggest it every day."
+  },
+  {
+    "word": "suggestion",
+    "meaning": "öneri",
+    "example": "She likes her suggestion."
+  },
+  {
+    "word": "suit",
+    "meaning": "takım elbise",
+    "example": "I can see a suit over there."
+  },
+  {
+    "word": "support",
+    "meaning": "destek; desteklemek",
+    "example": "Do you support every day?"
+  },
+  {
+    "word": "suppose",
+    "meaning": "sanmak, varsaymak",
+    "example": "I like to suppose it in my free time."
+  },
+  {
+    "word": "sure",
+    "meaning": "kesinlikle, elbette",
+    "example": "We will finish it sure."
+  },
+  {
+    "word": "surprise",
+    "meaning": "sürpriz; şaşırtmak",
+    "example": "We need the surprise."
+  },
+  {
+    "word": "surprised",
+    "meaning": "şaşırmış",
+    "example": "The film was surprised."
+  },
+  {
+    "word": "surprising",
+    "meaning": "şaşırtıcı",
+    "example": "I feel surprising today."
+  },
+  {
+    "word": "survey",
+    "meaning": "anket, araştırma",
+    "example": "This is my survey."
+  },
+  {
+    "word": "sweet",
+    "meaning": "tatlı; şeker",
+    "example": "She is very sweet."
+  },
+  {
+    "word": "symbol",
+    "meaning": "sembol",
+    "example": "Look at that symbol!"
+  },
+  {
+    "word": "system",
+    "meaning": "sistem",
+    "example": "We need the system."
+  },
+  {
+    "word": "tablet",
+    "meaning": "tablet",
+    "example": "She likes her tablet."
+  },
+  {
+    "word": "talk",
+    "meaning": "konuşma, sohbet",
+    "example": "I can see a talk over there."
+  },
+  {
+    "word": "target",
+    "meaning": "hedef",
+    "example": "This is my target."
+  },
+  {
+    "word": "task",
+    "meaning": "görev",
+    "example": "I have a nice task."
+  },
+  {
+    "word": "taste",
+    "meaning": "tat; tatmak",
+    "example": "Look at that taste!"
+  },
+  {
+    "word": "teaching",
+    "meaning": "öğretme",
+    "example": "We need the teaching."
+  },
+  {
+    "word": "technology",
+    "meaning": "teknoloji",
+    "example": "She likes her technology."
+  },
+  {
+    "word": "teenage",
+    "meaning": "genç yaşta (ergen)",
+    "example": "She is very teenage."
+  },
+  {
+    "word": "temperature",
+    "meaning": "sıcaklık",
+    "example": "This is my temperature."
+  },
+  {
+    "word": "term",
+    "meaning": "dönem, terim",
+    "example": "I have a nice term."
+  },
+  {
+    "word": "text",
+    "meaning": "mesaj atmak",
+    "example": "Do you text every day?"
+  },
+  {
+    "word": "themselves",
+    "meaning": "kendileri",
+    "example": "The children made breakfast themselves."
+  },
+  {
+    "word": "thick",
+    "meaning": "kalın",
+    "example": "She is very thick."
+  },
+  {
+    "word": "thief",
+    "meaning": "hırsız",
+    "example": "I can see a thief over there."
+  },
+  {
+    "word": "thin",
+    "meaning": "ince, zayıf",
+    "example": "The film was thin."
+  },
+  {
+    "word": "thinking",
+    "meaning": "düşünme",
+    "example": "I have a nice thinking."
+  },
+  {
+    "word": "third",
+    "meaning": "üçüncü kişi/şey",
+    "example": "This is the third question in the test."
+  },
+  {
+    "word": "thought",
+    "meaning": "düşünce",
+    "example": "We need the thought."
+  },
+  {
+    "word": "throw",
+    "meaning": "atmak",
+    "example": "We throw it together at the weekend."
+  },
+  {
+    "word": "tidy",
+    "meaning": "düzenli; düzenlemek",
+    "example": "The film was tidy."
+  },
+  {
+    "word": "tie",
+    "meaning": "bağlamak; kravat",
+    "example": "Do you tie it every day?"
+  },
+  {
+    "word": "tip",
+    "meaning": "bahşiş, ipucu",
+    "example": "I have a nice tip."
+  },
+  {
+    "word": "tool",
+    "meaning": "alet",
+    "example": "Look at that tool!"
+  },
+  {
+    "word": "top",
+    "meaning": "üst, tepe",
+    "example": "We need the top."
+  },
+  {
+    "word": "touch",
+    "meaning": "dokunmak",
+    "example": "They often touch it in the morning."
+  },
+  {
+    "word": "tour",
+    "meaning": "tur, gezi",
+    "example": "I can see a tour over there."
+  },
+  {
+    "word": "tourism",
+    "meaning": "turizm",
+    "example": "This is my tourism."
+  },
+  {
+    "word": "towards",
+    "meaning": "-e doğru",
+    "example": "The dog ran towards the door."
+  },
+  {
+    "word": "towel",
+    "meaning": "havlu",
+    "example": "Look at that towel!"
+  },
+  {
+    "word": "tower",
+    "meaning": "kule",
+    "example": "We need the tower."
+  },
+  {
+    "word": "toy",
+    "meaning": "oyuncak",
+    "example": "She likes her toy."
+  },
+  {
+    "word": "track",
+    "meaning": "iz, parça (şarkı)",
+    "example": "I can see a track over there."
+  },
+  {
+    "word": "tradition",
+    "meaning": "gelenek",
+    "example": "This is my tradition."
+  },
+  {
+    "word": "traditional",
+    "meaning": "geleneksel",
+    "example": "My friend is traditional."
+  },
+  {
+    "word": "train",
+    "meaning": "eğitmek, antrenman yapmak",
+    "example": "They often train in the morning."
+  },
+  {
+    "word": "trainer",
+    "meaning": "antrenör, spor ayakkabısı",
+    "example": "We need the trainer."
+  },
+  {
+    "word": "training",
+    "meaning": "eğitim, antrenman",
+    "example": "She likes her training."
+  },
+  {
+    "word": "transport",
+    "meaning": "ulaşım, taşımacılık",
+    "example": "I like transport."
+  },
+  {
+    "word": "traveller",
+    "meaning": "gezgin, yolcu",
+    "example": "This is my traveller."
+  },
+  {
+    "word": "trouble",
+    "meaning": "sorun, dert",
+    "example": "I have a nice trouble."
+  },
+  {
+    "word": "truck",
+    "meaning": "kamyon",
+    "example": "Look at that truck!"
+  },
+  {
+    "word": "twin",
+    "meaning": "ikiz",
+    "example": "We need the twin."
+  },
+  {
+    "word": "typical",
+    "meaning": "tipik",
+    "example": "She is very typical."
+  },
+  {
+    "word": "underground",
+    "meaning": "yeraltı, metro",
+    "example": "My friend is underground."
+  },
+  {
+    "word": "understanding",
+    "meaning": "anlayış",
+    "example": "This is my understanding."
+  },
+  {
+    "word": "unfortunately",
+    "meaning": "maalesef",
+    "example": "I saw them unfortunately."
+  },
+  {
+    "word": "unhappy",
+    "meaning": "mutsuz",
+    "example": "It was an unhappy day."
+  },
+  {
+    "word": "uniform",
+    "meaning": "üniforma",
+    "example": "We need the uniform."
+  },
+  {
+    "word": "unit",
+    "meaning": "birim",
+    "example": "She likes her unit."
+  },
+  {
+    "word": "united",
+    "meaning": "birleşik",
+    "example": "The film was united."
+  },
+  {
+    "word": "unusual",
+    "meaning": "sıra dışı",
+    "example": "I feel unusual today."
+  },
+  {
+    "word": "upstairs",
+    "meaning": "üst kattaki",
+    "example": "It was an upstairs day."
+  },
+  {
+    "word": "use",
+    "meaning": "kullanım",
+    "example": "Look at that use!"
+  },
+  {
+    "word": "used to",
+    "meaning": "eskiden -irdi",
+    "example": "I used to live in a small village."
+  },
+  {
+    "word": "user",
+    "meaning": "kullanıcı",
+    "example": "She likes her user."
+  },
+  {
+    "word": "usual",
+    "meaning": "olağan, her zamanki",
+    "example": "I feel usual today."
+  },
+  {
+    "word": "valley",
+    "meaning": "vadi",
+    "example": "This is my valley."
+  },
+  {
+    "word": "van",
+    "meaning": "minibüs, kamyonet",
+    "example": "I have a nice van."
+  },
+  {
+    "word": "variety",
+    "meaning": "çeşitlilik",
+    "example": "Look at that variety!"
+  },
+  {
+    "word": "vehicle",
+    "meaning": "araç, taşıt",
+    "example": "We need the vehicle."
+  },
+  {
+    "word": "view",
+    "meaning": "manzara, görüş",
+    "example": "She likes her view."
+  },
+  {
+    "word": "virus",
+    "meaning": "virüs",
+    "example": "I can see a virus over there."
+  },
+  {
+    "word": "voice",
+    "meaning": "ses",
+    "example": "This is my voice."
+  },
+  {
+    "word": "wait",
+    "meaning": "bekleyiş",
+    "example": "I have a nice wait."
+  },
+  {
+    "word": "war",
+    "meaning": "savaş",
+    "example": "Look at that war!"
+  },
+  {
+    "word": "wash",
+    "meaning": "yıkama",
+    "example": "We need the wash."
+  },
+  {
+    "word": "washing",
+    "meaning": "çamaşır",
+    "example": "She likes her washing."
+  },
+  {
+    "word": "wave",
+    "meaning": "dalga",
+    "example": "I can see a wave over there."
+  },
+  {
+    "word": "weak",
+    "meaning": "zayıf",
+    "example": "My friend is weak."
+  },
+  {
+    "word": "web",
+    "meaning": "ağ, internet",
+    "example": "I have a nice web."
+  },
+  {
+    "word": "wedding",
+    "meaning": "düğün",
+    "example": "Look at that wedding!"
+  },
+  {
+    "word": "weight",
+    "meaning": "ağırlık",
+    "example": "We need the weight."
+  },
+  {
+    "word": "welcome",
+    "meaning": "hoş karşılama",
+    "example": "Welcome to our home!"
+  },
+  {
+    "word": "wet",
+    "meaning": "ıslak",
+    "example": "My friend is wet."
+  },
+  {
+    "word": "wheel",
+    "meaning": "tekerlek",
+    "example": "This is my wheel."
+  },
+  {
+    "word": "while",
+    "meaning": "iken, süre",
+    "example": "She read a book while I cooked dinner."
+  },
+  {
+    "word": "whole",
+    "meaning": "bütün, tüm",
+    "example": "It was a whole day."
+  },
+  {
+    "word": "whose",
+    "meaning": "kimin",
+    "example": "Whose bag is this?"
+  },
+  {
+    "word": "wide",
+    "meaning": "geniş",
+    "example": "My friend is wide."
+  },
+  {
+    "word": "wild",
+    "meaning": "vahşi",
+    "example": "The film was wild."
+  },
+  {
+    "word": "wind1",
+    "meaning": "rüzgar",
+    "example": "This is my wind."
+  },
+  {
+    "word": "winner",
+    "meaning": "kazanan",
+    "example": "I have a nice winner."
+  },
+  {
+    "word": "wish",
+    "meaning": "dilemek; dilek",
+    "example": "I wish every day."
+  },
+  {
+    "word": "wood",
+    "meaning": "odun, ahşap",
+    "example": "We need the wood."
+  },
+  {
+    "word": "wooden",
+    "meaning": "ahşap",
+    "example": "The film was wooden."
+  },
+  {
+    "word": "working",
+    "meaning": "çalışan",
+    "example": "I feel working today."
+  },
+  {
+    "word": "worried",
+    "meaning": "endişeli",
+    "example": "It was a worried day."
+  },
+  {
+    "word": "worry",
+    "meaning": "endişelenmek",
+    "example": "I worry every day."
+  },
+  {
+    "word": "worse",
+    "meaning": "daha kötü",
+    "example": "My friend is worse."
+  },
+  {
+    "word": "worst",
+    "meaning": "en kötü",
+    "example": "The film was worst."
+  },
+  {
+    "word": "wow",
+    "meaning": "vay canına",
+    "example": "Wow! This cake is delicious."
+  },
+  {
+    "word": "yet",
+    "meaning": "henüz",
+    "example": "He always speaks yet."
+  },
+  {
+    "word": "yours",
+    "meaning": "seninki, sizinki",
+    "example": "Is this bag yours?"
+  },
+  {
+    "word": "zero",
+    "meaning": "sıfır",
+    "example": "I have zero books."
+  }
+]

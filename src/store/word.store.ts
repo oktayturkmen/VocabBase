@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 
-import { getWordService } from '@/services/word';
+import { getDatabase } from '@/database/client';
+import { createWordService } from '@/services/word';
 import type { CreateWordInput, UpdateWordInput, Word } from '@/types/word';
 
 type WordStoreState = {
@@ -45,7 +46,8 @@ export const useWordStore = create<WordStore>((set) => ({
     set({ isLoading: true, error: null, selectedListId: listId ?? null });
 
     try {
-      const wordService = await getWordService();
+      const database = await getDatabase();
+      const wordService = createWordService(database);
       const words = listId !== undefined
         ? await wordService.getByListId(listId)
         : await wordService.getAll();
@@ -64,7 +66,8 @@ export const useWordStore = create<WordStore>((set) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const wordService = await getWordService();
+      const database = await getDatabase();
+      const wordService = createWordService(database);
       const selectedWord = await wordService.getById(id);
       set({ selectedWord, isLoading: false });
     } catch (error) {
@@ -79,7 +82,8 @@ export const useWordStore = create<WordStore>((set) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const wordService = await getWordService();
+      const database = await getDatabase();
+      const wordService = createWordService(database);
       const createdWord = await wordService.create(input);
 
       // Yeni kelimeyi listenin başına ekle (created_at DESC sıralamasını korumak için).
@@ -102,7 +106,8 @@ export const useWordStore = create<WordStore>((set) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const wordService = await getWordService();
+      const database = await getDatabase();
+      const wordService = createWordService(database);
       const updatedWord = await wordService.update(id, input);
 
       if (updatedWord) {
@@ -130,7 +135,8 @@ export const useWordStore = create<WordStore>((set) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const wordService = await getWordService();
+      const database = await getDatabase();
+      const wordService = createWordService(database);
       const isDeleted = await wordService.delete(id);
 
       if (isDeleted) {
@@ -161,7 +167,8 @@ export const useWordStore = create<WordStore>((set) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const wordService = await getWordService();
+      const database = await getDatabase();
+      const wordService = createWordService(database);
       const deletedCount = await wordService.deleteMany(ids);
 
       set((state) => ({

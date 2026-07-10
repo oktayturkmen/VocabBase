@@ -1,14 +1,115 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
-import { getDatabase } from '@/database/client';
+import { DEFAULT_PACKAGE_NAME } from '@/constants/word-packages';
 import { TABLES } from '@/database/tables';
 import type { CreateWordInput, UpdateWordInput, Word, WordRow } from '@/types/word';
+import type { LocalPackageWord } from '@/constants/word-packages';
 
 import { mapRowToWord } from './word.mapper';
 import { validateCreateWordInput, validateUpdateWordInput } from './word.validation';
 
+const INSTALLED_PACKAGES_TABLE = 'installed_packages';
+
+export class PackageAlreadyLoadedError extends Error {
+  constructor(packageName: string) {
+    super(`"${packageName}" paketi zaten yüklü.`);
+    this.name = 'PackageAlreadyLoadedError';
+  }
+}
+
 export class WordService {
   constructor(private readonly database: SQLiteDatabase) {}
+
+  async isPackageLoaded(packageName: string): Promise<boolean> {
+    const result = await this.database.getFirstAsync<{ count: number }>(
+      `SELECT COUNT(*) AS count FROM ${TABLES.WORDS} WHERE package_name = ?`,
+      packageName,
+    );
+
+    return (result?.count ?? 0) > 0;
+  }
+
+  async getPackageWordCount(packageName: string): Promise<number> {
+    const result = await this.database.getFirstAsync<{ count: number }>(
+      `SELECT COUNT(*) AS count FROM ${TABLES.WORDS} WHERE package_name = ?`,
+      packageName,
+    );
+
+    return result?.count ?? 0;
+  }
+
+  async loadPackageWords(
+    words: LocalPackageWord[],
+    packageName: string,
+  ): Promise<{ imported: number; skipped: number }> {
+    if (await this.isPackageLoaded(packageName)) {
+      throw new PackageAlreadyLoadedError(packageName);
+    }
+
+    let imported = 0;
+    let skipped = 0;
+    const timestamp = Date.now();
+
+    await this.database.withTransactionAsync(async () => {
+      for (const item of words) {
+        const word = item.word?.trim();
+        const meaning = item.meaning?.trim();
+
+        if (!word || !meaning) {
+          skipped += 1;
+          continue;
+        }
+
+        const existing = await this.database.getFirstAsync<{ id: number }>(
+          `SELECT id FROM ${TABLES.WORDS} WHERE LOWER(word) = LOWER(?) AND package_name = ?`,
+          word,
+          packageName,
+        );
+
+        if (existing) {
+          skipped += 1;
+          continue;
+        }
+
+        const example = item.example?.trim() ?? null;
+
+        await this.database.runAsync(
+          `INSERT INTO ${TABLES.WORDS} (word, meaning, example, pronunciation, package_name, created_at, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?)`,
+          word,
+          meaning,
+          example,
+          null,
+          packageName,
+          timestamp,
+          timestamp,
+        );
+
+        imported += 1;
+      }
+    });
+
+    return { imported, skipped };
+  }
+
+  async getWordsByPackageName(packageName: string): Promise<Word[]> {
+    const rows = await this.database.getAllAsync<WordRow>(
+      `SELECT * FROM ${TABLES.WORDS} WHERE package_name = ? ORDER BY created_at DESC`,
+      packageName,
+    );
+
+    return rows.map(mapRowToWord);
+  }
+
+  async getRandomWordsByPackageName(packageName: string, limit: number): Promise<Word[]> {
+    const rows = await this.database.getAllAsync<WordRow>(
+      `SELECT * FROM ${TABLES.WORDS} WHERE package_name = ? ORDER BY RANDOM() LIMIT ?`,
+      packageName,
+      limit,
+    );
+
+    return rows.map(mapRowToWord);
+  }
 
   async getAll(): Promise<Word[]> {
     const rows = await this.database.getAllAsync<WordRow>(
@@ -31,6 +132,21 @@ export class WordService {
     return rows.map(mapRowToWord);
   }
 
+  /**
+   * En az bir listeye ait olan tüm kelimeleri getirir (tekrarsız).
+   * "Listemdekiler" sekmesi için kullanılır.
+   */
+  async getWordsInAnyList(): Promise<Word[]> {
+    const rows = await this.database.getAllAsync<WordRow>(
+      `SELECT DISTINCT ${TABLES.WORDS}.*
+       FROM ${TABLES.WORDS}
+       INNER JOIN ${TABLES.WORD_LISTS} ON ${TABLES.WORD_LISTS}.word_id = ${TABLES.WORDS}.id
+       ORDER BY ${TABLES.WORDS}.created_at DESC`,
+    );
+
+    return rows.map(mapRowToWord);
+  }
+
   async getById(id: number): Promise<Word | null> {
     const row = await this.database.getFirstAsync<WordRow>(
       `SELECT * FROM ${TABLES.WORDS} WHERE id = ?`,
@@ -40,17 +156,51 @@ export class WordService {
     return row ? mapRowToWord(row) : null;
   }
 
+  /**
+   * Kelime metnine göre (case-insensitive) tek bir kelime getirir.
+   * Tüm kelimeleri memory'e yüklemek yerine doğrudan SQL ile arar.
+   *
+   * @param word - Aranacak kelime metni
+   * @returns Eşleşen kelime veya null
+   */
+  async getByWord(word: string): Promise<Word | null> {
+    const row = await this.database.getFirstAsync<WordRow>(
+      `SELECT * FROM ${TABLES.WORDS} WHERE LOWER(word) = LOWER(?)`,
+      word,
+    );
+
+    return row ? mapRowToWord(row) : null;
+  }
+
+  /**
+   * Veri tabanından rastgele belirtilen sayıda kelime getirir.
+   * Tüm kelimeleri memory'e yükleyip karıştırmak yerine SQL seviyesinde
+   * `ORDER BY RANDOM()` kullanır.
+   *
+   * @param limit - Getirilecek kelime sayısı
+   * @returns Rastgele seçilmiş kelimeler
+   */
+  async getRandomWords(limit: number): Promise<Word[]> {
+    const rows = await this.database.getAllAsync<WordRow>(
+      `SELECT * FROM ${TABLES.WORDS} ORDER BY RANDOM() LIMIT ?`,
+      limit,
+    );
+
+    return rows.map(mapRowToWord);
+  }
+
   async create(input: CreateWordInput): Promise<Word> {
     const validatedInput = validateCreateWordInput(input);
     const timestamp = Date.now();
 
     const result = await this.database.runAsync(
-      `INSERT INTO ${TABLES.WORDS} (word, meaning, example, pronunciation, created_at, updated_at)
-       VALUES (?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO ${TABLES.WORDS} (word, meaning, example, pronunciation, package_name, created_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?)`,
       validatedInput.word,
       validatedInput.meaning,
       validatedInput.example ?? null,
       validatedInput.pronunciation ?? null,
+      input.packageName?.trim() || DEFAULT_PACKAGE_NAME,
       timestamp,
       timestamp,
     );
@@ -153,9 +303,4 @@ export class WordService {
 
 export function createWordService(database: SQLiteDatabase): WordService {
   return new WordService(database);
-}
-
-export async function getWordService(): Promise<WordService> {
-  const database = await getDatabase();
-  return createWordService(database);
 }

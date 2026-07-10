@@ -2,7 +2,6 @@ export {
   WordService,
   WordValidationError,
   createWordService,
-  getWordService,
   mapRowToWord,
   validateCreateWordInput,
   validateUpdateWordInput,

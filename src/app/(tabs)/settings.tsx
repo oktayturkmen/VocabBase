@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { View, Text, ScrollView, Switch, Platform, Pressable, Alert, Modal } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
+import DateTimePicker, { DateTimePickerChangeEvent } from '@react-native-community/datetimepicker';
 
 import { FadeIn } from '@/components/animations/FadeIn';
 import { useImportWords } from '@/hooks/useImportWords';
@@ -36,12 +36,31 @@ type SheetType = 'speechSpeed' | 'dailyGoal' | 'import' | null;
 const SPEECH_SPEED_OPTIONS = [0.5, 0.8, 1.0, 1.2, 1.5];
 const DAILY_GOAL_OPTIONS = [5, 10, 15, 20, 25];
 
+function parseTime(timeString: string): { hour: number; minute: number } {
+  const time = timeString || '20:00';
+  const parts = time.split(':');
+  
+  if (parts.length !== 2) {
+    return { hour: 20, minute: 0 };
+  }
+  
+  const hour = Number(parts[0]);
+  const minute = Number(parts[1]);
+  
+  if (isNaN(hour) || isNaN(minute) || hour < 0 || hour > 23 || minute < 0 || minute > 59) {
+    return { hour: 20, minute: 0 };
+  }
+  
+  return { hour, minute };
+}
+
 function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const [permissionStatus, setPermissionStatus] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [isCheckingOffline, setIsCheckingOffline] = useState(false);
   const [isBackupRestoring, setIsBackupRestoring] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
   const [activeSheet, setActiveSheet] = useState<SheetType>(null);
   const [showTimePicker, setShowTimePicker] = useState(false);
   const [tempTime, setTempTime] = useState<Date>(new Date(2000, 0, 1, 20, 0));
@@ -84,6 +103,8 @@ function SettingsScreen() {
   };
 
   const toggleNotifications = async (value: boolean) => {
+    const previousValue = notificationEnabled;
+    
     if (value && permissionStatus !== 'granted') {
       const granted = await requestPermission();
       if (!granted) {
@@ -104,6 +125,8 @@ function SettingsScreen() {
 
       setNotificationEnabled(value);
     } catch (error) {
+      // Rollback to previous state on error
+      setNotificationEnabled(previousValue);
       Alert.alert(
         'Bildirim Hatası',
         error instanceof Error ? error.message : 'Bildirim ayarları güncellenemedi.',
@@ -114,6 +137,7 @@ function SettingsScreen() {
   };
 
   const updateTime = async (hour: number, minute: number) => {
+    const previousTime = notificationTime;
     setIsSaving(true);
     try {
       const service = getNotificationService();
@@ -126,6 +150,9 @@ function SettingsScreen() {
 
       setNotificationTime(hour, minute);
     } catch (error) {
+      // Rollback to previous time on error
+      const { hour: prevHour, minute: prevMinute } = parseTime(previousTime);
+      setNotificationTime(prevHour, prevMinute);
       Alert.alert(
         'Hatırlatıcı Hatası',
         error instanceof Error ? error.message : 'Hatırlatıcı saati güncellenemedi.',
@@ -141,15 +168,25 @@ function SettingsScreen() {
     setShowTimePicker(true);
   };
 
-  const handleTimeChange = (event: DateTimePickerEvent, selectedDate?: Date) => {
-    if (Platform.OS === 'android') {
-      setShowTimePicker(false);
-      if (event.type === 'set' && selectedDate) {
-        const hours = selectedDate.getHours();
-        const minutes = selectedDate.getMinutes();
-        void updateTime(hours, minutes);
-      }
-    } else if (selectedDate) {
+  // Android: Kullanıcı saat seçtiğinde (OK butonuna bastığında) tetiklenir
+  const handleAndroidTimeChange = (_event: DateTimePickerChangeEvent, selectedDate?: Date) => {
+    setShowTimePicker(false);
+    if (!selectedDate) {
+      return;
+    }
+    const hours = selectedDate.getHours();
+    const minutes = selectedDate.getMinutes();
+    void updateTime(hours, minutes);
+  };
+
+  // Android: Kullanıcı picker'ı iptal ettiğinde tetiklenir
+  const handleAndroidTimeDismiss = () => {
+    setShowTimePicker(false);
+  };
+
+  // iOS: Spinner'da kullanıcı kaydırma yaptıkça tetiklenir (canlı güncelleme)
+  const handleIOSTimeChange = (_event: DateTimePickerChangeEvent, selectedDate?: Date) => {
+    if (selectedDate) {
       setTempTime(selectedDate);
     }
   };
@@ -288,6 +325,7 @@ function SettingsScreen() {
   };
 
   const handleExportBackup = async () => {
+    setIsExporting(true);
     try {
       await exportBackup();
       Alert.alert('Başarılı', 'Yedek dosyası oluşturuldu ve paylaşıldı.');
@@ -296,6 +334,8 @@ function SettingsScreen() {
         'Yedek Hatası',
         error instanceof Error ? error.message : 'Yedek oluşturulamadı.',
       );
+    } finally {
+      setIsExporting(false);
     }
   };
 
@@ -333,18 +373,6 @@ function SettingsScreen() {
         },
       ],
     );
-  };
-
-  const parseTime = (timeString: string): { hour: number; minute: number } => {
-    const time = timeString || '20:00';
-    const [hour, minute] = time.split(':').map(Number);
-    return { hour, minute };
-  };
-
-  const formatTime = (h: number, m: number): string => {
-    const hours = h.toString().padStart(2, '0');
-    const minutes = m.toString().padStart(2, '0');
-    return `${hours}:${minutes}`;
   };
 
   const handleSheetSelect = (type: SheetType, value: number) => {
@@ -552,11 +580,12 @@ function SettingsScreen() {
               onPress={handleExportBackup}
               accessibilityRole="button"
               accessibilityLabel="Yedek dışa aktar"
+              disabled={isExporting}
               className="flex-row items-center justify-between px-md py-md border-b border-border active:opacity-60"
             >
               <Text className="text-base font-medium text-foreground">Yedek Dışa Aktar</Text>
               <View className="flex-row items-center">
-                {isSaving ? (
+                {isExporting ? (
                   <Text className="text-sm text-muted-foreground mr-sm">Dışa aktarılıyor...</Text>
                 ) : null}
                 <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
@@ -684,7 +713,8 @@ function SettingsScreen() {
           value={tempTime}
           mode="time"
           display="default"
-          onChange={handleTimeChange}
+          onValueChange={handleAndroidTimeChange}
+          onDismiss={handleAndroidTimeDismiss}
         />
       ) : null}
 
@@ -715,7 +745,7 @@ function SettingsScreen() {
               value={tempTime}
               mode="time"
               display="spinner"
-              onChange={handleTimeChange}
+              onValueChange={handleIOSTimeChange}
               style={{ height: 200 }}
             />
           </Pressable>
