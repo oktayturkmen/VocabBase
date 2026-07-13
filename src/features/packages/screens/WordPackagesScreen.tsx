@@ -13,9 +13,16 @@ import {
 import { getImportService } from '@/services/import';
 import { getDatabase } from '@/database/client';
 import { createWordService } from '@/services/word';
-import { isPackageInstalled } from '@/services/package/package-install.service';
+import { isPackageInstalled, uninstallPackage } from '@/services/package/package-install.service';
 import { usePackageStore } from '@/store/package.store';
+import { useWordStore } from '@/store/word.store';
+import { useLearningStore } from '@/store/learning.store';
+import { useReviewStore } from '@/store/review.store';
+import { useListStore } from '@/store/list.store';
+import { useStatisticStore } from '@/store/statistic.store';
 import { useTheme } from '@/theme/useTheme';
+
+// ─── Paket Kartı Bileşeni ───────────────────────────────────────────────────
 
 type PackageCardProps = {
   pkg: WordPackageDefinition;
@@ -23,9 +30,17 @@ type PackageCardProps = {
   isLoaded: boolean;
   isLoading: boolean;
   onLoad: (pkg: WordPackageDefinition) => void;
+  onUninstall: (pkg: WordPackageDefinition) => void;
 };
 
-function PackageCard({ pkg, wordCount, isLoaded, isLoading, onLoad }: PackageCardProps) {
+function PackageCard({
+  pkg,
+  wordCount,
+  isLoaded,
+  isLoading,
+  onLoad,
+  onUninstall,
+}: PackageCardProps) {
   const { colors } = useTheme();
   const { activePackageName, setActivePackageName } = usePackageStore();
   const isActive = activePackageName === pkg.packageName;
@@ -43,46 +58,74 @@ function PackageCard({ pkg, wordCount, isLoaded, isLoading, onLoad }: PackageCar
   }, [isLoaded, pkg.packageName, setActivePackageName]);
 
   return (
-    <View className="rounded-2xl border border-border bg-card p-md shadow-sm">
-      <View className="flex-row items-start">
-        <View className="mr-md h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-          <Ionicons name={pkg.icon} size={24} color={colors.primary} />
-        </View>
-        <View className="flex-1">
-          <Text className="text-base font-bold text-foreground">{pkg.displayTitle}</Text>
-          <Text className="mt-xs text-sm text-muted-foreground">{pkg.description}</Text>
-          {isLoaded ? (
-            <View className="mt-sm self-start rounded-full bg-emerald-100 px-sm py-xs dark:bg-emerald-900/40">
-              <Text className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
-                Yüklendi ({wordCount} Kelime)
-              </Text>
-            </View>
-          ) : null}
-        </View>
-      </View>
+    <View
+      className={`rounded-2xl bg-card p-lg border ${
+        isActive ? 'border-primary/60 shadow-md shadow-primary/5' : 'border-border shadow-sm'
+      }`}
+    >
+      {/* Üst Kısım: İkon, Başlık ve Aktif Rozeti */}
+      <View className="flex-row items-start justify-between">
+        <View className="flex-row items-center flex-1 pr-sm">
+          {/* İkon Kutusu */}
+          <View className="mr-md h-12 w-12 items-center justify-center rounded-2xl bg-primary/10">
+            <Ionicons name={pkg.icon} size={24} color={colors.primary} />
+          </View>
 
-      <View className="mt-md flex-row gap-sm">
-        <Button
-          title={isLoaded ? 'Yüklendi' : 'Yükle'}
-          onPress={handlePress}
-          disabled={isLoaded || isLoading}
-          loading={isLoading}
-          className={`flex-1 rounded-xl ${isLoaded ? 'bg-muted' : 'bg-primary'}`}
-          textClassName={isLoaded ? 'text-muted-foreground font-semibold' : 'text-white font-semibold'}
-        />
-        {isLoaded && (
-          <Button
-            title={isActive ? 'Şu An Aktif' : 'Aktif Et'}
-            onPress={handleSetActive}
-            disabled={isActive}
-            className={`flex-1 rounded-xl ${isActive ? 'bg-emerald-500' : 'bg-primary'}`}
-            textClassName="text-white font-semibold"
-          />
+          <View className="flex-1 pr-xs">
+            <Text className="text-base font-bold text-foreground">{pkg.displayTitle}</Text>
+            <Text className="text-xs text-muted-foreground mt-0.5" numberOfLines={2}>
+              {pkg.description}
+            </Text>
+            
+            {/* Yüklendi Durum Pilli (Eğer yüklenmişse gösterilir, ilerleme çubuğu/yüzde yoktur) */}
+            {isLoaded ? (
+              <View className="mt-sm self-start rounded-full bg-emerald-100 px-2.5 py-1 dark:bg-emerald-900/40">
+                <Text className="text-[11px] font-bold text-emerald-700 dark:text-emerald-300">
+                  Yüklendi ({wordCount} Kelime)
+                </Text>
+              </View>
+            ) : null}
+          </View>
+        </View>
+
+        {/* Aktif Rozeti */}
+        {isActive && (
+          <View className="flex-row items-center gap-1 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200/50 px-2.5 py-1 rounded-full">
+            <Ionicons name="checkmark-circle" size={14} color="#10B981" />
+            <Text className="text-xs font-bold text-emerald-600 dark:text-emerald-400">Aktif</Text>
+          </View>
         )}
       </View>
+
+      {/* Aksiyon Butonu (Aktif Olmayan Paketler İçin Tekli Buton ve Çöp Kutusu) */}
+      {!isActive && (
+        <View className="mt-lg flex-row gap-sm">
+          <Button
+            title={isLoaded ? 'Aktif Et' : 'Yükle'}
+            onPress={isLoaded ? handleSetActive : handlePress}
+            loading={isLoading}
+            className={`flex-1 rounded-xl py-2.5 ${
+              isLoaded ? 'bg-primary/10 border border-primary/25' : 'bg-primary'
+            }`}
+            textClassName={`font-bold ${isLoaded ? 'text-primary text-sm' : 'text-white text-sm'}`}
+          />
+          {isLoaded && (
+            <Pressable
+              onPress={() => onUninstall(pkg)}
+              accessibilityRole="button"
+              accessibilityLabel="Paketi sil"
+              className="w-11 h-11 items-center justify-center rounded-xl bg-red-50 dark:bg-red-950/20 border border-red-200/50 dark:border-red-900/30 active:opacity-75"
+            >
+              <Ionicons name="trash-outline" size={20} color="#EF4444" />
+            </Pressable>
+          )}
+        </View>
+      )}
     </View>
   );
 }
+
+// ─── Paket Bölüm Bileşeni ───────────────────────────────────────────────────
 
 type PackageSectionProps = {
   title: string;
@@ -91,6 +134,7 @@ type PackageSectionProps = {
   wordCountMap: Record<string, number>;
   loadingPackageId: string | null;
   onLoad: (pkg: WordPackageDefinition) => void;
+  onUninstall: (pkg: WordPackageDefinition) => void;
 };
 
 function PackageSection({
@@ -100,6 +144,7 @@ function PackageSection({
   wordCountMap,
   loadingPackageId,
   onLoad,
+  onUninstall,
 }: PackageSectionProps) {
   if (packages.length === 0) {
     return null;
@@ -117,6 +162,7 @@ function PackageSection({
               wordCount={wordCountMap[pkg.packageName] ?? 0}
               isLoading={loadingPackageId === pkg.id}
               onLoad={onLoad}
+              onUninstall={onUninstall}
             />
           </FadeIn>
         ))}
@@ -124,6 +170,8 @@ function PackageSection({
     </View>
   );
 }
+
+// ─── Ana Sayfa Bileşeni ─────────────────────────────────────────────────────
 
 export default function WordPackagesScreen() {
   const router = useRouter();
@@ -146,9 +194,9 @@ export default function WordPackagesScreen() {
         const installed = await isPackageInstalled(database, pkg.packageName);
         const dbLoaded = await wordService.isPackageLoaded(pkg.packageName);
         nextLoaded[pkg.packageName] = installed || dbLoaded;
-        nextCounts[pkg.packageName] = dbLoaded
-          ? await wordService.getPackageWordCount(pkg.packageName)
-          : 0;
+
+        const totalCount = dbLoaded ? await wordService.getPackageWordCount(pkg.packageName) : 0;
+        nextCounts[pkg.packageName] = totalCount;
       }
 
       setLoadedMap(nextLoaded);
@@ -159,7 +207,9 @@ export default function WordPackagesScreen() {
   }, []);
 
   useEffect(() => {
-    void refreshPackageStatus();
+    Promise.resolve().then(() => {
+      void refreshPackageStatus();
+    });
   }, [refreshPackageStatus]);
 
   const groupedPackages = useMemo(() => {
@@ -185,9 +235,11 @@ export default function WordPackagesScreen() {
 
         if (result.success) {
           Alert.alert(
-            'Paket yüklendi',
-            `${pkg.displayTitle} paketinden ${result.imported} kelime eklendi.${
-              result.skipped > 0 ? ` ${result.skipped} kelime zaten mevcut olduğu için atlandı.` : ''
+            'Paket Yüklendi',
+            `${pkg.displayTitle} paketinden ${result.imported} kelime başarıyla kütüphanenize eklendi.${
+              result.skipped > 0
+                ? ` ${result.skipped} kelime zaten kütüphanenizde olduğu için atlandı.`
+                : ''
             }`,
           );
           await refreshPackageStatus();
@@ -199,29 +251,85 @@ export default function WordPackagesScreen() {
     [refreshPackageStatus],
   );
 
+  const handleUninstallPackage = useCallback(
+    async (pkg: WordPackageDefinition) => {
+      Alert.alert(
+        'Paketi Kaldır',
+        `"${pkg.displayTitle}" paketini ve bu pakete ait öğrenme ilerlemenizi silmek istediğinize emin misiniz? Bu işlem geri alınamaz.`,
+        [
+          { text: 'İptal', style: 'cancel' },
+          {
+            text: 'Evet, Sil',
+            style: 'destructive',
+            onPress: async () => {
+              setLoadingPackageId(pkg.id);
+              try {
+                const database = await getDatabase();
+                await uninstallPackage(database, pkg.packageName);
+
+                // Zustand Store'larını sıfırla/yenile
+                useWordStore.getState().reset();
+                useLearningStore.getState().reset();
+                useReviewStore.getState().reset();
+                useListStore.getState().reset();
+                useStatisticStore.getState().reset();
+
+                // Verileri yeniden yükle
+                void useWordStore.getState().fetchWords();
+                void useListStore.getState().fetchLists();
+                void useReviewStore.getState().fetchDueReviews();
+                void useStatisticStore.getState().fetchTodayStatistic();
+                void useStatisticStore.getState().fetchRecentStatistics(30);
+                void useLearningStore.getState().fetchUnlearnedCount();
+                void useLearningStore.getState().fetchTotalWordCount();
+
+                // Eğer silinen paket aktif paket ise, aktif paketi sıfırla
+                if (usePackageStore.getState().activePackageName === pkg.packageName) {
+                  usePackageStore.getState().setActivePackageName('');
+                }
+
+                Alert.alert('Başarılı', `"${pkg.displayTitle}" paketi başarıyla kaldırıldı.`);
+                await refreshPackageStatus();
+              } catch (error) {
+                Alert.alert(
+                  'Hata',
+                  error instanceof Error ? error.message : 'Paket kaldırılırken bir hata oluştu.'
+                );
+              } finally {
+                setLoadingPackageId(null);
+              }
+            },
+          },
+        ]
+      );
+    },
+    [refreshPackageStatus]
+  );
+
   return (
     <View className="flex-1 bg-background">
       <ScrollView
-        contentContainerStyle={{ paddingBottom: insets.bottom + 24 }}
+        contentContainerStyle={{ paddingBottom: insets.bottom + 42 }}
         showsVerticalScrollIndicator={false}
       >
-        <View className="px-md" style={{ paddingTop: insets.top + 8 }}>
+        {/* Apple HIG Uyumlu Geniş Header */}
+        <View className="px-lg" style={{ paddingTop: insets.top + 20 }}>
           <Pressable
             onPress={() => router.back()}
             accessibilityRole="button"
             accessibilityLabel="Geri dön"
-            className="mb-md h-10 w-10 items-center justify-center rounded-full bg-muted"
+            className="mb-lg h-10 w-10 items-center justify-center rounded-full bg-card border border-border active:opacity-85 shadow-sm"
           >
-            <Ionicons name="arrow-back" size={22} color={colors.foreground} />
+            <Ionicons name="arrow-back" size={20} color={colors.foreground} />
           </Pressable>
 
           <Text className="text-3xl font-bold text-foreground">Kelime Paketleri</Text>
-          <Text className="mt-xs text-sm text-muted-foreground">
-            Hazır kelime paketlerini indir ve öğrenmeye başla
+          <Text className="mt-xs text-sm text-muted-foreground leading-relaxed">
+            Hazır kelime paketlerini yükleyerek çalışmaya ve öğrenmeye hemen başlayın.
           </Text>
         </View>
 
-        <View className="px-md mt-lg">
+        <View className="px-lg mt-xl">
           {isRefreshing ? (
             <View className="items-center py-xl">
               <ActivityIndicator size="large" color={colors.primary} />
@@ -235,6 +343,7 @@ export default function WordPackagesScreen() {
                 wordCountMap={wordCountMap}
                 loadingPackageId={loadingPackageId}
                 onLoad={handleLoadPackage}
+                onUninstall={handleUninstallPackage}
               />
               <PackageSection
                 title="Özel Temalar"
@@ -243,6 +352,7 @@ export default function WordPackagesScreen() {
                 wordCountMap={wordCountMap}
                 loadingPackageId={loadingPackageId}
                 onLoad={handleLoadPackage}
+                onUninstall={handleUninstallPackage}
               />
             </>
           )}

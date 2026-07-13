@@ -1,0 +1,3752 @@
+[
+  {
+    "word": "ambiguous",
+    "meaning": "belirsiz, iki anlamlı",
+    "example": "The politician's ambiguous answer left reporters confused about the actual policy."
+  },
+  {
+    "word": "arbitrary",
+    "meaning": "keyfi, rastgele",
+    "example": "The manager's arbitrary decisions frustrated employees who expected fair treatment."
+  },
+  {
+    "word": "coherent",
+    "meaning": "tutarlı",
+    "example": "Her argument was so coherent that even skeptics found it convincing."
+  },
+  {
+    "word": "comprehensive",
+    "meaning": "kapsamlı",
+    "example": "The insurance policy offers comprehensive coverage for all medical expenses."
+  },
+  {
+    "word": "controversial",
+    "meaning": "tartışmalı",
+    "example": "The new tax policy proved controversial among both politicians and citizens."
+  },
+  {
+    "word": "credible",
+    "meaning": "güvenilir, inandırıcı",
+    "example": "The detective needed credible witnesses before building a case."
+  },
+  {
+    "word": "crucial",
+    "meaning": "çok önemli, kritik",
+    "example": "Sleep plays a crucial role in maintaining overall cognitive function."
+  },
+  {
+    "word": "cumulative",
+    "meaning": "birikimli",
+    "example": "The cumulative effect of stress can seriously damage physical health over time."
+  },
+  {
+    "word": "distinctive",
+    "meaning": "ayırt edici",
+    "example": "The chef's distinctive style sets her restaurant apart from competitors."
+  },
+  {
+    "word": "diverse",
+    "meaning": "çeşitli",
+    "example": "London's diverse population speaks over 300 different languages."
+  },
+  {
+    "word": "dominant",
+    "meaning": "baskın",
+    "example": "The dominant team controlled possession throughout the entire match."
+  },
+  {
+    "word": "elaborate",
+    "meaning": "ayrıntılı, karmaşık",
+    "example": "She prepared an elaborate presentation with detailed charts and statistics."
+  },
+  {
+    "word": "explicit",
+    "meaning": "açık, net",
+    "example": "The contract included explicit instructions regarding cancellation procedures."
+  },
+  {
+    "word": "feasible",
+    "meaning": "uygulanabilir, mümkün",
+    "example": "Completing the project within two weeks is feasible if we hire extra staff."
+  },
+  {
+    "word": "implicit",
+    "meaning": "örtük, dolaylı",
+    "example": "There was an implicit understanding between them that no questions would be asked."
+  },
+  {
+    "word": "inevitable",
+    "meaning": "kaçınılmaz",
+    "example": "Given the rising tensions, a confrontation seemed inevitable."
+  },
+  {
+    "word": "inherent",
+    "meaning": "doğasında olan",
+    "example": "There are inherent risks in any major financial investment."
+  },
+  {
+    "word": "integral",
+    "meaning": "ayrılmaz, bütünleyici",
+    "example": "Trust is an integral component of any successful partnership."
+  },
+  {
+    "word": "intricate",
+    "meaning": "karmaşık, girift",
+    "example": "The watch mechanism is so intricate that only a few specialists can repair it."
+  },
+  {
+    "word": "legitimate",
+    "meaning": "meşru",
+    "example": "She had a legitimate reason for missing the deadline."
+  },
+  {
+    "word": "meticulous",
+    "meaning": "titiz",
+    "example": "The accountant kept meticulous records of every transaction."
+  },
+  {
+    "word": "notable",
+    "meaning": "dikkat çekici, kayda değer",
+    "example": "The scientist made a notable contribution to cancer research."
+  },
+  {
+    "word": "plausible",
+    "meaning": "akla yatkın",
+    "example": "His explanation sounds plausible, but we need evidence to confirm it."
+  },
+  {
+    "word": "prevalent",
+    "meaning": "yaygın",
+    "example": "Malaria remains prevalent in many tropical regions of the world."
+  },
+  {
+    "word": "profound",
+    "meaning": "derin, köklü",
+    "example": "The documentary had a profound impact on viewers' environmental awareness."
+  },
+  {
+    "word": "rigorous",
+    "meaning": "titiz, sıkı",
+    "example": "The soldiers underwent rigorous training before deployment."
+  },
+  {
+    "word": "robust",
+    "meaning": "sağlam, dayanıklı",
+    "example": "The company's robust financial position helped it survive the recession."
+  },
+  {
+    "word": "skeptical",
+    "meaning": "şüpheci",
+    "example": "Many scientists remain skeptical about the accuracy of those findings."
+  },
+  {
+    "word": "subtle",
+    "meaning": "ince, belirsiz",
+    "example": "The sauce has a subtle hint of garlic that enhances the flavor."
+  },
+  {
+    "word": "substantial",
+    "meaning": "önemli, hatırı sayılır",
+    "example": "The company made substantial profits in the third quarter."
+  },
+  {
+    "word": "tangible",
+    "meaning": "somut",
+    "example": "Investors want tangible evidence before committing their money."
+  },
+  {
+    "word": "versatile",
+    "meaning": "çok yönlü",
+    "example": "Olive oil is a versatile ingredient used in both cooking and cosmetics."
+  },
+  {
+    "word": "viable",
+    "meaning": "uygulanabilir, yaşayabilir",
+    "example": "The business plan must prove viable before securing a bank loan."
+  },
+  {
+    "word": "vulnerable",
+    "meaning": "savunmasız, kırılgan",
+    "example": "Elderly people are particularly vulnerable to extreme weather conditions."
+  },
+  {
+    "word": "adverse",
+    "meaning": "olumsuz, ters",
+    "example": "The drug may cause adverse reactions in patients with heart conditions."
+  },
+  {
+    "word": "apparent",
+    "meaning": "görünürdeki, açık",
+    "example": "It became apparent that the project would not meet its deadline."
+  },
+  {
+    "word": "compelling",
+    "meaning": "ikna edici, etkileyici",
+    "example": "The prosecutor presented compelling evidence that led to a conviction."
+  },
+  {
+    "word": "consistent",
+    "meaning": "tutarlı",
+    "example": "Her consistent performance earned her a promotion within six months."
+  },
+  {
+    "word": "contemporary",
+    "meaning": "çağdaş",
+    "example": "The gallery specializes in contemporary art from emerging artists."
+  },
+  {
+    "word": "counterproductive",
+    "meaning": "ters etki yapan",
+    "example": "Studying all night without sleep is often counterproductive."
+  },
+  {
+    "word": "decisive",
+    "meaning": "kesin, kararlı",
+    "example": "The general made a decisive move that turned the battle in their favor."
+  },
+  {
+    "word": "discrete",
+    "meaning": "ayrı, bağımsız",
+    "example": "The study examined three discrete groups of participants."
+  },
+  {
+    "word": "dubious",
+    "meaning": "şüpheli",
+    "example": "He gave a dubious excuse for his absence that nobody believed."
+  },
+  {
+    "word": "empirical",
+    "meaning": "deneysel, ampirik",
+    "example": "The theory lacks empirical evidence to support its claims."
+  },
+  {
+    "word": "erratic",
+    "meaning": "düzensiz, kararsız",
+    "example": "The stock market's erratic behavior worried investors throughout the week."
+  },
+  {
+    "word": "exhaustive",
+    "meaning": "kapsamlı, ayrıntılı",
+    "example": "The researchers conducted an exhaustive review of existing literature."
+  },
+  {
+    "word": "far-reaching",
+    "meaning": "geniş kapsamlı",
+    "example": "The new education policy will have far-reaching consequences for future generations."
+  },
+  {
+    "word": "fundamental",
+    "meaning": "temel",
+    "example": "Freedom of speech is a fundamental right in democratic societies."
+  },
+  {
+    "word": "hypothetical",
+    "meaning": "varsayımsal",
+    "example": "The professor posed a hypothetical scenario to stimulate class discussion."
+  },
+  {
+    "word": "impartial",
+    "meaning": "tarafsız",
+    "example": "A good judge must remain impartial throughout the trial."
+  },
+  {
+    "word": "indispensable",
+    "meaning": "vazgeçilmez",
+    "example": "Smartphones have become an indispensable part of modern daily life."
+  },
+  {
+    "word": "innate",
+    "meaning": "doğuştan gelen",
+    "example": "Some researchers believe that language ability is innate in humans."
+  },
+  {
+    "word": "insightful",
+    "meaning": "kavrayışlı, derin görüşlü",
+    "example": "The critic wrote an insightful review that captured the novel's deeper themes."
+  },
+  {
+    "word": "marginal",
+    "meaning": "önemsiz, sınırda",
+    "example": "The candidate won by a marginal victory of just 200 votes."
+  },
+  {
+    "word": "nuanced",
+    "meaning": "ince ayrımlı, nüanslı",
+    "example": "The film offers a nuanced portrayal of life during wartime."
+  },
+  {
+    "word": "obsolete",
+    "meaning": "eski, kullanılmayan",
+    "example": "Floppy disks became obsolete with the rise of USB drives."
+  },
+  {
+    "word": "pervasive",
+    "meaning": "her yere yayılan",
+    "example": "A pervasive sense of anxiety filled the room as the storm approached."
+  },
+  {
+    "word": "precarious",
+    "meaning": "istikrarsız, tehlikeli",
+    "example": "The mountain climber found himself in a precarious position on the cliff edge."
+  },
+  {
+    "word": "prominent",
+    "meaning": "önde gelen, göze çarpan",
+    "example": "Several prominent scientists signed the open letter about climate change."
+  },
+  {
+    "word": "resilient",
+    "meaning": "dirençli",
+    "example": "Children are often more resilient than adults when facing adversity."
+  },
+  {
+    "word": "static",
+    "meaning": "durgun, değişmeyen",
+    "example": "The country's population has remained relatively static for a decade."
+  },
+  {
+    "word": "subjective",
+    "meaning": "öznel",
+    "example": "Beauty is subjective; what one person finds attractive, another may not."
+  },
+  {
+    "word": "volatile",
+    "meaning": "değişken, kararsız",
+    "example": "The political situation in the region remains highly volatile."
+  },
+  {
+    "word": "accumulate",
+    "meaning": "biriktirmek",
+    "example": "Over the years, she managed to accumulate a substantial collection of rare books."
+  },
+  {
+    "word": "adhere",
+    "meaning": "bağlı kalmak, yapışmak",
+    "example": "All employees must adhere strictly to the safety regulations."
+  },
+  {
+    "word": "advocate",
+    "meaning": "savunmak, desteklemek",
+    "example": "She has long advocated for better working conditions in the factory."
+  },
+  {
+    "word": "allocate",
+    "meaning": "tahsis etmek",
+    "example": "The government decided to allocate additional funds to the education budget."
+  },
+  {
+    "word": "assert",
+    "meaning": "iddia etmek, öne sürmek",
+    "example": "The defendant continued to assert his innocence despite overwhelming evidence."
+  },
+  {
+    "word": "attain",
+    "meaning": "elde etmek, ulaşmak",
+    "example": "Only a small percentage of climbers attain the summit of K2 each year."
+  },
+  {
+    "word": "compensate",
+    "meaning": "telafi etmek",
+    "example": "The company offered a generous bonus to compensate for the overtime hours."
+  },
+  {
+    "word": "comprise",
+    "meaning": "oluşturmak, içermek",
+    "example": "The committee comprises twelve members from various departments."
+  },
+  {
+    "word": "constitute",
+    "meaning": "oluşturmak, teşkil etmek",
+    "example": "These three documents constitute the entire legal agreement."
+  },
+  {
+    "word": "contradict",
+    "meaning": "çelişmek",
+    "example": "The witness's testimony contradicts the suspect's alibi."
+  },
+  {
+    "word": "counteract",
+    "meaning": "etkisiz hale getirmek",
+    "example": "Antioxidants help counteract the damaging effects of free radicals."
+  },
+  {
+    "word": "deduce",
+    "meaning": "sonuç çıkarmak",
+    "example": "From the footprints in the snow, the detective deduced that the thief had fled north."
+  },
+  {
+    "word": "delineate",
+    "meaning": "ana hatlarıyla belirtmek",
+    "example": "The report clearly delineates the responsibilities of each department."
+  },
+  {
+    "word": "depict",
+    "meaning": "tasvir etmek, betimlemek",
+    "example": "The mural depicts scenes from the city's founding in the 1800s."
+  },
+  {
+    "word": "derive",
+    "meaning": "türetmek, elde etmek",
+    "example": "Many English words derive from Latin and Greek roots."
+  },
+  {
+    "word": "differentiate",
+    "meaning": "ayırt etmek",
+    "example": "It can be difficult to differentiate between identical twins at first glance."
+  },
+  {
+    "word": "diminish",
+    "meaning": "azalmak, küçültmek",
+    "example": "The influence of the once-powerful empire began to diminish in the 19th century."
+  },
+  {
+    "word": "discern",
+    "meaning": "ayırt etmek, fark etmek",
+    "example": "In the dim light, she could barely discern the outline of a building."
+  },
+  {
+    "word": "disregard",
+    "meaning": "göz ardı etmek",
+    "example": "The driver disregarded the speed limit and was caught by a camera."
+  },
+  {
+    "word": "distort",
+    "meaning": "çarpıtmak, bozmak",
+    "example": "Low-quality speakers can distort the sound of even the finest recordings."
+  },
+  {
+    "word": "diverge",
+    "meaning": "ayrılmak, farklılaşmak",
+    "example": "Their opinions diverged significantly on how to handle the crisis."
+  },
+  {
+    "word": "elicit",
+    "meaning": "ortaya çıkarmak, çekmek",
+    "example": "The comedian's joke elicited laughter from even the most serious audience members."
+  },
+  {
+    "word": "embody",
+    "meaning": "somutlaştırmak, temsil etmek",
+    "example": "The new building embodies the architect's vision of sustainable design."
+  },
+  {
+    "word": "emphasise",
+    "meaning": "vurgulamak",
+    "example": "The report emphasises the need for immediate action on climate change."
+  },
+  {
+    "word": "endorse",
+    "meaning": "onaylamak, desteklemek",
+    "example": "The committee decided to endorse the proposal after reviewing all the details."
+  },
+  {
+    "word": "envisage",
+    "meaning": "tasavvur etmek, öngörmek",
+    "example": "Nobody could envisage the dramatic changes that technology would bring."
+  },
+  {
+    "word": "exacerbate",
+    "meaning": "kötüleştirmek",
+    "example": "His harsh comments only exacerbated the tension between the two families."
+  },
+  {
+    "word": "exert",
+    "meaning": "uygulamak, kullanmak (güç/etki)",
+    "example": "The new coach exerted a positive influence on the team's performance."
+  },
+  {
+    "word": "facilitate",
+    "meaning": "kolaylaştırmak",
+    "example": "The online platform facilitates communication between teachers and parents."
+  },
+  {
+    "word": "formulate",
+    "meaning": "formüle etmek, oluşturmak",
+    "example": "The team needs to formulate a strategy before the competition begins."
+  },
+  {
+    "word": "hinder",
+    "meaning": "engellemek",
+    "example": "Lack of funding continues to hinder the progress of the research project."
+  },
+  {
+    "word": "incorporate",
+    "meaning": "dahil etmek, birleştirmek",
+    "example": "The revised plan incorporates feedback from all stakeholders."
+  },
+  {
+    "word": "infer",
+    "meaning": "çıkarım yapmak",
+    "example": "From her tone, he inferred that she was not pleased with the results."
+  },
+  {
+    "word": "inhibit",
+    "meaning": "engellemek, önlemek",
+    "example": "Fear of failure can inhibit creativity and prevent people from taking risks."
+  },
+  {
+    "word": "integrate",
+    "meaning": "bütünleştirmek, entegre etmek",
+    "example": "The school aims to integrate technology into every aspect of learning."
+  },
+  {
+    "word": "interact",
+    "meaning": "etkileşimde bulunmak",
+    "example": "Children learn social skills by interacting with their peers on the playground."
+  },
+  {
+    "word": "intervene",
+    "meaning": "araya girmek, müdahale etmek",
+    "example": "The teacher had to intervene when the argument between students escalated."
+  },
+  {
+    "word": "manipulate",
+    "meaning": "manipüle etmek, yönlendirmek",
+    "example": "The data was manipulated to make the results appear more favorable."
+  },
+  {
+    "word": "mitigate",
+    "meaning": "hafifletmek",
+    "example": "Planting trees can help mitigate the effects of climate change in urban areas."
+  },
+  {
+    "word": "neglect",
+    "meaning": "ihmal etmek",
+    "example": "He neglected his health for years, working long hours without exercise."
+  },
+  {
+    "word": "overlap",
+    "meaning": "örtüşmek, çakışmak",
+    "example": "The two projects overlap in scope, causing confusion about responsibilities."
+  },
+  {
+    "word": "perceive",
+    "meaning": "algılamak",
+    "example": "Cats perceive the world differently from humans due to their unique vision."
+  },
+  {
+    "word": "presume",
+    "meaning": "varsaymak",
+    "example": "Since she didn't reply, I presumed she was not interested in the offer."
+  },
+  {
+    "word": "prevail",
+    "meaning": "üstün gelmek, hakim olmak",
+    "example": "Common sense prevailed, and the board rejected the risky proposal."
+  },
+  {
+    "word": "prompt",
+    "meaning": "harekete geçirmek, neden olmak",
+    "example": "The alarming report prompted the government to launch an investigation."
+  },
+  {
+    "word": "reconcile",
+    "meaning": "uzlaştırmak, bağdaştırmak",
+    "example": "It is difficult to reconcile his public statements with his private actions."
+  },
+  {
+    "word": "refine",
+    "meaning": "geliştirmek, arıtmak",
+    "example": "The engineer refined the design to reduce fuel consumption by twenty percent."
+  },
+  {
+    "word": "reinforce",
+    "meaning": "güçlendirmek, pekiştirmek",
+    "example": "The teacher used real-life examples to reinforce the grammar rules."
+  },
+  {
+    "word": "resemble",
+    "meaning": "benzemek",
+    "example": "The puppy closely resembles its mother in both color and size."
+  },
+  {
+    "word": "scrutinize",
+    "meaning": "dikkatle incelemek",
+    "example": "The auditor scrutinized every receipt to ensure no expenses were falsified."
+  },
+  {
+    "word": "simulate",
+    "meaning": "simüle etmek, taklit etmek",
+    "example": "The flight simulator can simulate various weather conditions for training purposes."
+  },
+  {
+    "word": "speculate",
+    "meaning": "tahmin yürütmek, spekülasyon yapmak",
+    "example": "Analysts speculate that the company will announce record profits next quarter."
+  },
+  {
+    "word": "stem",
+    "meaning": "kaynaklanmak",
+    "example": "Much of the current unrest stems from decades of economic inequality."
+  },
+  {
+    "word": "strive",
+    "meaning": "çabalamak",
+    "example": "The organization strives to provide clean water to every village in the region."
+  },
+  {
+    "word": "subdue",
+    "meaning": "bastırmak, kontrol altına almak",
+    "example": "It took four police officers to subdue the violent suspect."
+  },
+  {
+    "word": "substantiate",
+    "meaning": "kanıtlamak, doğrulamak",
+    "example": "The journalist could not substantiate her claims with any reliable sources."
+  },
+  {
+    "word": "suppress",
+    "meaning": "bastırmak",
+    "example": "The government attempted to suppress information about the protests."
+  },
+  {
+    "word": "undergo",
+    "meaning": "geçirmek, maruz kalmak",
+    "example": "The building will undergo extensive renovations starting next month."
+  },
+  {
+    "word": "underpin",
+    "meaning": "desteklemek, dayanak oluşturmak",
+    "example": "Solid research data underpins every recommendation in the report."
+  },
+  {
+    "word": "undermine",
+    "meaning": "zayıflatmak, baltalamak",
+    "example": "Constant criticism from parents can undermine a child's self-confidence."
+  },
+  {
+    "word": "uphold",
+    "meaning": "desteklemek, sürdürmek",
+    "example": "The Supreme Court voted to uphold the lower court's controversial ruling."
+  },
+  {
+    "word": "validate",
+    "meaning": "doğrulamak, geçerli kılmak",
+    "example": "Further studies are needed to validate the results of the initial experiment."
+  },
+  {
+    "word": "withstand",
+    "meaning": "dayanmak, karşı koymak",
+    "example": "The bridge was engineered to withstand winds of up to 200 kilometers per hour."
+  },
+  {
+    "word": "yield",
+    "meaning": "vermek, sonuç vermek",
+    "example": "The new farming method yields twice as much wheat per hectare as traditional techniques."
+  },
+  {
+    "word": "ambiguity",
+    "meaning": "belirsizlik",
+    "example": "The ambiguity in the contract led to a lengthy legal dispute between the parties."
+  },
+  {
+    "word": "assumption",
+    "meaning": "varsayım",
+    "example": "His argument is based on the false assumption that all employees think alike."
+  },
+  {
+    "word": "attribute",
+    "meaning": "özellik, nitelik",
+    "example": "Patience is an essential attribute for anyone working in customer service."
+  },
+  {
+    "word": "bias",
+    "meaning": "önyargı",
+    "example": "The judge was accused of showing bias toward the prosecution throughout the trial."
+  },
+  {
+    "word": "coherence",
+    "meaning": "tutarlılık",
+    "example": "The essay lacks coherence, jumping randomly between unrelated topics."
+  },
+  {
+    "word": "consensus",
+    "meaning": "fikir birliği",
+    "example": "After hours of debate, the committee finally reached a consensus on the budget."
+  },
+  {
+    "word": "constraint",
+    "meaning": "kısıtlama",
+    "example": "Budget constraints forced the team to scale back the project significantly."
+  },
+  {
+    "word": "controversy",
+    "meaning": "tartışma, ihtilaf",
+    "example": "The new policy sparked controversy among parents and teachers alike."
+  },
+  {
+    "word": "credibility",
+    "meaning": "güvenilirlik",
+    "example": "The newspaper lost credibility after publishing several unverified stories."
+  },
+  {
+    "word": "criterion",
+    "meaning": "kriter, ölçüt",
+    "example": "Academic excellence is only one criterion for admission to the program."
+  },
+  {
+    "word": "dilemma",
+    "meaning": "ikilem",
+    "example": "She faced a dilemma between accepting a lucrative job and pursuing her passion."
+  },
+  {
+    "word": "discrepancy",
+    "meaning": "tutarsızlık, fark",
+    "example": "The accountant noticed a discrepancy between the invoices and the bank statements."
+  },
+  {
+    "word": "disparity",
+    "meaning": "eşitsizlik, fark",
+    "example": "The disparity in income between rich and poor continues to widen globally."
+  },
+  {
+    "word": "dynamics",
+    "meaning": "dinamikler",
+    "example": "Understanding group dynamics is essential for effective teamwork."
+  },
+  {
+    "word": "epidemic",
+    "meaning": "salgın",
+    "example": "The flu epidemic spread rapidly through the school, infecting half the students."
+  },
+  {
+    "word": "hierarchy",
+    "meaning": "hiyerarşi",
+    "example": "In many companies, decisions flow strictly from the top of the hierarchy downward."
+  },
+  {
+    "word": "hypothesis",
+    "meaning": "hipotez, varsayım",
+    "example": "The experiment was designed to test the hypothesis that sleep affects memory."
+  },
+  {
+    "word": "implication",
+    "meaning": "sonuç, ima",
+    "example": "The implications of the new law extend far beyond what lawmakers initially intended."
+  },
+  {
+    "word": "incentive",
+    "meaning": "teşvik",
+    "example": "The company offers stock options as an incentive for employees to stay long-term."
+  },
+  {
+    "word": "inequality",
+    "meaning": "eşitsizlik",
+    "example": "Gender inequality in the workplace remains a persistent problem in many industries."
+  },
+  {
+    "word": "infrastructure",
+    "meaning": "altyapı",
+    "example": "The country's aging infrastructure desperately needs modernization."
+  },
+  {
+    "word": "integrity",
+    "meaning": "dürüstlük, bütünlük",
+    "example": "The journalist was admired for her integrity and commitment to truthful reporting."
+  },
+  {
+    "word": "legitimacy",
+    "meaning": "meşruiyet",
+    "example": "The election results were questioned, casting doubt on the government's legitimacy."
+  },
+  {
+    "word": "methodology",
+    "meaning": "yöntem bilimi",
+    "example": "The reviewers criticized the methodology used in the study as outdated and flawed."
+  },
+  {
+    "word": "momentum",
+    "meaning": "ivme, momentum",
+    "example": "The campaign gained momentum after several celebrities publicly endorsed it."
+  },
+  {
+    "word": "notion",
+    "meaning": "kavram, fikir",
+    "example": "He rejected the notion that success depends solely on natural talent."
+  },
+  {
+    "word": "paradigm",
+    "meaning": "paradigma, model",
+    "example": "The discovery of DNA created a new paradigm in biological research."
+  },
+  {
+    "word": "paradox",
+    "meaning": "paradoks, çelişki",
+    "example": "It is a paradox that more choices often make decision-making harder, not easier."
+  },
+  {
+    "word": "perception",
+    "meaning": "algı",
+    "example": "Public perception of the brand changed dramatically after the scandal."
+  },
+  {
+    "word": "phenomenon",
+    "meaning": "olgu, fenomen",
+    "example": "The Northern Lights are a natural phenomenon that attracts thousands of tourists."
+  },
+  {
+    "word": "premise",
+    "meaning": "önerme, öncül",
+    "example": "The argument is built on the premise that all humans are fundamentally equal."
+  },
+  {
+    "word": "prerequisite",
+    "meaning": "ön koşul",
+    "example": "A valid driver's license is a prerequisite for applying to the delivery position."
+  },
+  {
+    "word": "proponent",
+    "meaning": "savunucu, taraftar",
+    "example": "She is a vocal proponent of renewable energy and has spoken at many conferences."
+  },
+  {
+    "word": "rationale",
+    "meaning": "gerekçe, mantık",
+    "example": "The manager explained the rationale behind the restructuring plan to the staff."
+  },
+  {
+    "word": "repercussion",
+    "meaning": "yan etki, sonuç",
+    "example": "The economic crisis had severe repercussions for small businesses across the country."
+  },
+  {
+    "word": "scope",
+    "meaning": "kapsam",
+    "example": "The scope of the investigation was expanded to include three additional companies."
+  },
+  {
+    "word": "stereotype",
+    "meaning": "kalıp yargı",
+    "example": "The film challenges the stereotype that older people cannot learn new technology."
+  },
+  {
+    "word": "stigma",
+    "meaning": "damgalama, ayıp",
+    "example": "There is still a social stigma attached to seeking therapy for mental health issues."
+  },
+  {
+    "word": "threshold",
+    "meaning": "eşik",
+    "example": "The noise level has crossed the threshold of what residents can reasonably tolerate."
+  },
+  {
+    "word": "trend",
+    "meaning": "eğilim, trend",
+    "example": "The trend toward remote work has reshaped the real estate market in major cities."
+  },
+  {
+    "word": "viability",
+    "meaning": "uygulanabilirlik",
+    "example": "Investors will assess the viability of the startup before providing funding."
+  },
+  {
+    "word": "accountability",
+    "meaning": "hesap verebilirlik",
+    "example": "The minister demanded greater accountability from officials managing public funds."
+  },
+  {
+    "word": "austerity",
+    "meaning": "kemer sıkma",
+    "example": "The government's austerity measures included deep cuts to public spending."
+  },
+  {
+    "word": "bureaucracy",
+    "meaning": "bürokrasi",
+    "example": "Excessive bureaucracy slows down even the simplest administrative tasks."
+  },
+  {
+    "word": "censorship",
+    "meaning": "sansür",
+    "example": "Many artists have faced censorship for expressing controversial political views."
+  },
+  {
+    "word": "commodity",
+    "meaning": "emtia, meta",
+    "example": "Oil remains one of the most heavily traded commodities in the world market."
+  },
+  {
+    "word": "corruption",
+    "meaning": "yolsuzluk",
+    "example": "Widespread corruption in the police force has eroded public trust."
+  },
+  {
+    "word": "deficit",
+    "meaning": "açık, eksik",
+    "example": "The country's trade deficit reached a record high last year."
+  },
+  {
+    "word": "demographic",
+    "meaning": "demografik",
+    "example": "Shifting demographic patterns have significant implications for healthcare planning."
+  },
+  {
+    "word": "discrimination",
+    "meaning": "ayrımcılık",
+    "example": "Workplace discrimination based on age is illegal in many countries."
+  },
+  {
+    "word": "diplomacy",
+    "meaning": "diplomasi",
+    "example": "Skilled diplomacy resolved the border dispute without a single shot being fired."
+  },
+  {
+    "word": "entitlement",
+    "meaning": "hak, ayrıcalık",
+    "example": "Some employees feel a sense of entitlement that is not justified by their performance."
+  },
+  {
+    "word": "exploitation",
+    "meaning": "sömürü",
+    "example": "The documentary exposed the exploitation of workers in overseas factories."
+  },
+  {
+    "word": "gross domestic product",
+    "meaning": "gayri safi yurt içi hasıla",
+    "example": "The country's gross domestic product grew by three percent in the last quarter."
+  },
+  {
+    "word": "inflation",
+    "meaning": "enflasyon",
+    "example": "Rising inflation has eroded the purchasing power of ordinary citizens."
+  },
+  {
+    "word": "insurgency",
+    "meaning": "isyan, ayaklanma",
+    "example": "The military was deployed to quell the insurgency in the northern provinces."
+  },
+  {
+    "word": "jurisdiction",
+    "meaning": "yetki alanı, yargı yetkisi",
+    "example": "The case falls outside the jurisdiction of this court and must be transferred."
+  },
+  {
+    "word": "legislation",
+    "meaning": "mevzuat, yasama",
+    "example": "New legislation requires all restaurants to display calorie information on menus."
+  },
+  {
+    "word": "monopoly",
+    "meaning": "tekel",
+    "example": "The telecommunications giant holds a near monopoly over the country's internet services."
+  },
+  {
+    "word": "negligence",
+    "meaning": "ihmal",
+    "example": "The surgeon was sued for negligence after leaving a surgical instrument inside the patient."
+  },
+  {
+    "word": "outsourcing",
+    "meaning": "dış kaynak kullanımı",
+    "example": "Outsourcing customer service to overseas call centers has become a common business strategy."
+  },
+  {
+    "word": "policy",
+    "meaning": "politika",
+    "example": "The company's strict attendance policy leaves no room for unexcused absences."
+  },
+  {
+    "word": "propaganda",
+    "meaning": "propaganda",
+    "example": "The regime used state media as a tool for propaganda to control public opinion."
+  },
+  {
+    "word": "recession",
+    "meaning": "durgunluk, resesyon",
+    "example": "During the recession, thousands of small businesses were forced to close their doors."
+  },
+  {
+    "word": "referendum",
+    "meaning": "referandum",
+    "example": "The government held a referendum to let citizens decide on the constitutional amendment."
+  },
+  {
+    "word": "regime",
+    "meaning": "rejim, yönetim",
+    "example": "The oppressive regime silenced all forms of political opposition."
+  },
+  {
+    "word": "sanction",
+    "meaning": "yaptırım",
+    "example": "Economic sanctions were imposed on the country in response to its nuclear program."
+  },
+  {
+    "word": "subsidy",
+    "meaning": "sübvansiyon, destek",
+    "example": "The government provides a subsidy to farmers who adopt environmentally friendly practices."
+  },
+  {
+    "word": "surveillance",
+    "meaning": "gözetim",
+    "example": "The city installed surveillance cameras in public areas to deter crime."
+  },
+  {
+    "word": "sustainability",
+    "meaning": "sürdürülebilirlik",
+    "example": "Many companies now prioritize sustainability in their manufacturing processes."
+  },
+  {
+    "word": "tariff",
+    "meaning": "gümrük vergisi",
+    "example": "The new import tariffs triggered a trade war between the two nations."
+  },
+  {
+    "word": "welfare",
+    "meaning": "refah, sosyal yardım",
+    "example": "The welfare system provides financial assistance to families in need."
+  },
+  {
+    "word": "biodiversity",
+    "meaning": "biyoçeşitlilik",
+    "example": "Loss of biodiversity threatens the stability of entire ecosystems."
+  },
+  {
+    "word": "carbon footprint",
+    "meaning": "karbon ayak izi",
+    "example": "By switching to public transport, she significantly reduced her carbon footprint."
+  },
+  {
+    "word": "catalyst",
+    "meaning": "katalizör",
+    "example": "The protest acted as a catalyst for broader social reform across the nation."
+  },
+  {
+    "word": "degradation",
+    "meaning": "bozulma, çürüme",
+    "example": "Soil degradation in the region has made farming increasingly difficult."
+  },
+  {
+    "word": "deforestation",
+    "meaning": "ormansızlaşma",
+    "example": "Rampant deforestation in the Amazon threatens countless species with extinction."
+  },
+  {
+    "word": "depletion",
+    "meaning": "tükenme, azalma",
+    "example": "The depletion of fish stocks has devastated coastal communities that rely on fishing."
+  },
+  {
+    "word": "ecosystem",
+    "meaning": "ekosistem",
+    "example": "Pollution from the factory disrupted the delicate balance of the local ecosystem."
+  },
+  {
+    "word": "emission",
+    "meaning": "emisyon, salım",
+    "example": "Carbon emissions from vehicles are a major contributor to global warming."
+  },
+  {
+    "word": "genome",
+    "meaning": "genom",
+    "example": "Mapping the human genome opened new possibilities for treating genetic diseases."
+  },
+  {
+    "word": "mutation",
+    "meaning": "mutasyon",
+    "example": "A random mutation in the virus allowed it to spread more rapidly between hosts."
+  },
+  {
+    "word": "renewable",
+    "meaning": "yenilenebilir",
+    "example": "Many countries are investing heavily in renewable energy sources like wind and solar."
+  },
+  {
+    "word": "synthesis",
+    "meaning": "sentez",
+    "example": "The synthesis of these two compounds produces a highly effective medication."
+  },
+  {
+    "word": "algorithm",
+    "meaning": "algoritma",
+    "example": "The search engine's algorithm determines which results appear first on the page."
+  },
+  {
+    "word": "artificial intelligence",
+    "meaning": "yapay zeka",
+    "example": "Artificial intelligence is transforming industries from healthcare to finance."
+  },
+  {
+    "word": "automation",
+    "meaning": "otomasyon",
+    "example": "Factory automation has significantly increased production speed while reducing costs."
+  },
+  {
+    "word": "bandwidth",
+    "meaning": "bant genişliği",
+    "example": "The video call lagged because the hotel's bandwidth was insufficient."
+  },
+  {
+    "word": "encryption",
+    "meaning": "şifreleme",
+    "example": "End-to-end encryption ensures that only the sender and recipient can read the messages."
+  },
+  {
+    "word": "innovation",
+    "meaning": "yenilik, inovasyon",
+    "example": "Technological innovation has been the driving force behind the company's rapid growth."
+  },
+  {
+    "word": "apathy",
+    "meaning": "ilgisizlik",
+    "example": "Voter apathy in local elections has led to consistently low turnout rates."
+  },
+  {
+    "word": "audacity",
+    "meaning": "cüret, gözü peklik",
+    "example": "He had the audacity to ask for a raise after missing three consecutive deadlines."
+  },
+  {
+    "word": "candor",
+    "meaning": "içtenlik, açık sözlülük",
+    "example": "She spoke with such candor that the audience was instantly drawn to her."
+  },
+  {
+    "word": "compassion",
+    "meaning": "şefkat",
+    "example": "Volunteers at the shelter treat every animal with genuine compassion."
+  },
+  {
+    "word": "complacency",
+    "meaning": "kendinden hoşnutluk, rehavet",
+    "example": "Years of success bred complacency, and the company eventually lost its competitive edge."
+  },
+  {
+    "word": "defiance",
+    "meaning": "meydan okuma",
+    "example": "In open defiance of the rules, the student wore a protest t-shirt to the ceremony."
+  },
+  {
+    "word": "empathy",
+    "meaning": "empati",
+    "example": "A good therapist demonstrates empathy without becoming emotionally involved."
+  },
+  {
+    "word": "euphoria",
+    "meaning": "coşku, sevinç",
+    "example": "The crowd erupted in euphoria when the home team scored the winning goal."
+  },
+  {
+    "word": "indifference",
+    "meaning": "kayıtsızlık",
+    "example": "His indifference toward his studies eventually led to failing grades."
+  },
+  {
+    "word": "melancholy",
+    "meaning": "hüzün, melankoli",
+    "example": "A sense of melancholy pervaded the old house as she sorted through her grandmother's belongings."
+  },
+  {
+    "word": "nostalgia",
+    "meaning": "nostalji, özlem",
+    "example": "Looking at childhood photographs filled her with nostalgia for simpler times."
+  },
+  {
+    "word": "outrage",
+    "meaning": "öfke, kızgınlık",
+    "example": "The public outrage over the scandal forced several high-ranking officials to resign."
+  },
+  {
+    "word": "remorse",
+    "meaning": "pişmanlık, vicdan azabı",
+    "example": "The convicted criminal showed no remorse during his sentencing hearing."
+  },
+  {
+    "word": "resentment",
+    "meaning": "kızgınlık, kırgınlık",
+    "example": "Years of unfair treatment had built up deep resentment among the workers."
+  },
+  {
+    "word": "scepticism",
+    "meaning": "şüphecilik",
+    "example": "The announcement was met with scepticism from industry experts who doubted its feasibility."
+  },
+  {
+    "word": "zeal",
+    "meaning": "gayret, şevk",
+    "example": "She approached every new project with unmatched zeal and determination."
+  },
+  {
+    "word": "albeit",
+    "meaning": "gerçi, her ne kadar",
+    "example": "The trip was enjoyable, albeit more expensive than we had originally planned."
+  },
+  {
+    "word": "arguably",
+    "meaning": "tartışmasız, iddia edilebilir ki",
+    "example": "He is arguably the most talented musician of his generation."
+  },
+  {
+    "word": "consequently",
+    "meaning": "sonuç olarak",
+    "example": "She missed the deadline; consequently, her application was not considered."
+  },
+  {
+    "word": "conversely",
+    "meaning": "tersine",
+    "example": "Hard work often leads to success; conversely, laziness almost guarantees failure."
+  },
+  {
+    "word": "hence",
+    "meaning": "bu nedenle",
+    "example": "The evidence is overwhelming; hence, the jury should have no doubt about the verdict."
+  },
+  {
+    "word": "henceforth",
+    "meaning": "bundan böyle",
+    "example": "By signing this document, you agree that henceforth all disputes will be settled through arbitration."
+  },
+  {
+    "word": "nevertheless",
+    "meaning": "yine de",
+    "example": "The weather was terrible; nevertheless, we decided to go ahead with the picnic."
+  },
+  {
+    "word": "nonetheless",
+    "meaning": "buna rağmen",
+    "example": "The hike was exhausting; nonetheless, the breathtaking views made it worthwhile."
+  },
+  {
+    "word": "notwithstanding",
+    "meaning": "rağmen",
+    "example": "Notwithstanding the heavy rain, the outdoor concert proceeded as scheduled."
+  },
+  {
+    "word": "presumably",
+    "meaning": "muhtemelen",
+    "example": "The lights are off, so presumably nobody is home yet."
+  },
+  {
+    "word": "thereby",
+    "meaning": "böylece",
+    "example": "She completed an internship at the firm, thereby gaining valuable industry experience."
+  },
+  {
+    "word": "thus",
+    "meaning": "böylece, bu nedenle",
+    "example": "The bacteria developed resistance; thus, the antibiotic became ineffective."
+  },
+  {
+    "word": "undoubtedly",
+    "meaning": "kuşkusuz",
+    "example": "She is undoubtedly one of the finest pianists the conservatory has ever produced."
+  },
+  {
+    "word": "whereby",
+    "meaning": "bununla, sayesinde",
+    "example": "The company introduced a system whereby employees could work from home two days a week."
+  },
+  {
+    "word": "alleviate",
+    "meaning": "hafifletmek",
+    "example": "A warm cup of tea can alleviate the discomfort of a sore throat on a cold evening."
+  },
+  {
+    "word": "appease",
+    "meaning": "yatıştırmak",
+    "example": "The manager tried to appease the angry customer by offering a full refund."
+  },
+  {
+    "word": "appraise",
+    "meaning": "değerlendirmek",
+    "example": "An expert was hired to appraise the antique furniture before the auction."
+  },
+  {
+    "word": "ascertain",
+    "meaning": "tespit etmek, öğrenmek",
+    "example": "The detective worked through the night to ascertain the exact time of the incident."
+  },
+  {
+    "word": "assimilate",
+    "meaning": "özümsemek, benzeşmek",
+    "example": "It took years for the immigrant family to fully assimilate into their new community."
+  },
+  {
+    "word": "circumvent",
+    "meaning": "aşmak, dolambaçlı yoldan geçmek",
+    "example": "The hacker found a way to circumvent the security firewall and access sensitive data."
+  },
+  {
+    "word": "coincide",
+    "meaning": "çakışmak, denk gelmek",
+    "example": "Her birthday coincides with a national holiday, so she always has the day off."
+  },
+  {
+    "word": "commence",
+    "meaning": "başlamak",
+    "example": "The graduation ceremony will commence promptly at ten o'clock."
+  },
+  {
+    "word": "complement",
+    "meaning": "tamamlamak",
+    "example": "The rich flavor of the cheese perfectly complements the sweetness of the pear."
+  },
+  {
+    "word": "comply",
+    "meaning": "uymak, riayet etmek",
+    "example": "All contractors must comply with the building codes established by the city."
+  },
+  {
+    "word": "concede",
+    "meaning": "kabul etmek, itiraf etmek",
+    "example": "After reviewing the evidence, the politician conceded that he had made an error."
+  },
+  {
+    "word": "confer",
+    "meaning": "danışmak, bahşetmek",
+    "example": "The committee will confer tomorrow to decide on the most qualified candidate."
+  },
+  {
+    "word": "consolidate",
+    "meaning": "pekiştirmek, birleştirmek",
+    "example": "The company consolidated its three regional offices into a single headquarters."
+  },
+  {
+    "word": "contemplate",
+    "meaning": "düşünmek, tefekkür etmek",
+    "example": "She sat by the lake to contemplate the major life decision ahead of her."
+  },
+  {
+    "word": "convey",
+    "meaning": "iletmek, aktarmak",
+    "example": "His facial expression conveyed more emotion than his words ever could."
+  },
+  {
+    "word": "cultivate",
+    "meaning": "geliştirmek, yetiştirmek",
+    "example": "The professor cultivated a love of literature in generations of students."
+  },
+  {
+    "word": "curb",
+    "meaning": "sınırlamak, dizginlemek",
+    "example": "The city introduced new regulations to curb excessive noise in residential areas."
+  },
+  {
+    "word": "deplore",
+    "meaning": "kınamak",
+    "example": "The international community deplored the use of chemical weapons in the conflict."
+  },
+  {
+    "word": "designate",
+    "meaning": "atamak, belirlemek",
+    "example": "The park was designated a protected area to preserve its rare wildlife."
+  },
+  {
+    "word": "deter",
+    "meaning": "caydırmak",
+    "example": "High fines and visible police presence deter drivers from speeding in school zones."
+  },
+  {
+    "word": "devise",
+    "meaning": "tasarlamak, icat etmek",
+    "example": "The engineer devised a clever solution to the long-standing drainage problem."
+  },
+  {
+    "word": "discard",
+    "meaning": "atmak, elden çıkarmak",
+    "example": "Please discard any expired medications safely rather than flushing them down the toilet."
+  },
+  {
+    "word": "dispel",
+    "meaning": "dağıtmak, gidermek",
+    "example": "The teacher's warm smile dispelled the students' anxiety about the difficult exam."
+  },
+  {
+    "word": "dispose",
+    "meaning": "elden çıkarmak, yerleştirmek",
+    "example": "Hazardous chemicals must be disposed of according to strict environmental guidelines."
+  },
+  {
+    "word": "disseminate",
+    "meaning": "yaymak",
+    "example": "The organization uses social media to disseminate information about public health."
+  },
+  {
+    "word": "distinguish",
+    "meaning": "ayırt etmek",
+    "example": "What distinguishes this restaurant from others is its commitment to locally sourced ingredients."
+  },
+  {
+    "word": "dwell",
+    "meaning": "yaşamak, üzerinde durmak",
+    "example": "There is no point dwelling on past mistakes when there is so much work ahead."
+  },
+  {
+    "word": "encompass",
+    "meaning": "kapsamak",
+    "example": "The new curriculum encompasses a wide range of subjects from arts to sciences."
+  },
+  {
+    "word": "enhance",
+    "meaning": "geliştirmek, artırmak",
+    "example": "Regular reading enhances vocabulary and improves writing skills over time."
+  },
+  {
+    "word": "entail",
+    "meaning": "gerektirmek, içermek",
+    "example": "Renovating the old house will entail far more work than they initially anticipated."
+  },
+  {
+    "word": "epitomize",
+    "meaning": "somut örneği olmak",
+    "example": "With its sleek design and advanced features, the smartphone epitomizes modern technology."
+  },
+  {
+    "word": "evoke",
+    "meaning": "uyandırmak, çağrıştırmak",
+    "example": "The old photograph evoked memories of childhood summers spent at the beach."
+  },
+  {
+    "word": "exempt",
+    "meaning": "muaf tutmak",
+    "example": "Non-profit organizations are exempt from paying certain types of taxes."
+  },
+  {
+    "word": "expedite",
+    "meaning": "hızlandırmak",
+    "example": "The manager hired additional staff to expedite the processing of backlogged orders."
+  },
+  {
+    "word": "forge",
+    "meaning": "oluşturmak, sahtesini yapmak",
+    "example": "Through years of hard work, she forged a reputation as one of the best lawyers in the city."
+  },
+  {
+    "word": "foster",
+    "meaning": "geliştirmek, teşvik etmek",
+    "example": "The school fosters creativity by encouraging students to explore unconventional ideas."
+  },
+  {
+    "word": "fulfil",
+    "meaning": "yerine getirmek",
+    "example": "The contractor failed to fulfil the terms of the agreement, resulting in a lawsuit."
+  },
+  {
+    "word": "harness",
+    "meaning": "kontrol altına alıp kullanmak",
+    "example": "The dam harnesses the power of the river to generate electricity for the entire region."
+  },
+  {
+    "word": "herald",
+    "meaning": "müjdelemek, haber vermek",
+    "example": "The discovery of penicillin heralded a new era in medicine."
+  },
+  {
+    "word": "impede",
+    "meaning": "engellemek",
+    "example": "Heavy snowfall impeded rescue efforts in the mountainous region."
+  },
+  {
+    "word": "implement",
+    "meaning": "uygulamaya koymak",
+    "example": "The school board voted to implement the new grading system starting next semester."
+  },
+  {
+    "word": "infringe",
+    "meaning": "ihlal etmek",
+    "example": "The company was sued for infringing on a competitor's patent."
+  },
+  {
+    "word": "instigate",
+    "meaning": "kışkırtmak, başlatmak",
+    "example": "A small group of agitators instigated the riot that spread through downtown."
+  },
+  {
+    "word": "invoke",
+    "meaning": "başvurmak, çağırmak",
+    "example": "The defense attorney invoked the Fifth Amendment to protect her client from self-incrimination."
+  },
+  {
+    "word": "jeopardize",
+    "meaning": "tehlikeye atmak",
+    "example": "Reckless spending could jeopardize the financial future of the entire family."
+  },
+  {
+    "word": "linger",
+    "meaning": "oyalanmak, sürüp gitmek",
+    "example": "The smell of garlic lingered in the kitchen long after dinner was over."
+  },
+  {
+    "word": "magnify",
+    "meaning": "büyütmek, abartmak",
+    "example": "A microscope magnifies objects thousands of times, revealing details invisible to the naked eye."
+  },
+  {
+    "word": "marginalize",
+    "meaning": "dışlamak, ötekileştirmek",
+    "example": "Society often marginalizes people with disabilities, denying them equal opportunities."
+  },
+  {
+    "word": "mediate",
+    "meaning": "arabuluculuk yapmak",
+    "example": "A neutral third party was brought in to mediate the labor dispute."
+  },
+  {
+    "word": "merge",
+    "meaning": "birleşmek",
+    "example": "The two rival companies decided to merge, creating the largest retailer in the country."
+  },
+  {
+    "word": "obscure",
+    "meaning": "gizlemek, karartmak",
+    "example": "Thick fog obscured the road, making driving extremely hazardous."
+  },
+  {
+    "word": "obstruct",
+    "meaning": "engellemek",
+    "example": "A parked truck obstructed the entrance to the parking garage."
+  },
+  {
+    "word": "overhaul",
+    "meaning": "kökten değiştirmek, elden geçirmek",
+    "example": "The IT department overhauled the entire network infrastructure to improve security."
+  },
+  {
+    "word": "permeate",
+    "meaning": "sızmak, yayılmak",
+    "example": "The smell of fresh coffee permeated the entire office every morning."
+  },
+  {
+    "word": "pinpoint",
+    "meaning": "tam olarak belirlemek",
+    "example": "Scientists have been unable to pinpoint the exact cause of the disease."
+  },
+  {
+    "word": "preclude",
+    "meaning": "önlemek, engellemek",
+    "example": "A lack of funding precludes the team from conducting further research."
+  },
+  {
+    "word": "predominate",
+    "meaning": "üstün olmak, hakim olmak",
+    "example": "In this region, agriculture predominates over all other economic activities."
+  },
+  {
+    "word": "proliferate",
+    "meaning": "hızla yayılmak, çoğalmak",
+    "example": "Fast-food chains proliferated across the country during the economic boom."
+  },
+  {
+    "word": "prompt",
+    "meaning": "hızlı, derhal olan",
+    "example": "The paramedic's prompt response saved the patient's life."
+  },
+  {
+    "word": "propagate",
+    "meaning": "yaymak, üretmek",
+    "example": "Social media platforms can propagate misinformation at an alarming rate."
+  },
+  {
+    "word": "rectify",
+    "meaning": "düzeltmek",
+    "example": "The accounting error was rectified before the final report was submitted."
+  },
+  {
+    "word": "relinquish",
+    "meaning": "bırakmak, vazgeçmek",
+    "example": "The aging king reluctantly relinquished control of the kingdom to his son."
+  },
+  {
+    "word": "resonate",
+    "meaning": "yankı bulmak, karşılık bulmak",
+    "example": "The speaker's message resonated deeply with young voters across the country."
+  },
+  {
+    "word": "restrain",
+    "meaning": "kısıtlamak, engellemek",
+    "example": "The dog was restrained by a strong leash to prevent it from chasing squirrels."
+  },
+  {
+    "word": "retrieve",
+    "meaning": "geri almak, kurtarmak",
+    "example": "Divers managed to retrieve the black box from the wreckage at the bottom of the sea."
+  },
+  {
+    "word": "revamp",
+    "meaning": "yenilemek",
+    "example": "The magazine completely revamped its layout to attract a younger readership."
+  },
+  {
+    "word": "reverberate",
+    "meaning": "yankılanmak",
+    "example": "The sound of the church bell reverberated through the quiet valley."
+  },
+  {
+    "word": "safeguard",
+    "meaning": "korumak",
+    "example": "Encryption technology safeguards sensitive data from unauthorized access."
+  },
+  {
+    "word": "salvage",
+    "meaning": "kurtarmak",
+    "example": "After the fire, the family managed to salvage a few photographs from the wreckage."
+  },
+  {
+    "word": "sever",
+    "meaning": "kesmek, koparmak",
+    "example": "The country severed diplomatic ties with its neighbor after the border incident."
+  },
+  {
+    "word": "shatter",
+    "meaning": "paramparça etmek",
+    "example": "The earthquake shattered windows and crumbled walls across the entire city block."
+  },
+  {
+    "word": "streamline",
+    "meaning": "sadeleştirmek, verimli hale getirmek",
+    "example": "The new software streamlined the ordering process, cutting delivery times in half."
+  },
+  {
+    "word": "subside",
+    "meaning": "yatışmak, azalmak",
+    "example": "After hours of heavy rain, the floodwaters finally began to subside."
+  },
+  {
+    "word": "supplement",
+    "meaning": "desteklemek, tamamlamak",
+    "example": "She supplements her income by tutoring students on weekends."
+  },
+  {
+    "word": "thrive",
+    "meaning": "gelişmek, serpilmek",
+    "example": "The plants thrive in this corner of the garden where they get plenty of sunlight."
+  },
+  {
+    "word": "transcend",
+    "meaning": "aşmak, ötesine geçmek",
+    "example": "Great art has the power to transcend cultural and linguistic barriers."
+  },
+  {
+    "word": "trigger",
+    "meaning": "tetiklemek",
+    "example": "Certain foods can trigger migraines in people who are sensitive to them."
+  },
+  {
+    "word": "unveil",
+    "meaning": "açığa çıkarmak, tanıtmak",
+    "example": "The company unveiled its latest smartphone at a glamorous press conference."
+  },
+  {
+    "word": "utilize",
+    "meaning": "kullanmak, yararlanmak",
+    "example": "The factory utilizes solar panels to reduce its reliance on the power grid."
+  },
+  {
+    "word": "verify",
+    "meaning": "doğrulamak",
+    "example": "The bank will verify your identity before allowing you to access the account."
+  },
+  {
+    "word": "assertive",
+    "meaning": "kendinden emin, iddialı",
+    "example": "Her assertive manner in negotiations earned her respect from colleagues and competitors alike."
+  },
+  {
+    "word": "astute",
+    "meaning": "kurnaz, zeki",
+    "example": "The astute investor sold her shares just before the market crashed."
+  },
+  {
+    "word": "candid",
+    "meaning": "samimi, açık sözlü",
+    "example": "The politician's candid admission of his mistakes surprised the interviewers."
+  },
+  {
+    "word": "conscientious",
+    "meaning": "vicdanlı, titiz",
+    "example": "The conscientious student double-checked every calculation on the exam."
+  },
+  {
+    "word": "diligent",
+    "meaning": "çalışkan, gayretli",
+    "example": "Through diligent research over many years, the team finally discovered a cure."
+  },
+  {
+    "word": "discreet",
+    "meaning": "sağduyulu, ihtiyatlı",
+    "example": "The detective made discreet inquiries without alerting the suspect."
+  },
+  {
+    "word": "eloquent",
+    "meaning": "belagatli, güzel konuşan",
+    "example": "Her eloquent speech at the graduation ceremony moved many in the audience to tears."
+  },
+  {
+    "word": "frugal",
+    "meaning": "tutumlu, idareli",
+    "example": "Growing up in poverty, he learned to be frugal and never wasted anything."
+  },
+  {
+    "word": "humble",
+    "meaning": "alçakgönüllü",
+    "example": "Despite his enormous success, the actor remained humble and approachable."
+  },
+  {
+    "word": "impeccable",
+    "meaning": "kusursuz",
+    "example": "The tailor's craftsmanship was impeccable, with every stitch perfectly aligned."
+  },
+  {
+    "word": "impulsive",
+    "meaning": "dürtüsel, aniden davranan",
+    "example": "His impulsive decision to quit his job left his family in a difficult financial situation."
+  },
+  {
+    "word": "obstinate",
+    "meaning": "inatçı",
+    "example": "The obstinate child refused to eat vegetables no matter how they were prepared."
+  },
+  {
+    "word": "pragmatic",
+    "meaning": "pragmatik, gerçekçi",
+    "example": "The CEO took a pragmatic approach, focusing on solutions rather than assigning blame."
+  },
+  {
+    "word": "prudent",
+    "meaning": "tedbirli, ihtiyatlı",
+    "example": "It would be prudent to save at least six months' salary for emergencies."
+  },
+  {
+    "word": "relentless",
+    "meaning": "amansız, yılmayan",
+    "example": "The relentless rain continued for five days, causing severe flooding in the valley."
+  },
+  {
+    "word": "resourceful",
+    "meaning": "becerikli, çare bulan",
+    "example": "The resourceful scout used a paperclip and a piece of string to fix the broken tent."
+  },
+  {
+    "word": "stubborn",
+    "meaning": "inatçı",
+    "example": "The stubborn mule refused to budge from the middle of the trail."
+  },
+  {
+    "word": "tactful",
+    "meaning": "nazik, incelikli",
+    "example": "She found a tactful way to tell her friend that the outfit was unflattering."
+  },
+  {
+    "word": "tenacious",
+    "meaning": "azimli, inatçı",
+    "example": "The tenacious reporter pursued the story for months until the truth finally emerged."
+  },
+  {
+    "word": "blatant",
+    "meaning": "apaçık, göz göre göre",
+    "example": "The player's blatant foul went unpunished by the referee."
+  },
+  {
+    "word": "bleak",
+    "meaning": "karamsar, kasvetli",
+    "example": "The economic forecast for the coming year looks increasingly bleak."
+  },
+  {
+    "word": "brittle",
+    "meaning": "kırılgan, gevrek",
+    "example": "The old parchment was so brittle that it crumbled at the slightest touch."
+  },
+  {
+    "word": "chronic",
+    "meaning": "kronik, süregelen",
+    "example": "She suffers from chronic back pain that flares up during the winter months."
+  },
+  {
+    "word": "concise",
+    "meaning": "kısa ve öz",
+    "example": "The professor asked for a concise summary of the research, no longer than one page."
+  },
+  {
+    "word": "cynical",
+    "meaning": "alaycı, kötümser",
+    "example": "He became cynical about politics after witnessing years of broken promises."
+  },
+  {
+    "word": "deceptive",
+    "meaning": "aldatıcı",
+    "example": "The calm surface of the river is deceptive, as dangerous currents lurk beneath."
+  },
+  {
+    "word": "detrimental",
+    "meaning": "zararlı",
+    "example": "Prolonged exposure to loud noise is detrimental to hearing."
+  },
+  {
+    "word": "disruptive",
+    "meaning": "bozucu, kesintiye uğratan",
+    "example": "The student's disruptive behavior in class affected everyone's ability to concentrate."
+  },
+  {
+    "word": "erroneous",
+    "meaning": "hatalı, yanlış",
+    "example": "The newspaper published an erroneous report claiming the bridge was safe for traffic."
+  },
+  {
+    "word": "exempt",
+    "meaning": "muaf",
+    "example": "Students under eighteen are exempt from paying the adult registration fee."
+  },
+  {
+    "word": "flawed",
+    "meaning": "kusurlu",
+    "example": "The study's methodology is fundamentally flawed, making its conclusions unreliable."
+  },
+  {
+    "word": "formidable",
+    "meaning": "korkutucu derecede güçlü",
+    "example": "The team faces a formidable opponent in tomorrow's championship final."
+  },
+  {
+    "word": "fragile",
+    "meaning": "kırılgan",
+    "example": "The antique vase is extremely fragile and must be handled with the utmost care."
+  },
+  {
+    "word": "frivolous",
+    "meaning": "önemsiz, yüzeysel",
+    "example": "The court dismissed the lawsuit as frivolous and without legal merit."
+  },
+  {
+    "word": "gruelling",
+    "meaning": "yorucu, çok zor",
+    "example": "The marathon was a gruelling test of endurance that pushed every runner to their limit."
+  },
+  {
+    "word": "imminent",
+    "meaning": "yakın, an meselesi",
+    "example": "Dark clouds on the horizon signaled that a storm was imminent."
+  },
+  {
+    "word": "intangible",
+    "meaning": "soyut, elle tutulmaz",
+    "example": "Trust is an intangible asset that is difficult to measure but essential for any relationship."
+  },
+  {
+    "word": "intrinsic",
+    "meaning": "özünde olan, asli",
+    "example": "The painting's intrinsic value lies not in its price but in its artistic significance."
+  },
+  {
+    "word": "lucrative",
+    "meaning": "kazançlı, karlı",
+    "example": "Software development has become one of the most lucrative careers in the modern economy."
+  },
+  {
+    "word": "meagre",
+    "meaning": "yetersiz, az",
+    "example": "The family survived on a meagre diet of bread and soup during the war."
+  },
+  {
+    "word": "mundane",
+    "meaning": "sıradan",
+    "example": "She grew tired of her mundane office routine and decided to travel the world."
+  },
+  {
+    "word": "nominal",
+    "meaning": "sözde, adı var kendi yok",
+    "example": "He holds the title of director, but his role in the company is purely nominal."
+  },
+  {
+    "word": "obsessive",
+    "meaning": "saplantılı",
+    "example": "His obsessive checking of social media began to interfere with his work and relationships."
+  },
+  {
+    "word": "outdated",
+    "meaning": "modası geçmiş",
+    "example": "The factory's outdated machinery was responsible for much of the production delay."
+  },
+  {
+    "word": "overwhelming",
+    "meaning": "bunaltıcı, ezici",
+    "example": "The response to the charity appeal was overwhelming, far exceeding the organizers' expectations."
+  },
+  {
+    "word": "perpetual",
+    "meaning": "sürekli, ebedi",
+    "example": "The region is locked in a perpetual cycle of drought and famine."
+  },
+  {
+    "word": "prone",
+    "meaning": "eğilimli, yatkın",
+    "example": "People who skip breakfast are more prone to snacking on unhealthy foods later in the day."
+  },
+  {
+    "word": "rampant",
+    "meaning": "kontrolden çıkmış, azgın",
+    "example": "Corruption is rampant in the customs office, with bribes being demanded at every checkpoint."
+  },
+  {
+    "word": "redundant",
+    "meaning": "gereksiz, fazlalık",
+    "example": "Many traditional skills have become redundant in the age of automation."
+  },
+  {
+    "word": "scarce",
+    "meaning": "kıt, az bulunur",
+    "example": "Clean drinking water is scarce in many remote villages of the developing world."
+  },
+  {
+    "word": "seamless",
+    "meaning": "kesintisiz, sorunsuz",
+    "example": "The app provides a seamless experience, allowing users to switch between devices without interruption."
+  },
+  {
+    "word": "sluggish",
+    "meaning": "hareketsiz, ağır",
+    "example": "The economy has been sluggish for months, with growth well below expectations."
+  },
+  {
+    "word": "sporadic",
+    "meaning": "aralıklı, seyrek",
+    "example": "The region experiences sporadic earthquakes, sometimes going years without any activity."
+  },
+  {
+    "word": "staggering",
+    "meaning": "şaşırtıcı, sersemletici",
+    "example": "The cost of rebuilding the city after the disaster was a staggering two billion dollars."
+  },
+  {
+    "word": "stringent",
+    "meaning": "sıkı, katı",
+    "example": "The laboratory follows stringent safety protocols when handling infectious materials."
+  },
+  {
+    "word": "superficial",
+    "meaning": "yüzeysel",
+    "example": "His knowledge of the subject is superficial at best, barely scratching the surface."
+  },
+  {
+    "word": "thorough",
+    "meaning": "eksiksiz, kapsamlı",
+    "example": "The mechanic gave the engine a thorough inspection before declaring the car roadworthy."
+  },
+  {
+    "word": "unanimous",
+    "meaning": "oy birliğiyle",
+    "example": "The jury reached a unanimous verdict after only three hours of deliberation."
+  },
+  {
+    "word": "unprecedented",
+    "meaning": "eşi görülmemiş",
+    "example": "The pandemic caused an unprecedented disruption to global supply chains."
+  },
+  {
+    "word": "vague",
+    "meaning": "belirsiz",
+    "example": "The directions were so vague that we got lost twice before finding the restaurant."
+  },
+  {
+    "word": "widespread",
+    "meaning": "yaygın",
+    "example": "There is widespread support for the initiative to ban single-use plastics."
+  },
+  {
+    "word": "adversity",
+    "meaning": "zorluk, güçlük",
+    "example": "She overcame significant adversity to become the first in her family to graduate from college."
+  },
+  {
+    "word": "affiliation",
+    "meaning": "bağlantı, üyelik",
+    "example": "The research institute has no affiliation with any political party or religious group."
+  },
+  {
+    "word": "allegation",
+    "meaning": "iddia",
+    "example": "The newspaper published serious allegations of fraud against the former CEO."
+  },
+  {
+    "word": "anomaly",
+    "meaning": "anormallik, sapma",
+    "example": "The sudden drop in temperature in July was a weather anomaly that puzzled meteorologists."
+  },
+  {
+    "word": "aspiration",
+    "meaning": "özlem, tutku",
+    "example": "Her aspiration to become a doctor drove her to study tirelessly throughout medical school."
+  },
+  {
+    "word": "backlash",
+    "meaning": "tepki, geri tepme",
+    "example": "The brand faced a massive public backlash after its offensive advertisement went viral."
+  },
+  {
+    "word": "breakthrough",
+    "meaning": "büyük gelişme, atılım",
+    "example": "The discovery of antibiotics was a breakthrough that revolutionized modern medicine."
+  },
+  {
+    "word": "compliance",
+    "meaning": "uyum, itaat",
+    "example": "The factory was regularly inspected for compliance with environmental regulations."
+  },
+  {
+    "word": "connotation",
+    "meaning": "çağrışım, yan anlam",
+    "example": "The word 'cheap' carries a negative connotation that 'inexpensive' does not."
+  },
+  {
+    "word": "counterpart",
+    "meaning": "muadil, karşılık",
+    "example": "The foreign minister met with his counterpart from the neighboring country to discuss trade."
+  },
+  {
+    "word": "deprivation",
+    "meaning": "yoksunluk, mahrumiyet",
+    "example": "Sleep deprivation impairs judgment and slows reaction time significantly."
+  },
+  {
+    "word": "discourse",
+    "meaning": "söylem",
+    "example": "The conference encouraged intellectual discourse among scholars from diverse fields."
+  },
+  {
+    "word": "distortion",
+    "meaning": "çarpıtma, bozulma",
+    "example": "The article's distortion of facts misled readers about the true nature of the event."
+  },
+  {
+    "word": "dividend",
+    "meaning": "temettü, kâr payı",
+    "example": "The company declared a quarterly dividend of fifty cents per share."
+  },
+  {
+    "word": "drawback",
+    "meaning": "dezavantaj, sakınca",
+    "example": "The main drawback of living in the city center is the constant noise from traffic."
+  },
+  {
+    "word": "endeavour",
+    "meaning": "çaba, girişim",
+    "example": "The space program represents humanity's greatest endeavour to explore the unknown."
+  },
+  {
+    "word": "entity",
+    "meaning": "varlık, kurum",
+    "example": "After the merger, the two companies operated as a single legal entity."
+  },
+  {
+    "word": "essence",
+    "meaning": "öz, esas",
+    "example": "Time is of the essence in emergency medical treatment."
+  },
+  {
+    "word": "facet",
+    "meaning": "yön, boyut",
+    "example": "The documentary explored every facet of life in the remote mountain village."
+  },
+  {
+    "word": "fallacy",
+    "meaning": "yanlış inanç, safsata",
+    "example": "The belief that goldfish have a three-second memory is a common fallacy."
+  },
+  {
+    "word": "feat",
+    "meaning": "başarı, marifet",
+    "example": "Building the pyramid was an extraordinary feat of engineering for its time."
+  },
+  {
+    "word": "flaw",
+    "meaning": "kusur",
+    "example": "A critical flaw in the design caused the bridge to collapse under heavy load."
+  },
+  {
+    "word": "forerunner",
+    "meaning": "öncü",
+    "example": "The steam engine was the forerunner of all modern industrial machinery."
+  },
+  {
+    "word": "groundwork",
+    "meaning": "temel, altyapı çalışması",
+    "example": "The preliminary meetings laid the groundwork for future negotiations between the two nations."
+  },
+  {
+    "word": "gist",
+    "meaning": "özet, ana fikir",
+    "example": "I didn't catch every word, but I got the gist of what she was saying."
+  },
+  {
+    "word": "impetus",
+    "meaning": "itici güç, teşvik",
+    "example": "The discovery of oil gave fresh impetus to the country's economic development."
+  },
+  {
+    "word": "incidence",
+    "meaning": "görülme sıklığı",
+    "example": "The incidence of skin cancer has risen sharply in countries near the ozone hole."
+  },
+  {
+    "word": "insight",
+    "meaning": "kavrayış, iç görü",
+    "example": "The psychologist offered valuable insights into the child's behavioral problems."
+  },
+  {
+    "word": "interplay",
+    "meaning": "etkileşim",
+    "example": "The interplay between genetics and environment shapes a person's character."
+  },
+  {
+    "word": "juncture",
+    "meaning": "kavşak nokta, an",
+    "example": "At this critical juncture, the company must decide whether to expand or consolidate."
+  },
+  {
+    "word": "leeway",
+    "meaning": "hareket serbestisi",
+    "example": "The supervisor gives her team considerable leeway in how they complete their assignments."
+  },
+  {
+    "word": "liability",
+    "meaning": "sorumluluk, yükümlülük",
+    "example": "The business owner's personal assets were protected from liability by the corporate structure."
+  },
+  {
+    "word": "magnitude",
+    "meaning": "büyüklük, önem",
+    "example": "Scientists were unprepared for the magnitude of the earthquake that struck the coast."
+  },
+  {
+    "word": "mandate",
+    "meaning": "yetki, görev",
+    "example": "The newly elected president received a clear mandate from voters to reform the education system."
+  },
+  {
+    "word": "mediocrity",
+    "meaning": "vasatlık",
+    "example": "The coach refused to accept mediocrity, demanding excellence from every player on the team."
+  },
+  {
+    "word": "milestone",
+    "meaning": "dönüm noktası",
+    "example": "The invention of the printing press was a milestone in the spread of knowledge."
+  },
+  {
+    "word": "misconception",
+    "meaning": "yanlış anlama",
+    "example": "A common misconception is that evolution is just a theory, not a scientific fact."
+  },
+  {
+    "word": "nuance",
+    "meaning": "ince ayrım, nüans",
+    "example": "A skilled translator captures not just words but every nuance of the original text."
+  },
+  {
+    "word": "outset",
+    "meaning": "başlangıç",
+    "example": "From the outset, the project was plagued by budget overruns and scheduling delays."
+  },
+  {
+    "word": "overtone",
+    "meaning": "üstü kapalı anlam, ima",
+    "example": "His speech had political overtones that were not lost on the audience."
+  },
+  {
+    "word": "plight",
+    "meaning": "kötü durum, çıkmaz",
+    "example": "The documentary highlighted the plight of refugees fleeing the war zone."
+  },
+  {
+    "word": "precedent",
+    "meaning": "emsal, önceki örnek",
+    "example": "The ruling set a legal precedent that would influence cases for decades to come."
+  },
+  {
+    "word": "predicament",
+    "meaning": "çıkmaz, zor durum",
+    "example": "The company found itself in a financial predicament with no easy way out."
+  },
+  {
+    "word": "prospect",
+    "meaning": "olasılık, gelecek beklentisi",
+    "example": "Job prospects for graduates in this field have improved significantly in recent years."
+  },
+  {
+    "word": "provision",
+    "meaning": "hüküm, tedarik",
+    "example": "The contract includes a provision allowing either party to terminate with thirty days' notice."
+  },
+  {
+    "word": "quandary",
+    "meaning": "ikilem, çıkmaz",
+    "example": "The manager was in a quandary about whether to report the incident to upper management."
+  },
+  {
+    "word": "recipient",
+    "meaning": "alıcı",
+    "example": "The recipient of the scholarship must maintain a grade point average of at least 3.5."
+  },
+  {
+    "word": "resilience",
+    "meaning": "dayanıklılık, direnç",
+    "example": "The community's resilience in the face of repeated natural disasters was truly inspiring."
+  },
+  {
+    "word": "setback",
+    "meaning": "aksilik, gerileme",
+    "example": "The failed experiment was a temporary setback, not a reason to abandon the research."
+  },
+  {
+    "word": "stance",
+    "meaning": "tutum, duruş",
+    "example": "The government's stance on immigration has shifted significantly over the past decade."
+  },
+  {
+    "word": "stipulation",
+    "meaning": "şart, koşul",
+    "example": "The donor's only stipulation was that the building be named after his late wife."
+  },
+  {
+    "word": "undertaking",
+    "meaning": "girişim, üstlenilen iş",
+    "example": "Building the canal was a massive undertaking that employed thousands of workers for years."
+  },
+  {
+    "word": "upheaval",
+    "meaning": "altüst oluş, karışıklık",
+    "example": "The revolution caused widespread social upheaval and the displacement of millions."
+  },
+  {
+    "word": "vicinity",
+    "meaning": "yakın çevre",
+    "example": "There are several excellent restaurants in the vicinity of the hotel."
+  },
+  {
+    "word": "appraisal",
+    "meaning": "değerlendirme",
+    "example": "The annual performance appraisal determines whether an employee receives a raise."
+  },
+  {
+    "word": "asset",
+    "meaning": "varlık, kaynak",
+    "example": "Real estate can be a valuable asset in a diversified investment portfolio."
+  },
+  {
+    "word": "benchmark",
+    "meaning": "kıyaslama ölçütü",
+    "example": "The company's latest product has become the benchmark against which all competitors are measured."
+  },
+  {
+    "word": "collateral",
+    "meaning": "teminat",
+    "example": "The bank approved the loan after the borrower put up her house as collateral."
+  },
+  {
+    "word": "conglomerate",
+    "meaning": "büyük şirketler topluluğu",
+    "example": "The multinational conglomerate owns businesses ranging from food production to electronics."
+  },
+  {
+    "word": "counteroffer",
+    "meaning": "karşı teklif",
+    "example": "The seller rejected the initial bid and submitted a counteroffer of twenty thousand dollars more."
+  },
+  {
+    "word": "entrepreneur",
+    "meaning": "girişimci",
+    "example": "The young entrepreneur started her first business at the age of nineteen."
+  },
+  {
+    "word": "expenditure",
+    "meaning": "harcama",
+    "example": "Military expenditure accounts for a significant portion of the national budget."
+  },
+  {
+    "word": "franchise",
+    "meaning": "bayilik, imtiyaz",
+    "example": "She bought a fast-food franchise and opened three locations within five years."
+  },
+  {
+    "word": "insolvency",
+    "meaning": "iflas, borç ödeyememe",
+    "example": "The company declared insolvency after failing to secure a rescue package from investors."
+  },
+  {
+    "word": "logistics",
+    "meaning": "lojistik",
+    "example": "The relief organization faced enormous logistics challenges in delivering aid to the remote region."
+  },
+  {
+    "word": "merger",
+    "meaning": "birleşme",
+    "example": "The merger of the two airlines created the largest carrier in the industry."
+  },
+  {
+    "word": "overhead",
+    "meaning": "genel gider",
+    "example": "Small businesses struggle with high overhead costs such as rent and utilities."
+  },
+  {
+    "word": "procurement",
+    "meaning": "satın alma, tedarik",
+    "example": "The procurement department is responsible for negotiating contracts with all suppliers."
+  },
+  {
+    "word": "revenue",
+    "meaning": "gelir",
+    "example": "The company's annual revenue exceeded one billion dollars for the first time."
+  },
+  {
+    "word": "stakeholder",
+    "meaning": "paydaş",
+    "example": "Every stakeholder in the project must be consulted before major design changes are made."
+  },
+  {
+    "word": "turnover",
+    "meaning": "ciro, personel devir hızı",
+    "example": "The restaurant has a high staff turnover rate due to long hours and low wages."
+  },
+  {
+    "word": "abolish",
+    "meaning": "kaldırmak, yürürlükten kaldırmak",
+    "example": "The new government promised to abolish the outdated law that restricted freedom of the press."
+  },
+  {
+    "word": "acclaim",
+    "meaning": "övmek, alkışlamak",
+    "example": "The novel was acclaimed by critics and readers alike, winning several prestigious awards."
+  },
+  {
+    "word": "accommodate",
+    "meaning": "yerleştirmek, uyum sağlamak",
+    "example": "The hotel can accommodate up to five hundred guests at full capacity."
+  },
+  {
+    "word": "acquaint",
+    "meaning": "tanıştırmak, alıştırmak",
+    "example": "The orientation program is designed to acquaint new employees with company policies."
+  },
+  {
+    "word": "adjourn",
+    "meaning": "ertelemek",
+    "example": "The judge decided to adjourn the trial until Monday morning."
+  },
+  {
+    "word": "aggravate",
+    "meaning": "kötüleştirmek, ağırlaştırmak",
+    "example": "Scratching the insect bite will only aggravate the itching and slow down the healing."
+  },
+  {
+    "word": "annihilate",
+    "meaning": "yok etmek",
+    "example": "The invading army annihilated everything in its path, leaving villages in ruins."
+  },
+  {
+    "word": "appal",
+    "meaning": "dehşete düşürmek",
+    "example": "The graphic images of the battlefield appalled viewers watching the news broadcast."
+  },
+  {
+    "word": "assail",
+    "meaning": "saldırmak",
+    "example": "The journalist was assailed by critics after publishing the controversial article."
+  },
+  {
+    "word": "augment",
+    "meaning": "arttırmak, genişletmek",
+    "example": "The university augmented its library collection with a generous donation of rare manuscripts."
+  },
+  {
+    "word": "bolster",
+    "meaning": "desteklemek, güçlendirmek",
+    "example": "The positive review helped bolster the restaurant's reputation in the local community."
+  },
+  {
+    "word": "clarify",
+    "meaning": "açıklığa kavuşturmak",
+    "example": "Could you clarify what you meant by that statement?"
+  },
+  {
+    "word": "condemn",
+    "meaning": "kınamak, mahkum etmek",
+    "example": "World leaders united to condemn the terrorist attack on the civilian population."
+  },
+  {
+    "word": "confine",
+    "meaning": "sınırlamak, hapsetmek",
+    "example": "The injured player was confined to a wheelchair for six weeks during recovery."
+  },
+  {
+    "word": "conform",
+    "meaning": "uymak",
+    "example": "All products must conform to international safety standards before being sold."
+  },
+  {
+    "word": "congregate",
+    "meaning": "toplanmak",
+    "example": "Fans congregated outside the stadium hours before the concert was scheduled to begin."
+  },
+  {
+    "word": "conserve",
+    "meaning": "korumak, tasarruf etmek",
+    "example": "Installing low-flow fixtures helps conserve water in drought-prone areas."
+  },
+  {
+    "word": "constrain",
+    "meaning": "kısıtlamak",
+    "example": "A tight deadline constrained the team's ability to conduct thorough testing."
+  },
+  {
+    "word": "contravene",
+    "meaning": "ihlal etmek",
+    "example": "The new policy contravenes the existing labor agreement and may face a legal challenge."
+  },
+  {
+    "word": "counterbalance",
+    "meaning": "dengelemek",
+    "example": "The calming influence of the teacher helped counterbalance the chaos of the classroom."
+  },
+  {
+    "word": "decipher",
+    "meaning": "çözmek, deşifre etmek",
+    "example": "Linguists spent decades trying to decipher the ancient script found on the stone tablet."
+  },
+  {
+    "word": "deem",
+    "meaning": "saymak, addetmek",
+    "example": "The proposal was deemed too risky to receive funding from the committee."
+  },
+  {
+    "word": "defer",
+    "meaning": "ertelemek",
+    "example": "The committee decided to defer the decision until more data could be collected."
+  },
+  {
+    "word": "demolish",
+    "meaning": "yıkmak",
+    "example": "The city council voted to demolish the abandoned building and replace it with a park."
+  },
+  {
+    "word": "denounce",
+    "meaning": "kınamak, ihbar etmek",
+    "example": "Several countries denounced the regime for its systematic human rights violations."
+  },
+  {
+    "word": "deprive",
+    "meaning": "mahrum bırakmak",
+    "example": "The siege was intended to deprive the city of food and force a surrender."
+  },
+  {
+    "word": "digress",
+    "meaning": "konudan sapmak",
+    "example": "The professor tends to digress from the topic and share unrelated anecdotes from his youth."
+  },
+  {
+    "word": "discredit",
+    "meaning": "itibarsızlaştırmak",
+    "example": "The rival politician attempted to discredit his opponent by leaking embarrassing emails."
+  },
+  {
+    "word": "dismantle",
+    "meaning": "sökmek, parçalarına ayırmak",
+    "example": "The workers dismantled the old stage setup to make room for the new production."
+  },
+  {
+    "word": "dispatch",
+    "meaning": "göndermek",
+    "example": "Emergency services dispatched an ambulance within two minutes of receiving the call."
+  },
+  {
+    "word": "dispute",
+    "meaning": "itiraz etmek, tartışmak",
+    "example": "The players disputed the referee's call, claiming the ball had crossed the line."
+  },
+  {
+    "word": "distil",
+    "meaning": "damıtmak, özünü çıkarmak",
+    "example": "The author distilled years of research into a single accessible volume."
+  },
+  {
+    "word": "divert",
+    "meaning": "yönlendirmek, saptırmak",
+    "example": "Heavy traffic was diverted onto a side road while the main highway was being repaired."
+  },
+  {
+    "word": "eclipse",
+    "meaning": "gölgede bırakmak",
+    "example": "The young athlete's remarkable performance eclipsed the achievements of all her senior teammates."
+  },
+  {
+    "word": "elevate",
+    "meaning": "yükseltmek",
+    "example": "Regular practice can elevate a musician from competent to extraordinary."
+  },
+  {
+    "word": "eliminate",
+    "meaning": "ortadan kaldırmak",
+    "example": "The new filtration system eliminates all bacteria from the drinking water."
+  },
+  {
+    "word": "emanate",
+    "meaning": "yayılmak, kaynaklanmak",
+    "example": "A strange smell emanated from the basement whenever the furnace was turned on."
+  },
+  {
+    "word": "embark",
+    "meaning": "başlamak, binmek",
+    "example": "After graduation, she embarked on a career in international journalism."
+  },
+  {
+    "word": "emerge",
+    "meaning": "ortaya çıkmak",
+    "example": "New evidence emerged that cast doubt on the conviction and prompted a retrial."
+  },
+  {
+    "word": "emulate",
+    "meaning": "taklit etmek, öykünmek",
+    "example": "Young athletes often emulate the training routines of their sporting heroes."
+  },
+  {
+    "word": "enact",
+    "meaning": "yasalaştırmak",
+    "example": "Parliament enacted legislation to protect endangered species and their habitats."
+  },
+  {
+    "word": "encroach",
+    "meaning": "tecavüz etmek, sınır aşmak",
+    "example": "The sea is slowly encroaching on coastal villages, threatening homes and farmland."
+  },
+  {
+    "word": "endure",
+    "meaning": "dayanmak, katlanmak",
+    "example": "The explorers endured freezing temperatures and limited supplies during their Arctic expedition."
+  },
+  {
+    "word": "engulf",
+    "meaning": "yutmak, kaplamak",
+    "example": "Within minutes, the flames engulfed the entire wooden structure."
+  },
+  {
+    "word": "enlighten",
+    "meaning": "aydınlatmak",
+    "example": "The guest speaker enlightened the audience about the history of jazz music in America."
+  },
+  {
+    "word": "enshrine",
+    "meaning": "korumak, kutsal saymak",
+    "example": "The principle of equality is enshrined in the country's constitution."
+  },
+  {
+    "word": "entice",
+    "meaning": "cezbetmek, ayartmak",
+    "example": "The store used heavy discounts to entice shoppers during the holiday season."
+  },
+  {
+    "word": "eradicate",
+    "meaning": "kökünü kazımak",
+    "example": "A global vaccination campaign succeeded in eradicating smallpox once and for all."
+  },
+  {
+    "word": "erode",
+    "meaning": "aşındırmak",
+    "example": "Years of wind and rain eroded the cliff face, bringing it dangerously close to the houses above."
+  },
+  {
+    "word": "escalate",
+    "meaning": "tırmanmak, şiddetlenmek",
+    "example": "The argument between the two neighbors escalated into a physical altercation."
+  },
+  {
+    "word": "exhort",
+    "meaning": "teşvik etmek, ısrarla istemek",
+    "example": "The coach exhorted the team to give one final push in the last minutes of the game."
+  },
+  {
+    "word": "expel",
+    "meaning": "kovmak, atmak",
+    "example": "Three students were expelled from school for their involvement in the cheating scandal."
+  },
+  {
+    "word": "exploit",
+    "meaning": "sömürmek, kullanmak",
+    "example": "Some multinational corporations exploit cheap labor in developing countries to maximize profits."
+  },
+  {
+    "word": "extract",
+    "meaning": "çıkarmak",
+    "example": "The dentist had to extract the damaged tooth to prevent further infection."
+  },
+  {
+    "word": "fabricate",
+    "meaning": "uydurmak",
+    "example": "The defendant fabricated an alibi to cover up his whereabouts on the night of the crime."
+  },
+  {
+    "word": "flourish",
+    "meaning": "gelişmek, serpilmek",
+    "example": "With proper care and sunlight, the garden flourished into a vibrant display of colors."
+  },
+  {
+    "word": "forfeit",
+    "meaning": "kaybetmek, elinden çıkarmak",
+    "example": "He forfeited his right to a jury trial by failing to appear in court on the scheduled date."
+  },
+  {
+    "word": "fortify",
+    "meaning": "güçlendirmek",
+    "example": "The ancient city fortified its walls against the impending invasion."
+  },
+  {
+    "word": "galvanize",
+    "meaning": "harekete geçirmek",
+    "example": "The passionate speech galvanized the crowd into taking action against the proposed law."
+  },
+  {
+    "word": "garner",
+    "meaning": "toplamak, elde etmek",
+    "example": "The film garnered several awards at the international festival."
+  },
+  {
+    "word": "grapple",
+    "meaning": "boğuşmak, uğraşmak",
+    "example": "The government continues to grapple with the complex issue of immigration reform."
+  },
+  {
+    "word": "hamper",
+    "meaning": "engellemek",
+    "example": "A lack of resources hampered the rescue team's efforts to reach the trapped miners."
+  },
+  {
+    "word": "hinge",
+    "meaning": "bağlı olmak",
+    "example": "The success of the entire project hinges on securing the necessary permits by Friday."
+  },
+  {
+    "word": "hoard",
+    "meaning": "istiflemek, biriktirmek",
+    "example": "During the crisis, people hoarded essential supplies, leaving supermarket shelves empty."
+  },
+  {
+    "word": "impinge",
+    "meaning": "etkilemek, sınırlamak",
+    "example": "The new construction will impinge on the privacy of neighboring properties."
+  },
+  {
+    "word": "imply",
+    "meaning": "ima etmek",
+    "example": "Her raised eyebrow implied that she was not convinced by his explanation."
+  },
+  {
+    "word": "incite",
+    "meaning": "kışkırtmak",
+    "example": "The speaker was arrested for inciting violence during the protest rally."
+  },
+  {
+    "word": "indulge",
+    "meaning": "kendini bırakmak, düşkün olmak",
+    "example": "On her birthday, she indulged in a slice of rich chocolate cake."
+  },
+  {
+    "word": "infuse",
+    "meaning": "aşılamak, katmak",
+    "example": "The mentor infused his students with a passion for scientific inquiry."
+  },
+  {
+    "word": "inspect",
+    "meaning": "denetlemek",
+    "example": "The health inspector visited the restaurant unannounced to inspect the kitchen facilities."
+  },
+  {
+    "word": "instil",
+    "meaning": "aşılamak, kazandırmak",
+    "example": "Parents should instil good manners in their children from an early age."
+  },
+  {
+    "word": "interrogate",
+    "meaning": "sorgulamak",
+    "example": "The police interrogated the suspect for six hours without obtaining a confession."
+  },
+  {
+    "word": "intimidate",
+    "meaning": "gözdağı vermek",
+    "example": "The larger team tried to intimidate their opponents with aggressive pre-game tactics."
+  },
+  {
+    "word": "mandate",
+    "meaning": "yetki vermek, zorunlu kılmak",
+    "example": "The new regulation mandates that all vehicles pass an emissions test annually."
+  },
+  {
+    "word": "modify",
+    "meaning": "değiştirmek",
+    "example": "The architect modified the blueprints to include larger windows for more natural light."
+  },
+  {
+    "word": "mount",
+    "meaning": "artmak, düzenlemek",
+    "example": "Pressure on the government mounted as protests spread to the capital city."
+  },
+  {
+    "word": "nurture",
+    "meaning": "beslemek, geliştirmek",
+    "example": "Parents nurture their children's talents by providing encouragement and opportunities."
+  },
+  {
+    "word": "outweigh",
+    "meaning": "ağır basmak",
+    "example": "The benefits of regular exercise far outweigh the effort required to maintain the habit."
+  },
+  {
+    "word": "overshadow",
+    "meaning": "gölgede bırakmak",
+    "example": "The team's defensive errors overshadowed what was otherwise a strong offensive performance."
+  },
+  {
+    "word": "overturn",
+    "meaning": "iptal etmek, ters çevirmek",
+    "example": "The appeals court overturned the conviction, citing procedural errors during the trial."
+  },
+  {
+    "word": "penetrate",
+    "meaning": "nüfuz etmek",
+    "example": "The bullet penetrated the armor plating, proving that the new weapon was dangerously effective."
+  },
+  {
+    "word": "perpetuate",
+    "meaning": "sürdürmek, devam ettirmek",
+    "example": "Stereotypes in media perpetuate harmful misconceptions about certain groups of people."
+  },
+  {
+    "word": "plummet",
+    "meaning": "aniden düşmek",
+    "example": "The company's stock price plummeted after it announced worse-than-expected earnings."
+  },
+  {
+    "word": "ponder",
+    "meaning": "düşünmek, tartmak",
+    "example": "She sat by the window, pondering whether to accept the job offer in another city."
+  },
+  {
+    "word": "portray",
+    "meaning": "tasvir etmek",
+    "example": "The film portrays the historical figure as a flawed but ultimately heroic leader."
+  },
+  {
+    "word": "prescribe",
+    "meaning": "reçete yazmak, öngörmek",
+    "example": "The doctor prescribed a course of antibiotics to clear the infection."
+  },
+  {
+    "word": "probe",
+    "meaning": "araştırmak, sondaj yapmak",
+    "example": "Journalists probed the company's financial records looking for evidence of fraud."
+  },
+  {
+    "word": "procure",
+    "meaning": "temin etmek",
+    "example": "The military struggled to procure enough supplies for the troops during the extended campaign."
+  },
+  {
+    "word": "prohibit",
+    "meaning": "yasaklamak",
+    "example": "The building prohibits smoking in all indoor areas, including private offices."
+  },
+  {
+    "word": "provoke",
+    "meaning": "kışkırtmak, tetiklemek",
+    "example": "The dog's aggressive behavior was provoked by a stranger entering its territory."
+  },
+  {
+    "word": "purge",
+    "meaning": "temizlemek, arındırmak",
+    "example": "The new manager purged the department of inefficient staff to improve productivity."
+  },
+  {
+    "word": "quench",
+    "meaning": "gidermek, söndürmek",
+    "example": "After the long run, nothing could quench her thirst quite like a glass of ice water."
+  },
+  {
+    "word": "ratify",
+    "meaning": "onaylamak",
+    "example": "The senate voted unanimously to ratify the international climate treaty."
+  },
+  {
+    "word": "rebuke",
+    "meaning": "azarlamak",
+    "example": "The supervisor rebuked the employee for submitting a report filled with errors."
+  },
+  {
+    "word": "recur",
+    "meaning": "tekrarlanmak",
+    "example": "The infection recurred despite the patient completing the full course of antibiotics."
+  },
+  {
+    "word": "redeem",
+    "meaning": "kurtarmak, telafi etmek",
+    "example": "She redeemed herself in the final exam by scoring the highest grade in the class."
+  },
+  {
+    "word": "refute",
+    "meaning": "çürütmek",
+    "example": "The scientist presented data that refuted the long-held theory about planetary formation."
+  },
+  {
+    "word": "relegate",
+    "meaning": "düşürmek, alt seviyeye indirmek",
+    "example": "After a disastrous season, the team was relegated to a lower division."
+  },
+  {
+    "word": "render",
+    "meaning": "haline getirmek, sunmak",
+    "example": "The storm rendered the roads impassable, stranding travelers for hours."
+  },
+  {
+    "word": "replenish",
+    "meaning": "yeniden doldurmak",
+    "example": "The delivery truck arrived just in time to replenish the store's depleted shelves."
+  },
+  {
+    "word": "resent",
+    "meaning": "kızmak, içerlemek",
+    "example": "She resented having to work late while her colleagues left the office early."
+  },
+  {
+    "word": "restore",
+    "meaning": "eski haline getirmek",
+    "example": "Experts spent months restoring the faded painting to its original brilliance."
+  },
+  {
+    "word": "revert",
+    "meaning": "geri dönmek",
+    "example": "After the experiment failed, the team reverted to their previous methodology."
+  },
+  {
+    "word": "revoke",
+    "meaning": "iptal etmek, geri almak",
+    "example": "The licensing board revoked the doctor's medical license after multiple malpractice suits."
+  },
+  {
+    "word": "shun",
+    "meaning": "kaçınmak, uzak durmak",
+    "example": "After the scandal, former friends shunned him at social gatherings."
+  },
+  {
+    "word": "solicit",
+    "meaning": "talep etmek, istemek",
+    "example": "The charity sent volunteers door to door to solicit donations for the flood victims."
+  },
+  {
+    "word": "soothe",
+    "meaning": "yatıştırmak",
+    "example": "A mother's gentle lullaby can soothe a crying baby to sleep."
+  },
+  {
+    "word": "spawn",
+    "meaning": "doğurmak, meydana getirmek",
+    "example": "The success of the original film spawned a series of sequels and a television spin-off."
+  },
+  {
+    "word": "subsidize",
+    "meaning": "sübvanse etmek",
+    "example": "The government subsidizes public transportation to keep fares affordable for low-income residents."
+  },
+  {
+    "word": "succumb",
+    "meaning": "boyun eğmek, yenilmek",
+    "example": "Despite aggressive treatment, the patient succumbed to the illness after a long battle."
+  },
+  {
+    "word": "summon",
+    "meaning": "çağırmak",
+    "example": "The principal summoned the student to his office to discuss the incident."
+  },
+  {
+    "word": "surpass",
+    "meaning": "geçmek, aşmak",
+    "example": "The young runner surpassed everyone's expectations by winning the gold medal."
+  },
+  {
+    "word": "tackle",
+    "meaning": "ele almak, üstesinden gelmek",
+    "example": "The committee tackled the complex issue of healthcare reform with renewed determination."
+  },
+  {
+    "word": "taint",
+    "meaning": "kirletmek, lekelemek",
+    "example": "The scandal tainted the politician's reputation, ending any chance of reelection."
+  },
+  {
+    "word": "tarnish",
+    "meaning": "lekelemek, gölgelemek",
+    "example": "Years of controversy tarnished the brand's once-golden reputation."
+  },
+  {
+    "word": "temper",
+    "meaning": "yumuşatmak, dengelemek",
+    "example": "A touch of humor tempered the seriousness of his speech."
+  },
+  {
+    "word": "thwart",
+    "meaning": "engellemek, boşa çıkarmak",
+    "example": "Quick-thinking guards thwarted the attempted robbery at the jewelry store."
+  },
+  {
+    "word": "topple",
+    "meaning": "devirmek",
+    "example": "The dictator was toppled by a popular uprising that swept across the nation."
+  },
+  {
+    "word": "tout",
+    "meaning": "övmek, pazarlamak",
+    "example": "The company touted its new product as a revolutionary breakthrough in personal computing."
+  },
+  {
+    "word": "transpire",
+    "meaning": "ortaya çıkmak, olmak",
+    "example": "It later transpired that the evidence had been tampered with before the trial."
+  },
+  {
+    "word": "vindicate",
+    "meaning": "haklı çıkarmak",
+    "example": "The discovery of new evidence vindicated the accused man after years of wrongful imprisonment."
+  },
+  {
+    "word": "waive",
+    "meaning": "vazgeçmek, feragat etmek",
+    "example": "The court waived the filing fee for plaintiffs who could demonstrate financial hardship."
+  },
+  {
+    "word": "warrant",
+    "meaning": "gerektirmek, garanti etmek",
+    "example": "The severity of the symptoms warrants an immediate visit to the emergency room."
+  },
+  {
+    "word": "withhold",
+    "meaning": "vermemek, esirgemek",
+    "example": "The employer withheld a portion of each paycheck for tax purposes."
+  },
+  {
+    "word": "ailment",
+    "meaning": "rahatsızlık, hastalık",
+    "example": "Ginger tea is a traditional remedy for minor stomach ailments."
+  },
+  {
+    "word": "diagnosis",
+    "meaning": "teşhis",
+    "example": "The doctor's diagnosis confirmed that the patient had a rare autoimmune disorder."
+  },
+  {
+    "word": "immune",
+    "meaning": "bağışık",
+    "example": "After recovering from the disease, the child was immune to further infection."
+  },
+  {
+    "word": "malnutrition",
+    "meaning": "yetersiz beslenme",
+    "example": "Chronic malnutrition stunts growth and weakens the immune system in young children."
+  },
+  {
+    "word": "outbreak",
+    "meaning": "salgın, patlak verme",
+    "example": "The outbreak of cholera was traced to a contaminated water supply."
+  },
+  {
+    "word": "prognosis",
+    "meaning": "hastalık seyri tahmini",
+    "example": "Given the patient's age and overall health, the prognosis is cautiously optimistic."
+  },
+  {
+    "word": "rehabilitation",
+    "meaning": "rehabilitasyon",
+    "example": "After surgery, the athlete faced six months of intensive rehabilitation before returning to competition."
+  },
+  {
+    "word": "remedy",
+    "meaning": "çare, ilaç",
+    "example": "Honey and lemon in hot water is a well-known home remedy for sore throat."
+  },
+  {
+    "word": "symptom",
+    "meaning": "belirti",
+    "example": "A persistent cough is often the first symptom of a respiratory infection."
+  },
+  {
+    "word": "therapeutic",
+    "meaning": "tedavi edici",
+    "example": "Many patients find that painting has a therapeutic effect on their mental well-being."
+  },
+  {
+    "word": "vaccine",
+    "meaning": "aşı",
+    "example": "The widespread administration of the vaccine dramatically reduced the incidence of the disease."
+  },
+  {
+    "word": "acquit",
+    "meaning": "beraat ettirmek",
+    "example": "The jury acquitted the defendant after the prosecution failed to present a convincing case."
+  },
+  {
+    "word": "convict",
+    "meaning": "mahkum etmek",
+    "example": "The court convicted the embezzler on all counts and sentenced him to ten years in prison."
+  },
+  {
+    "word": "custody",
+    "meaning": "gözaltı, velayet",
+    "example": "Following the arrest, the suspect was held in police custody for questioning."
+  },
+  {
+    "word": "defendant",
+    "meaning": "sanık",
+    "example": "The defendant maintained his innocence throughout the lengthy trial."
+  },
+  {
+    "word": "felony",
+    "meaning": "ağır suç",
+    "example": "Armed robbery is classified as a felony and carries a minimum sentence of five years."
+  },
+  {
+    "word": "indictment",
+    "meaning": "suçlama, iddianame",
+    "example": "The grand jury issued an indictment charging the corporation with widespread fraud."
+  },
+  {
+    "word": "litigation",
+    "meaning": "dava süreci",
+    "example": "The company faced years of costly litigation before the dispute was finally settled."
+  },
+  {
+    "word": "perpetrator",
+    "meaning": "fail, suçlu",
+    "example": "Surveillance footage helped police identify the perpetrator of the assault."
+  },
+  {
+    "word": "plaintiff",
+    "meaning": "davacı",
+    "example": "The plaintiff filed a lawsuit seeking compensation for injuries sustained in the accident."
+  },
+  {
+    "word": "prosecute",
+    "meaning": "kovuşturmak, dava açmak",
+    "example": "The district attorney decided to prosecute the case despite limited evidence."
+  },
+  {
+    "word": "statute",
+    "meaning": "kanun, yasa",
+    "example": "Under current statute, the possession of small amounts of the drug is a misdemeanor offense."
+  },
+  {
+    "word": "testimony",
+    "meaning": "tanıklık, ifade",
+    "example": "The witness's testimony was crucial in securing a conviction against the mob boss."
+  },
+  {
+    "word": "verdict",
+    "meaning": "hüküm, karar",
+    "example": "After three days of deliberation, the jury returned a guilty verdict."
+  },
+  {
+    "word": "academia",
+    "meaning": "akademi dünyası",
+    "example": "After years in industry, she returned to academia to teach and conduct research."
+  },
+  {
+    "word": "curriculum",
+    "meaning": "müfredat",
+    "example": "The school revised its curriculum to include more courses on digital literacy."
+  },
+  {
+    "word": "dissertation",
+    "meaning": "tez",
+    "example": "Her doctoral dissertation examined the effects of social media on political participation."
+  },
+  {
+    "word": "literacy",
+    "meaning": "okuryazarlık",
+    "example": "The charity runs programs to improve adult literacy in underserved communities."
+  },
+  {
+    "word": "pedagogy",
+    "meaning": "pedagoji, öğretim bilimi",
+    "example": "Modern pedagogy emphasizes student-centered learning over traditional rote memorization."
+  },
+  {
+    "word": "plagiarism",
+    "meaning": "intihal",
+    "example": "The university has strict policies against plagiarism and uses software to detect copied work."
+  },
+  {
+    "word": "scholarship",
+    "meaning": "burs; bilimsel çalışma",
+    "example": "She won a full scholarship that covered tuition, housing, and textbooks for four years."
+  },
+  {
+    "word": "tuition",
+    "meaning": "öğretim ücreti, ders",
+    "example": "Rising tuition fees have made university education unaffordable for many families."
+  },
+  {
+    "word": "aesthetic",
+    "meaning": "estetik",
+    "example": "The building's clean lines and natural materials give it a distinctly modern aesthetic."
+  },
+  {
+    "word": "censor",
+    "meaning": "sansürlemek",
+    "example": "The government attempted to censor the documentary by blocking its broadcast."
+  },
+  {
+    "word": "depiction",
+    "meaning": "tasvir, betimleme",
+    "example": "The film's depiction of historical events was criticized by several prominent scholars."
+  },
+  {
+    "word": "genre",
+    "meaning": "tür",
+    "example": "Science fiction is her favorite literary genre, especially stories about space exploration."
+  },
+  {
+    "word": "narrative",
+    "meaning": "anlatı",
+    "example": "The novel weaves a complex narrative that spans three generations of a single family."
+  },
+  {
+    "word": "satire",
+    "meaning": "hiciv, taşlama",
+    "example": "The play is a biting satire of modern political culture and media manipulation."
+  },
+  {
+    "word": "advocate",
+    "meaning": "savunucu",
+    "example": "She works as a passionate advocate for the rights of disabled people."
+  },
+  {
+    "word": "bystander",
+    "meaning": "seyirci, olay yerinde bulunan",
+    "example": "Several bystanders captured the incident on their phones and shared the footage online."
+  },
+  {
+    "word": "connoisseur",
+    "meaning": "uzman, erbap",
+    "example": "As a wine connoisseur, he could identify the region and vintage from a single sip."
+  },
+  {
+    "word": "custodian",
+    "meaning": "koruyucu, bekçi",
+    "example": "The museum custodian carefully locked each display case before closing for the night."
+  },
+  {
+    "word": "delegate",
+    "meaning": "temsilci",
+    "example": "Each region sends a delegate to the annual conference to vote on policy changes."
+  },
+  {
+    "word": "mediator",
+    "meaning": "arabulucu",
+    "example": "A professional mediator helped the divorcing couple reach an amicable settlement."
+  },
+  {
+    "word": "mentor",
+    "meaning": "akıl hocası, rehber",
+    "example": "Her mentor guided her through the early years of her career with patience and wisdom."
+  },
+  {
+    "word": "pioneer",
+    "meaning": "öncü",
+    "example": "Marie Curie was a pioneer in the field of radioactivity research."
+  },
+  {
+    "word": "skeptic",
+    "meaning": "şüpheci",
+    "example": "The skeptic demanded concrete proof before accepting the extraordinary claim."
+  },
+  {
+    "word": "ample",
+    "meaning": "yeterli, bol",
+    "example": "There is ample evidence to support the theory that the climate is changing rapidly."
+  },
+  {
+    "word": "copious",
+    "meaning": "bol, çok",
+    "example": "The researcher took copious notes during the lecture to ensure nothing was missed."
+  },
+  {
+    "word": "marginally",
+    "meaning": "çok az, önemsiz ölçüde",
+    "example": "The new medication improved the patient's condition only marginally."
+  },
+  {
+    "word": "negligible",
+    "meaning": "önemsiz, ihmal edilebilir",
+    "example": "The difference between the two products is negligible and not worth the extra cost."
+  },
+  {
+    "word": "overwhelmingly",
+    "meaning": "ezici bir şekilde",
+    "example": "The proposal was overwhelmingly approved by the board, with only one dissenting vote."
+  },
+  {
+    "word": "predominantly",
+    "meaning": "ağırlıklı olarak",
+    "example": "The audience was predominantly young professionals in their twenties and thirties."
+  },
+  {
+    "word": "significantly",
+    "meaning": "önemli ölçüde",
+    "example": "The new treatment significantly reduced symptoms in patients with chronic arthritis."
+  },
+  {
+    "word": "substantially",
+    "meaning": "önemli ölçüde",
+    "example": "The company has substantially increased its market share over the past two years."
+  },
+  {
+    "word": "adept",
+    "meaning": "usta, becerikli",
+    "example": "The chef is adept at blending flavors from various culinary traditions."
+  },
+  {
+    "word": "akin",
+    "meaning": "benzer, yakın",
+    "example": "His style of painting is akin to that of the Impressionists, though distinctly his own."
+  },
+  {
+    "word": "bygone",
+    "meaning": "geçmiş, eski",
+    "example": "The museum displays artifacts from a bygone era of maritime exploration."
+  },
+  {
+    "word": "clandestine",
+    "meaning": "gizli",
+    "example": "The resistance held clandestine meetings in the basement of an abandoned warehouse."
+  },
+  {
+    "word": "coy",
+    "meaning": "çekingen, cilveli",
+    "example": "The actress gave a coy smile when asked about her rumored new project."
+  },
+  {
+    "word": "deft",
+    "meaning": "usta, becerikli",
+    "example": "The surgeon's deft hands completed the delicate procedure in under an hour."
+  },
+  {
+    "word": "dire",
+    "meaning": "korkunç, feci",
+    "example": "The refugees found themselves in dire need of food, water, and medical supplies."
+  },
+  {
+    "word": "elusive",
+    "meaning": "ele geçmez, yakalanamaz",
+    "example": "The concept of happiness remains elusive to philosophers and scientists alike."
+  },
+  {
+    "word": "exemplary",
+    "meaning": "örnek teşkil eden",
+    "example": "The student's exemplary conduct and academic excellence earned her a prestigious award."
+  },
+  {
+    "word": "exorbitant",
+    "meaning": "aşırı, fahiş",
+    "example": "The contractor charged an exorbitant fee for what should have been a simple repair."
+  },
+  {
+    "word": "fickle",
+    "meaning": "dönek, kararsız",
+    "example": "The stock market is notoriously fickle, reacting unpredictably to even minor news."
+  },
+  {
+    "word": "flamboyant",
+    "meaning": "gösterişli",
+    "example": "The designer is known for his flamboyant creations, often featuring bold colors and extravagant fabrics."
+  },
+  {
+    "word": "furtive",
+    "meaning": "gizli, sinsi",
+    "example": "He cast a furtive glance at his phone during the exam, hoping the teacher wouldn't notice."
+  },
+  {
+    "word": "grim",
+    "meaning": "kasvetli, sert",
+    "example": "The grim reality of war is brought home by the photographs on display in the exhibition."
+  },
+  {
+    "word": "harsh",
+    "meaning": "sert, acımasız",
+    "example": "The judge handed down a harsh sentence to send a message about the seriousness of the crime."
+  },
+  {
+    "word": "hasty",
+    "meaning": "aceleci",
+    "example": "In his hasty departure, he left behind his passport and boarding pass."
+  },
+  {
+    "word": "incessant",
+    "meaning": "sürekli, aralıksız",
+    "example": "The incessant barking of the neighbor's dog kept everyone awake throughout the night."
+  },
+  {
+    "word": "innocuous",
+    "meaning": "zararsız",
+    "example": "The remark seemed innocuous at the time but later sparked a heated debate."
+  },
+  {
+    "word": "insidious",
+    "meaning": "sinsi, sinsice zarar veren",
+    "example": "The disease is insidious, showing no symptoms until it has reached an advanced stage."
+  },
+  {
+    "word": "intact",
+    "meaning": "sağlam, bozulmamış",
+    "example": "Despite the violent storm, the old lighthouse remained intact on the rocky shore."
+  },
+  {
+    "word": "lavish",
+    "meaning": "gösterişli, savurgan",
+    "example": "The couple celebrated their anniversary with a lavish party at a five-star hotel."
+  },
+  {
+    "word": "lethal",
+    "meaning": "öldürücü",
+    "example": "A single bite from the snake delivers a lethal dose of venom to its prey."
+  },
+  {
+    "word": "lucid",
+    "meaning": "açık, anlaşılır",
+    "example": "The professor's lucid explanation made even the most complex topic easy to understand."
+  },
+  {
+    "word": "mediocre",
+    "meaning": "vasat",
+    "example": "The film received mediocre reviews, with critics calling it neither terrible nor memorable."
+  },
+  {
+    "word": "meek",
+    "meaning": "uysal, yumuşak başlı",
+    "example": "The meek clerk rarely spoke up during meetings, even when he had valuable ideas."
+  },
+  {
+    "word": "menacing",
+    "meaning": "tehditkar",
+    "example": "The dog stood at the gate in a menacing posture, growling at anyone who approached."
+  },
+  {
+    "word": "obscure",
+    "meaning": "belirsiz, az bilinen",
+    "example": "The reference was to an obscure poet whose work only a handful of scholars had studied."
+  },
+  {
+    "word": "ominous",
+    "meaning": "uğursuz",
+    "example": "Dark clouds gathered on the horizon, an ominous sign of the approaching storm."
+  },
+  {
+    "word": "opulent",
+    "meaning": "lüks, gösterişli",
+    "example": "The hotel lobby was decorated in an opulent style with marble floors and crystal chandeliers."
+  },
+  {
+    "word": "perilous",
+    "meaning": "tehlikeli",
+    "example": "The journey across the frozen mountain pass was a perilous undertaking."
+  },
+  {
+    "word": "pertinent",
+    "meaning": "ilgili, alakalı",
+    "example": "The lawyer raised several pertinent questions during the cross-examination."
+  },
+  {
+    "word": "plentiful",
+    "meaning": "bol",
+    "example": "Fish were plentiful in the river before the factory began dumping chemical waste upstream."
+  },
+  {
+    "word": "quaint",
+    "meaning": "tuhaf ama hoş, eski usul",
+    "example": "They stayed in a quaint cottage with a thatched roof and a garden full of roses."
+  },
+  {
+    "word": "rash",
+    "meaning": "aceleci, düşüncesiz",
+    "example": "Quitting his job without a backup plan was a rash decision he later regretted."
+  },
+  {
+    "word": "reckless",
+    "meaning": "pervasız, dikkatsiz",
+    "example": "The reckless driver sped through the school zone, ignoring all warning signs."
+  },
+  {
+    "word": "relevant",
+    "meaning": "ilgili",
+    "example": "Please make sure all the documents you submit are relevant to your application."
+  },
+  {
+    "word": "scant",
+    "meaning": "yetersiz, az",
+    "example": "The report provided scant evidence to support such a sweeping conclusion."
+  },
+  {
+    "word": "shrewd",
+    "meaning": "kurnaz, zeki",
+    "example": "The shrewd negotiator secured a deal that benefited her company far more than the other side realized."
+  },
+  {
+    "word": "solitary",
+    "meaning": "yalnız, tek",
+    "example": "A solitary figure stood on the hilltop, silhouetted against the setting sun."
+  },
+  {
+    "word": "stark",
+    "meaning": "çıplak, sert (gerçek)",
+    "example": "The documentary presented a stark contrast between the wealth of the city and the poverty of the surrounding slums."
+  },
+  {
+    "word": "swift",
+    "meaning": "hızlı, çabuk",
+    "example": "The company's swift response to the crisis prevented a major public relations disaster."
+  },
+  {
+    "word": "tedious",
+    "meaning": "can sıkıcı, yorucu",
+    "example": "Sorting through thousands of old files was a tedious but necessary task."
+  },
+  {
+    "word": "thriving",
+    "meaning": "gelişen, başarılı",
+    "example": "The once-struggling neighborhood is now a thriving arts district with galleries and cafes on every corner."
+  },
+  {
+    "word": "timid",
+    "meaning": "çekingen",
+    "example": "The timid student hesitated to raise her hand even when she knew the correct answer."
+  },
+  {
+    "word": "trivial",
+    "meaning": "önemsiz",
+    "example": "He dismissed the complaint as trivial, not realizing it would escalate into a serious issue."
+  },
+  {
+    "word": "unwarranted",
+    "meaning": "haksız, gereksiz",
+    "example": "The employee filed a complaint about the manager's unwarranted criticism during the meeting."
+  },
+  {
+    "word": "wary",
+    "meaning": "temkinli",
+    "example": "The investor grew wary after noticing inconsistencies in the company's financial reports."
+  },
+  {
+    "word": "acumen",
+    "meaning": "keskin kavrayış, zeka",
+    "example": "Her business acumen allowed her to identify profitable opportunities that others overlooked."
+  },
+  {
+    "word": "adage",
+    "meaning": "atasözü, özdeyiş",
+    "example": "The old adage 'practice makes perfect' holds true for anyone learning a musical instrument."
+  },
+  {
+    "word": "affluence",
+    "meaning": "zenginlik, bolluk",
+    "example": "The neighborhood's affluence is evident in its manicured lawns and luxury vehicles."
+  },
+  {
+    "word": "aftermath",
+    "meaning": "bir olayın sonrası",
+    "example": "In the aftermath of the earthquake, volunteers rushed to help those trapped under rubble."
+  },
+  {
+    "word": "agility",
+    "meaning": "çeviklik",
+    "example": "The gymnast's agility allows her to perform routines that seem physically impossible."
+  },
+  {
+    "word": "ambience",
+    "meaning": "ortam, hava",
+    "example": "Soft lighting and jazz music created a romantic ambience in the small restaurant."
+  },
+  {
+    "word": "ambit",
+    "meaning": "kapsam, sınır",
+    "example": "The new law falls within the ambit of federal authority, not state regulation."
+  },
+  {
+    "word": "anecdote",
+    "meaning": "anekdot, kısa hikaye",
+    "example": "The professor began his lecture with an amusing anecdote about his early days in research."
+  },
+  {
+    "word": "antidote",
+    "meaning": "panzehir, çare",
+    "example": "Laughter is often said to be the best antidote to stress and anxiety."
+  },
+  {
+    "word": "array",
+    "meaning": "dizi, sıra",
+    "example": "The store offers an impressive array of organic products from local farms."
+  },
+  {
+    "word": "asylum",
+    "meaning": "sığınma, iltica",
+    "example": "The family fled their war-torn country and sought asylum in a neighboring nation."
+  },
+  {
+    "word": "attrition",
+    "meaning": "aşınma, yıpranma",
+    "example": "Years of attrition had reduced the once-formidable army to a fraction of its former size."
+  },
+  {
+    "word": "blueprint",
+    "meaning": "taslak, plan",
+    "example": "The architect presented a detailed blueprint for the new community center."
+  },
+  {
+    "word": "bulk",
+    "meaning": "büyük kısım, yığın",
+    "example": "The bulk of the evidence points to a single suspect who was at the scene that night."
+  },
+  {
+    "word": "clout",
+    "meaning": "nüfuz, etki",
+    "example": "The union leader has considerable clout within the political party."
+  },
+  {
+    "word": "cornerstone",
+    "meaning": "temel taşı",
+    "example": "Mutual respect is the cornerstone of any healthy and lasting relationship."
+  },
+  {
+    "word": "crux",
+    "meaning": "asıl mesele, özü",
+    "example": "The crux of the problem is not a lack of funding but a lack of clear leadership."
+  },
+  {
+    "word": "decree",
+    "meaning": "kararname, ferman",
+    "example": "The king issued a decree granting amnesty to all political prisoners."
+  },
+  {
+    "word": "demise",
+    "meaning": "ölüm, son bulma",
+    "example": "The sudden demise of the newspaper left the town without a reliable source of local news."
+  },
+  {
+    "word": "denomination",
+    "meaning": "mezhep; değer birimi",
+    "example": "The country's largest religious denomination accounts for nearly sixty percent of the population."
+  },
+  {
+    "word": "deterrent",
+    "meaning": "caydırıcı unsur",
+    "example": "Nuclear weapons are often defended as a deterrent against foreign attack."
+  },
+  {
+    "word": "diaspora",
+    "meaning": "diaspora, göçmen topluluk",
+    "example": "The Armenian diaspora has preserved its cultural traditions across generations and continents."
+  },
+  {
+    "word": "disarray",
+    "meaning": "düzensizlik, kargaşa",
+    "example": "The unexpected resignation left the department in complete disarray."
+  },
+  {
+    "word": "dispute",
+    "meaning": "anlaşmazlık",
+    "example": "The border dispute between the two nations has persisted for decades without resolution."
+  },
+  {
+    "word": "edifice",
+    "meaning": "büyük bina, yapı",
+    "example": "The medieval edifice has withstood centuries of war, weather, and neglect."
+  },
+  {
+    "word": "epitome",
+    "meaning": "somut örnek, timsal",
+    "example": "With her tailored suit and confident stride, she was the epitome of professionalism."
+  },
+  {
+    "word": "facade",
+    "meaning": "cephe, görünüş",
+    "example": "Behind the cheerful facade, she was struggling with severe depression."
+  },
+  {
+    "word": "foothold",
+    "meaning": "sağlam yer, dayanak",
+    "example": "The startup struggled to gain a foothold in a market dominated by a few giant corporations."
+  },
+  {
+    "word": "fraction",
+    "meaning": "kesir, küçük bölüm",
+    "example": "Only a small fraction of the applicants will be invited for an interview."
+  },
+  {
+    "word": "fringe",
+    "meaning": "kenar, marjinal kesim",
+    "example": "Fringe political groups often hold views that are far outside the mainstream."
+  },
+  {
+    "word": "gamut",
+    "meaning": "tüm alan, yelpaze",
+    "example": "The festival runs the gamut from classical music performances to avant-garde theater."
+  },
+  {
+    "word": "guise",
+    "meaning": "kılık, görünüş",
+    "example": "The scammer arrived at the elderly woman's door in the guise of a utility company inspector."
+  },
+  {
+    "word": "hallmark",
+    "meaning": "ayırt edici özellik",
+    "example": "Attention to detail is the hallmark of a truly exceptional craftsman."
+  },
+  {
+    "word": "hindsight",
+    "meaning": "geriye dönük değerlendirme",
+    "example": "In hindsight, she realized that turning down the job offer had been a mistake."
+  },
+  {
+    "word": "influx",
+    "meaning": "akın, gelme",
+    "example": "The sudden influx of tourists during summer puts enormous strain on the small town's infrastructure."
+  },
+  {
+    "word": "intake",
+    "meaning": "alım, tüketim miktarı",
+    "example": "The doctor advised the patient to reduce daily intake of sodium and processed foods."
+  },
+  {
+    "word": "interval",
+    "meaning": "aralık",
+    "example": "The train departs at regular intervals throughout the day, roughly every twenty minutes."
+  },
+  {
+    "word": "knack",
+    "meaning": "beceri, ustalık",
+    "example": "She has a knack for making complicated concepts easy to understand."
+  },
+  {
+    "word": "legacy",
+    "meaning": "miras",
+    "example": "The civil rights leader left behind a powerful legacy that continues to inspire new generations."
+  },
+  {
+    "word": "loophole",
+    "meaning": "yasal boşluk",
+    "example": "The clever accountant discovered a loophole that allowed the company to avoid millions in taxes."
+  },
+  {
+    "word": "mainstay",
+    "meaning": "en önemli dayanak",
+    "example": "Agriculture remains the mainstay of the economy in many developing nations."
+  },
+  {
+    "word": "makeshift",
+    "meaning": "geçici, doğaçlama",
+    "example": "The hikers built a makeshift shelter from branches and leaves to wait out the storm."
+  },
+  {
+    "word": "mishap",
+    "meaning": "aksilik, kaza",
+    "example": "The wedding proceeded beautifully despite a minor mishap with the sound system during the vows."
+  },
+  {
+    "word": "mockery",
+    "meaning": "alay",
+    "example": "The rigged election made a mockery of the democratic process."
+  },
+  {
+    "word": "onset",
+    "meaning": "başlangıç",
+    "example": "From the onset of the project, it was clear that communication between teams would be a challenge."
+  },
+  {
+    "word": "outlook",
+    "meaning": "bakış açısı, görünüm",
+    "example": "The economic outlook for the coming year is cautiously positive, according to most analysts."
+  },
+  {
+    "word": "pinnacle",
+    "meaning": "doruk noktası",
+    "example": "Reaching the pinnacle of his profession, the surgeon was invited to lecture at universities worldwide."
+  },
+  {
+    "word": "plunge",
+    "meaning": "ani düşüş",
+    "example": "The company's stock took a dramatic plunge after the CEO announced his resignation."
+  },
+  {
+    "word": "proximity",
+    "meaning": "yakınlık",
+    "example": "The hotel's proximity to the beach makes it a popular choice for families on vacation."
+  },
+  {
+    "word": "quirk",
+    "meaning": "tuhaflık, garip özellik",
+    "example": "One amusing quirk of the old house is that the kitchen door opens on its own when the wind blows."
+  },
+  {
+    "word": "realm",
+    "meaning": "alan, krallık",
+    "example": "The possibilities in the realm of artificial intelligence seem almost limitless."
+  },
+  {
+    "word": "rift",
+    "meaning": "çatlak, anlaşmazlık",
+    "example": "A deep rift developed between the two friends after the bitter argument."
+  },
+  {
+    "word": "sanctuary",
+    "meaning": "sığınak, kutsal alan",
+    "example": "The wildlife sanctuary provides a safe haven for endangered species to recover and thrive."
+  },
+  {
+    "word": "scarcity",
+    "meaning": "kıtlık",
+    "example": "The scarcity of clean water in the region has led to widespread disease and suffering."
+  },
+  {
+    "word": "scrutiny",
+    "meaning": "dikkatli inceleme",
+    "example": "The new policy will come under close scrutiny from consumer advocacy groups."
+  },
+  {
+    "word": "solace",
+    "meaning": "teselli",
+    "example": "After losing her husband, she found solace in the companionship of her loyal dog."
+  },
+  {
+    "word": "spectrum",
+    "meaning": "yelpaze, tayf",
+    "example": "The conference attracted a wide spectrum of participants, from students to industry veterans."
+  },
+  {
+    "word": "stalemate",
+    "meaning": "çıkmaz, anlaşmazlık",
+    "example": "The negotiations reached a stalemate, with neither side willing to compromise."
+  },
+  {
+    "word": "stint",
+    "meaning": "belirli süreli görev",
+    "example": "After a brief stint in advertising, she returned to her true passion of teaching."
+  },
+  {
+    "word": "surge",
+    "meaning": "ani artış",
+    "example": "The sudden surge in demand caught the manufacturer off guard, leading to widespread shortages."
+  },
+  {
+    "word": "tenet",
+    "meaning": "ilke, temel görüş",
+    "example": "Nonviolence is a core tenet of the philosophy espoused by the movement's founder."
+  },
+  {
+    "word": "testament",
+    "meaning": "kanıt, delil",
+    "example": "The restored cathedral stands as a testament to the skill and dedication of its craftsmen."
+  },
+  {
+    "word": "turmoil",
+    "meaning": "kargaşa, karışıklık",
+    "example": "The country was thrown into political turmoil following the unexpected election results."
+  },
+  {
+    "word": "verge",
+    "meaning": "kenar, eşik",
+    "example": "The small business was on the verge of bankruptcy when a sudden influx of orders saved it."
+  },
+  {
+    "word": "wake",
+    "meaning": "art, izler (bir olayın ardından)",
+    "example": "In the wake of the scandal, the company's stock price dropped by forty percent."
+  }
+]

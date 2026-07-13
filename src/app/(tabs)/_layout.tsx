@@ -3,8 +3,6 @@ import { Tabs } from 'expo-router';
 import type { ComponentProps } from 'react';
 import type { ColorValue } from 'react-native';
 
-import { useTheme } from '@/theme/useTheme';
-
 type TabIconName = ComponentProps<typeof Ionicons>['name'];
 
 function TabBarIcon({
@@ -20,7 +18,14 @@ function TabBarIcon({
 }
 
 export default function TabLayout() {
-  const { colors } = useTheme();
+  const colors = {
+    tabBarActive: '#0D9488',
+    tabBarInactive: '#94a3b8',
+    tabBar: '#ffffff',
+    border: '#e2e8f0',
+    background: '#ffffff',
+    foreground: '#000000',
+  };
 
   return (
     <Tabs
@@ -46,8 +51,8 @@ export default function TabLayout() {
         options={{
           title: 'Ana Sayfa',
           headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <TabBarIcon name="home-outline" color={color} size={size} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} size={size} />
           ),
         }}
       />
@@ -56,8 +61,8 @@ export default function TabLayout() {
         options={{
           title: 'Öğren',
           headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <TabBarIcon name="school-outline" color={color} size={size} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <TabBarIcon name={focused ? 'school' : 'school-outline'} color={color} size={size} />
           ),
         }}
       />
@@ -66,8 +71,8 @@ export default function TabLayout() {
         options={{
           title: 'Profil',
           headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <TabBarIcon name="person-outline" color={color} size={size} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} size={size} />
           ),
         }}
       />
@@ -76,8 +81,8 @@ export default function TabLayout() {
         options={{
           title: 'Ayarlar',
           headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <TabBarIcon name="settings-outline" color={color} size={size} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} size={size} />
           ),
         }}
       />

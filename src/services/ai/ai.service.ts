@@ -129,10 +129,15 @@ export class AIService {
       const data = (await response.json()) as GroqChatResponse;
       const example = data.choices?.[0]?.message?.content?.trim();
 
-      if (example) {
-        await this.cacheExample(word, example);
+      if (!example) {
+        // API başarılı yanıt döndürdü ama içerik boş — güvenli fallback üret.
+        // Promise<string> imzasını bozmamak için undefined dönmez.
+        const fallback = `The word "${word}" means "${meaning}".`;
+        await this.cacheExample(word, fallback);
+        return fallback;
       }
 
+      await this.cacheExample(word, example);
       return example;
     } catch {
       // API hatası durumunda güvenli fallback döndür ve cache'le.

@@ -1,9 +1,8 @@
-
 import { Ionicons } from '@expo/vector-icons';
 import * as Speech from 'expo-speech';
 import { useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Alert, Modal, Pressable, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button, FadeIn, Loading } from '@/components';
@@ -30,11 +29,11 @@ type ExerciseCardConfig = {
   title: string;
   subtitle: string;
   icon: keyof typeof Ionicons.glyphMap;
-  iconColor: string;
-  iconBg: string;
-  iconBgDark: string;
-  cardBorder: string;
+  accentColor: string;
+  accentBg: string;
+  accentBgDark: string;
   cardBg: string;
+  cardBorder: string;
 };
 
 const EXERCISE_CARDS: ExerciseCardConfig[] = [
@@ -43,22 +42,22 @@ const EXERCISE_CARDS: ExerciseCardConfig[] = [
     title: 'Dinleme Kartları',
     subtitle: 'Otomatik sesli döngü',
     icon: 'volume-high-outline',
-    iconColor: '#ef4444',
-    iconBg: 'bg-rose-100',
-    iconBgDark: 'dark:bg-rose-900/40',
-    cardBorder: 'border-rose-200/60 dark:border-rose-900/30',
+    accentColor: '#ef4444',
+    accentBg: 'bg-rose-100',
+    accentBgDark: 'dark:bg-rose-900/40',
     cardBg: 'bg-rose-50/70 dark:bg-rose-950/20',
+    cardBorder: 'border-rose-200/60 dark:border-rose-900/30',
   },
   {
     id: 'pronunciation',
     title: 'Telaffuz Kartları',
     subtitle: 'Mikrofonla pratik',
     icon: 'mic-outline',
-    iconColor: '#7c3aed',
-    iconBg: 'bg-purple-100',
-    iconBgDark: 'dark:bg-purple-900/40',
-    cardBorder: 'border-purple-200/60 dark:border-purple-900/30',
+    accentColor: '#7c3aed',
+    accentBg: 'bg-purple-100',
+    accentBgDark: 'dark:bg-purple-900/40',
     cardBg: 'bg-purple-50/50 dark:bg-purple-950/20',
+    cardBorder: 'border-purple-200/60 dark:border-purple-900/30',
   },
 ];
 
@@ -432,52 +431,35 @@ export function LearnAndQuizHub() {
         contentContainerStyle={{ paddingBottom: insets.bottom + 24 }}
         showsVerticalScrollIndicator={false}
       >
-        {/* Header */}
-        <View className="px-md" style={{ paddingTop: insets.top + 16 }}>
-          <Text className="text-3xl font-bold text-foreground">Öğren</Text>
-          <Text className="mt-xs text-sm text-muted-foreground">
-            Kelimeleri keşfet, tekrar et ve pekiştir
-          </Text>
-        </View>
-
-        {/* Kelime Paketleri */}
-        <FadeIn duration={500} delay={50}>
-          <View className="px-md mt-lg">
-            <View className="relative overflow-hidden rounded-3xl bg-violet-50/70 dark:bg-violet-950/30 p-xl shadow-sm">
-              <View className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-violet-200/30 dark:bg-violet-800/20" />
-              <View className="relative flex-row items-center">
-                <View className="mr-md h-14 w-14 items-center justify-center rounded-2xl bg-violet-200/70 dark:bg-violet-900/50">
-                  <Ionicons name="cube-outline" size={28} color="#7c3aed" />
-                </View>
-                <View className="flex-1">
-                  <Text className="text-lg font-bold text-foreground">Kelime Paketleri</Text>
-                  <Text className="mt-xs text-sm text-muted-foreground/80">
-                    A1, A2 ve tema paketlerini yükle
-                  </Text>
-                </View>
-              </View>
-              <Button
-                title="Paketleri Gör"
-                size="lg"
-                onPress={() => router.push('/packages')}
-                className="mt-lg w-full rounded-2xl bg-violet-600 active:opacity-90"
-                textClassName="text-white font-bold text-lg"
-              />
+        {/* ─── Hero Header ─────────────────────────────────────────── */}
+        <FadeIn duration={600} delay={0}>
+          <View
+            className="px-lg"
+            style={{ paddingTop: insets.top + 12 }}
+          >
+            <View>
+              <Text className="text-sm font-medium text-muted-foreground">
+                İngilizce Kelime Öğren
+              </Text>
+              <Text className="text-3xl font-bold text-foreground mt-xs">
+                Öğren
+              </Text>
             </View>
           </View>
         </FadeIn>
 
-        {/* Hero Card - Kelime Öğren */}
+        {/* ─── Kelime Öğren — Hero Card ────────────────────────────── */}
         <FadeIn duration={600} delay={100}>
           <View className="px-md mt-lg">
-            <View className="relative overflow-hidden rounded-3xl bg-amber-50/80 dark:bg-amber-950/30 p-xl shadow-md">
-              {/* Decorative circle */}
-              <View className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-amber-200/30 dark:bg-amber-800/20" />
-              <View className="absolute -right-4 top-12 h-20 w-20 rounded-full bg-amber-300/20 dark:bg-amber-700/10" />
+            <View className="relative overflow-hidden rounded-3xl bg-amber-50/80 dark:bg-amber-950/30 p-lg shadow-lg shadow-amber-500/10">
+              {/* Decorative circles */}
+              <View className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-amber-200/30 dark:bg-amber-800/20" />
+              <View className="absolute -right-4 top-10 h-16 w-16 rounded-full bg-amber-300/20 dark:bg-amber-700/10" />
+              <View className="absolute -left-6 -bottom-6 h-20 w-20 rounded-full bg-amber-200/20 dark:bg-amber-800/10" />
 
               <View className="relative">
-                <View className="mb-lg h-16 w-16 items-center justify-center rounded-2xl bg-amber-200/70 dark:bg-amber-900/50">
-                  <Ionicons name="book-outline" size={32} color="#f59e0b" />
+                <View className="mb-sm h-14 w-14 items-center justify-center rounded-2xl bg-amber-200/70 dark:bg-amber-900/50">
+                  <Ionicons name="book-outline" size={28} color="#f59e0b" />
                 </View>
                 <Text className="text-2xl font-bold text-foreground">
                   {NEW_WORD_SESSION_SIZE} Kelime Öğren
@@ -487,24 +469,53 @@ export function LearnAndQuizHub() {
                 </Text>
                 <Button
                   title="Başlat"
-                  size="lg"
+                  size="md"
                   onPress={handleStartLearning}
-                  className="mt-lg w-full rounded-2xl bg-emerald-600 active:opacity-90"
-                  textClassName="text-white font-bold text-lg"
+                  className="mt-md w-full rounded-xl bg-emerald-600 active:opacity-90"
+                  textClassName="text-white font-bold"
                 />
               </View>
             </View>
           </View>
         </FadeIn>
 
-        {/* Hafıza Egzersizleri */}
+        {/* ─── Kelime Paketleri ────────────────────────────────────── */}
+        <FadeIn duration={500} delay={200}>
+          <View className="px-md mt-md">
+            <Pressable
+              onPress={() => router.push('/packages')}
+              className="flex-row items-center rounded-2xl border border-border bg-card p-md active:opacity-80"
+              accessibilityRole="button"
+              accessibilityLabel="Kelime paketlerini gör"
+            >
+              <View className="mr-md h-12 w-12 items-center justify-center rounded-xl bg-violet-100 dark:bg-violet-900/40">
+                <Ionicons name="cube-outline" size={24} color="#7c3aed" />
+              </View>
+              <View className="flex-1">
+                <Text className="text-base font-bold text-foreground">Kelime Paketleri</Text>
+                <Text className="text-xs text-muted-foreground">
+                  A1, A2 ve tema paketlerini yükle
+                </Text>
+              </View>
+              <View className="rounded-full bg-violet-100 dark:bg-violet-900/40 px-sm py-xs">
+                <Text className="text-xs font-semibold text-violet-700 dark:text-violet-300">
+                  {activePackageName}
+                </Text>
+              </View>
+              <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+            </Pressable>
+          </View>
+        </FadeIn>
+
+        {/* ─── Hafıza Egzersizleri ─────────────────────────────────── */}
         <View className="px-md mt-xl">
           <View className="mb-md flex-row items-center justify-between">
-            <Text className="text-xl font-bold text-foreground">Hafıza Egzersizleri</Text>
+            <Text className="text-lg font-bold text-foreground">Hafıza Egzersizleri</Text>
+            <Ionicons name="fitness-outline" size={20} color={colors.mutedForeground} />
           </View>
           <View className="gap-md">
             {EXERCISE_CARDS.map((card, index) => (
-              <FadeIn key={card.id} duration={500} delay={200 + index * 100}>
+              <FadeIn key={card.id} duration={500} delay={300 + index * 100}>
                 <Pressable
                   onPress={() => openExerciseSourceModal(card.id)}
                   accessibilityRole="button"
@@ -514,9 +525,9 @@ export function LearnAndQuizHub() {
                     className={`flex-row items-center rounded-2xl border ${card.cardBorder} ${card.cardBg} p-md`}
                   >
                     <View
-                      className={`mr-md h-14 w-14 items-center justify-center rounded-2xl ${card.iconBg} ${card.iconBgDark} shadow-sm`}
+                      className={`mr-md h-14 w-14 items-center justify-center rounded-2xl ${card.accentBg} ${card.accentBgDark} shadow-sm`}
                     >
-                      <Ionicons name={card.icon} size={28} color={card.iconColor} />
+                      <Ionicons name={card.icon} size={28} color={card.accentColor} />
                     </View>
                     <View className="flex-1">
                       <Text className="text-base font-bold text-foreground">{card.title}</Text>
@@ -534,88 +545,94 @@ export function LearnAndQuizHub() {
           </View>
         </View>
 
-        {/* AI Story Mode */}
-        <FadeIn duration={500} delay={350}>
+        {/* ─── AI Öykü Modu ────────────────────────────────────────── */}
+        <FadeIn duration={500} delay={500}>
           <View className="px-md mt-xl">
-            <Text className="mb-md text-xl font-bold text-foreground">AI Öykü Modu</Text>
-            <View className="relative overflow-hidden rounded-3xl bg-indigo-50/70 dark:bg-indigo-950/30 p-xl shadow-sm">
+            <View className="mb-md flex-row items-center justify-between">
+              <Text className="text-lg font-bold text-foreground">AI Destekli Öğrenme</Text>
+              <Ionicons name="sparkles-outline" size={20} color={colors.mutedForeground} />
+            </View>
+
+            {/* AI Story Card */}
+            <Pressable
+              onPress={handleGenerateStory}
+              className="relative overflow-hidden rounded-3xl bg-indigo-50/70 dark:bg-indigo-950/30 p-lg shadow-sm active:opacity-90"
+              accessibilityRole="button"
+              accessibilityLabel="AI ile hikaye üret"
+              disabled={isLoadingStory}
+            >
               <View className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-indigo-200/30 dark:bg-indigo-800/20" />
               <View className="relative flex-row items-center">
                 <View className="mr-md h-14 w-14 items-center justify-center rounded-2xl bg-indigo-200/70 dark:bg-indigo-900/50">
                   <Ionicons name="bookmarks-outline" size={28} color="#4f46e5" />
                 </View>
                 <View className="flex-1">
-                  <Text className="text-lg font-bold text-foreground">Hikaye Üret</Text>
+                  <Text className="text-base font-bold text-foreground">Hikaye Üret</Text>
                   <Text className="mt-xs text-sm text-muted-foreground/80">
                     Kelimelerin bağlam içinde akılda kalması için AI ile kısa hikaye üret
                   </Text>
                 </View>
+                {isLoadingStory ? (
+                  <ActivityIndicator color="#4f46e5" />
+                ) : (
+                  <View className="h-8 w-8 items-center justify-center rounded-full bg-white/60 dark:bg-white/10">
+                    <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+                  </View>
+                )}
               </View>
-              <Button
-                title="Hikaye Üret"
-                size="lg"
-                onPress={handleGenerateStory}
-                loading={isLoadingStory}
-                className="mt-lg w-full rounded-2xl bg-indigo-500 active:opacity-90"
-                textClassName="text-white font-bold text-lg"
-              />
-            </View>
-          </View>
-        </FadeIn>
+            </Pressable>
 
-        {/* AI Chat Partner (Roleplay) */}
-        <FadeIn duration={500} delay={400}>
-          <View className="px-md mt-xl">
-            <Text className="mb-md text-xl font-bold text-foreground">AI Canlı Chat</Text>
-            <View className="relative overflow-hidden rounded-3xl bg-emerald-50/70 dark:bg-emerald-950/30 p-xl shadow-sm">
+            {/* AI Chat Partner Card */}
+            <Pressable
+              onPress={() => router.push('/roleplay')}
+              className="relative overflow-hidden rounded-3xl bg-emerald-50/70 dark:bg-emerald-950/30 p-lg shadow-sm mt-md active:opacity-90"
+              accessibilityRole="button"
+              accessibilityLabel="AI chat partner başlat"
+            >
               <View className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-emerald-200/30 dark:bg-emerald-800/20" />
               <View className="relative flex-row items-center">
                 <View className="mr-md h-14 w-14 items-center justify-center rounded-2xl bg-emerald-200/70 dark:bg-emerald-900/50">
                   <Ionicons name="chatbubbles-outline" size={28} color="#059669" />
                 </View>
                 <View className="flex-1">
-                  <Text className="text-lg font-bold text-foreground">AI Chat Partner</Text>
+                  <Text className="text-base font-bold text-foreground">AI Chat Partner</Text>
                   <Text className="mt-xs text-sm text-muted-foreground/80">
                     Öğrendiğin kelimeleri canlı senaryolarda pratik et
                   </Text>
                 </View>
+                <View className="h-8 w-8 items-center justify-center rounded-full bg-white/60 dark:bg-white/10">
+                  <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+                </View>
               </View>
-              <Button
-                title="Sohbete Başla"
-                size="lg"
-                onPress={() => router.push('/roleplay')}
-                className="mt-lg w-full rounded-2xl bg-emerald-600 active:opacity-90"
-                textClassName="text-white font-bold text-lg"
-              />
-            </View>
+            </Pressable>
           </View>
         </FadeIn>
 
-        {/* Quiz & Egzersiz */}
-        <FadeIn duration={500} delay={500}>
+        {/* ─── Quiz ────────────────────────────────────────────────── */}
+        <FadeIn duration={500} delay={600}>
           <View className="px-md mt-xl">
-            <Text className="mb-md text-xl font-bold text-foreground">Quiz & Egzersiz</Text>
-            <View className="relative overflow-hidden rounded-3xl bg-cyan-50/70 dark:bg-cyan-950/30 p-xl shadow-sm">
+            <Pressable
+              onPress={() => router.push('/quiz')}
+              className="relative overflow-hidden rounded-3xl bg-cyan-50/70 dark:bg-cyan-950/30 p-lg shadow-sm active:opacity-90"
+              accessibilityRole="button"
+              accessibilityLabel="Quiz başlat"
+            >
               <View className="absolute -left-6 -bottom-6 h-24 w-24 rounded-full bg-cyan-200/30 dark:bg-cyan-800/20" />
               <View className="relative flex-row items-center">
                 <View className="mr-md h-14 w-14 items-center justify-center rounded-2xl bg-cyan-200/70 dark:bg-cyan-900/50">
                   <Ionicons name="trophy-outline" size={28} color="#0891b2" />
                 </View>
                 <View className="flex-1">
-                  <Text className="text-lg font-bold text-foreground">Quiz Başlat</Text>
+                  <Text className="text-base font-bold text-foreground">Quiz Başlat</Text>
                   <Text className="mt-xs text-sm text-muted-foreground/80">
                     Bilgini test et, ilerlemeni gör
                   </Text>
                 </View>
+                <View className="h-8 w-8 items-center justify-center rounded-full bg-white/60 dark:bg-white/10">
+                  <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+                </View>
               </View>
-              <Button
-                title="Quiz'e Başla"
-                size="lg"
-                onPress={() => router.push('/quiz')}
-                className="mt-lg w-full rounded-2xl bg-cyan-500 active:opacity-90"
-                textClassName="text-white font-bold text-lg"
-              />
-            </View>
+            </Pressable>
           </View>
         </FadeIn>
       </ScrollView>

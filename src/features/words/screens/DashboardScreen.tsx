@@ -3,6 +3,7 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { FadeIn, Loading } from '@/components';
 import { OwlMascot } from '@/components/illustrations/OwlMascot';
@@ -10,18 +11,31 @@ import { useTheme } from '@/theme/useTheme';
 import { useWordStore } from '@/store/word.store';
 import { useListStore } from '@/store/list.store';
 import { useStatisticStore } from '@/store/statistic.store';
-import { useGamificationStore } from '@/store/gamification.store';
+import {
+  useGamificationStore,
+  getProgressToNextLevel,
+  getXpToNextLevel,
+} from '@/store/gamification.store';
 import { usePackageStore } from '@/store/package.store';
 import type { StatisticRow } from '@/types/statistic';
 import { getLocalDateString } from '@/utils/date';
 import { getDatabase } from '@/database/client';
 import { TABLES } from '@/database/tables';
 
+// ─── Yardımcı Fonksiyonlar ──────────────────────────────────────────────────
+
 function getGreeting(): string {
   const hour = new Date().getHours();
   if (hour < 12) return 'Günaydın';
   if (hour < 18) return 'İyi Günler';
   return 'İyi Akşamlar';
+}
+
+function getGreetingEmoji(): string {
+  const hour = new Date().getHours();
+  if (hour < 12) return '☀️';
+  if (hour < 18) return '🌤️';
+  return '🌙';
 }
 
 type MotivationalQuote = {
@@ -87,7 +101,6 @@ function calculateStreak(statistics: StatisticRow[]): number {
       streak++;
       currentDate.setDate(currentDate.getDate() - 1);
     } else if (i === 0) {
-      // Bugün aktivite yoksa, düne bak
       currentDate.setDate(currentDate.getDate() - 1);
       continue;
     } else {
@@ -105,7 +118,6 @@ function getWeeklyActivity(statistics: StatisticRow[]): boolean[] {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  // Pazartesi'den başlayarak (0 = Pazartesi, 6 = Pazar)
   const dayOfWeek = today.getDay();
   const monday = new Date(today);
   monday.setDate(today.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1));
@@ -127,7 +139,50 @@ function getWeeklyActivity(statistics: StatisticRow[]): boolean[] {
   return activity;
 }
 
+/**
+ * Bugünün haftanın hangi günü olduğunu döndürür.
+ * Pazartesi = 0, …, Pazar = 6 (WEEKDAY_LABELS dizisiyle uyumlu).
+ */
+function getTodayIndex(): number {
+  const dayOfWeek = new Date().getDay(); // 0 = Pazar, 1 = Pazartesi, …
+  return dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+}
+
 const WEEKDAY_LABELS = ['P', 'S', 'Ç', 'P', 'C', 'C', 'P'];
+
+// ─── Alt Bileşenler ─────────────────────────────────────────────────────────
+
+type QuickActionProps = {
+  onPress: () => void;
+  icon: keyof typeof Ionicons.glyphMap;
+  iconColor: string;
+  iconBg: string;
+  title: string;
+  subtitle: string;
+};
+
+function QuickAction({ onPress, icon, iconColor, iconBg, title, subtitle }: QuickActionProps) {
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={title}
+      className="flex-1 active:opacity-80"
+    >
+      <View className="rounded-2xl bg-card p-md border border-border shadow-sm items-center">
+        <View className={`mb-sm h-12 w-12 items-center justify-center rounded-2xl ${iconBg}`}>
+          <Ionicons name={icon} size={24} color={iconColor} />
+        </View>
+        <Text className="text-sm font-bold text-foreground text-center">{title}</Text>
+        <Text className="text-xs text-muted-foreground text-center mt-xs">{subtitle}</Text>
+      </View>
+    </Pressable>
+  );
+}
+
+
+
+// ─── Ana Bileşen ─────────────────────────────────────────────────────────────
 
 export default function DashboardScreen() {
   const router = useRouter();
@@ -136,7 +191,7 @@ export default function DashboardScreen() {
   const { words, isLoading, fetchWords } = useWordStore();
   const { lists, fetchLists } = useListStore();
   const { recentStatistics, fetchRecentStatistics } = useStatisticStore();
-  const { checkAndUnlockBadge, level } = useGamificationStore();
+  const { checkAndUnlockBadge, level, xp } = useGamificationStore();
   const { activePackageName } = usePackageStore();
 
   const dailyBonusAwardedRef = useRef(false);
@@ -146,8 +201,12 @@ export default function DashboardScreen() {
   } | null>(null);
 
   const greeting = useMemo(() => getGreeting(), []);
+  const greetingEmoji = useMemo(() => getGreetingEmoji(), []);
   const formattedDate = useMemo(() => formatDate(), []);
   const motivationalQuote = useMemo(() => getMotivationalQuote(), []);
+  const todayIndex = useMemo(() => getTodayIndex(), []);
+  const levelProgress = useMemo(() => getProgressToNextLevel(), [xp, level]);
+  const xpToNext = useMemo(() => getXpToNextLevel(), [xp, level]);
 
   useEffect(() => {
     void fetchWords();
@@ -155,16 +214,14 @@ export default function DashboardScreen() {
     void fetchRecentStatistics(30);
   }, [fetchWords, fetchLists, fetchRecentStatistics]);
 
-  // Fetch active package progress data
   useEffect(() => {
     const fetchPackageProgress = async () => {
       try {
         const database = await getDatabase();
-        
-        // Get total word count for active package
+
         const totalResult = await database.getFirstAsync<{ count: number }>(
           `SELECT COUNT(*) AS count FROM ${TABLES.WORDS} WHERE package_name = ?`,
-          activePackageName
+          activePackageName,
         );
         const totalCount = totalResult?.count ?? 0;
 
@@ -173,13 +230,12 @@ export default function DashboardScreen() {
           return;
         }
 
-        // Get learned word count for active package (words that have at least one review)
         const learnedResult = await database.getFirstAsync<{ count: number }>(
           `SELECT COUNT(DISTINCT ${TABLES.WORDS}.id) AS count 
            FROM ${TABLES.WORDS} 
            INNER JOIN ${TABLES.REVIEWS} ON ${TABLES.WORDS}.id = ${TABLES.REVIEWS}.word_id 
            WHERE ${TABLES.WORDS}.package_name = ?`,
-          activePackageName
+          activePackageName,
         );
         const learnedCount = learnedResult?.count ?? 0;
 
@@ -193,16 +249,13 @@ export default function DashboardScreen() {
     void fetchPackageProgress();
   }, [activePackageName]);
 
-  // Daily streak bonus XP trigger and badge check
   useEffect(() => {
     if (!dailyBonusAwardedRef.current && recentStatistics.length > 0) {
       const streakCount = calculateStreak(recentStatistics);
       if (streakCount > 0) {
-        // Award +50 XP for daily login bonus
         void useGamificationStore.getState().addXp(50);
         dailyBonusAwardedRef.current = true;
       }
-      // Check for streak_7 badge
       void checkAndUnlockBadge('streak_7', streakCount >= 7);
     }
   }, [recentStatistics, checkAndUnlockBadge]);
@@ -220,46 +273,118 @@ export default function DashboardScreen() {
 
   const streakCount = useMemo(() => calculateStreak(recentStatistics), [recentStatistics]);
   const weeklyActivity = useMemo(() => getWeeklyActivity(recentStatistics), [recentStatistics]);
+  const activeDaysCount = weeklyActivity.filter(Boolean).length;
+
+  const progressPercentage = packageProgress
+    ? Math.round((packageProgress.learnedCount / packageProgress.totalCount) * 100)
+    : 0;
 
   if (isLoading) {
     return <Loading message="Yükleniyor..." fullScreen />;
   }
 
   return (
-    <View className="flex-1 bg-white dark:bg-slate-950">
+    <View className="flex-1 bg-background">
       <ScrollView
-        contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}
+        contentContainerStyle={{ paddingBottom: insets.bottom + 42 }}
         showsVerticalScrollIndicator={false}
       >
-        {/* Üst Bölüm - Karşılama (Soft Panel) */}
-        <View className="px-md" style={{ paddingTop: insets.top + 24 }}>
-          {/* Selamlama ve Streak - En Üst Satır */}
-          <View className="flex-row items-center justify-between mb-4">
-            <View>
-              <View className="flex-row items-center gap-2">
-                <Text className="text-2xl font-bold text-foreground">
-                  {greeting}! 👋
+        {/* ─── Hero Header (Gradient) ─────────────────────────────── */}
+        <FadeIn duration={600} delay={0}>
+          <LinearGradient
+            colors={['#0D9488', '#059669']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={{
+              paddingTop: insets.top + 16,
+              paddingBottom: 24,
+              paddingHorizontal: 16,
+              borderBottomLeftRadius: 28,
+              borderBottomRightRadius: 28,
+            }}
+          >
+            <Text className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
+              {formattedDate}
+            </Text>
+
+            <View className="flex-row items-center justify-between mt-sm">
+              <View className="flex-1">
+                <Text className="text-2xl font-bold" style={{ color: '#FFFFFF' }}>
+                  {greeting}! {greetingEmoji}
                 </Text>
-                <View className="bg-primary/10 border border-primary/30 px-2 py-0.5 rounded-full">
-                  <Text className="text-xs font-semibold text-primary">Lvl {level}</Text>
+
+                {/* Level Badge — Glassmorphism + Mini XP Progress */}
+                <View className="flex-row items-center mt-xs" style={{ gap: 8 }}>
+                  <View
+                    style={{
+                      backgroundColor: 'rgba(255,255,255,0.2)',
+                      borderColor: 'rgba(255,255,255,0.3)',
+                      borderWidth: 1,
+                      paddingHorizontal: 10,
+                      paddingVertical: 5,
+                      borderRadius: 12,
+                    }}
+                  >
+                    <Text className="text-xs font-semibold" style={{ color: '#FFFFFF' }}>
+                      Lvl {level}
+                    </Text>
+                    <View
+                      style={{
+                        height: 2,
+                        backgroundColor: 'rgba(255,255,255,0.3)',
+                        borderRadius: 1,
+                        marginTop: 4,
+                        width: 48,
+                      }}
+                    >
+                      <View
+                        style={{
+                          height: 2,
+                          width: `${levelProgress}%`,
+                          backgroundColor: '#FFFFFF',
+                          borderRadius: 1,
+                        }}
+                      />
+                    </View>
+                  </View>
+                  <Text className="text-xs" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                    {xpToNext} XP kaldı
+                  </Text>
                 </View>
               </View>
-              <Text className="mt-xs text-sm text-muted-foreground">{formattedDate}</Text>
-            </View>
-            {/* Günlük Seri (Streak) */}
-            <View className="flex-row items-center gap-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-800 px-4 py-2 rounded-full">
-              <Ionicons name="flame" size={24} color="#f97316" />
-              <Text className="text-lg font-bold text-orange-600 dark:text-orange-400">
-                {streakCount} Gün
-              </Text>
-            </View>
-          </View>
 
-          {/* Motivasyon Kartı */}
-          <FadeIn duration={800} delay={200}>
-            <View className="relative overflow-hidden rounded-2xl bg-amber-50 dark:bg-slate-900/30 p-5 shadow-sm">
+              {/* Streak Badge — Glassmorphism */}
+              <View
+                style={{
+                  backgroundColor: 'rgba(255,255,255,0.15)',
+                  borderColor: 'rgba(255,255,255,0.25)',
+                  borderWidth: 1,
+                  borderRadius: 16,
+                  paddingHorizontal: 14,
+                  paddingVertical: 10,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 6,
+                }}
+              >
+                <Ionicons name="flame" size={20} color="#fbbf24" />
+                <Text className="text-base font-bold" style={{ color: '#FFFFFF' }}>
+                  {streakCount}
+                </Text>
+                <Text className="text-xs" style={{ color: 'rgba(255,255,255,0.7)' }}>
+                  gün
+                </Text>
+              </View>
+            </View>
+          </LinearGradient>
+        </FadeIn>
+
+        {/* ─── Motivasyon Kartı (KORUNACAK — BORDERLESS SADE TASARIM) ─ */}
+        <FadeIn duration={800} delay={100}>
+          <View className="px-md mt-md">
+            <View className="relative overflow-hidden p-md rounded-2xl bg-primary/5 border-l-4 border-primary/60">
               {/* Sol üst köşede tırnak ikonu */}
-              <Text className="absolute left-md top-0 text-5xl font-serif text-primary/20">
+              <Text className="absolute left-xs top-[-8px] text-5xl font-serif text-primary/20">
                 &ldquo;
               </Text>
 
@@ -278,82 +403,224 @@ export default function DashboardScreen() {
 
                 {/* Sağ tarafa baykuş maskot */}
                 <View className="absolute right-0">
-                  <OwlMascot size={110} />
+                  <OwlMascot size={100} />
                 </View>
               </View>
-            </View>
-          </FadeIn>
-
-          {/* Haftalık Takip Paneli */}
-          <View className="mt-4 bg-white dark:bg-slate-900 rounded-2xl p-md shadow-sm border border-slate-100 dark:border-slate-800">
-            <Text className="mb-sm text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-              Bu Hafta
-            </Text>
-            <View className="flex-row justify-between">
-              {WEEKDAY_LABELS.map((label, index) => (
-                <View key={index} className="flex-col items-center gap-1">
-                  <View
-                    className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                      weeklyActivity[index]
-                        ? 'bg-primary'
-                        : 'bg-slate-100 dark:bg-slate-800'
-                    }`}
-                  >
-                    <Text
-                      className={`text-sm font-semibold ${
-                        weeklyActivity[index]
-                          ? 'text-primary-foreground'
-                          : 'text-muted-foreground'
-                      }`}
-                    >
-                      {label}
-                    </Text>
-                  </View>
-                </View>
-              ))}
             </View>
           </View>
-        </View>
+        </FadeIn>
 
-        {/* Aktif Paket İlerleme Kartı */}
-        {packageProgress && (
-          <FadeIn duration={600} delay={300}>
-            <View className="mx-md mt-4 bg-white dark:bg-slate-900 rounded-2xl p-md shadow-sm border border-slate-100 dark:border-slate-800">
-              <View className="flex-row items-center justify-between mb-2">
-                <Text className="text-base font-semibold text-foreground">
-                  🎯 {activePackageName}
-                </Text>
-                <Text className="text-sm text-muted-foreground">
-                  {packageProgress.learnedCount} / {packageProgress.totalCount} Kelime
-                </Text>
+        {/* ─── Gelişimim Kartı (İstatistik + Aktivite Birleşik) ──────── */}
+        <FadeIn duration={600} delay={200}>
+          <View className="px-md mt-md">
+            <View className="rounded-3xl border border-border bg-card p-md shadow-sm">
+              {/* Kart Başlığı */}
+              <Text className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-md">
+                Gelişimim
+              </Text>
+
+              {/* Aktif Paket İlerlemesi (Beyaz Kart İçinde En Üstte) */}
+              {packageProgress && (
+                <View className="mb-md">
+                  <View className="flex-row items-center justify-between mb-2">
+                    <View className="flex-row items-center gap-2">
+                      <Ionicons name="cube-outline" size={16} color={colors.primary} />
+                      <Text className="text-xs font-bold text-foreground">
+                        Aktif Paket: <Text className="text-primary">{activePackageName}</Text>
+                      </Text>
+                    </View>
+                    <Text className="text-xs font-bold text-muted-foreground">
+                      {packageProgress.learnedCount} / {packageProgress.totalCount} ({progressPercentage}%)
+                    </Text>
+                  </View>
+
+                  {/* Renkli Progress Bar */}
+                  <View className="h-2 w-full bg-primary/10 rounded-full overflow-hidden">
+                    <View
+                      className="h-full bg-primary rounded-full"
+                      style={{
+                        width: `${progressPercentage}%`,
+                      }}
+                    />
+                  </View>
+
+                  {/* Yatay Bölücü Çizgi */}
+                  <View className="border-b border-border mt-md" />
+                </View>
+              )}
+
+              {/* 3'lü İstatistik Segmenti */}
+              <View className="flex-row items-center justify-between px-xs py-sm">
+                {/* Kelime */}
+                <View className="flex-1 items-center justify-center">
+                  <Ionicons name="book" size={18} color="#0D9488" style={{ marginBottom: 4 }} />
+                  <Text className="text-base font-bold text-foreground">{words.length}</Text>
+                  <Text className="text-[11px] text-muted-foreground mt-0.5">Kelime</Text>
+                </View>
+
+                {/* Dikey Divider */}
+                <View className="w-[1px] h-8 bg-border" />
+
+                {/* Öğrenilen */}
+                <View className="flex-1 items-center justify-center">
+                  <Ionicons name="checkmark-circle" size={18} color="#16A34A" style={{ marginBottom: 4 }} />
+                  <Text className="text-base font-bold text-foreground text-center">
+                    {packageProgress?.learnedCount ?? 0}
+                  </Text>
+                  <Text className="text-[11px] text-muted-foreground mt-0.5">Öğrenilen</Text>
+                </View>
+
+                {/* Dikey Divider */}
+                <View className="w-[1px] h-8 bg-border" />
+
+                {/* XP */}
+                <View className="flex-1 items-center justify-center">
+                  <Ionicons name="flash" size={18} color="#CA8A04" style={{ marginBottom: 4 }} />
+                  <Text className="text-base font-bold text-foreground">{xp}</Text>
+                  <Text className="text-[11px] text-muted-foreground mt-0.5">XP</Text>
+                </View>
               </View>
-              {/* Progress Bar */}
-              <View className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <View
-                  className="h-full bg-primary rounded-full"
-                  style={{
-                    width: `${(packageProgress.learnedCount / packageProgress.totalCount) * 100}%`,
-                  }}
-                />
+
+              {/* Yatay Divider */}
+              <View className="border-b border-border my-md" />
+
+              {/* Bu Haftaki Aktivite */}
+              <View className="flex-row items-center justify-between mb-sm px-xs">
+                <Text className="text-xs font-semibold text-muted-foreground">
+                  Haftalık Aktivite
+                </Text>
+                <View className="flex-row items-center gap-1">
+                  <Ionicons name="flame" size={12} color="#f97316" />
+                  <Text className="text-[11px] font-semibold text-orange-600 dark:text-orange-400">
+                    {activeDaysCount} aktif gün
+                  </Text>
+                </View>
+              </View>
+
+              {/* Haftalık Aktivite Gün Çemberleri */}
+              <View className="flex-row justify-between mt-xs px-xs">
+                {WEEKDAY_LABELS.map((label, index) => {
+                  const isToday = index === todayIndex;
+                  const isActive = weeklyActivity[index];
+                  return (
+                    <View key={index} className="items-center" style={{ gap: 4 }}>
+                      {/* Dairesel İndikatör Konteyneri */}
+                      <View
+                        className={`w-10 h-10 rounded-full items-center justify-center ${
+                          isToday ? 'border-[1.5px] border-primary/50' : ''
+                        }`}
+                      >
+                        {isActive ? (
+                          <LinearGradient
+                            colors={['#0D9488', '#059669']}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 1 }}
+                            style={{
+                              width: 32,
+                              height: 32,
+                              borderRadius: 16,
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}
+                          >
+                            <Ionicons name="checkmark" size={16} color="#FFFFFF" />
+                          </LinearGradient>
+                        ) : (
+                          <View
+                            className={`rounded-full items-center justify-center ${
+                              isToday ? 'bg-primary/5' : 'bg-muted/70'
+                            }`}
+                            style={{
+                              width: 32,
+                              height: 32,
+                              borderRadius: 16,
+                            }}
+                          />
+                        )}
+                      </View>
+
+                      {/* Gün Etiketi ve Altındaki Nokta */}
+                      <View className="items-center h-8 justify-start">
+                        <Text
+                          className={`text-xs ${
+                            isToday
+                              ? 'font-bold text-primary'
+                              : 'font-semibold text-muted-foreground'
+                          }`}
+                        >
+                          {label}
+                        </Text>
+                        {isToday && (
+                          <View className="w-1.5 h-1.5 rounded-full bg-primary mt-1" />
+                        )}
+                      </View>
+                    </View>
+                  );
+                })}
               </View>
             </View>
-          </FadeIn>
-        )}
+          </View>
+        </FadeIn>
 
-        {/* Alt Bölüm - Kelime Listelerim (Yatay ScrollView) */}
-        <View className="mt-6">
+        {/* ─── Hızlı Erişim (Dikey Grid — KORUNACAK) ───────────────── */}
+        <FadeIn duration={600} delay={500}>
+          <View className="px-md mt-lg">
+            <Text className="text-lg font-bold text-foreground mb-md">Hızlı Erişim</Text>
+            <View className="flex-row gap-md">
+              <QuickAction
+                onPress={() => router.push('/(tabs)/learn')}
+                icon="book-outline"
+                iconColor="#f59e0b"
+                iconBg="bg-amber-100 dark:bg-amber-900/40"
+                title="Öğren"
+                subtitle="Yeni kelimeler"
+              />
+              <QuickAction
+                onPress={() => router.push('/quiz')}
+                icon="trophy-outline"
+                iconColor="#0891b2"
+                iconBg="bg-cyan-100 dark:bg-cyan-900/40"
+                title="Quiz"
+                subtitle="Bilgini test et"
+              />
+              <QuickAction
+                onPress={() => router.push('/roleplay')}
+                icon="chatbubbles-outline"
+                iconColor="#059669"
+                iconBg="bg-emerald-100 dark:bg-emerald-900/40"
+                title="Sohbet"
+                subtitle="AI ile pratik"
+              />
+            </View>
+          </View>
+        </FadeIn>
+
+        {/* ─── Kelime Listelerim (KORUNACAK) ────────────────────────── */}
+        <View className="mt-xl">
           <View className="flex-row items-center justify-between px-md mb-sm">
-            <Text className="text-xl font-bold text-foreground">
-              Kelime Listelerim
-            </Text>
-            <Pressable
-              onPress={() => router.push('/lists')}
-              accessibilityRole="button"
-              accessibilityLabel="Kelime listelerini yönet"
-              hitSlop={12}
-            >
-              <Text className="text-sm font-semibold text-primary">Yönet</Text>
-            </Pressable>
+            <Text className="text-xl font-bold text-foreground">Kelime Listelerim</Text>
+            <View className="flex-row items-center gap-sm">
+              <Pressable
+                onPress={() => router.push('/words/new')}
+                accessibilityRole="button"
+                accessibilityLabel="Yeni kelime ekle"
+                hitSlop={12}
+                className="flex-row items-center gap-xs bg-primary/10 px-3 py-1.5 rounded-full active:opacity-80"
+              >
+                <Ionicons name="add" size={16} color={colors.primary} />
+                <Text className="text-xs font-bold text-primary">Yeni Ekle</Text>
+              </Pressable>
+
+              <Pressable
+                onPress={() => router.push('/lists')}
+                accessibilityRole="button"
+                accessibilityLabel="Kelime listelerini yönet"
+                hitSlop={12}
+                className="active:opacity-80"
+              >
+                <Text className="text-sm font-semibold text-primary">Yönet</Text>
+              </Pressable>
+            </View>
           </View>
           <ScrollView
             horizontal
@@ -370,13 +637,9 @@ export default function DashboardScreen() {
               <View className="w-40 rounded-2xl bg-primary p-4 shadow-md">
                 <View className="flex-row items-center justify-between mb-2">
                   <Ionicons name="library-outline" size={22} color={colors.primaryForeground} />
-                  <Text className="text-xs font-semibold text-primary-foreground/80">
-                    Sistem
-                  </Text>
+                  <Text className="text-xs font-semibold text-primary-foreground/80">Sistem</Text>
                 </View>
-                <Text className="text-base font-bold text-primary-foreground">
-                  Tüm Kelimeler
-                </Text>
+                <Text className="text-base font-bold text-primary-foreground">Tüm Kelimeler</Text>
                 <Text className="mt-xs text-sm text-primary-foreground/80">
                   {words.length} kelime
                 </Text>
@@ -392,7 +655,7 @@ export default function DashboardScreen() {
                 accessibilityLabel={`${list.name} listesini aç`}
                 className="active:opacity-80"
               >
-                <View className="w-40 rounded-2xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800">
+                <View className="w-40 rounded-2xl bg-card p-4 shadow-sm border border-border">
                   <View className="flex-row items-center justify-between mb-2">
                     <Ionicons name="folder-outline" size={22} color={colors.mutedForeground} />
                   </View>
@@ -408,18 +671,6 @@ export default function DashboardScreen() {
           </ScrollView>
         </View>
       </ScrollView>
-
-      {/* FAB Button — İzole, temiz, tek başına */}
-      <Pressable
-        onPress={() => router.push('/words/new')}
-        accessibilityRole="button"
-        accessibilityLabel="Yeni kelime ekle"
-        className="absolute right-6 rounded-full bg-primary p-4 shadow-lg active:opacity-90"
-        hitSlop={16}
-        style={{ bottom: insets.bottom + 32 }}
-      >
-        <Text className="text-3xl font-bold text-primary-foreground">+</Text>
-      </Pressable>
     </View>
   );
 }

@@ -1,364 +1,398 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Dimensions, Platform, Pressable, ScrollView, Text, View } from 'react-native';
-import { LineChart } from 'react-native-chart-kit';
+import React, { useEffect, useMemo } from 'react';
+import { ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
-import { Card, EmptyState, Loading, ProgressBar } from '@/components';
+import { FadeIn, Loading } from '@/components';
+import { useTheme } from '@/theme/useTheme';
 import { useStatisticStore } from '@/store/statistic.store';
-import { useLearningStore } from '@/store/learning.store';
-import { useGamificationStore, getXpToNextLevel } from '@/store/gamification.store';
-import { useTheme, useThemeContext } from '@/theme/useTheme';
+import { useGamificationStore, getProgressToNextLevel } from '@/store/gamification.store';
+import { useWordStore } from '@/store/word.store';
+import { getLocalDateString } from '@/utils/date';
+import type { StatisticRow } from '@/types/statistic';
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
-const CHART_WIDTH = SCREEN_WIDTH - 64;
+// ─── Yardımcı Fonksiyonlar ──────────────────────────────────────────────────
 
-type TimePeriod = 'today' | 'week' | 'month';
-
-const PERIOD_LABELS: Record<TimePeriod, string> = {
-  today: 'Bugün',
-  week: 'Hafta',
-  month: 'Ay',
-};
-
-function formatTime(seconds: number): string {
+function formatTimeSpent(seconds: number): string {
+  if (seconds <= 0) return '0 dk';
+  if (seconds < 60) return `${seconds} sn`;
   const minutes = Math.floor(seconds / 60);
+  if (minutes < 60) return `${minutes} dk`;
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
-
-  if (hours > 0) {
-    return `${hours}s ${remainingMinutes}dk`;
-  }
-  if (minutes === 0 && seconds > 0) {
-    return '< 1dk';
-  }
-  return `${minutes}dk`;
+  if (remainingMinutes === 0) return `${hours} sa`;
+  return `${hours} sa ${remainingMinutes} dk`;
 }
 
-// Badge component for gamification UI
-function BadgeItem({
-  id,
-  name,
-  icon,
-  color,
-  unlocked,
-}: {
+function getWeeklyChartData(statistics: StatisticRow[]): number[] {
+  const data = [0, 0, 0, 0, 0, 0, 0];
+  if (!statistics || statistics.length === 0) return data;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const dayOfWeek = today.getDay();
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1));
+
+  for (let i = 0; i < 7; i++) {
+    const checkDate = new Date(monday);
+    checkDate.setDate(monday.getDate() + i);
+    const dateStr = getLocalDateString(checkDate);
+
+    const stat = statistics.find((s) => s.date === dateStr);
+    if (stat) {
+      data[i] = stat.words_learned + stat.words_reviewed;
+    }
+  }
+
+  return data;
+}
+
+const WEEKDAY_LABELS = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'];
+
+type BadgeDefinition = {
   id: string;
-  name: string;
+  title: string;
+  conditionText: string;
   icon: keyof typeof Ionicons.glyphMap;
   color: string;
-  unlocked: boolean;
-}) {
+};
+
+const BADGES: readonly BadgeDefinition[] = [
+  {
+    id: 'streak_7',
+    title: '7 Günlük Seri',
+    conditionText: '7 gün üst üste çalış',
+    icon: 'flame',
+    color: '#F97316',
+  },
+  {
+    id: 'words_100',
+    title: 'Kelime Ustası',
+    conditionText: '100 kelime öğren',
+    icon: 'book',
+    color: '#0D9488',
+  },
+  {
+    id: 'quiz_master',
+    title: 'Sınav Fatihi',
+    conditionText: 'Bir sınavı tamamla',
+    icon: 'trophy',
+    color: '#CA8A04',
+  },
+];
+
+// ─── Alt Bileşenler ─────────────────────────────────────────────────────────
+
+type MetricCardProps = {
+  icon: keyof typeof Ionicons.glyphMap;
+  title: string;
+  value: string | number;
+  subtitle?: string;
+  iconColor: string;
+  iconBg: string;
+};
+
+function MetricCard({ icon, title, value, subtitle, iconColor, iconBg }: MetricCardProps) {
+  return (
+    <View className="flex-1 min-w-[45%] rounded-2xl bg-card p-md border border-border shadow-sm">
+      <View className="flex-row items-center gap-2 mb-xs">
+        <View className={`h-8 w-8 items-center justify-center rounded-xl ${iconBg}`}>
+          <Ionicons name={icon} size={16} color={iconColor} />
+        </View>
+        <Text className="text-xs font-semibold text-muted-foreground">{title}</Text>
+      </View>
+      <Text className="text-xl font-bold text-foreground mt-xs">{value}</Text>
+      {subtitle ? <Text className="text-xs text-muted-foreground mt-xs">{subtitle}</Text> : null}
+    </View>
+  );
+}
+
+type BadgeColProps = {
+  badge: BadgeDefinition;
+  isUnlocked: boolean;
+};
+
+function BadgeCol({ badge, isUnlocked }: BadgeColProps) {
   return (
     <View
-      className={`flex-row items-center gap-xs px-sm py-xs rounded-lg border ${
-        unlocked
-          ? 'bg-primary/10 border-primary/30'
-          : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 opacity-40'
-      }`}
+      className="flex-1 items-center p-sm rounded-2xl bg-card border border-border"
+      style={!isUnlocked ? { opacity: 0.4 } : undefined}
     >
-      <Ionicons
-        name={unlocked ? icon : 'lock-closed'}
-        size={20}
-        color={unlocked ? undefined : '#9ca3af'}
-        className={unlocked ? color : 'text-slate-400'}
-      />
-      <Text
-        className={`text-sm font-medium ${
-          unlocked ? 'text-foreground' : 'text-muted-foreground'
-        }`}
+      {/* Rozet Dairesel İkonu */}
+      <View
+        className="h-14 w-14 items-center justify-center rounded-full mb-2 relative"
+        style={{
+          backgroundColor: isUnlocked ? `${badge.color}15` : '#E2E8F0',
+          borderWidth: 1,
+          borderColor: isUnlocked ? `${badge.color}30` : '#E2E8F0',
+        }}
       >
-        {name}
+        <Ionicons name={badge.icon} size={28} color={isUnlocked ? badge.color : '#64748B'} />
+        {isUnlocked ? (
+          <View
+            className="absolute bottom-0 right-0 h-4.5 w-4.5 rounded-full items-center justify-center border border-card"
+            style={{ backgroundColor: '#16A34A' }}
+          >
+            <Ionicons name="checkmark" size={10} color="#FFFFFF" />
+          </View>
+        ) : (
+          <View
+            className="absolute bottom-0 right-0 h-4.5 w-4.5 rounded-full items-center justify-center border border-card"
+            style={{ backgroundColor: '#64748B' }}
+          >
+            <Ionicons name="lock-closed" size={9} color="#FFFFFF" />
+          </View>
+        )}
+      </View>
+
+      <Text className="text-xs font-bold text-foreground text-center" numberOfLines={1}>
+        {badge.title}
+      </Text>
+      <Text className="text-[10px] text-muted-foreground text-center mt-xs" numberOfLines={2}>
+        {badge.conditionText}
       </Text>
     </View>
   );
 }
 
+// ─── Ana Bileşen ─────────────────────────────────────────────────────────────
+
 export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
-  const colors = useTheme().colors;
-  const { themeMode } = useThemeContext();
-  const [timePeriod, setTimePeriod] = useState<TimePeriod>('today');
+  useTheme();
+
+  const { words, fetchWords } = useWordStore();
   const {
-    todayStatistic,
+    totalStatistics,
     recentStatistics,
-    isLoading,
-    error,
-    fetchTodayStatistic,
+    fetchTotalStatistics,
     fetchRecentStatistics,
+    isLoading: isStatsLoading,
   } = useStatisticStore();
-  const { totalWordCount, fetchTotalWordCount } = useLearningStore();
-  const { xp, level, badges } = useGamificationStore();
-  const xpToNextLevel = getXpToNextLevel();
-  const currentLevelXp = (level - 1) * 100;
-  const progressToNextLevel = ((xp - currentLevelXp) / (level * 100 - currentLevelXp)) * 100;
+  const { level, xp, badges } = useGamificationStore();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const levelProgress = useMemo(() => getProgressToNextLevel(), [xp, level]);
+  const nextLevelXp = useMemo(() => level * 100, [level]);
 
   useEffect(() => {
-    void fetchTodayStatistic();
-    void fetchTotalWordCount();
-  }, [fetchTodayStatistic, fetchTotalWordCount]);
+    void fetchWords();
+    void fetchTotalStatistics();
+    void fetchRecentStatistics(30);
+  }, [fetchWords, fetchTotalStatistics, fetchRecentStatistics]);
 
-  useEffect(() => {
-    if (timePeriod === 'week') {
-      void fetchRecentStatistics(7);
-    } else if (timePeriod === 'month') {
-      void fetchRecentStatistics(30);
-    }
-  }, [timePeriod, fetchRecentStatistics]);
+  // İstatistik hesaplamaları
+  const timeSpentFormatted = useMemo(() => {
+    return formatTimeSpent(totalStatistics?.totalTimeSpentSeconds ?? 0);
+  }, [totalStatistics]);
 
   const quizAccuracy = useMemo(() => {
-    if (!todayStatistic || todayStatistic.quiz_correct + todayStatistic.quiz_incorrect === 0) {
-      return 0;
-    }
-    return Math.round(
-      (todayStatistic.quiz_correct /
-        (todayStatistic.quiz_correct + todayStatistic.quiz_incorrect)) *
-        100,
-    );
-  }, [todayStatistic]);
+    if (!totalStatistics) return '0%';
+    const total = totalStatistics.totalQuizCorrect + totalStatistics.totalQuizIncorrect;
+    if (total === 0) return '0%';
+    const percentage = Math.round((totalStatistics.totalQuizCorrect / total) * 100);
+    return `${percentage}%`;
+  }, [totalStatistics]);
 
-  const chartData = useMemo(
-    () => ({
-      labels: recentStatistics
-        .slice()
-        .reverse()
-        .map((stat) => {
-          const date = new Date(stat.date);
-          return timePeriod === 'week'
-            ? date.toLocaleDateString('tr-TR', { weekday: 'short' })
-            : date.getDate().toString();
-        }),
-      datasets: [
-        {
-          data: recentStatistics
-            .slice()
-            .reverse()
-            .map((stat) => stat.words_learned + stat.words_reviewed),
-          color: (opacity = 1) => `rgba(59, 130, 246, ${opacity})`,
-          strokeWidth: 2,
-        },
-      ],
-    }),
-    [recentStatistics, timePeriod],
-  );
+  const totalReviews = useMemo(() => {
+    return totalStatistics?.totalWordsReviewed ?? 0;
+  }, [totalStatistics]);
 
-  const chartConfig = useMemo(
-    () => ({
-      backgroundColor: colors.card,
-      backgroundGradientFrom: colors.card,
-      backgroundGradientTo: colors.card,
-      decimalPlaces: 0,
-      color: (opacity = 1) =>
-        themeMode === 'dark' ? `rgba(255, 255, 255, ${opacity})` : `rgba(0, 0, 0, ${opacity})`,
-      labelColor: (opacity = 1) =>
-        themeMode === 'dark' ? `rgba(255, 255, 255, ${opacity})` : `rgba(0, 0, 0, ${opacity})`,
-      style: {
-        borderRadius: 16,
-      },
-      propsForDots: {
-        r: '4',
-        strokeWidth: '2',
-        stroke: colors.primary,
-      },
-    }),
-    [colors.card, colors.primary, themeMode],
-  );
+  const learnedWordsCount = useMemo(() => {
+    return totalStatistics?.totalWordsLearned ?? 0;
+  }, [totalStatistics]);
 
-  if (isLoading) {
+  // Grafik verileri
+  const weeklyChartData = useMemo(() => getWeeklyChartData(recentStatistics), [recentStatistics]);
+  const maxVal = useMemo(() => {
+    const max = Math.max(...weeklyChartData);
+    return max === 0 ? 1 : max;
+  }, [weeklyChartData]);
+
+  if (isStatsLoading) {
     return <Loading message="İstatistikler yükleniyor..." fullScreen />;
   }
 
-  if (error) {
-    return (
-      <View className="flex-1 items-center justify-center bg-background p-md">
-        <Text className="mb-sm text-center text-sm text-error">{error}</Text>
-      </View>
-    );
-  }
-
-  if (!todayStatistic && timePeriod === 'today') {
-    return (
-      <View className="flex-1 bg-background">
-        <EmptyState
-          className="flex-1 px-md"
-          title="Henüz istatistik yok"
-          description="Kelime öğrenmeye veya tekrar etmeye başladığınızda ilerlemeniz burada görünecek."
-        />
-      </View>
-    );
-  }
-
-  if (timePeriod !== 'today' && recentStatistics.length === 0) {
-    return (
-      <View className="flex-1 bg-background">
-        <EmptyState
-          className="flex-1 px-md"
-          title="Henüz istatistik yok"
-          description="Seçilen dönem için henüz veri bulunmuyor."
-        />
-      </View>
-    );
-  }
-
   return (
-    <View className="flex-1 bg-white dark:bg-slate-950">
+    <View className="flex-1 bg-background">
       <ScrollView
-        contentContainerStyle={{ paddingBottom: insets.bottom + 24 }}
+        contentContainerStyle={{ paddingBottom: insets.bottom + 42 }}
         showsVerticalScrollIndicator={false}
       >
-        <View className="px-md pb-sm" style={{ paddingTop: insets.top + 24 }}>
-          <Text className="text-2xl font-bold text-foreground mb-xs">İlerlemeniz</Text>
-          <Text className="text-base text-slate-400">
-            Günlük, haftalık ve aylık öğrenme istatistikleriniz.
-          </Text>
-        </View>
-
-        {/* Gamification Section: Level & XP */}
-        <Card className="mx-md mb-md border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-md shadow-sm rounded-2xl">
-          <View className="flex-row items-center justify-between mb-sm">
-            <View>
-              <Text className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                Seviye
-              </Text>
-              <Text className="text-3xl font-bold text-primary">{level}</Text>
-            </View>
-            <View className="text-right">
-              <Text className="text-sm font-semibold text-foreground">XP</Text>
-              <Text className="text-lg font-bold text-foreground">{xp}</Text>
-            </View>
-          </View>
-          <ProgressBar progress={Math.min(100, Math.max(0, progressToNextLevel))} className="mt-sm" />
-          <Text className="text-xs text-muted-foreground mt-xs">
-            Sonraki seviyeye {xpToNextLevel} XP kaldı
-          </Text>
-        </Card>
-
-        {/* Gamification Section: Badges */}
-        <Card className="mx-md mb-md border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-md shadow-sm rounded-2xl">
-          <Text className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-sm">
-            Başarı Rozetleri
-          </Text>
-          <View className="flex-row flex-wrap gap-sm">
-            <BadgeItem
-              id="streak_7"
-              name="7 Günlük Seri"
-              icon="flame"
-              color="text-orange-500"
-              unlocked={badges.includes('streak_7')}
-            />
-            <BadgeItem
-              id="words_100"
-              name="Kelime Avcısı"
-              icon="book"
-              color="text-cyan-500"
-              unlocked={badges.includes('words_100')}
-            />
-            <BadgeItem
-              id="quiz_master"
-              name="Quiz Ustası"
-              icon="trophy"
-              color="text-amber-500"
-              unlocked={badges.includes('quiz_master')}
-            />
-          </View>
-        </Card>
-
-        <View className="mb-md px-md mt-4">
-          <View className="flex-row bg-slate-50 dark:bg-slate-900 rounded-xl p-1">
-            {(['today', 'week', 'month'] as TimePeriod[]).map((period) => (
-              <Pressable
-                key={period}
-                onPress={() => setTimePeriod(period)}
-                accessibilityRole="button"
-                accessibilityLabel={`${PERIOD_LABELS[period]} dönemini seç`}
-                accessibilityState={{ selected: timePeriod === period }}
-                className={`flex-1 rounded-lg py-2.5 ${
-                  timePeriod === period ? 'bg-primary shadow-sm' : 'bg-transparent'
-                }`}
-              >
-                <Text
-                  className={`text-center text-sm font-semibold ${
-                    timePeriod === period ? 'text-primary-foreground' : 'text-slate-500'
-                  }`}
-                >
-                  {PERIOD_LABELS[period]}
-                </Text>
-              </Pressable>
-            ))}
-          </View>
-        </View>
-
-        {timePeriod === 'today' && todayStatistic ? (
-          <>
-            {/* Card 1: Learned Words (Combined) */}
-            <Card className="mx-md mb-md border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-md shadow-sm rounded-2xl">
-              <View className="items-center">
-                <Text className="mb-xs text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                  Öğrenilen Kelimeler
-                </Text>
-                <Text className="text-3xl font-bold text-foreground">
-                  {todayStatistic.words_learned} / {totalWordCount}
-                </Text>
-              </View>
-            </Card>
-
-            {/* Card 2: Time Spent */}
-            <Card className="mx-md mb-md border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-md shadow-sm rounded-2xl">
-              <View className="flex-row items-center justify-between">
-                <View>
-                  <Text className="mb-xs text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                    Geçen Süre
-                  </Text>
-                  <Text className="text-2xl font-bold text-foreground">
-                    {formatTime(todayStatistic.time_spent_seconds)}
-                  </Text>
-                </View>
-                <Text className="text-4xl">⏱️</Text>
-              </View>
-            </Card>
-
-            {/* Card 3: Quiz Success (Combined) */}
-            <Card className="mx-md mb-md border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-md shadow-sm rounded-2xl">
-              <View className="flex-row items-center justify-between">
-                <View className="flex-1">
-                  <Text className="mb-xs text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                    Quiz Başarısı
-                  </Text>
-                  <Text className="text-3xl font-bold text-foreground">{quizAccuracy}%</Text>
-                  <Text className="mt-xs text-sm text-slate-400">
-                    {todayStatistic.quiz_correct} Doğru • {todayStatistic.quiz_incorrect} Yanlış
-                  </Text>
-                </View>
-                <Text className="text-4xl ml-md">🎯</Text>
-              </View>
-            </Card>
-          </>
-        ) : null}
-
-        {timePeriod !== 'today' && recentStatistics.length > 0 ? (
-          <Card className="mx-md mb-md border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-md shadow-sm rounded-2xl">
-            <Text className="mb-sm text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-              Öğrenilen + Tekrar Edilen Kelimeler
-            </Text>
-            {Platform.OS !== 'web' ? (
-              <LineChart
-                data={chartData}
-                width={CHART_WIDTH}
-                height={220}
-                chartConfig={chartConfig}
-                bezier
+        {/* ─── Hero Header (Ferah Tavan - Düz Beyaz / Minimalist) ──── */}
+        <FadeIn duration={600} delay={0}>
+          <View
+            style={{
+              paddingTop: insets.top + 20,
+              paddingBottom: 20,
+              paddingHorizontal: 20,
+            }}
+          >
+            <View className="flex-row items-center gap-md">
+              {/* Dairesel Şık Avatar (Kullanıcı İkonlu) */}
+              <View
                 style={{
-                  marginVertical: 8,
-                  borderRadius: 16,
+                  height: 60,
+                  width: 60,
+                  borderRadius: 30,
+                  backgroundColor: '#0D948815',
+                  borderColor: '#0D948830',
+                  borderWidth: 1.5,
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
-              />
-            ) : (
-              <View className="items-center justify-center py-8">
-                <Text className="text-muted-foreground text-sm">Grafik web platformunda gösterilmiyor</Text>
+              >
+                <Ionicons name="person-outline" size={24} color="#334155" />
               </View>
-            )}
-          </Card>
-        ) : null}
+
+              <View className="flex-1">
+                <Text className="text-xl font-bold text-foreground">Öğrenci Profili</Text>
+                <Text className="text-xs text-muted-foreground mt-xs">
+                  Gelişiminizi ve başarılarınızı takip edin.
+                </Text>
+              </View>
+            </View>
+
+            {/* Level & XP Kartı (Emerald/Teal Gradient) */}
+            <LinearGradient
+              colors={['#0D9488', '#059669']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={{
+                marginTop: 20,
+                borderRadius: 20,
+                padding: 16,
+                shadowColor: '#0D9488',
+                shadowOffset: { width: 0, height: 4 },
+                shadowOpacity: 0.15,
+                shadowRadius: 10,
+                elevation: 4,
+              }}
+            >
+              <View className="flex-row justify-between items-center mb-xs">
+                <Text className="text-sm font-bold" style={{ color: '#FFFFFF' }}>
+                  Seviye {level}
+                </Text>
+                <Text className="text-xs" style={{ color: 'rgba(255,255,255,0.85)' }}>
+                  {xp} / {nextLevelXp} XP
+                </Text>
+              </View>
+              {/* Progress Bar (Beyaz / Yarı Saydam) */}
+              <View
+                className="h-2.5 w-full rounded-full overflow-hidden"
+                style={{ backgroundColor: 'rgba(255,255,255,0.25)' }}
+              >
+                <View
+                  className="h-full rounded-full"
+                  style={{
+                    width: `${levelProgress}%`,
+                    backgroundColor: '#FFFFFF',
+                  }}
+                />
+              </View>
+            </LinearGradient>
+          </View>
+        </FadeIn>
+
+        {/* ─── İstatistik Izgarası (2x2 Grid) ──────────────────────── */}
+        <FadeIn duration={600} delay={100}>
+          <View className="px-md mt-sm">
+            <Text className="text-lg font-bold text-foreground mb-sm">Genel Durum</Text>
+            <View className="flex-row flex-wrap gap-sm">
+              <MetricCard
+                icon="book"
+                title="Öğrenilen Kelimeler"
+                value={learnedWordsCount}
+                subtitle={`Kütüphanede ${words.length} kelime var`}
+                iconColor="#0D9488"
+                iconBg="bg-teal-100 dark:bg-teal-900/40"
+              />
+              <MetricCard
+                icon="time"
+                title="Çalışma Süresi"
+                value={timeSpentFormatted}
+                iconColor="#3b82f6"
+                iconBg="bg-blue-100 dark:bg-blue-900/40"
+              />
+              <MetricCard
+                icon="repeat"
+                title="Toplam Tekrar"
+                value={totalReviews}
+                iconColor="#a855f7"
+                iconBg="bg-purple-100 dark:bg-purple-900/40"
+              />
+              <MetricCard
+                icon="checkmark-circle"
+                title="Quiz Doğruluğu"
+                value={quizAccuracy}
+                iconColor="#16A34A"
+                iconBg="bg-green-100 dark:bg-green-900/40"
+              />
+            </View>
+          </View>
+        </FadeIn>
+
+        {/* ─── Haftalık Aktivite Grafiği (Apple Tarzı Dikey Grafik) ─── */}
+        <FadeIn duration={600} delay={200}>
+          <View className="px-md mt-lg">
+            <Text className="text-lg font-bold text-foreground mb-sm">Haftalık Aktivite</Text>
+            <View className="rounded-2xl bg-card p-md border border-border shadow-sm items-center">
+              <View className="flex-row justify-between items-end w-full h-[150] px-sm">
+                {weeklyChartData.map((val, index) => {
+                  const barHeight = val === 0 ? 4 : (val / maxVal) * 110;
+                  return (
+                    <View key={index} className="items-center" style={{ width: 40 }}>
+                      {/* Değer göstergesi */}
+                      {val > 0 ? (
+                        <Text className="text-[10px] font-bold text-primary mb-xs">{val}</Text>
+                      ) : (
+                        <Text className="text-[10px] font-bold text-transparent mb-xs">.</Text>
+                      )}
+
+                      {/* Bar */}
+                      <View className="w-4 rounded-full bg-muted overflow-hidden h-[110] justify-end">
+                        {val > 0 ? (
+                          <View
+                            className="bg-primary w-full rounded-full"
+                            style={{ height: barHeight }}
+                          />
+                        ) : (
+                          <View
+                            className="bg-muted-foreground/20 w-full rounded-full"
+                            style={{ height: barHeight }}
+                          />
+                        )}
+                      </View>
+
+                      {/* Gün etiketleri */}
+                      <Text className="text-xs font-semibold text-muted-foreground mt-sm">
+                        {WEEKDAY_LABELS[index]}
+                      </Text>
+                    </View>
+                  );
+                })}
+              </View>
+            </View>
+          </View>
+        </FadeIn>
+
+        {/* ─── Başarımlar ve Rozetler (3 Sütunlu Izgara) ─────────────── */}
+        <FadeIn duration={600} delay={300}>
+          <View className="px-md mt-lg">
+            <Text className="text-lg font-bold text-foreground mb-sm">Başarımlar</Text>
+            <View className="flex-row gap-sm">
+              {BADGES.map((badge) => {
+                const isUnlocked = badges.includes(badge.id);
+                return (
+                  <BadgeCol key={badge.id} badge={badge} isUnlocked={isUnlocked} />
+                );
+              })}
+            </View>
+          </View>
+        </FadeIn>
       </ScrollView>
     </View>
   );

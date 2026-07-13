@@ -416,24 +416,24 @@ function SettingsScreen() {
   return (
     <View className="flex-1 bg-background">
       <ScrollView
-        contentContainerStyle={{ paddingTop: insets.top + 16, paddingBottom: insets.bottom + 24 }}
+        contentContainerStyle={{ paddingTop: insets.top + 12, paddingBottom: insets.bottom + 42 }}
         showsVerticalScrollIndicator={false}
       >
         <FadeIn>
-          <View className="px-md pb-lg">
-            <Text className="text-2xl font-bold text-foreground mb-sm">Ayarlar</Text>
-            <Text className="text-base text-muted-foreground">
-              Öğrenme deneyiminizi özelleştirin
+          <View className="px-md pb-md pt-sm">
+            <Text className="text-3xl font-bold text-foreground">Ayarlar</Text>
+            <Text className="text-sm text-muted-foreground mt-xs">
+              Öğrenme deneyiminizi dilediğiniz gibi özelleştirin.
             </Text>
           </View>
         </FadeIn>
 
         {/* Tercihler Bölümü */}
         <View className="px-md mb-lg">
-          <Text className="text-xs font-semibold uppercase text-muted-foreground mb-sm px-xs">
+          <Text className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-sm px-xs">
             Tercihler
           </Text>
-          <View className="rounded-2xl border border-slate-100 border-border bg-card shadow-sm overflow-hidden">
+          <View className="rounded-2xl border border-border bg-card overflow-hidden">
             {/* Günlük Bildirim */}
             <View className="flex-row items-center justify-between px-md py-md border-b border-border">
               <View className="flex-1 pr-md">
@@ -460,10 +460,10 @@ function SettingsScreen() {
               >
                 <Text className="text-base font-medium text-foreground">Hatırlatma Saati</Text>
                 <View className="flex-row items-center">
-                  <Text className="text-sm text-muted-foreground mr-sm">
+                  <Text className="text-sm text-muted-foreground mr-xs">
                     {notificationTime}
                   </Text>
-                  <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+                  <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
                 </View>
               </Pressable>
             ) : null}
@@ -492,10 +492,10 @@ function SettingsScreen() {
             >
               <Text className="text-base font-medium text-foreground">Konuşma Hızı</Text>
               <View className="flex-row items-center">
-                <Text className="text-sm text-muted-foreground mr-sm">
+                <Text className="text-sm text-muted-foreground mr-xs">
                   {speechSpeed.toFixed(1)}x
                 </Text>
-                <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+                <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
               </View>
             </Pressable>
 
@@ -508,10 +508,10 @@ function SettingsScreen() {
             >
               <Text className="text-base font-medium text-foreground">Öğrenme Hedefleri</Text>
               <View className="flex-row items-center">
-                <Text className="text-sm text-muted-foreground mr-sm">
+                <Text className="text-sm text-muted-foreground mr-xs">
                   {dailyGoal} kelime
                 </Text>
-                <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+                <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
               </View>
             </Pressable>
           </View>
@@ -519,10 +519,10 @@ function SettingsScreen() {
 
         {/* Destek Bölümü */}
         <View className="px-md mb-lg">
-          <Text className="text-xs font-semibold uppercase text-muted-foreground mb-sm px-xs">
+          <Text className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-sm px-xs">
             Destek
           </Text>
-          <View className="rounded-2xl border border-slate-100 border-border bg-card shadow-sm overflow-hidden">
+          <View className="rounded-2xl border border-border bg-card overflow-hidden">
             {/* Kelime İçe Aktar */}
             <Pressable
               onPress={() => setActiveSheet('import')}
@@ -533,9 +533,9 @@ function SettingsScreen() {
               <Text className="text-base font-medium text-foreground">Kelime İçe Aktar</Text>
               <View className="flex-row items-center">
                 {importMutation.isPending ? (
-                  <Text className="text-sm text-muted-foreground mr-sm">İçe aktarılıyor...</Text>
+                  <Text className="text-xs text-muted-foreground mr-xs">İçe aktarılıyor...</Text>
                 ) : null}
-                <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+                <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
               </View>
             </Pressable>
 
@@ -550,9 +550,9 @@ function SettingsScreen() {
               <Text className="text-base font-medium text-foreground">Çevrimdışı Kontrolü</Text>
               <View className="flex-row items-center">
                 {isCheckingOffline ? (
-                  <Text className="text-sm text-muted-foreground mr-sm">Kontrol ediliyor...</Text>
+                  <Text className="text-xs text-muted-foreground mr-xs">Kontrol ediliyor...</Text>
                 ) : null}
-                <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+                <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
               </View>
             </Pressable>
 
@@ -564,17 +564,17 @@ function SettingsScreen() {
               className="flex-row items-center justify-between px-md py-md active:opacity-60"
             >
               <Text className="text-base font-medium text-sky-500">Geri Bildirim Gönder</Text>
-              <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+              <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
             </Pressable>
           </View>
         </View>
 
         {/* Hesap veya Veri Bölümü */}
         <View className="px-md mb-lg">
-          <Text className="text-xs font-semibold uppercase text-muted-foreground mb-sm px-xs">
+          <Text className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-sm px-xs">
             Hesap veya Veri
           </Text>
-          <View className="rounded-2xl border border-slate-100 border-border bg-card shadow-sm overflow-hidden">
+          <View className="rounded-2xl border border-border bg-card overflow-hidden">
             {/* Yedek Dışa Aktar */}
             <Pressable
               onPress={handleExportBackup}
@@ -586,9 +586,9 @@ function SettingsScreen() {
               <Text className="text-base font-medium text-foreground">Yedek Dışa Aktar</Text>
               <View className="flex-row items-center">
                 {isExporting ? (
-                  <Text className="text-sm text-muted-foreground mr-sm">Dışa aktarılıyor...</Text>
+                  <Text className="text-xs text-muted-foreground mr-xs">Dışa aktarılıyor...</Text>
                 ) : null}
-                <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+                <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
               </View>
             </Pressable>
 
@@ -603,9 +603,9 @@ function SettingsScreen() {
               <Text className="text-base font-medium text-foreground">Yedek Geri Yükle</Text>
               <View className="flex-row items-center">
                 {isBackupRestoring ? (
-                  <Text className="text-sm text-muted-foreground mr-sm">Yükleniyor...</Text>
+                  <Text className="text-xs text-muted-foreground mr-xs">Yükleniyor...</Text>
                 ) : null}
-                <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+                <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
               </View>
             </Pressable>
 
@@ -617,7 +617,7 @@ function SettingsScreen() {
               className="flex-row items-center justify-between px-md py-md active:opacity-60"
             >
               <Text className="text-base font-medium text-red-500">Tüm İlerlemeyi Sıfırla</Text>
-              <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+              <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
             </Pressable>
           </View>
         </View>

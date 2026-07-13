@@ -3,6 +3,8 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 import { TABLES } from '@/database/tables';
 import { BackupDataSchema, type BackupData } from '@/types/backup';
 
+const INSTALLED_PACKAGES_TABLE = 'installed_packages';
+
 export async function restoreBackup(
   database: SQLiteDatabase,
   backupData: unknown
@@ -18,18 +20,20 @@ export async function restoreBackup(
       DELETE FROM ${TABLES.AI_EXAMPLE_CACHE};
       DELETE FROM ${TABLES.WORDS};
       DELETE FROM ${TABLES.LISTS};
+      DELETE FROM ${INSTALLED_PACKAGES_TABLE};
     `);
 
     // Restore words
     for (const word of validatedData.words) {
       await database.runAsync(
-        `INSERT INTO ${TABLES.WORDS} (id, word, meaning, example, pronunciation, created_at, updated_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?)
+        `INSERT INTO ${TABLES.WORDS} (id, word, meaning, example, pronunciation, package_name, created_at, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
          ON CONFLICT(id) DO UPDATE SET
            word = excluded.word,
            meaning = excluded.meaning,
            example = excluded.example,
            pronunciation = excluded.pronunciation,
+           package_name = excluded.package_name,
            updated_at = excluded.updated_at`,
         [
           word.id,
@@ -37,6 +41,7 @@ export async function restoreBackup(
           word.meaning,
           word.example,
           word.pronunciation,
+          word.package_name,
           word.created_at,
           word.updated_at,
         ]
@@ -125,6 +130,18 @@ export async function restoreBackup(
            word = excluded.word,
            example = excluded.example`,
         [cache.id, cache.word, cache.example, cache.created_at]
+      );
+    }
+
+    // Restore installed packages
+    for (const pkg of validatedData.installed_packages) {
+      await database.runAsync(
+        `INSERT INTO ${INSTALLED_PACKAGES_TABLE} (id, package_name, is_active, installed_at)
+         VALUES (?, ?, ?, ?)
+         ON CONFLICT(package_name) DO UPDATE SET
+           is_active = excluded.is_active,
+           installed_at = excluded.installed_at`,
+        [pkg.id, pkg.package_name, pkg.is_active, pkg.installed_at]
       );
     }
   });

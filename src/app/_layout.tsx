@@ -2,12 +2,12 @@ import '../../global.css';
 
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { ErrorBoundary } from '@/components';
 import { QueryProvider } from '@/services/query';
 import { getNotificationService } from '@/services/notification/notification.service';
 import { ThemeProvider } from '@/theme/ThemeProvider';
-import { useTheme } from '@/theme/useTheme';
 import { DatabaseGate } from '@/database/DatabaseGate';
 
 // Notification handler'ı uygulama başlangıcında bir kez yapılandır.
@@ -15,14 +15,12 @@ import { DatabaseGate } from '@/database/DatabaseGate';
 getNotificationService().initialize();
 
 function RootNavigator() {
-  const { colors } = useTheme();
-
   return (
     <>
       <StatusBar style="dark" />
       <Stack
         screenOptions={{
-          contentStyle: { backgroundColor: colors.background },
+          contentStyle: { backgroundColor: '#ffffff' },
         }}
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -39,13 +37,15 @@ function RootNavigator() {
 export default function RootLayout() {
   return (
     <ErrorBoundary>
-      <QueryProvider>
-        <ThemeProvider>
-          <DatabaseGate>
-            <RootNavigator />
-          </DatabaseGate>
-        </ThemeProvider>
-      </QueryProvider>
+      <SafeAreaProvider>
+        <QueryProvider>
+          <ThemeProvider>
+            <DatabaseGate>
+              <RootNavigator />
+            </DatabaseGate>
+          </ThemeProvider>
+        </QueryProvider>
+      </SafeAreaProvider>
     </ErrorBoundary>
   );
 }

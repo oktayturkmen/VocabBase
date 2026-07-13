@@ -188,7 +188,7 @@ export class StatisticService {
   async getRecent(days: number = 7): Promise<StatisticRow[]> {
     const rows = await this.database.getAllAsync<StatisticRow>(
       `SELECT * FROM ${TABLES.STATISTICS}
-       WHERE date >= date('now', '-' || ? || ' days')
+       WHERE date >= date('now', 'localtime', '-' || ? || ' days')
        ORDER BY date DESC`,
       days,
     );

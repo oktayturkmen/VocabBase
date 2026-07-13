@@ -6,6 +6,7 @@ export const BackupWordSchema = z.object({
   meaning: z.string(),
   example: z.string().nullable(),
   pronunciation: z.string().nullable(),
+  package_name: z.string(),
   created_at: z.number(),
   updated_at: z.number(),
 });
@@ -52,6 +53,13 @@ export const BackupAiExampleCacheSchema = z.object({
   created_at: z.number(),
 });
 
+export const BackupInstalledPackageSchema = z.object({
+  id: z.string(),
+  package_name: z.string(),
+  is_active: z.number(),
+  installed_at: z.number(),
+});
+
 export const BackupDataSchema = z.object({
   version: z.number(),
   exported_at: z.number(),
@@ -61,6 +69,7 @@ export const BackupDataSchema = z.object({
   reviews: z.array(BackupReviewSchema),
   statistics: z.array(BackupStatisticSchema),
   ai_example_cache: z.array(BackupAiExampleCacheSchema),
+  installed_packages: z.array(BackupInstalledPackageSchema),
 });
 
 export type BackupData = z.infer<typeof BackupDataSchema>;
@@ -70,3 +79,4 @@ export type BackupWordList = z.infer<typeof BackupWordListSchema>;
 export type BackupReview = z.infer<typeof BackupReviewSchema>;
 export type BackupStatistic = z.infer<typeof BackupStatisticSchema>;
 export type BackupAiExampleCache = z.infer<typeof BackupAiExampleCacheSchema>;
+export type BackupInstalledPackage = z.infer<typeof BackupInstalledPackageSchema>;

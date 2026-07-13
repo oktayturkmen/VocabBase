@@ -4,7 +4,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import * as Speech from 'expo-speech';
 
-import { Button } from '@/components';
 import { getDatabase } from '@/database/client';
 import { createWordService } from '@/services/word';
 import { useAppSettingsStore } from '@/store/app-settings.store';
@@ -16,6 +15,33 @@ type WordDetailSheetProps = {
   word: string | null;
   onClose: () => void;
 };
+
+type InfoRowProps = {
+  icon: keyof typeof Ionicons.glyphMap;
+  iconColor: string;
+  iconBg: string;
+  label: string;
+  value: string;
+  isItalic?: boolean;
+};
+
+function InfoRow({ icon, iconColor, iconBg, label, value, isItalic }: InfoRowProps) {
+  return (
+    <View className="flex-row items-start rounded-2xl bg-muted/50 p-md mb-sm">
+      <View className={`mr-md h-10 w-10 items-center justify-center rounded-xl ${iconBg}`}>
+        <Ionicons name={icon} size={18} color={iconColor} />
+      </View>
+      <View className="flex-1">
+        <Text className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-xs">
+          {label}
+        </Text>
+        <Text className={`text-base text-foreground ${isItalic ? 'italic' : ''}`}>
+          {value}
+        </Text>
+      </View>
+    </View>
+  );
+}
 
 export const WordDetailSheet = React.memo(function WordDetailSheet({
   visible,
@@ -30,7 +56,9 @@ export const WordDetailSheet = React.memo(function WordDetailSheet({
 
   useEffect(() => {
     if (!visible || !word) {
-      setWordData(null);
+      Promise.resolve().then(() => {
+        setWordData(null);
+      });
       return;
     }
 
@@ -90,7 +118,10 @@ export const WordDetailSheet = React.memo(function WordDetailSheet({
 
           {/* Header */}
           <View className="flex-row items-center justify-between px-md pb-md">
-            <Text className="text-lg font-bold text-foreground">Kelime Detayı</Text>
+            <View className="flex-row items-center gap-2">
+              <Ionicons name="language-outline" size={22} color={colors.primary} />
+              <Text className="text-lg font-bold text-foreground">Kelime Detayı</Text>
+            </View>
             <Pressable
               onPress={onClose}
               accessibilityRole="button"
@@ -107,82 +138,95 @@ export const WordDetailSheet = React.memo(function WordDetailSheet({
             contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 16 }}
           >
             {isLoading ? (
-              <Text className="text-center text-sm text-muted-foreground py-lg">
-                Yükleniyor...
-              </Text>
+              <View className="items-center py-xl">
+                <Text className="text-sm text-muted-foreground">Yükleniyor...</Text>
+              </View>
             ) : wordData ? (
               <View>
-                {/* Word */}
-                <View className="flex-row items-center justify-between mb-md">
-                  <Text className="text-3xl font-bold text-foreground">
-                    {wordData.word}
-                  </Text>
-                  <Pressable
-                    onPress={handleSpeak}
-                    accessibilityRole="button"
-                    accessibilityLabel="Kelimeyi seslendir"
-                    className="h-12 w-12 items-center justify-center rounded-full bg-primary/10"
-                  >
-                    <Ionicons name="volume-high-outline" size={24} color={colors.primary} />
-                  </Pressable>
-                </View>
-
-                {/* Meaning */}
-                <View className="rounded-xl bg-muted/50 p-md mb-md">
-                  <Text className="text-xs font-semibold uppercase text-muted-foreground mb-xs">
-                    Anlam
-                  </Text>
-                  <Text className="text-base text-foreground">{wordData.meaning}</Text>
-                </View>
-
-                {/* Example */}
-                {wordData.example ? (
-                  <View className="rounded-xl bg-muted/50 p-md mb-md">
-                    <Text className="text-xs font-semibold uppercase text-muted-foreground mb-xs">
-                      Örnek Cümle
-                    </Text>
-                    <Text className="text-base italic text-foreground">
-                      {wordData.example}
-                    </Text>
+                {/* Word Hero */}
+                <View className="relative overflow-hidden rounded-2xl bg-primary/5 dark:bg-primary/10 p-lg mb-md">
+                  <View className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-primary/10" />
+                  <View className="relative flex-row items-center justify-between">
+                    <View className="flex-1">
+                      <Text className="text-3xl font-bold text-foreground">
+                        {wordData.word}
+                      </Text>
+                      {wordData.pronunciation ? (
+                        <Text className="text-sm text-muted-foreground mt-xs font-mono">
+                          {wordData.pronunciation}
+                        </Text>
+                      ) : null}
+                    </View>
+                    <Pressable
+                      onPress={handleSpeak}
+                      accessibilityRole="button"
+                      accessibilityLabel="Kelimeyi seslendir"
+                      className="h-12 w-12 items-center justify-center rounded-full bg-primary/15 active:bg-primary/25"
+                    >
+                      <Ionicons name="volume-high-outline" size={24} color={colors.primary} />
+                    </Pressable>
                   </View>
+                </View>
+
+                {/* Info Rows */}
+                <InfoRow
+                  icon="language-outline"
+                  iconColor="#0D9488"
+                  iconBg="bg-primary/15"
+                  label="Anlam"
+                  value={wordData.meaning}
+                />
+
+                {wordData.example ? (
+                  <InfoRow
+                    icon="chatbubble-ellipses-outline"
+                    iconColor="#4f46e5"
+                    iconBg="bg-indigo-100 dark:bg-indigo-900/40"
+                    label="Örnek Cümle"
+                    value={wordData.example}
+                    isItalic
+                  />
                 ) : null}
 
-                {/* Pronunciation */}
                 {wordData.pronunciation ? (
-                  <View className="rounded-xl bg-muted/50 p-md mb-md">
-                    <Text className="text-xs font-semibold uppercase text-muted-foreground mb-xs">
-                      Telaffuz
-                    </Text>
-                    <Text className="text-base text-foreground">
-                      {wordData.pronunciation}
-                    </Text>
-                  </View>
+                  <InfoRow
+                    icon="mic-outline"
+                    iconColor="#7c3aed"
+                    iconBg="bg-purple-100 dark:bg-purple-900/40"
+                    label="Telaffuz"
+                    value={wordData.pronunciation}
+                  />
                 ) : null}
 
                 {/* Close Button */}
-                <Button
-                  title="Kapat"
-                  variant="secondary"
-                  size="md"
+                <Pressable
                   onPress={onClose}
-                  className="mt-md"
-                />
+                  className="mt-md h-12 items-center justify-center rounded-xl bg-muted active:opacity-80"
+                  accessibilityRole="button"
+                  accessibilityLabel="Kapat"
+                >
+                  <Text className="text-base font-semibold text-foreground">Kapat</Text>
+                </Pressable>
               </View>
             ) : (
-              <View className="py-lg">
-                <Text className="text-center text-base text-muted-foreground mb-sm">
+              <View className="items-center py-xl">
+                <View className="mb-md h-16 w-16 items-center justify-center rounded-full bg-muted">
+                  <Ionicons name="search-outline" size={28} color={colors.mutedForeground} />
+                </View>
+                <Text className="text-base text-muted-foreground text-center mb-sm">
                   Bu kelime veritabanında bulunamadı.
                 </Text>
-                <Text className="text-center text-sm text-muted-foreground">
+                <Text className="text-sm text-muted-foreground text-center">
                   &ldquo;{word}&rdquo; kelimesini kütüphanenize ekleyebilirsiniz.
                 </Text>
-                <Button
-                  title="Kapat"
-                  variant="secondary"
-                  size="md"
+                <Pressable
                   onPress={onClose}
-                  className="mt-md"
-                />
+                  className="mt-md h-12 items-center justify-center rounded-xl bg-muted active:opacity-80 px-xl"
+                  accessibilityRole="button"
+                  accessibilityLabel="Kapat"
+                >
+                  <Text className="text-base font-semibold text-foreground">Kapat</Text>
+                </Pressable>
               </View>
             )}
           </ScrollView>

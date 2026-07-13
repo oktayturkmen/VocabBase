@@ -1,0 +1,4457 @@
+[
+  {
+    "word": "abhorrent",
+    "meaning": "iğrenç, nefret uyandıran",
+    "example": "The dictator's abhorrent treatment of political prisoners sparked international outrage."
+  },
+  {
+    "word": "acrimonious",
+    "meaning": "sert, kavgacı",
+    "example": "Their divorce became so acrimonious that they could barely stand to be in the same room."
+  },
+  {
+    "word": "aloof",
+    "meaning": "mesafeli, soğuk",
+    "example": "Despite working at the company for years, he remained aloof from his colleagues."
+  },
+  {
+    "word": "ambivalent",
+    "meaning": "kararsız, ikircikli",
+    "example": "She felt ambivalent about accepting the promotion, as it meant leaving her beloved team behind."
+  },
+  {
+    "word": "antithetical",
+    "meaning": "tam zıt",
+    "example": "His reckless spending habits were antithetical to the frugal values he preached."
+  },
+  {
+    "word": "apocryphal",
+    "meaning": "kaynağı şüpheli, uydurma",
+    "example": "The story about Washington chopping down the cherry tree is widely regarded as apocryphal."
+  },
+  {
+    "word": "archaic",
+    "meaning": "arkaik, eskimiş",
+    "example": "The legal document was filled with archaic language that confused modern readers."
+  },
+  {
+    "word": "austere",
+    "meaning": "sade, sert",
+    "example": "The monk led an austere life in the mountains, owning nothing but a simple robe."
+  },
+  {
+    "word": "banal",
+    "meaning": "bayağı, sıradan",
+    "example": "The film's banal dialogue made it impossible to stay engaged with the story."
+  },
+  {
+    "word": "belligerent",
+    "meaning": "kavgacı, saldırgan",
+    "example": "The belligerent customer shouted at the waiter for spilling a drop of water on the table."
+  },
+  {
+    "word": "benevolent",
+    "meaning": "hayırsever, iyiliksever",
+    "example": "The benevolent donor contributed millions to build schools in rural villages."
+  },
+  {
+    "word": "brazen",
+    "meaning": "arsız, yüzsüz",
+    "example": "She was brazen enough to lie to the judge's face without flinching."
+  },
+  {
+    "word": "cantankerous",
+    "meaning": "huysuz, aksi",
+    "example": "The cantankerous old man next door complained about everything from noise to leaves on his lawn."
+  },
+  {
+    "word": "capricious",
+    "meaning": "değişken, kaprisli",
+    "example": "The boss's capricious moods made it difficult for employees to know what to expect each day."
+  },
+  {
+    "word": "caustic",
+    "meaning": "iğneleyici, aşındırıcı",
+    "example": "His caustic remarks during the meeting left several colleagues in tears."
+  },
+  {
+    "word": "chivalrous",
+    "meaning": "centilmen, kibar",
+    "example": "The chivalrous young man offered his seat to the elderly woman on the crowded bus."
+  },
+  {
+    "word": "clairvoyant",
+    "meaning": "önsezili, geleceği gören",
+    "example": "She claimed to be clairvoyant and insisted that a major earthquake would strike the city."
+  },
+  {
+    "word": "cogent",
+    "meaning": "ikna edici, mantıklı",
+    "example": "The lawyer presented a cogent argument that ultimately swayed the jury."
+  },
+  {
+    "word": "congenial",
+    "meaning": "hoş, uyumlu",
+    "example": "The congenial atmosphere at the dinner party made everyone feel instantly at ease."
+  },
+  {
+    "word": "contentious",
+    "meaning": "tartışmalı, çekişmeli",
+    "example": "The new tax policy proved to be a highly contentious issue in parliament."
+  },
+  {
+    "word": "convoluted",
+    "meaning": "karmaşık, girift",
+    "example": "The plot of the novel was so convoluted that most readers gave up halfway through."
+  },
+  {
+    "word": "corroborative",
+    "meaning": "doğrulayıcı",
+    "example": "The detective found corroborative evidence that confirmed the witness's testimony."
+  },
+  {
+    "word": "credulous",
+    "meaning": "saf, kolay inanan",
+    "example": "The credulous tourist believed every word the street vendor told him about the magic amulet."
+  },
+  {
+    "word": "cursory",
+    "meaning": "üstünkörü, aceleyle yapılan",
+    "example": "He gave the report only a cursory glance before approving it."
+  },
+  {
+    "word": "debilitating",
+    "meaning": "güçten düşürücü",
+    "example": "The debilitating disease left her unable to walk without assistance."
+  },
+  {
+    "word": "decadent",
+    "meaning": "çöküş içinde, aşırı düşkün",
+    "example": "The empire's decadent rulers indulged in lavish banquets while the people starved."
+  },
+  {
+    "word": "deferential",
+    "meaning": "saygılı",
+    "example": "The junior staff were always deferential when addressing the company's founder."
+  },
+  {
+    "word": "derisive",
+    "meaning": "alaycı",
+    "example": "The audience burst into derisive laughter when the actor forgot his lines."
+  },
+  {
+    "word": "despondent",
+    "meaning": "umutsuz, kederli",
+    "example": "After failing the exam three times, he grew despondent about ever passing."
+  },
+  {
+    "word": "didactic",
+    "meaning": "öğretici, ders verici",
+    "example": "The novel's didactic tone made it feel more like a lecture than a story."
+  },
+  {
+    "word": "disconcerting",
+    "meaning": "rahatsız edici, şaşırtıcı",
+    "example": "It was disconcerting to see someone who looked exactly like my late father."
+  },
+  {
+    "word": "discordant",
+    "meaning": "uyumsuz, ahenksiz",
+    "example": "The discordant notes from the beginner's violin practice echoed through the apartment."
+  },
+  {
+    "word": "disingenuous",
+    "meaning": "samimiyetsiz, ikiyüzlü",
+    "example": "His apology was clearly disingenuous, as he smirked while delivering it."
+  },
+  {
+    "word": "dispassionate",
+    "meaning": "tarafsız, duygusuz",
+    "example": "The judge maintained a dispassionate demeanor throughout the emotional trial."
+  },
+  {
+    "word": "dogmatic",
+    "meaning": "dogmatik, katı görüşlü",
+    "example": "The professor's dogmatic approach left no room for student debate or alternative perspectives."
+  },
+  {
+    "word": "effusive",
+    "meaning": "coşkulu, taşkın",
+    "example": "She was effusive in her praise, hugging each team member and thanking them profusely."
+  },
+  {
+    "word": "egregious",
+    "meaning": "çok kötü, göze batan",
+    "example": "The referee made an egregious error that cost the team the championship."
+  },
+  {
+    "word": "enigmatic",
+    "meaning": "esrarengiz, anlaşılmaz",
+    "example": "The artist's enigmatic smile in the portrait has puzzled viewers for centuries."
+  },
+  {
+    "word": "ephemeral",
+    "meaning": "geçici, kısa ömürlü",
+    "example": "The beauty of cherry blossoms is ephemeral, lasting only a few days each spring."
+  },
+  {
+    "word": "equivocal",
+    "meaning": "belirsiz, iki anlamlı",
+    "example": "The politician gave an equivocal answer that satisfied neither side of the debate."
+  },
+  {
+    "word": "esoteric",
+    "meaning": "az kişi tarafından bilinen, ezoterik",
+    "example": "The professor's lectures on ancient philosophy were so esoteric that only a few students could follow."
+  },
+  {
+    "word": "euphemistic",
+    "meaning": "örtmece, yumuşatıcı",
+    "example": "He used the euphemistic phrase 'let go' instead of saying 'fired' to soften the blow."
+  },
+  {
+    "word": "expedient",
+    "meaning": "çıkarcı, işe yarar",
+    "example": "Choosing the cheaper option was expedient, though not necessarily the best long-term solution."
+  },
+  {
+    "word": "extraneous",
+    "meaning": "konu dışı, gereksiz",
+    "example": "The essay would be much stronger if the author removed all the extraneous details."
+  },
+  {
+    "word": "fastidious",
+    "meaning": "titiz, müşkülpesent",
+    "example": "The fastidious editor corrected even the most minor punctuation errors in the manuscript."
+  },
+  {
+    "word": "fatuous",
+    "meaning": "aptalca, saçma",
+    "example": "His fatuous comments during the serious discussion annoyed everyone at the table."
+  },
+  {
+    "word": "fervent",
+    "meaning": "ateşli, hararetli",
+    "example": "She was a fervent supporter of human rights and attended every rally she could."
+  },
+  {
+    "word": "flagrant",
+    "meaning": "göz göre göre, apaçık",
+    "example": "The player's flagrant foul resulted in an immediate ejection from the game."
+  },
+  {
+    "word": "garrulous",
+    "meaning": "geveze",
+    "example": "The garrulous taxi driver talked nonstop about his life story for the entire ride."
+  },
+  {
+    "word": "gratuitous",
+    "meaning": "gereksiz, sebepsiz",
+    "example": "The film was criticized for its gratuitous violence that added nothing to the plot."
+  },
+  {
+    "word": "gregarious",
+    "meaning": "sosyal, toplumsal yaşamı seven",
+    "example": "Her gregarious nature made her the life of every party she attended."
+  },
+  {
+    "word": "hackneyed",
+    "meaning": "basmakalıp, klişe",
+    "example": "The movie relied on hackneyed tropes like the wise old mentor and the chosen one."
+  },
+  {
+    "word": "haphazard",
+    "meaning": "gelişigüzel, düzensiz",
+    "example": "The books were arranged on the shelves in a haphazard fashion, with no discernible order."
+  },
+  {
+    "word": "iconoclastic",
+    "meaning": "gelenek karşıtı, yıkıcı",
+    "example": "The iconoclastic artist deliberately broke every convention of traditional painting."
+  },
+  {
+    "word": "idiosyncratic",
+    "meaning": "kişiye özgü, alışılmadık",
+    "example": "The writer had an idiosyncratic style that some found brilliant and others found baffling."
+  },
+  {
+    "word": "ignominious",
+    "meaning": "utanç verici, rezil",
+    "example": "The team suffered an ignominious defeat, losing by ten goals to none."
+  },
+  {
+    "word": "immutable",
+    "meaning": "değişmez",
+    "example": "The laws of physics are considered immutable, applying equally everywhere in the universe."
+  },
+  {
+    "word": "impassive",
+    "meaning": "duygusuz, ifadesiz",
+    "example": "The bodyguard remained impassive despite the chaos unfolding around him."
+  },
+  {
+    "word": "impervious",
+    "meaning": "etkilenmez, geçirmez",
+    "example": "She seemed impervious to criticism, continuing her work as if nothing had been said."
+  },
+  {
+    "word": "implacable",
+    "meaning": "amansız, yatıştırılamaz",
+    "example": "The implacable enemy showed no mercy and refused all attempts at negotiation."
+  },
+  {
+    "word": "incongruous",
+    "meaning": "uyumsuz, yakışıksız",
+    "example": "Wearing a tuxedo to a beach party was an incongruous choice that drew many stares."
+  },
+  {
+    "word": "inexorable",
+    "meaning": "kaçınılmaz, durdurulamaz",
+    "example": "The inexorable march of time waits for no one."
+  },
+  {
+    "word": "ingenious",
+    "meaning": "yaratıcı, dahiyane",
+    "example": "The engineer devised an ingenious solution to the long-standing traffic problem."
+  },
+  {
+    "word": "insatiable",
+    "meaning": "doymak bilmez",
+    "example": "His insatiable appetite for knowledge led him to read hundreds of books each year."
+  },
+  {
+    "word": "insular",
+    "meaning": "dar görüşlü, dışa kapalı",
+    "example": "The insular community resisted all outside influences and maintained its centuries-old traditions."
+  },
+  {
+    "word": "intransigent",
+    "meaning": "uzlaşmaz, inatçı",
+    "example": "The intransigent union leaders refused to compromise on any of their demands."
+  },
+  {
+    "word": "intrepid",
+    "meaning": "korkusuz, cesur",
+    "example": "The intrepid explorer crossed the Antarctic alone with nothing but a sled and supplies."
+  },
+  {
+    "word": "inveterate",
+    "meaning": "kökleşmiş, müzmin",
+    "example": "He was an inveterate liar who couldn't get through a single conversation without bending the truth."
+  },
+  {
+    "word": "laconic",
+    "meaning": "az ve öz konuşan",
+    "example": "His laconic reply of 'fine' told us nothing about how he really felt."
+  },
+  {
+    "word": "lamentable",
+    "meaning": "acınacak, üzücü",
+    "example": "The lamentable state of the country's infrastructure was evident in every crumbling bridge."
+  },
+  {
+    "word": "languid",
+    "meaning": "halsiz, durgun",
+    "example": "On a hot summer afternoon, even the most energetic children grew languid."
+  },
+  {
+    "word": "lascivious",
+    "meaning": "şehvet düşkünü",
+    "example": "The director was fired after several employees complained about his lascivious behavior."
+  },
+  {
+    "word": "lugubrious",
+    "meaning": "kasvetli, hüzünlü",
+    "example": "The lugubrious melody of the cello moved the audience to tears."
+  },
+  {
+    "word": "malicious",
+    "meaning": "kötü niyetli",
+    "example": "The malicious hacker deliberately destroyed years of research data."
+  },
+  {
+    "word": "meretricious",
+    "meaning": "sahte, göz boyayan",
+    "example": "The casino's meretricious glamour attracted tourists but concealed a much seedier reality."
+  },
+  {
+    "word": "misanthropic",
+    "meaning": "insanlardan nefret eden",
+    "example": "Years of living alone had made him misanthropic, avoiding all human contact whenever possible."
+  },
+  {
+    "word": "myopic",
+    "meaning": "dar görüşlü, kısa vadeli düşünen",
+    "example": "The company's myopic focus on short-term profits ultimately led to its downfall."
+  },
+  {
+    "word": "nebulous",
+    "meaning": "belirsiz, bulanık",
+    "example": "His concept for the new project was still too nebulous to present to the board."
+  },
+  {
+    "word": "nefarious",
+    "meaning": "kötü, hain",
+    "example": "The nefarious plot to overthrow the government was uncovered just days before it was to be executed."
+  },
+  {
+    "word": "obdurate",
+    "meaning": "inatçı, katı kalpli",
+    "example": "Despite the children's pleas, the obdurate shopkeeper refused to open the store after hours."
+  },
+  {
+    "word": "obsequious",
+    "meaning": "yağcı, dalkavuk",
+    "example": "The obsequious assistant agreed with every word the manager said, no matter how absurd."
+  },
+  {
+    "word": "obstreperous",
+    "meaning": "gürültücü, itaatsiz",
+    "example": "The obstreperous children ran through the restaurant, knocking over chairs and shouting."
+  },
+  {
+    "word": "officious",
+    "meaning": "her işe burnunu sokan",
+    "example": "The officious security guard demanded to see identification from everyone who entered the building."
+  },
+  {
+    "word": "onerous",
+    "meaning": "ağır, külfetli",
+    "example": "The onerous regulations placed an unfair burden on small business owners."
+  },
+  {
+    "word": "opaque",
+    "meaning": "opak, anlaşılmaz",
+    "example": "The government's explanation for the sudden policy change was deliberately opaque."
+  },
+  {
+    "word": "ostentatious",
+    "meaning": "gösterişçi",
+    "example": "She wore an ostentatious diamond necklace that drew every eye in the room."
+  },
+  {
+    "word": "parsimonious",
+    "meaning": "cimri, eli sıkı",
+    "example": "The parsimonious owner refused to spend money even on essential safety equipment."
+  },
+  {
+    "word": "pernicious",
+    "meaning": "zararlı, yıkıcı",
+    "example": "The pernicious rumor spread quickly, destroying reputations wherever it went."
+  },
+  {
+    "word": "perfunctory",
+    "meaning": "gelişigüzel, ilgisiz yapılan",
+    "example": "He gave the safety inspection only a perfunctory check before signing off on it."
+  },
+  {
+    "word": "petulant",
+    "meaning": "huysuz, aksi",
+    "example": "The petulant child threw his ice cream on the ground because it was the wrong flavor."
+  },
+  {
+    "word": "pithy",
+    "meaning": "özlü, veciz",
+    "example": "The columnist was known for her pithy observations about modern political life."
+  },
+  {
+    "word": "placid",
+    "meaning": "sakin, durgun",
+    "example": "The placid lake reflected the mountains like a mirror in the early morning light."
+  },
+  {
+    "word": "precocious",
+    "meaning": "yaşına göre olgun",
+    "example": "The precocious child could play Beethoven sonatas by ear at the age of five."
+  },
+  {
+    "word": "presumptuous",
+    "meaning": "küstah, haddini bilmez",
+    "example": "It was presumptuous of him to assume he would be invited to the exclusive event."
+  },
+  {
+    "word": "pristine",
+    "meaning": "el değmemiş, bakir",
+    "example": "The pristine snow on the mountaintop had never been touched by human footprints."
+  },
+  {
+    "word": "prodigious",
+    "meaning": "olağanüstü, muazzam",
+    "example": "She had a prodigious memory and could recall conversations from years ago in vivid detail."
+  },
+  {
+    "word": "promiscuous",
+    "meaning": "gelişigüzel, seçici olmayan",
+    "example": "The journalist was criticized for her promiscuous use of unnamed sources in the article."
+  },
+  {
+    "word": "propitious",
+    "meaning": "elverişli, uğurlu",
+    "example": "The clear weather provided a propitious start to their mountain expedition."
+  },
+  {
+    "word": "puerile",
+    "meaning": "çocukça, olgunlaşmamış",
+    "example": "His puerile behavior at the formal dinner embarrassed his entire family."
+  },
+  {
+    "word": "querulous",
+    "meaning": "şikayetçi, mızmız",
+    "example": "The querulous patient complained about everything from the food to the temperature of the room."
+  },
+  {
+    "word": "recalcitrant",
+    "meaning": "dik başlı, itaatsiz",
+    "example": "The recalcitrant teenager refused to follow any of the house rules his parents set."
+  },
+  {
+    "word": "reprehensible",
+    "meaning": "kınanacak, ayıplanacak",
+    "example": "The company's reprehensible safety record led to a full government investigation."
+  },
+  {
+    "word": "resplendent",
+    "meaning": "parlak, göz kamaştırıcı",
+    "example": "The bride looked resplendent in her white gown adorned with thousands of pearls."
+  },
+  {
+    "word": "sagacious",
+    "meaning": "akıllı, sezgili",
+    "example": "The sagacious judge was known for his fair and well-reasoned decisions."
+  },
+  {
+    "word": "sanguine",
+    "meaning": "iyimser, umutlu",
+    "example": "Despite the setbacks, she remained sanguine about the project's eventual success."
+  },
+  {
+    "word": "scathing",
+    "meaning": "acımasız, sert (eleştiri)",
+    "example": "The critic wrote a scathing review that effectively ended the playwright's career."
+  },
+  {
+    "word": "sedentary",
+    "meaning": "hareketsiz (yaşam tarzı)",
+    "example": "Years of sedentary work at a desk had taken a toll on his posture and overall health."
+  },
+  {
+    "word": "servile",
+    "meaning": "köle ruhlu, yağcı",
+    "example": "The servile waiter hovered around the table, anticipating every need before it was expressed."
+  },
+  {
+    "word": "solicitous",
+    "meaning": "ilgili, endişeli (iyilik için)",
+    "example": "The solicitous nurse checked on her patient every hour throughout the night."
+  },
+  {
+    "word": "spurious",
+    "meaning": "sahte, temelsiz",
+    "example": "The scientist was fired for publishing data based on spurious research methods."
+  },
+  {
+    "word": "staid",
+    "meaning": "ağırbaşlı, sıkıcı derecede ciddi",
+    "example": "The staid law firm had maintained the same conservative dress code for over fifty years."
+  },
+  {
+    "word": "stoic",
+    "meaning": "metanetli, duygularını belli etmeyen",
+    "example": "He remained stoic throughout the painful procedure, never once crying out or complaining."
+  },
+  {
+    "word": "surreptitious",
+    "meaning": "gizli, sinsi",
+    "example": "She cast a surreptitious glance at her phone during the exam, hoping the teacher wouldn't notice."
+  },
+  {
+    "word": "tacit",
+    "meaning": "zımni, sözsüz",
+    "example": "There was a tacit agreement among the staff never to discuss the incident publicly."
+  },
+  {
+    "word": "taciturn",
+    "meaning": "az konuşan, suskun",
+    "example": "The taciturn farmer would answer questions with a single word or a simple nod."
+  },
+  {
+    "word": "tenuous",
+    "meaning": "zayıf, ince (bağlantı)",
+    "example": "The connection between the two crimes was so tenuous that the detective hesitated to pursue it."
+  },
+  {
+    "word": "torpid",
+    "meaning": "uyuşuk, hareketsiz",
+    "example": "After the heavy meal, the guests grew torpid and could barely keep their eyes open."
+  },
+  {
+    "word": "transient",
+    "meaning": "geçici",
+    "example": "The transient nature of social media fame means today's stars are often forgotten tomorrow."
+  },
+  {
+    "word": "truculent",
+    "meaning": "kavgacı, saldırgan",
+    "example": "The truculent fan was ejected from the stadium after starting a fight with a rival supporter."
+  },
+  {
+    "word": "ubiquitous",
+    "meaning": "her yerde bulunan",
+    "example": "Smartphones have become ubiquitous in modern society, found in the hands of nearly everyone."
+  },
+  {
+    "word": "unctuous",
+    "meaning": "yapmacık nazik, yağcı",
+    "example": "The unctuous salesman complimented every customer on their excellent taste while pushing expensive products."
+  },
+  {
+    "word": "unequivocal",
+    "meaning": "açık, kesin",
+    "example": "The witness gave an unequivocal account of what she saw, leaving no room for doubt."
+  },
+  {
+    "word": "unfathomable",
+    "meaning": "anlaşılmaz, derinliği ölçülemez",
+    "example": "It was unfathomable to her how someone could abandon a pet on the side of the road."
+  },
+  {
+    "word": "unscrupulous",
+    "meaning": "ahlaksız, vicdansız",
+    "example": "The unscrupulous landlord raised the rent every month, knowing his tenants had nowhere else to go."
+  },
+  {
+    "word": "untenable",
+    "meaning": "savunulamaz",
+    "example": "The politician's position on the issue became untenable after new evidence emerged."
+  },
+  {
+    "word": "vindictive",
+    "meaning": "kinci, intikamcı",
+    "example": "The vindictive manager fired anyone who had ever disagreed with her in a meeting."
+  },
+  {
+    "word": "virulent",
+    "meaning": "çok zehirli, şiddetli",
+    "example": "A virulent strain of the flu swept through the school, infecting half the student body."
+  },
+  {
+    "word": "voracious",
+    "meaning": "obur, doymak bilmez",
+    "example": "The voracious reader consumed an average of three novels per week."
+  },
+  {
+    "word": "wanton",
+    "meaning": "gereksiz yere zalim, sorumsuz",
+    "example": "The wanton destruction of the ancient temple horrified archaeologists and historians alike."
+  },
+  {
+    "word": "whimsical",
+    "meaning": "kaprisli, hayalperest",
+    "example": "The whimsical illustrations in the children's book featured flying whales and talking trees."
+  },
+  {
+    "word": "zealous",
+    "meaning": "gayretli, hevesli",
+    "example": "The zealous volunteer devoted every weekend to helping at the homeless shelter."
+  },
+  {
+    "word": "abate",
+    "meaning": "azalmak, hafiflemek",
+    "example": "The storm finally began to abate after battering the coast for three straight days."
+  },
+  {
+    "word": "abdicate",
+    "meaning": "tahttan çekilmek, bırakmak",
+    "example": "The king chose to abdicate the throne rather than face a humiliating public trial."
+  },
+  {
+    "word": "abscond",
+    "meaning": "kaçmak, sıvışmak",
+    "example": "The treasurer absconded with the organization's funds, leaving no trace of his whereabouts."
+  },
+  {
+    "word": "acquiesce",
+    "meaning": "razı olmak, boyun eğmek",
+    "example": "After hours of negotiation, the union agreed to acquiesce to the company's revised offer."
+  },
+  {
+    "word": "admonish",
+    "meaning": "uyarmak, azarlamak",
+    "example": "The teacher had to admonish the students for talking during the exam."
+  },
+  {
+    "word": "aggrandize",
+    "meaning": "büyütmek, abartmak",
+    "example": "The dictator used the state media to aggrandize himself, portraying every action as heroic."
+  },
+  {
+    "word": "allude",
+    "meaning": "ima etmek, dolaylı söylemek",
+    "example": "During the interview, she cleverly alluded to her previous work without naming the company directly."
+  },
+  {
+    "word": "amalgamate",
+    "meaning": "birleştirmek, kaynaştırmak",
+    "example": "The two rival companies decided to amalgamate, creating the largest retailer in the country."
+  },
+  {
+    "word": "assuage",
+    "meaning": "yatıştırmak, hafifletmek",
+    "example": "Nothing could assuage the grief she felt after losing her lifelong companion."
+  },
+  {
+    "word": "beguile",
+    "meaning": "büyülemek, kandırmak",
+    "example": "The charming stranger managed to beguile the elderly woman into signing over her savings."
+  },
+  {
+    "word": "belie",
+    "meaning": "yalanlamak, yanıltmak",
+    "example": "His confident smile seemed to belie the nervousness he felt inside."
+  },
+  {
+    "word": "berate",
+    "meaning": "azarlamak",
+    "example": "The coach continued to berate the team even after they had won the match."
+  },
+  {
+    "word": "besiege",
+    "meaning": "kuşatmak",
+    "example": "Reporters besieged the celebrity's home, hoping to get a statement about the scandal."
+  },
+  {
+    "word": "betray",
+    "meaning": "ihanet etmek",
+    "example": "She felt that her best friend had betrayed her trust by sharing her secret with others."
+  },
+  {
+    "word": "blaspheme",
+    "meaning": "küfretmek, kutsala hakaret etmek",
+    "example": "In the conservative village, it was considered a serious sin to blaspheme in public."
+  },
+  {
+    "word": "burgeon",
+    "meaning": "hızla büyümek, filizlenmek",
+    "example": "The tech industry continued to burgeon, creating thousands of new jobs each month."
+  },
+  {
+    "word": "cajole",
+    "meaning": "tatlı dille ikna etmek",
+    "example": "He managed to cajole his sister into lending him her car for the weekend."
+  },
+  {
+    "word": "capitulate",
+    "meaning": "teslim olmak",
+    "example": "After a prolonged siege, the fortress finally had to capitulate to the invading army."
+  },
+  {
+    "word": "castigate",
+    "meaning": "şiddetle eleştirmek",
+    "example": "The editorial castigated the mayor for his complete lack of action on the housing crisis."
+  },
+  {
+    "word": "chastise",
+    "meaning": "azarlamak, cezalandırmak",
+    "example": "The mother chastised her son for running into the street without looking."
+  },
+  {
+    "word": "coax",
+    "meaning": "ikna etmek, tatlılıkla kandırmak",
+    "example": "It took nearly an hour to coax the frightened cat out from under the bed."
+  },
+  {
+    "word": "coerce",
+    "meaning": "zorlamak",
+    "example": "The confession was thrown out because the suspect had been coerced by the detectives."
+  },
+  {
+    "word": "collude",
+    "meaning": "gizlice iş birliği yapmak",
+    "example": "The two companies were found to have colluded to fix prices at an artificially high level."
+  },
+  {
+    "word": "commiserate",
+    "meaning": "başsağlığı dilemek, acısını paylaşmak",
+    "example": "After the loss, the coach stayed behind to commiserate with the devastated players."
+  },
+  {
+    "word": "compound",
+    "meaning": "birleştirmek, ağırlaştırmak",
+    "example": "His financial problems were compounded when he lost his job the following month."
+  },
+  {
+    "word": "condone",
+    "meaning": "göz yummak, hoş görmek",
+    "example": "The school principal made it clear that she would not condone bullying under any circumstances."
+  },
+  {
+    "word": "connive",
+    "meaning": "gizlice plan kurmak, göz yummak",
+    "example": "The corrupt officials connived to divert public funds into their own pockets."
+  },
+  {
+    "word": "corroborate",
+    "meaning": "doğrulamak",
+    "example": "Security footage corroborated the suspect's claim that he was elsewhere at the time of the crime."
+  },
+  {
+    "word": "countenance",
+    "meaning": "onaylamak, hoş görmek",
+    "example": "The principal would not countenance any form of cheating during the final exams."
+  },
+  {
+    "word": "decry",
+    "meaning": "kınamak, karşı çıkmak",
+    "example": "Several prominent senators decried the new law as a violation of basic civil liberties."
+  },
+  {
+    "word": "defame",
+    "meaning": "iftira atmak",
+    "example": "The celebrity sued the tabloid for attempting to defame her character with false stories."
+  },
+  {
+    "word": "deface",
+    "meaning": "görünümünü bozmak",
+    "example": "Vandals defaced the historic statue with graffiti overnight."
+  },
+  {
+    "word": "defect",
+    "meaning": "taraf değiştirmek, kaçmak",
+    "example": "The high-ranking official defected to the rival nation, bringing classified documents with him."
+  },
+  {
+    "word": "deflect",
+    "meaning": "saptırmak",
+    "example": "The politician tried to deflect attention from the scandal by changing the subject."
+  },
+  {
+    "word": "delude",
+    "meaning": "aldatmak, kandırmak",
+    "example": "He continued to delude himself that the business would turn around if he just waited a bit longer."
+  },
+  {
+    "word": "demarcate",
+    "meaning": "sınırlarını çizmek",
+    "example": "Orange cones were used to demarcate the construction zone from the active traffic lanes."
+  },
+  {
+    "word": "denigrate",
+    "meaning": "kötülemek, küçümsemek",
+    "example": "The rival researcher tried to denigrate her work by pointing out minor methodological flaws."
+  },
+  {
+    "word": "deride",
+    "meaning": "alay etmek",
+    "example": "The avant-garde painting was initially derided by critics, only to be celebrated decades later."
+  },
+  {
+    "word": "desecrate",
+    "meaning": "kutsallığını bozmak",
+    "example": "The soldiers were punished for attempting to desecrate the enemy's place of worship."
+  },
+  {
+    "word": "dictate",
+    "meaning": "dikte etmek, emretmek",
+    "example": "The conquering general attempted to dictate the terms of surrender to the defeated city."
+  },
+  {
+    "word": "disavow",
+    "meaning": "reddetmek, inkar etmek",
+    "example": "The senator quickly moved to disavow the controversial statements made by his campaign manager."
+  },
+  {
+    "word": "discombobulate",
+    "meaning": "şaşırtmak, kafasını karıştırmak",
+    "example": "The sudden change in schedule seemed to discombobulate the entire production team."
+  },
+  {
+    "word": "disparage",
+    "meaning": "küçümsemek, aşağılamak",
+    "example": "He would constantly disparage his colleagues' ideas while offering none of his own."
+  },
+  {
+    "word": "dissipate",
+    "meaning": "dağıtmak, boşa harcamak",
+    "example": "The morning fog began to dissipate as the sun rose higher in the sky."
+  },
+  {
+    "word": "dissuade",
+    "meaning": "vazgeçirmek",
+    "example": "Her friends tried to dissuade her from quitting her job without having another lined up."
+  },
+  {
+    "word": "divulge",
+    "meaning": "açığa vurmak, ifşa etmek",
+    "example": "The informant refused to divulge the names of his contacts, even under threat of imprisonment."
+  },
+  {
+    "word": "elucidate",
+    "meaning": "açıklığa kavuşturmak",
+    "example": "The professor used a series of diagrams to elucidate the complex biological process."
+  },
+  {
+    "word": "embezzle",
+    "meaning": "zimmetine geçirmek",
+    "example": "The bank manager was arrested for attempting to embezzle funds from elderly customers' accounts."
+  },
+  {
+    "word": "emboss",
+    "meaning": "kabartma yapmak",
+    "example": "The artisan used special tools to emboss the family crest onto the leather cover."
+  },
+  {
+    "word": "enervate",
+    "meaning": "güçsüzleştirmek",
+    "example": "The tropical heat seemed to enervate even the most energetic travelers within hours."
+  },
+  {
+    "word": "engender",
+    "meaning": "meydana getirmek, doğurmak",
+    "example": "The new policy engendered a sense of optimism among employees who had long felt undervalued."
+  },
+  {
+    "word": "enrapture",
+    "meaning": "büyülemek, kendinden geçirmek",
+    "example": "The soprano's performance enraptured the audience, who sat in stunned silence afterward."
+  },
+  {
+    "word": "ensconce",
+    "meaning": "yerleştirmek, güvenli şekilde konumlandırmak",
+    "example": "She ensconced herself in the corner booth with a book and a cup of coffee, content to be unnoticed."
+  },
+  {
+    "word": "entrench",
+    "meaning": "iyice yerleştirmek, kökleştirmek",
+    "example": "The regime had deeply entrenched its ideology in the education system over several decades."
+  },
+  {
+    "word": "equivocate",
+    "meaning": "kaçamaklı konuşmak",
+    "example": "When pressed for a direct answer, the spokesperson continued to equivocate about the company's plans."
+  },
+  {
+    "word": "eschew",
+    "meaning": "kaçınmak, sakınmak",
+    "example": "The health-conscious athlete chose to eschew all processed foods during training season."
+  },
+  {
+    "word": "espouse",
+    "meaning": "benimsemek, desteklemek",
+    "example": "The presidential candidate espoused a platform of sweeping economic reform."
+  },
+  {
+    "word": "exculpate",
+    "meaning": "suçsuz çıkarmak",
+    "example": "DNA evidence finally managed to exculpate the man who had been wrongly imprisoned for twenty years."
+  },
+  {
+    "word": "exonerate",
+    "meaning": "aklamak, suçsuz bulmak",
+    "example": "The internal investigation exonerated the officer of any wrongdoing in the shooting."
+  },
+  {
+    "word": "expound",
+    "meaning": "ayrıntılı açıklamak",
+    "example": "The guest lecturer expounded on the effects of climate change for nearly two hours."
+  },
+  {
+    "word": "extol",
+    "meaning": "övmek, göklere çıkarmak",
+    "example": "The advertisement extolled the virtues of the new skincare line with extravagant claims."
+  },
+  {
+    "word": "extort",
+    "meaning": "zorla almak, gasp etmek",
+    "example": "The gang leader was charged with attempting to extort money from local business owners."
+  },
+  {
+    "word": "fawn",
+    "meaning": "yağcılık yapmak",
+    "example": "The intern fawned over the CEO, laughing at every joke and complimenting every decision."
+  },
+  {
+    "word": "flout",
+    "meaning": "kurallara uymamak, hiçe saymak",
+    "example": "The company continued to flout environmental regulations, dumping waste into the river at night."
+  },
+  {
+    "word": "foment",
+    "meaning": "kışkırtmak, tahrik etmek",
+    "example": "The agitator's speeches fomented rebellion among the factory workers."
+  },
+  {
+    "word": "forestall",
+    "meaning": "önünü almak, engellemek",
+    "example": "She took vitamins every day to forestall getting sick during the winter months."
+  },
+  {
+    "word": "gainsay",
+    "meaning": "karşı çıkmak, inkar etmek",
+    "example": "The results of the study were so clear that no one could gainsay the conclusion."
+  },
+  {
+    "word": "galvanise",
+    "meaning": "harekete geçirmek",
+    "example": "The leader's passionate speech galvanised the crowd into taking immediate action."
+  },
+  {
+    "word": "goad",
+    "meaning": "kışkırtmak, dürtmek",
+    "example": "His rivals tried to goad him into losing his temper during the debate."
+  },
+  {
+    "word": "harangue",
+    "meaning": "nutuk çekmek, azarlamak",
+    "example": "The protester stood on the corner and harangued passersby about government corruption."
+  },
+  {
+    "word": "hoodwink",
+    "meaning": "kandırmak, aldatmak",
+    "example": "The con artist managed to hoodwink dozens of investors out of their life savings."
+  },
+  {
+    "word": "implore",
+    "meaning": "yalvarmak",
+    "example": "She implored her father to see a doctor about the persistent cough he had been ignoring."
+  },
+  {
+    "word": "impugn",
+    "meaning": "itibarını zedelemek, sorgulamak",
+    "example": "The defense attorney tried to impugn the credibility of the prosecution's key witness."
+  },
+  {
+    "word": "incarcerate",
+    "meaning": "hapsetmek",
+    "example": "The judge decided to incarcerate the repeat offender for the maximum allowable sentence."
+  },
+  {
+    "word": "incriminate",
+    "meaning": "suçlamak, suç kanıtı olmak",
+    "example": "The suspect refused to answer questions that might incriminate him in the robbery."
+  },
+  {
+    "word": "indoctrinate",
+    "meaning": "belirli görüşleri aşılamak",
+    "example": "The cult leader systematically indoctrinated new members to reject their families and former lives."
+  },
+  {
+    "word": "infatuate",
+    "meaning": "aşırı hayran bırakmak",
+    "example": "The charismatic professor seemed to infatuate every student who attended his lectures."
+  },
+  {
+    "word": "insinuate",
+    "meaning": "ima etmek, üstü kapalı söylemek",
+    "example": "Are you trying to insinuate that I had something to do with the missing money?"
+  },
+  {
+    "word": "interject",
+    "meaning": "araya girmek, söz kesmek",
+    "example": "She couldn't help but interject when the speaker made a glaring factual error."
+  },
+  {
+    "word": "intimate",
+    "meaning": "ima etmek, sezdirmek",
+    "example": "The manager intimated to the staff that major layoffs were on the horizon."
+  },
+  {
+    "word": "intoxicate",
+    "meaning": "sarhoş etmek, sersemletmek",
+    "example": "The fumes from the chemical spill were enough to intoxicate anyone in the vicinity."
+  },
+  {
+    "word": "invigorate",
+    "meaning": "canlandırmak, güç vermek",
+    "example": "A brisk walk in the cold morning air helped to invigorate her after a sleepless night."
+  },
+  {
+    "word": "lambaste",
+    "meaning": "şiddetle eleştirmek",
+    "example": "The newspaper editorial lambasted the city council for its mismanagement of public funds."
+  },
+  {
+    "word": "lampoon",
+    "meaning": "alaylı şekilde eleştirmek",
+    "example": "The satirical magazine regularly lampooned politicians and their absurd promises."
+  },
+  {
+    "word": "liken",
+    "meaning": "benzetmek",
+    "example": "The critic likened the author's prose style to a gentle river flowing through a meadow."
+  },
+  {
+    "word": "machinate",
+    "meaning": "entrika çevirmek",
+    "example": "Behind the scenes, the vice president machinated to overthrow the CEO."
+  },
+  {
+    "word": "maim",
+    "meaning": "sakat bırakmak",
+    "example": "The landmine was designed to maim rather than kill, causing devastating injuries to soldiers."
+  },
+  {
+    "word": "malign",
+    "meaning": "kötülemek, iftira atmak",
+    "example": "The disgruntled ex-employee spread lies to malign the company's reputation."
+  },
+  {
+    "word": "marginalise",
+    "meaning": "dışlamak, ötekileştirmek",
+    "example": "The new tax policy threatened to marginalise small farmers who already struggled to compete."
+  },
+  {
+    "word": "meander",
+    "meaning": "dolambaçlı akmak/ilerlemek",
+    "example": "The river meandered through the valley, creating a winding path of breathtaking beauty."
+  },
+  {
+    "word": "mollify",
+    "meaning": "yatıştırmak",
+    "example": "The manager offered a sincere apology and a generous refund to mollify the angry customer."
+  },
+  {
+    "word": "mortify",
+    "meaning": "utandırmak, rezil etmek",
+    "example": "She was mortified when her phone started ringing loudly in the middle of the funeral service."
+  },
+  {
+    "word": "mystify",
+    "meaning": "şaşırtmak, kafa karıştırmak",
+    "example": "The magician's tricks continued to mystify audiences even after multiple viewings."
+  },
+  {
+    "word": "negate",
+    "meaning": "geçersiz kılmak, yok etmek",
+    "example": "A single contradictory statement can negate an entire argument built on careful reasoning."
+  },
+  {
+    "word": "obfuscate",
+    "meaning": "bulanıklaştırmak, karmaşıklaştırmak",
+    "example": "The lawyer's questions seemed designed to obfuscate the witness rather than clarify the facts."
+  },
+  {
+    "word": "obliterate",
+    "meaning": "tamamen yok etmek",
+    "example": "The bombing raid managed to obliterate every structure in the village square."
+  },
+  {
+    "word": "obviate",
+    "meaning": "gereksiz kılmak, önlemek",
+    "example": "Installing a water filter would obviate the need to buy bottled water every week."
+  },
+  {
+    "word": "ostracize",
+    "meaning": "dışlamak, aforoz etmek",
+    "example": "The community voted to ostracize the family after the father's criminal activities became public."
+  },
+  {
+    "word": "palliate",
+    "meaning": "hafifletmek, geçici çare olmak",
+    "example": "The medication could only palliate the symptoms, not cure the underlying disease."
+  },
+  {
+    "word": "pander",
+    "meaning": "hoşnut etmeye çalışmak (kötü şekilde)",
+    "example": "The newspaper was accused of pandering to its readers' worst prejudices with sensationalist headlines."
+  },
+  {
+    "word": "perpetrate",
+    "meaning": "işlemek (suç)",
+    "example": "The group was arrested for planning to perpetrate a series of attacks on government buildings."
+  },
+  {
+    "word": "perturb",
+    "meaning": "rahatsız etmek, huzursuz etmek",
+    "example": "The strange noises coming from the attic greatly perturbed the new homeowners."
+  },
+  {
+    "word": "pilfer",
+    "meaning": "ufak çaplı çalmak",
+    "example": "The employee was caught on camera attempting to pilfer office supplies over several months."
+  },
+  {
+    "word": "placate",
+    "meaning": "yatıştırmak, gönlünü almak",
+    "example": "The airline offered complimentary vouchers to placate passengers whose flights had been delayed for hours."
+  },
+  {
+    "word": "plagiarize",
+    "meaning": "intihal yapmak",
+    "example": "The student was expelled after it was discovered she had plagiarized entire sections of her thesis."
+  },
+  {
+    "word": "pontificate",
+    "meaning": "ukalaca konuşmak",
+    "example": "He would pontificate at length about wine, boring everyone at the dinner table."
+  },
+  {
+    "word": "preempt",
+    "meaning": "önceden önlemini almak",
+    "example": "The company launched its product early to preempt a rival's announcement scheduled for the following week."
+  },
+  {
+    "word": "prevaricate",
+    "meaning": "geveleyip durmak, kaçamak yapmak",
+    "example": "When asked directly about the missing funds, the accountant began to prevaricate."
+  },
+  {
+    "word": "proscribe",
+    "meaning": "yasaklamak",
+    "example": "The new regulations proscribe the use of certain chemicals in food production."
+  },
+  {
+    "word": "quash",
+    "meaning": "bastırmak, iptal etmek",
+    "example": "The appeals court decided to quash the conviction, citing procedural errors during the trial."
+  },
+  {
+    "word": "quibble",
+    "meaning": "ufak konularda tartışmak",
+    "example": "There was no point in quibbling over a few dollars when the overall deal was so favorable."
+  },
+  {
+    "word": "rebuff",
+    "meaning": "reddetmek, geri çevirmek",
+    "example": "He politely asked her for a dance, but she rebuffed him without a moment's hesitation."
+  },
+  {
+    "word": "recant",
+    "meaning": "sözünden dönmek, geri almak",
+    "example": "Under threat of torture, the philosopher was forced to recant his controversial views."
+  },
+  {
+    "word": "reciprocate",
+    "meaning": "karşılık vermek",
+    "example": "She invited her neighbor for dinner to reciprocate the kindness she had been shown during her illness."
+  },
+  {
+    "word": "redress",
+    "meaning": "telafi etmek, düzeltmek",
+    "example": "The government established a compensation fund to redress the wrongs done to the affected families."
+  },
+  {
+    "word": "remonstrate",
+    "meaning": "itiraz etmek, protesto etmek",
+    "example": "The residents remonstrated with the city council about the proposed closure of the local library."
+  },
+  {
+    "word": "repudiate",
+    "meaning": "reddetmek, tanımamak",
+    "example": "The party leader moved quickly to repudiate the extremist views expressed by one of its members."
+  },
+  {
+    "word": "rescind",
+    "meaning": "iptal etmek, feshetmek",
+    "example": "The university decided to rescind the honorary degree after the scandal came to light."
+  },
+  {
+    "word": "resuscitate",
+    "meaning": "yeniden canlandırmak",
+    "example": "The paramedics managed to resuscitate the drowning victim after several minutes of CPR."
+  },
+  {
+    "word": "sabotage",
+    "meaning": "sabote etmek",
+    "example": "A disgruntled employee was caught trying to sabotage the company's computer network."
+  },
+  {
+    "word": "skew",
+    "meaning": "çarpıtmak, saptırmak",
+    "example": "The survey results were skewed because the sample only included people from one neighborhood."
+  },
+  {
+    "word": "slander",
+    "meaning": "iftira atmak",
+    "example": "The radio host was sued for attempting to slander a well-known public figure on his show."
+  },
+  {
+    "word": "stifle",
+    "meaning": "bastırmak, boğmak",
+    "example": "She had to stifle a laugh when her boss made a ridiculous comparison during the presentation."
+  },
+  {
+    "word": "stipulate",
+    "meaning": "şart koşmak",
+    "example": "The contract stipulates that the work must be completed within six months of signing."
+  },
+  {
+    "word": "subjugate",
+    "meaning": "boyunduruk altına almak",
+    "example": "The empire sought to subjugate neighboring kingdoms and force them to pay tribute."
+  },
+  {
+    "word": "subvert",
+    "meaning": "baltalamak, alt üst etmek",
+    "example": "The spy was sent to subvert the enemy government from within by spreading disinformation."
+  },
+  {
+    "word": "supplant",
+    "meaning": "yerini almak",
+    "example": "Digital cameras largely supplanted film cameras within a decade of their introduction."
+  },
+  {
+    "word": "surmise",
+    "meaning": "tahmin etmek, sanmak",
+    "example": "From the muddy footprints, the detective surmised that the intruder had come through the garden."
+  },
+  {
+    "word": "swindle",
+    "meaning": "dolandırmak",
+    "example": "The fake charity managed to swindle thousands of donors out of millions of dollars."
+  },
+  {
+    "word": "tantalize",
+    "meaning": "iştahını kabartmak, cezbetmek",
+    "example": "The smell of fresh baking tantalized everyone in the building, making mouths water."
+  },
+  {
+    "word": "traverse",
+    "meaning": "aşmak, katetmek",
+    "example": "The hikers had to traverse a dangerous glacier to reach the summit."
+  },
+  {
+    "word": "trivialize",
+    "meaning": "önemsizleştirmek",
+    "example": "It is wrong to trivialize the suffering of those who lived through the war."
+  },
+  {
+    "word": "truncate",
+    "meaning": "kısaltmak, kesmek",
+    "example": "The editor decided to truncate the article to fit the available space in the magazine."
+  },
+  {
+    "word": "undulate",
+    "meaning": "dalgalanmak",
+    "example": "The wheat fields undulated in the wind like golden waves on a vast sea."
+  },
+  {
+    "word": "unearth",
+    "meaning": "ortaya çıkarmak, kazıp bulmak",
+    "example": "Archaeologists unearthed a collection of ancient coins dating back to the Roman Empire."
+  },
+  {
+    "word": "unnerve",
+    "meaning": "cesaretini kırmak, sinirlendirmek",
+    "example": "The eerie silence of the abandoned house unnerved even the most experienced investigators."
+  },
+  {
+    "word": "upbraid",
+    "meaning": "azarlamak",
+    "example": "The sergeant upbraided the soldiers for their sloppy appearance during the inspection."
+  },
+  {
+    "word": "usurp",
+    "meaning": "gaspetmek, zorla almak",
+    "example": "The general planned to usurp the throne while the king was away on a diplomatic mission."
+  },
+  {
+    "word": "vacillate",
+    "meaning": "kararsız kalmak, tereddüt etmek",
+    "example": "She vacillated for weeks between accepting the job offer and staying at her current position."
+  },
+  {
+    "word": "venerate",
+    "meaning": "saygı göstermek, ululamak",
+    "example": "In many cultures, the elderly are venerated for their wisdom and life experience."
+  },
+  {
+    "word": "vilify",
+    "meaning": "kötülemek, iftira atmak",
+    "example": "The press vilified the actor after his arrest, turning public opinion sharply against him."
+  },
+  {
+    "word": "acquiescence",
+    "meaning": "razı olma, boyun eğme",
+    "example": "The workers' reluctant acquiescence to the new contract ended the month-long strike."
+  },
+  {
+    "word": "acrimony",
+    "meaning": "sertlik, düşmanlık",
+    "example": "The debate ended in acrimony, with both sides shouting and refusing to compromise."
+  },
+  {
+    "word": "adroitness",
+    "meaning": "beceriklilik",
+    "example": "The surgeon's adroitness with the scalpel was the result of years of meticulous practice."
+  },
+  {
+    "word": "altruism",
+    "meaning": "özgecilik, diğerkamlık",
+    "example": "Her altruism was evident in the countless hours she spent volunteering at the shelter."
+  },
+  {
+    "word": "ambivalence",
+    "meaning": "kararsızlık, ikircim",
+    "example": "His ambivalence about moving to a new city was resolved when he received a generous job offer."
+  },
+  {
+    "word": "anarchy",
+    "meaning": "anarşi, kargaşa",
+    "example": "Following the collapse of the government, the country descended into anarchy."
+  },
+  {
+    "word": "antipathy",
+    "meaning": "nefret, hoşlanmama",
+    "example": "There was a long-standing antipathy between the two families that no one could fully explain."
+  },
+  {
+    "word": "appeasement",
+    "meaning": "yatıştırma politikası",
+    "example": "History has shown that appeasement of aggressive regimes often leads to greater conflict."
+  },
+  {
+    "word": "aptitude",
+    "meaning": "yetenek, kabiliyet",
+    "example": "From a young age, she displayed a remarkable aptitude for mathematics and problem-solving."
+  },
+  {
+    "word": "asceticism",
+    "meaning": "çilecilik",
+    "example": "The monk's asceticism was so extreme that he ate only one meal a day and slept on a wooden board."
+  },
+  {
+    "word": "assimilation",
+    "meaning": "özümseme, asimilasyon",
+    "example": "The immigrant community struggled with assimilation while trying to preserve its cultural identity."
+  },
+  {
+    "word": "autonomy",
+    "meaning": "özerklik",
+    "example": "The region was granted full autonomy, allowing it to govern its own internal affairs."
+  },
+  {
+    "word": "belligerence",
+    "meaning": "kavgacılık, saldırganlık",
+    "example": "The player's belligerence on the field earned him a red card and a three-match suspension."
+  },
+  {
+    "word": "bigotry",
+    "meaning": "bağnazlık",
+    "example": "Centuries of bigotry had created deep divisions that could not be erased overnight."
+  },
+  {
+    "word": "brevity",
+    "meaning": "kısalık, özlülük",
+    "example": "The speaker's brevity was appreciated by everyone, as the previous meeting had run two hours over."
+  },
+  {
+    "word": "callousness",
+    "meaning": "duygusuzluk, katılık",
+    "example": "The CEO's callousness was evident when he announced layoffs without a hint of remorse."
+  },
+  {
+    "word": "candour",
+    "meaning": "içtenlik, dürüstlük",
+    "example": "The politician's candour about his past mistakes won him unexpected respect from voters."
+  },
+  {
+    "word": "charisma",
+    "meaning": "karizma",
+    "example": "The leader's natural charisma drew people in and inspired fierce loyalty among her followers."
+  },
+  {
+    "word": "clemency",
+    "meaning": "merhamet, af",
+    "example": "The governor granted clemency to the prisoner, commuting his sentence to time served."
+  },
+  {
+    "word": "collusion",
+    "meaning": "gizli anlaşma",
+    "example": "The investigation revealed collusion between several board members to manipulate stock prices."
+  },
+  {
+    "word": "connivance",
+    "meaning": "göz yumma, gizli iş birliği",
+    "example": "The smuggling operation could not have succeeded without the connivance of border officials."
+  },
+  {
+    "word": "contempt",
+    "meaning": "küçümseme, hor görme",
+    "example": "He was held in contempt of court for repeatedly refusing to answer the judge's questions."
+  },
+  {
+    "word": "cynicism",
+    "meaning": "kötümserlik, alaycılık",
+    "example": "Years of broken promises had bred a deep cynicism among the electorate."
+  },
+  {
+    "word": "debacle",
+    "meaning": "büyük başarısızlık, hezimet",
+    "example": "The product launch turned into a debacle when the website crashed within minutes of going live."
+  },
+  {
+    "word": "decadence",
+    "meaning": "çöküş, yozlaşma",
+    "example": "The empire's decadence was symbolized by the extravagant feasts held while the treasury ran dry."
+  },
+  {
+    "word": "deference",
+    "meaning": "saygı gösterme",
+    "example": "The students treated the visiting Nobel laureate with great deference throughout his lecture."
+  },
+  {
+    "word": "degeneration",
+    "meaning": "yozlaşma, bozulma",
+    "example": "The degeneration of the historic neighborhood was visible in every boarded-up window."
+  },
+  {
+    "word": "demagogue",
+    "meaning": "demagog, halk avcısı",
+    "example": "The demagogue rose to power by exploiting people's fears and directing their anger at immigrants."
+  },
+  {
+    "word": "denunciation",
+    "meaning": "kınama, ihbar",
+    "example": "The ambassador's denunciation of the attack was reported by every major news outlet."
+  },
+  {
+    "word": "deprecation",
+    "meaning": "küçümseme, kınama",
+    "example": "She responded to the committee's deprecation of her proposal with quiet dignity."
+  },
+  {
+    "word": "desolation",
+    "meaning": "ıssızlık, perişanlık",
+    "example": "After the battle, the desolation of the landscape was absolute, with not a single building left standing."
+  },
+  {
+    "word": "despot",
+    "meaning": "zorba, despot",
+    "example": "The despot ruled with an iron fist, tolerating no dissent from anyone in his government."
+  },
+  {
+    "word": "dexterity",
+    "meaning": "el becerisi, ustalık",
+    "example": "The watchmaker's dexterity allowed him to assemble components so tiny that most people couldn't even see them."
+  },
+  {
+    "word": "dichotomy",
+    "meaning": "ikiye ayrılma, karşıtlık",
+    "example": "The novel explores the dichotomy between public duty and private desire."
+  },
+  {
+    "word": "dilettante",
+    "meaning": "amatör meraklı, yarım yamalak bilen",
+    "example": "He was a dilettante who dabbled in painting, music, and writing without mastering any of them."
+  },
+  {
+    "word": "discord",
+    "meaning": "uyumsuzluk, anlaşmazlık",
+    "example": "Discord among the team members threatened to derail the project before it even began."
+  },
+  {
+    "word": "disdain",
+    "meaning": "küçümseme",
+    "example": "She looked at the cheaply made product with obvious disdain and refused to even touch it."
+  },
+  {
+    "word": "dissent",
+    "meaning": "muhalefet, karşı görüş",
+    "example": "Several judges expressed dissent, arguing that the ruling set a dangerous precedent."
+  },
+  {
+    "word": "dogma",
+    "meaning": "dogma, sorgulanamaz inanç",
+    "example": "The group's rigid dogma left no room for questioning or independent thought."
+  },
+  {
+    "word": "duplicity",
+    "meaning": "ikiyüzlülük",
+    "example": "The ambassador's duplicity was exposed when classified documents were leaked to the press."
+  },
+  {
+    "word": "effrontery",
+    "meaning": "yüzsüzlük, arsızlık",
+    "example": "He had the effrontery to ask for a raise after losing the company its biggest client."
+  },
+  {
+    "word": "egalitarianism",
+    "meaning": "eşitlikçilik",
+    "example": "The country's commitment to egalitarianism was reflected in its progressive tax system."
+  },
+  {
+    "word": "elation",
+    "meaning": "büyük sevinç, coşku",
+    "example": "The crowd's elation erupted into cheers when the final results were announced."
+  },
+  {
+    "word": "emancipation",
+    "meaning": "özgürleşme, kurtuluş",
+    "example": "The emancipation of the slaves was a turning point in the nation's history."
+  },
+  {
+    "word": "enmity",
+    "meaning": "düşmanlık",
+    "example": "The enmity between the two nations had simmered for centuries before erupting into open war."
+  },
+  {
+    "word": "equanimity",
+    "meaning": "soğukkanlılık, sükunet",
+    "example": "She accepted the devastating news with remarkable equanimity, showing no sign of panic."
+  },
+  {
+    "word": "exasperation",
+    "meaning": "çok sinirlenme, bezginlik",
+    "example": "After the tenth failed attempt, his exasperation boiled over and he slammed the tool kit shut."
+  },
+  {
+    "word": "exuberance",
+    "meaning": "coşku, taşkınlık",
+    "example": "The children's exuberance was infectious, and soon all the adults were laughing along with them."
+  },
+  {
+    "word": "fallibility",
+    "meaning": "hata yapabilirlik",
+    "example": "The coach reminded his team that fallibility is part of being human and that mistakes were opportunities to learn."
+  },
+  {
+    "word": "fanaticism",
+    "meaning": "fanatizm, bağnazlık",
+    "example": "The group's fanaticism made them dangerous, as they believed any means justified their ends."
+  },
+  {
+    "word": "fastidiousness",
+    "meaning": "titizlik, müşkülpesentlik",
+    "example": "Her fastidiousness about cleanliness meant that every surface in her home was spotless at all times."
+  },
+  {
+    "word": "fervor",
+    "meaning": "ateşlilik, coşku",
+    "example": "The crowd's fervor reached a fever pitch as the team closed in on the championship."
+  },
+  {
+    "word": "fortitude",
+    "meaning": "metanet, dayanıklılık",
+    "example": "She endured months of grueling treatment with remarkable fortitude, never once complaining."
+  },
+  {
+    "word": "frivolity",
+    "meaning": "önemsizlik, hoppalık",
+    "example": "The manager dismissed the team's concerns as frivolity, failing to see the seriousness of the situation."
+  },
+  {
+    "word": "gluttony",
+    "meaning": "oburluk",
+    "example": "His gluttony at the buffet was embarrassing, as he piled his plate higher than anyone else's."
+  },
+  {
+    "word": "gravitas",
+    "meaning": "ağırbaşlılık, ciddiyet",
+    "example": "The new judge carried herself with a gravitas that immediately commanded respect in the courtroom."
+  },
+  {
+    "word": "grudge",
+    "meaning": "kin, garaz",
+    "example": "He held a grudge against his former business partner for decades, even after the dispute was settled."
+  },
+  {
+    "word": "hedonism",
+    "meaning": "hazcılık",
+    "example": "The resort catered to pure hedonism, offering guests every conceivable luxury and indulgence."
+  },
+  {
+    "word": "heresy",
+    "meaning": "sapkın inanç, aykırı görüş",
+    "example": "In medieval times, expressing heresy could result in being burned at the stake."
+  },
+  {
+    "word": "hindrance",
+    "meaning": "engel",
+    "example": "The lack of funding proved to be the greatest hindrance to completing the research project."
+  },
+  {
+    "word": "hostility",
+    "meaning": "düşmanlık",
+    "example": "The hostility between the two departments made collaboration nearly impossible."
+  },
+  {
+    "word": "hubris",
+    "meaning": "aşırı gurur, kibir",
+    "example": "The CEO's hubris led him to reject sound advice, ultimately driving the company into bankruptcy."
+  },
+  {
+    "word": "hypocrisy",
+    "meaning": "ikiyüzlülük",
+    "example": "The politician's hypocrisy was exposed when he was caught doing the very thing he had campaigned against."
+  },
+  {
+    "word": "idolatry",
+    "meaning": "putperestlik, aşırı hayranlık",
+    "example": "The fans' idolatry of the rock star bordered on obsession, following him to every concert."
+  },
+  {
+    "word": "ignominy",
+    "meaning": "utanç, rezalet",
+    "example": "The general suffered the ignominy of being stripped of his rank before a public tribunal."
+  },
+  {
+    "word": "impasse",
+    "meaning": "çıkmaz",
+    "example": "Negotiations reached an impasse when neither side was willing to compromise on the key issue."
+  },
+  {
+    "word": "impetuosity",
+    "meaning": "aceleci davranış",
+    "example": "His impetuosity often got him into trouble, as he would act before considering the consequences."
+  },
+  {
+    "word": "impunity",
+    "meaning": "cezasızlık",
+    "example": "The warlord operated with impunity, knowing that no one in the region had the power to stop him."
+  },
+  {
+    "word": "incongruity",
+    "meaning": "uyumsuzluk",
+    "example": "The incongruity of wearing hiking boots with a formal suit drew amused glances from the other guests."
+  },
+  {
+    "word": "indignation",
+    "meaning": "haklı öfke, kızgınlık",
+    "example": "The unfair decision sparked widespread indignation among citizens who felt the system had failed them."
+  },
+  {
+    "word": "ineptitude",
+    "meaning": "beceriksizlik",
+    "example": "The project's failure was directly attributable to the manager's ineptitude and poor planning."
+  },
+  {
+    "word": "inertia",
+    "meaning": "atalet, durgunluk",
+    "example": "Bureaucratic inertia prevented the urgently needed reforms from being implemented in time."
+  },
+  {
+    "word": "infamy",
+    "meaning": "kötü şöhret",
+    "example": "The dictator went down in infamy as one of the most brutal rulers in modern history."
+  },
+  {
+    "word": "ingenuity",
+    "meaning": "yaratıcılık, buluş yeteneği",
+    "example": "The team's ingenuity was on full display when they solved the problem using only materials on hand."
+  },
+  {
+    "word": "insolence",
+    "meaning": "küstahlık",
+    "example": "The employee's insolence toward the vice president resulted in his immediate dismissal."
+  },
+  {
+    "word": "intransigence",
+    "meaning": "uzlaşmazlık",
+    "example": "The union's intransigence prolonged the strike for months, causing hardship for both workers and the company."
+  },
+  {
+    "word": "intrigue",
+    "meaning": "entrika, dolap",
+    "example": "The court was a hotbed of intrigue, with every nobleman plotting to gain the king's favor."
+  },
+  {
+    "word": "jubilation",
+    "meaning": "büyük sevinç",
+    "example": "Jubilation filled the streets when the team returned home with the championship trophy."
+  },
+  {
+    "word": "kinship",
+    "meaning": "akrabalık, yakınlık",
+    "example": "She felt an immediate kinship with the other volunteers who shared her passion for conservation."
+  },
+  {
+    "word": "lassitude",
+    "meaning": "bitkinlik, halsizlik",
+    "example": "A wave of lassitude washed over her as the fever took hold, making even lifting a glass feel like a monumental effort."
+  },
+  {
+    "word": "lethargy",
+    "meaning": "uyuşukluk, isteksizlik",
+    "example": "The heat induced a lethargy in the team that made it impossible to maintain their usual pace of work."
+  },
+  {
+    "word": "levity",
+    "meaning": "gırgırlık, ciddiyetsizlik",
+    "example": "The manager's levity during the crisis meeting was inappropriate and upset several colleagues."
+  },
+  {
+    "word": "magnanimity",
+    "meaning": "cömertlik, yüce gönüllülük",
+    "example": "She showed magnanimity in victory by praising her opponent's campaign and dedication."
+  },
+  {
+    "word": "malaise",
+    "meaning": "genel rahatsızlık hali",
+    "example": "A general malaise spread through the office as layoffs were announced without warning."
+  },
+  {
+    "word": "malevolence",
+    "meaning": "kötü niyet",
+    "example": "The villain's malevolence was evident in the cruel satisfaction he took in others' suffering."
+  },
+  {
+    "word": "mendacity",
+    "meaning": "yalancılık",
+    "example": "The politician's mendacity was finally exposed when contradictory documents were leaked to the press."
+  },
+  {
+    "word": "mirth",
+    "meaning": "neşe, kahkaha",
+    "example": "The dinner party was filled with mirth, as old friends shared stories and jokes late into the night."
+  },
+  {
+    "word": "misgiving",
+    "meaning": "kuşku, endişe",
+    "example": "She had serious misgivings about investing her savings in a company with such a short track record."
+  },
+  {
+    "word": "naivety",
+    "meaning": "saflık, toyluk",
+    "example": "His naivety about the harsh realities of business made him an easy target for unscrupulous competitors."
+  },
+  {
+    "word": "nonchalance",
+    "meaning": "kayıtsızlık, umursamazlık",
+    "example": "She handled the aggressive questioning with nonchalance, shrugging off each accusation as if it were nothing."
+  },
+  {
+    "word": "obduracy",
+    "meaning": "inatçılık",
+    "example": "The committee's obduracy in refusing to consider alternative proposals frustrated everyone involved."
+  },
+  {
+    "word": "obsequiousness",
+    "meaning": "yağcılık",
+    "example": "The assistant's obsequiousness was so extreme that even the boss found it uncomfortable."
+  },
+  {
+    "word": "obstinacy",
+    "meaning": "inatçılık",
+    "example": "The donkey's obstinacy meant it would not budge an inch no matter how hard the farmer pulled."
+  },
+  {
+    "word": "opulence",
+    "meaning": "gösterişli zenginlik",
+    "example": "The palace's opulence was staggering, with gold leaf covering nearly every surface in the grand hall."
+  },
+  {
+    "word": "ostentation",
+    "meaning": "gösteriş",
+    "example": "The millionaire's ostentation was evident in his fleet of sports cars and collection of luxury watches."
+  },
+  {
+    "word": "panacea",
+    "meaning": "her derde deva",
+    "example": "The new policy was touted as a panacea, but it failed to address the root causes of the problem."
+  },
+  {
+    "word": "paragon",
+    "meaning": "mükemmel örnek",
+    "example": "She was regarded as a paragon of virtue, always putting others before herself in every situation."
+  },
+  {
+    "word": "parity",
+    "meaning": "eşitlik",
+    "example": "The union demanded pay parity between male and female workers doing the same jobs."
+  },
+  {
+    "word": "parsimony",
+    "meaning": "cimrilik",
+    "example": "The company's parsimony meant that employees had to buy their own basic office supplies."
+  },
+  {
+    "word": "pathos",
+    "meaning": "acıma duygusu uyandıran hal",
+    "example": "The film's pathos was so powerful that there wasn't a dry eye in the theater by the end."
+  },
+  {
+    "word": "penury",
+    "meaning": "yoksulluk, sefalet",
+    "example": "After losing his job, he fell into penury and could barely afford to feed his family."
+  },
+  {
+    "word": "perseverance",
+    "meaning": "azim, sebat",
+    "example": "Her perseverance in the face of repeated rejections finally paid off when she landed a publishing deal."
+  },
+  {
+    "word": "pertinacity",
+    "meaning": "inatçılık, ısrar",
+    "example": "His pertinacity in pursuing the research, despite lack of funding, eventually led to a breakthrough."
+  },
+  {
+    "word": "piety",
+    "meaning": "dindarlık",
+    "example": "The old woman's piety was evident in her daily visits to the church and her quiet acts of charity."
+  },
+  {
+    "word": "pragmatism",
+    "meaning": "pragmatizm, gerçekçilik",
+    "example": "The mayor's pragmatism helped her find workable solutions to problems that had stumped her predecessors."
+  },
+  {
+    "word": "precocity",
+    "meaning": "erken olgunlaşma",
+    "example": "The child's precocity was remarkable, as she could discuss complex philosophical ideas at the age of eight."
+  },
+  {
+    "word": "prodigality",
+    "meaning": "savurganlık",
+    "example": "The heir's prodigality drained the family fortune within a few years of his inheritance."
+  },
+  {
+    "word": "propensity",
+    "meaning": "eğilim, meyil",
+    "example": "He had a propensity for making rash decisions whenever he felt pressured or cornered."
+  },
+  {
+    "word": "providence",
+    "meaning": "kader, ilahi öngörü",
+    "example": "She attributed her survival of the crash to providence, believing a higher power had intervened."
+  },
+  {
+    "word": "prudence",
+    "meaning": "basiret, tedbirlilik",
+    "example": "Financial prudence during the boom years helped the company survive the subsequent recession."
+  },
+  {
+    "word": "qualm",
+    "meaning": "vicdan sıkıntısı, tereddüt",
+    "example": "She had no qualms about reporting her colleague's unethical behavior to the supervisor."
+  },
+  {
+    "word": "rancour",
+    "meaning": "kin, garaz",
+    "example": "The rancour between the two neighbors had lasted for decades over a disputed property line."
+  },
+  {
+    "word": "rapport",
+    "meaning": "iyi ilişki, uyum",
+    "example": "The teacher quickly built a rapport with her students, making them feel comfortable and valued."
+  },
+  {
+    "word": "rectitude",
+    "meaning": "dürüstlük",
+    "example": "The judge was known for his moral rectitude, never wavering from the law regardless of external pressure."
+  },
+  {
+    "word": "resignation",
+    "meaning": "istifa; kadere razı olma",
+    "example": "She accepted the diagnosis with quiet resignation, determined to make the most of her remaining time."
+  },
+  {
+    "word": "reverence",
+    "meaning": "büyük saygı",
+    "example": "The ancient temple was treated with reverence by locals who had worshipped there for generations."
+  },
+  {
+    "word": "ruse",
+    "meaning": "hile, kurnazlık",
+    "example": "The general used a clever ruse to make the enemy believe his army was much larger than it actually was."
+  },
+  {
+    "word": "sagacity",
+    "meaning": "akıllılık, ferasetlik",
+    "example": "The elder's sagacity was sought by everyone in the village when difficult decisions needed to be made."
+  },
+  {
+    "word": "sanctity",
+    "meaning": "kutsallık",
+    "example": "The invaders violated the sanctity of the ancient monastery, looting its most sacred relics."
+  },
+  {
+    "word": "scrupulousness",
+    "meaning": "vicdanlılık, titizlik",
+    "example": "The auditor's scrupulousness ensured that not a single discrepancy went unnoticed in the financial records."
+  },
+  {
+    "word": "sentiment",
+    "meaning": "duygu, his",
+    "example": "The photograph evoked a deep sentiment of nostalgia for a time she thought she had forgotten."
+  },
+  {
+    "word": "solidarity",
+    "meaning": "dayanışma",
+    "example": "The workers showed solidarity by walking off the job in support of their unfairly dismissed colleague."
+  },
+  {
+    "word": "solitude",
+    "meaning": "yalnızlık",
+    "example": "He retreated to the mountains seeking solitude, far from the noise and demands of city life."
+  },
+  {
+    "word": "sorcery",
+    "meaning": "büyücülük",
+    "example": "The villagers blamed the sudden crop failures on sorcery, pointing fingers at the reclusive old woman."
+  },
+  {
+    "word": "stoicism",
+    "meaning": "metanet, sabır",
+    "example": "He endured the long illness with stoicism, never burdening his family with complaints or self-pity."
+  },
+  {
+    "word": "subterfuge",
+    "meaning": "kaçamak, hile",
+    "example": "The spy used subterfuge to gain access to the restricted area, posing as a maintenance worker."
+  },
+  {
+    "word": "supplication",
+    "meaning": "yalvarma, yakarış",
+    "example": "The beggar fell to his knees in supplication, pleading with the king for mercy."
+  },
+  {
+    "word": "tenacity",
+    "meaning": "azim, direnç",
+    "example": "Her tenacity in pursuing the case brought the corrupt officials to justice after years of legal battles."
+  },
+  {
+    "word": "tirade",
+    "meaning": "sert konuşma, ağız dolusu eleştiri",
+    "example": "The coach launched into a tirade about the team's lack of effort and discipline."
+  },
+  {
+    "word": "torpor",
+    "meaning": "uyuşukluk",
+    "example": "The snake lay in torpor throughout the winter months, barely moving in its cold burrow."
+  },
+  {
+    "word": "tranquility",
+    "meaning": "huzur, sükunet",
+    "example": "The tranquility of the countryside was a welcome change from the constant noise of the city."
+  },
+  {
+    "word": "travesty",
+    "meaning": "gülünç taklit, saçma hal",
+    "example": "The trial was a travesty of justice, with the verdict decided before any evidence was even presented."
+  },
+  {
+    "word": "trepidation",
+    "meaning": "korku, endişe",
+    "example": "She approached the stage with trepidation, her hands trembling as she gripped her notes."
+  },
+  {
+    "word": "tribulation",
+    "meaning": "sıkıntı, çile",
+    "example": "The refugees had endured years of tribulation before finally finding a safe place to rebuild their lives."
+  },
+  {
+    "word": "turpitude",
+    "meaning": "ahlaksızlık",
+    "example": "The judge described the defendant's actions as moral turpitude of the most serious kind."
+  },
+  {
+    "word": "tyranny",
+    "meaning": "zorbalık, baskı",
+    "example": "The people rose up against the tyranny of a regime that had denied them basic freedoms for too long."
+  },
+  {
+    "word": "unanimity",
+    "meaning": "oy birliği",
+    "example": "The jury reached unanimity quickly, all twelve members agreeing on a guilty verdict after just two hours."
+  },
+  {
+    "word": "vanity",
+    "meaning": "kibir, boş gurur",
+    "example": "His vanity would not allow him to admit that anyone else might have a better idea."
+  },
+  {
+    "word": "veneer",
+    "meaning": "yüzeysel görünüm, cila",
+    "example": "Her polite demeanor was just a thin veneer over a deeply competitive and ruthless personality."
+  },
+  {
+    "word": "vengeance",
+    "meaning": "intikam",
+    "example": "He swore vengeance against those who had destroyed his family, vowing to make them pay no matter the cost."
+  },
+  {
+    "word": "vexation",
+    "meaning": "can sıkıntısı, kızgınlık",
+    "example": "To her vexation, the printer jammed again just as she was about to print the final report."
+  },
+  {
+    "word": "vigilance",
+    "meaning": "tetikte olma, uyanıklık",
+    "example": "Constant vigilance is required to prevent security breaches in an age of sophisticated cyber attacks."
+  },
+  {
+    "word": "virtuosity",
+    "meaning": "ustalık, sanatsal beceri",
+    "example": "The pianist's virtuosity was on full display during the demanding Rachmaninoff concerto."
+  },
+  {
+    "word": "wistfulness",
+    "meaning": "hüzünlü özlem",
+    "example": "There was a wistfulness in her voice as she talked about the travels she had never been able to take."
+  },
+  {
+    "word": "wrath",
+    "meaning": "büyük öfke",
+    "example": "The king's wrath fell upon the traitors, who were banished from the kingdom without trial."
+  },
+  {
+    "word": "zealotry",
+    "meaning": "aşırı bağnazlık",
+    "example": "The group's zealotry blinded them to the harm they were causing in the name of their cause."
+  },
+  {
+    "word": "aptly",
+    "meaning": "yerinde, uygun şekilde",
+    "example": "The city was aptly named Paradise, with its pristine beaches and year-round sunshine."
+  },
+  {
+    "word": "categorically",
+    "meaning": "kesin olarak",
+    "example": "The prime minister categorically denied rumors that he would resign before the end of his term."
+  },
+  {
+    "word": "conceivably",
+    "meaning": "muhtemelen, akla yatkın şekilde",
+    "example": "The project could conceivably be completed by spring if the team works without interruption."
+  },
+  {
+    "word": "congruously",
+    "meaning": "uyumlu şekilde",
+    "example": "The new wing of the museum was congruously designed to blend with the original architecture."
+  },
+  {
+    "word": "indisputably",
+    "meaning": "tartışmasız şekilde",
+    "example": "She is indisputably the greatest tennis player of her generation, with more titles than any competitor."
+  },
+  {
+    "word": "indubitably",
+    "meaning": "hiç şüphesiz",
+    "example": "The fingerprints on the weapon were indubitably those of the suspect, confirming his presence at the scene."
+  },
+  {
+    "word": "invariably",
+    "meaning": "değişmez şekilde, her zaman",
+    "example": "He invariably arrives at the office before anyone else, often before the sun has even risen."
+  },
+  {
+    "word": "irrevocably",
+    "meaning": "geri dönülemez şekilde",
+    "example": "The decision to sell the family farm irrevocably changed the course of their lives."
+  },
+  {
+    "word": "ostensibly",
+    "meaning": "görünüşe göre",
+    "example": "Ostensibly, the meeting was about budget planning, but everyone knew the real topic was the CEO's future."
+  },
+  {
+    "word": "perfunctorily",
+    "meaning": "gelişigüzel şekilde",
+    "example": "The inspector perfunctorily checked the building without looking closely at any of the safety features."
+  },
+  {
+    "word": "pointedly",
+    "meaning": "vurgulu, kasıtlı şekilde",
+    "example": "She pointedly ignored his outstretched hand, making it clear she had not forgiven his earlier remarks."
+  },
+  {
+    "word": "purportedly",
+    "meaning": "iddia edildiğine göre",
+    "example": "The artifact purportedly belonged to a medieval king, though experts had doubts about its authenticity."
+  },
+  {
+    "word": "quintessentially",
+    "meaning": "tam anlamıyla, özünde",
+    "example": "The small village was quintessentially English, with its thatched cottages and village green."
+  },
+  {
+    "word": "resolutely",
+    "meaning": "kararlı bir şekilde",
+    "example": "She resolutely refused to compromise her principles, even when offered a substantial bribe."
+  },
+  {
+    "word": "scathingly",
+    "meaning": "acımasızca (eleştirerek)",
+    "example": "The reviewer scathingly dismissed the film as a waste of time and money."
+  },
+  {
+    "word": "staunchly",
+    "meaning": "sıkı sıkıya, kararlılıkla",
+    "example": "The senator has staunchly defended environmental protections throughout her long career."
+  },
+  {
+    "word": "unabashedly",
+    "meaning": "utanmadan, çekinmeden",
+    "example": "He unabashedly admitted that he had only taken the job for the money, not for any passion for the work."
+  },
+  {
+    "word": "unwittingly",
+    "meaning": "bilmeden, farkında olmadan",
+    "example": "She unwittingly became an accomplice in the fraud, unaware that the documents she signed were forged."
+  },
+  {
+    "word": "vehemently",
+    "meaning": "şiddetle, hararetle",
+    "example": "The witness vehemently denied the accusations, slamming his fist on the table in frustration."
+  },
+  {
+    "word": "abstruse",
+    "meaning": "anlaşılması güç, muğlak",
+    "example": "The philosopher's abstruse arguments were lost on most of the undergraduate students in the lecture hall."
+  },
+  {
+    "word": "acerbic",
+    "meaning": "sert, iğneleyici",
+    "example": "The critic's acerbic wit made her reviews entertaining to read but feared by every restaurant in town."
+  },
+  {
+    "word": "adamant",
+    "meaning": "sözünden dönmez, ısrarcı",
+    "example": "She was adamant that the deadline would not be extended, regardless of the circumstances."
+  },
+  {
+    "word": "adroit",
+    "meaning": "becerikli, usta",
+    "example": "The adroit negotiator managed to secure a favorable deal without alienating the other side."
+  },
+  {
+    "word": "affable",
+    "meaning": "sıcakkanlı, sohbeti seven",
+    "example": "The affable shopkeeper greeted every customer by name and always had a kind word for the children."
+  },
+  {
+    "word": "amiable",
+    "meaning": "sevimli, hoş sohbetli",
+    "example": "The amiable host made sure every guest felt welcome and comfortable throughout the evening."
+  },
+  {
+    "word": "anachronistic",
+    "meaning": "çağına uymayan",
+    "example": "Using a typewriter in a modern newsroom seemed anachronistic, but the veteran reporter refused to change."
+  },
+  {
+    "word": "apposite",
+    "meaning": "uygun, yerinde",
+    "example": "The professor made an apposite reference to Shakespeare that perfectly illustrated his point."
+  },
+  {
+    "word": "ascetic",
+    "meaning": "çileci, zahit",
+    "example": "The ascetic monk owned no possessions and ate only enough to keep his body functioning."
+  },
+  {
+    "word": "assiduous",
+    "meaning": "gayretli, çalışkan",
+    "example": "The assiduous student spent every evening in the library, determined to top the class rankings."
+  },
+  {
+    "word": "audacious",
+    "meaning": "cüretkar, gözü pek",
+    "example": "The audacious thief stole the painting in broad daylight while museum guards looked on."
+  },
+  {
+    "word": "avaricious",
+    "meaning": "açgözlü, hırslı",
+    "example": "The avaricious landlord raised rents every year, caring nothing for the tenants he was displacing."
+  },
+  {
+    "word": "baleful",
+    "meaning": "uğursuz, kötü niyetli",
+    "example": "The wolf gave a baleful stare that sent a chill down the spine of anyone who encountered it."
+  },
+  {
+    "word": "bellicose",
+    "meaning": "savaşçı, kavgacı",
+    "example": "The general's bellicose rhetoric alarmed neighboring countries, who began to fortify their borders."
+  },
+  {
+    "word": "boisterous",
+    "meaning": "gürültücü, coşkulu",
+    "example": "The boisterous children tumbled out of the school bus, shouting and laughing as they ran to the playground."
+  },
+  {
+    "word": "bombastic",
+    "meaning": "tumturaklı, gösterişli (konuşma)",
+    "example": "The politician's bombastic speech was long on rhetoric but short on substance."
+  },
+  {
+    "word": "callow",
+    "meaning": "toy, tecrübesiz",
+    "example": "The callow intern assumed he knew more than the senior staff, which quickly alienated his colleagues."
+  },
+  {
+    "word": "captious",
+    "meaning": "kusur bulmayı seven",
+    "example": "The captious reviewer found fault with every aspect of the performance, from the lighting to the costumes."
+  },
+  {
+    "word": "cerebral",
+    "meaning": "zihinsel, entelektüel",
+    "example": "The film was a cerebral exploration of consciousness that left audiences debating its meaning for days."
+  },
+  {
+    "word": "churlish",
+    "meaning": "kaba, terbiyesiz",
+    "example": "It would be churlish to complain about the free meal, even if it was not particularly well prepared."
+  },
+  {
+    "word": "circumspect",
+    "meaning": "ihtiyatlı, dikkatli",
+    "example": "The investor was circumspect, thoroughly researching every company before committing a single dollar."
+  },
+  {
+    "word": "complaisant",
+    "meaning": "uysal, hoşnut etmeye çalışan",
+    "example": "The complaisant staff agreed to every demand the difficult customer made, just to avoid a confrontation."
+  },
+  {
+    "word": "conciliatory",
+    "meaning": "uzlaştırıcı, yatıştırıcı",
+    "example": "He sent a conciliatory email to his colleague, hoping to repair the relationship after their argument."
+  },
+  {
+    "word": "contumacious",
+    "meaning": "itaatsiz, dik kafalı",
+    "example": "The contumacious soldier repeatedly refused to follow orders and was eventually court-martialed."
+  },
+  {
+    "word": "curmudgeonly",
+    "meaning": "aksi, huysuz (yaşlı biri gibi)",
+    "example": "The curmudgeonly professor scared most students away with his gruff manner and impossible standards."
+  },
+  {
+    "word": "dexterous",
+    "meaning": "becerikli",
+    "example": "The dexterous surgeon performed the delicate operation with remarkable precision and speed."
+  },
+  {
+    "word": "diffident",
+    "meaning": "çekingen, kendine güvensiz",
+    "example": "The diffident student rarely spoke in class, even when she knew the answer better than anyone."
+  },
+  {
+    "word": "dilatory",
+    "meaning": "oyalayıcı, geciktirici",
+    "example": "The company's dilatory tactics delayed the lawsuit for years, draining the plaintiff's resources."
+  },
+  {
+    "word": "disparate",
+    "meaning": "birbirinden çok farklı",
+    "example": "The committee was made up of disparate individuals with wildly different backgrounds and priorities."
+  },
+  {
+    "word": "doleful",
+    "meaning": "kederli, hüzünlü",
+    "example": "The dog let out a doleful howl every time his owner left the house, even for a short errand."
+  },
+  {
+    "word": "draconian",
+    "meaning": "çok sert, acımasız (kural)",
+    "example": "The dictator imposed draconian penalties for even the most minor infractions of the law."
+  },
+  {
+    "word": "ebullient",
+    "meaning": "coşkulu, taşkın",
+    "example": "The ebullient child bounced around the room, unable to contain her excitement about the trip to Disneyland."
+  },
+  {
+    "word": "effervescent",
+    "meaning": "köpüren, canlı ve neşeli",
+    "example": "Her effervescent personality lit up every room she entered, making her a favorite among friends and colleagues."
+  },
+  {
+    "word": "emollient",
+    "meaning": "yumuşatıcı, yatıştırıcı",
+    "example": "The diplomat's emollient words helped calm the tensions between the two hostile delegations."
+  },
+  {
+    "word": "equable",
+    "meaning": "dengeli, sakin",
+    "example": "The teacher's equable temperament meant she never lost her patience, even with the most challenging students."
+  },
+  {
+    "word": "erudite",
+    "meaning": "bilgili, engin bilgili",
+    "example": "The erudite scholar could converse fluently on topics ranging from ancient history to quantum physics."
+  },
+  {
+    "word": "execrable",
+    "meaning": "berbat, iğrenç",
+    "example": "The restaurant's execrable service was matched only by the appalling quality of the food."
+  },
+  {
+    "word": "facetious",
+    "meaning": "şakacı, ciddiyetsiz",
+    "example": "His facetious remarks during the solemn ceremony were met with disapproving stares from the congregation."
+  },
+  {
+    "word": "fallacious",
+    "meaning": "yanlış, aldatıcı (mantık)",
+    "example": "The argument was built on fallacious reasoning that collapsed under even the most basic scrutiny."
+  },
+  {
+    "word": "felicitous",
+    "meaning": "yerinde, uygun (ifade)",
+    "example": "The ambassador made a felicitous speech that strengthened diplomatic ties between the two nations."
+  },
+  {
+    "word": "fractious",
+    "meaning": "huysuz, hırçın",
+    "example": "The fractious toddler threw a tantrum every time his mother tried to put him in his car seat."
+  },
+  {
+    "word": "frenetic",
+    "meaning": "çılgınca telaşlı",
+    "example": "The frenetic pace of the trading floor left new employees exhausted by the end of their first day."
+  },
+  {
+    "word": "gauche",
+    "meaning": "beceriksiz, sosyal açıdan acemi",
+    "example": "His gauche behavior at the formal reception included talking with his mouth full and using the wrong fork."
+  },
+  {
+    "word": "genial",
+    "meaning": "cana yakın, sıcakkanlı",
+    "example": "The genial host made sure no one's glass was ever empty and that every guest was engaged in conversation."
+  },
+  {
+    "word": "glib",
+    "meaning": "kolay ve inandırıcı konuşan (samimiyetsiz)",
+    "example": "The salesman was so glib that customers often bought products they didn't need, only to regret it later."
+  },
+  {
+    "word": "grandiloquent",
+    "meaning": "tumturaklı, abartılı konuşan",
+    "example": "The mayor's grandiloquent dedication speech went on for forty minutes and put half the audience to sleep."
+  },
+  {
+    "word": "gullible",
+    "meaning": "saf, kolay kanan",
+    "example": "The gullible woman believed the email promising she had won a lottery she had never entered."
+  },
+  {
+    "word": "hapless",
+    "meaning": "talihsiz, şanssız",
+    "example": "The hapless traveler lost his passport, missed his flight, and had his luggage sent to the wrong continent."
+  },
+  {
+    "word": "haughty",
+    "meaning": "kibirli, tepeden bakan",
+    "example": "The haughty maître d' looked down his nose at anyone not wearing a jacket and tie."
+  },
+  {
+    "word": "histrionic",
+    "meaning": "abartılı, gösterişçi (davranış)",
+    "example": "Her histrionic reaction to the minor inconvenience drew annoyed glances from everyone in the checkout line."
+  },
+  {
+    "word": "ignoble",
+    "meaning": "aşağılık, onursuz",
+    "example": "The knight was stripped of his title for the ignoble act of fleeing from battle and leaving his men behind."
+  },
+  {
+    "word": "imperious",
+    "meaning": "buyurgan, emredici",
+    "example": "The imperious queen demanded absolute obedience from everyone in her court, brooking no disagreement."
+  },
+  {
+    "word": "impetuous",
+    "meaning": "atılgan, aceleci",
+    "example": "His impetuous decision to quit his job without a backup plan left him struggling to pay rent the next month."
+  },
+  {
+    "word": "impudent",
+    "meaning": "arsız, saygısız",
+    "example": "The impudent child talked back to the teacher and refused to apologize for his disruptive behavior."
+  },
+  {
+    "word": "inane",
+    "meaning": "boş, anlamsız",
+    "example": "The reality show was filled with inane conversations that added nothing of value to anyone's day."
+  },
+  {
+    "word": "incisive",
+    "meaning": "keskin, nüfuz edici (zeka/eleştiri)",
+    "example": "The journalist's incisive questions exposed contradictions in the politician's story that no one else had caught."
+  },
+  {
+    "word": "indefatigable",
+    "meaning": "yorulmak bilmez",
+    "example": "The indefatigable activist traveled to fifty cities in three months, campaigning tirelessly for the cause."
+  },
+  {
+    "word": "indolent",
+    "meaning": "tembel, uyuşuk",
+    "example": "The indolent cat slept for eighteen hours a day, stirring only to eat before finding a new sunbeam."
+  },
+  {
+    "word": "ineffable",
+    "meaning": "tarifsiz, anlatılamaz",
+    "example": "The view from the summit was of ineffable beauty that no photograph could possibly capture."
+  },
+  {
+    "word": "inimical",
+    "meaning": "düşmanca, zararlı",
+    "example": "The new policy was inimical to the interests of small businesses, which struggled under the added regulations."
+  },
+  {
+    "word": "insipid",
+    "meaning": "tatsız, sıkıcı",
+    "example": "The soup was so insipid that even a generous pinch of salt couldn't make it palatable."
+  },
+  {
+    "word": "intractable",
+    "meaning": "yönetilmesi/çözülmesi zor",
+    "example": "The intractable conflict had defied every peace proposal put forward by international mediators."
+  },
+  {
+    "word": "intrusive",
+    "meaning": "izinsiz giren, rahatsız edici",
+    "example": "The intrusive reporter knocked on the grieving family's door, demanding an interview about the tragedy."
+  },
+  {
+    "word": "inured",
+    "meaning": "alışmış, duyarsızlaşmış",
+    "example": "Years of working in the emergency room had inured her to the sight of blood and severe injuries."
+  },
+  {
+    "word": "irascible",
+    "meaning": "asabi, çabuk sinirlenen",
+    "example": "The irascible chef fired three assistants in a single week for minor mistakes in the kitchen."
+  },
+  {
+    "word": "jaded",
+    "meaning": "bıkkın, yorgun düşmüş",
+    "example": "After years of reviewing restaurants, the food critic had become jaded and hard to impress."
+  },
+  {
+    "word": "jocular",
+    "meaning": "şakacı, neşeli",
+    "example": "The jocular uncle kept the family entertained with jokes and funny stories throughout the holiday dinner."
+  },
+  {
+    "word": "judicious",
+    "meaning": "sağduyulu, isabetli",
+    "example": "The judicious manager weighed all options carefully before making a decision that affected the entire department."
+  },
+  {
+    "word": "lackadaisical",
+    "meaning": "isteksiz, ilgisiz",
+    "example": "The lackadaisical approach to safety led to several preventable accidents on the factory floor."
+  },
+  {
+    "word": "libelous",
+    "meaning": "iftira niteliğinde",
+    "example": "The newspaper was sued for publishing a libelous article that falsely accused the mayor of corruption."
+  },
+  {
+    "word": "loquacious",
+    "meaning": "konuşkan, geveze",
+    "example": "The loquacious aunt could talk for hours without pausing, rarely letting anyone else get a word in."
+  },
+  {
+    "word": "luminous",
+    "meaning": "ışık saçan, parlak",
+    "example": "The luminous full moon lit up the night sky, casting silver shadows across the snowy landscape."
+  },
+  {
+    "word": "maudlin",
+    "meaning": "aşırı duygusal, ağlamaklı",
+    "example": "After a few glasses of wine, he became maudlin, weeping over memories from decades past."
+  },
+  {
+    "word": "mawkish",
+    "meaning": "yapmacık duygusal",
+    "example": "The film's mawkish ending, with its swelling violins and tearful embraces, felt manipulative rather than moving."
+  },
+  {
+    "word": "mercurial",
+    "meaning": "değişken ruh halli",
+    "example": "The mercurial boss could be warm and friendly one moment and coldly critical the next, keeping everyone on edge."
+  },
+  {
+    "word": "morose",
+    "meaning": "asık suratlı, somurtkan",
+    "example": "The morose teenager sat in his room with the curtains drawn, refusing to speak to anyone in the family."
+  },
+  {
+    "word": "munificent",
+    "meaning": "eli açık, cömert",
+    "example": "The munificent benefactor donated not only a new library but also an endowment to maintain it in perpetuity."
+  },
+  {
+    "word": "noxious",
+    "meaning": "zehirli, zararlı",
+    "example": "The noxious fumes from the chemical plant forced nearby residents to evacuate their homes."
+  },
+  {
+    "word": "obtuse",
+    "meaning": "anlayışı kıt, kalın kafalı",
+    "example": "The obtuse student couldn't grasp even the simplest concepts, despite the teacher's patient explanations."
+  },
+  {
+    "word": "odious",
+    "meaning": "iğrenç, tiksindirici",
+    "example": "The odious dictator was responsible for the deaths of thousands of innocent civilians."
+  },
+  {
+    "word": "orthodox",
+    "meaning": "geleneksel, alışılagelmiş",
+    "example": "The scientist challenged orthodox theories about the origin of the universe with his groundbreaking research."
+  },
+  {
+    "word": "parochial",
+    "meaning": "dar görüşlü, taşra kafalı",
+    "example": "The parochial attitude of the town council prevented them from seeing the benefits of the proposed development."
+  },
+  {
+    "word": "pedantic",
+    "meaning": "kılı kırk yaran, bilgiçlik taslayan",
+    "example": "The pedantic professor spent twenty minutes correcting a student's minor grammatical error instead of addressing the substance of the argument."
+  },
+  {
+    "word": "penitent",
+    "meaning": "pişman",
+    "example": "The penitent thief returned the stolen goods and wrote a letter of apology to the shop owner."
+  },
+  {
+    "word": "perspicacious",
+    "meaning": "keskin sezgili, kavrayışlı",
+    "example": "The perspicacious detective noticed a small detail that everyone else had overlooked, which broke the case wide open."
+  },
+  {
+    "word": "phlegmatic",
+    "meaning": "soğukkanlı, ağır",
+    "example": "The phlegmatic engineer remained calm while everyone around him panicked during the system failure."
+  },
+  {
+    "word": "pliable",
+    "meaning": "esnek, kolay yönlendirilebilir",
+    "example": "The pliable material could be molded into any shape, making it ideal for the sculptor's ambitious project."
+  },
+  {
+    "word": "prosaic",
+    "meaning": "sıradan, şiirsel olmayan",
+    "example": "After his fantastical first novel, the author's second book was disappointingly prosaic in both style and content."
+  },
+  {
+    "word": "recondite",
+    "meaning": "anlaşılması zor, derin",
+    "example": "The journal published articles on recondite subjects that only a handful of specialists in the world could fully appreciate."
+  },
+  {
+    "word": "redolent",
+    "meaning": "çağrıştıran, kokusunu andıran",
+    "example": "The attic was redolent with the smell of old books and forgotten memories of summers past."
+  },
+  {
+    "word": "repugnant",
+    "meaning": "iğrenç, tiksinti verici",
+    "example": "The very idea of eating insects was repugnant to her, despite their being a delicacy in many cultures."
+  },
+  {
+    "word": "reticent",
+    "meaning": "ağzı sıkı, çekingen",
+    "example": "The reticent starlet refused to discuss her personal life in interviews, deflecting all such questions."
+  },
+  {
+    "word": "sardonic",
+    "meaning": "alaycı, iğneleyici",
+    "example": "He gave a sardonic smile when told that the company's profits would triple by year's end."
+  },
+  {
+    "word": "saturnine",
+    "meaning": "asık suratlı, kasvetli",
+    "example": "The saturnine count rarely smiled and moved through his castle like a shadow, inspiring fear in the servants."
+  },
+  {
+    "word": "scrupulous",
+    "meaning": "vicdanlı, dikkatli",
+    "example": "The scrupulous accountant reported every discrepancy she found, no matter how small or inconvenient."
+  },
+  {
+    "word": "sedulous",
+    "meaning": "gayretli, azimli",
+    "example": "The sedulous researcher spent years compiling data for a study that would eventually transform the field."
+  },
+  {
+    "word": "sequacious",
+    "meaning": "başkalarına kolay uyan",
+    "example": "The sequacious crowd followed the guru's every word without question, abandoning their own critical judgment."
+  },
+  {
+    "word": "smug",
+    "meaning": "kendini beğenmiş",
+    "example": "The smug student smirked when the teacher announced the test results, confident he had scored the highest."
+  },
+  {
+    "word": "sonorous",
+    "meaning": "tok sesli, gür",
+    "example": "The sonorous voice of the cathedral organ filled every corner of the vast stone building."
+  },
+  {
+    "word": "sparse",
+    "meaning": "seyrek, az",
+    "example": "The sparse audience in the theater was a clear sign that the production was not going to be a hit."
+  },
+  {
+    "word": "specious",
+    "meaning": "yanıltıcı derecede makul görünen",
+    "example": "The lawyer's specious argument sounded convincing at first but fell apart under cross-examination."
+  },
+  {
+    "word": "stolid",
+    "meaning": "duygusuz görünen, tepkisiz",
+    "example": "The stolid farmer received the news of his lottery win with barely a change in expression."
+  },
+  {
+    "word": "supercilious",
+    "meaning": "kibirli, küçümseyici",
+    "example": "The supercilious art critic dismissed every painting in the gallery as amateurish and derivative."
+  },
+  {
+    "word": "surly",
+    "meaning": "asık suratlı, ters",
+    "example": "The surly bartender grudgingly served the drinks without a word, slamming the glasses on the counter."
+  },
+  {
+    "word": "sycophantic",
+    "meaning": "yağcı, dalkavuk",
+    "example": "The sycophantic courtier flattered the king at every opportunity, hoping to be granted a title."
+  },
+  {
+    "word": "temerarious",
+    "meaning": "pervasız, aşırı cesur",
+    "example": "The temerarious stuntman attempted a jump that no one had ever survived, despite warnings from every expert."
+  },
+  {
+    "word": "tempestuous",
+    "meaning": "fırtınalı, çalkantılı",
+    "example": "The couple's tempestuous relationship was marked by passionate reconciliations followed by explosive arguments."
+  },
+  {
+    "word": "timorous",
+    "meaning": "korkak, ürkek",
+    "example": "The timorous rabbit bolted at the slightest sound, darting into the safety of its burrow."
+  },
+  {
+    "word": "torrid",
+    "meaning": "çok sıcak; tutkulu",
+    "example": "The expedition struggled through the torrid heat of the desert, rationing water to survive the crossing."
+  },
+  {
+    "word": "turgid",
+    "meaning": "şişkin, tumturaklı (yazı)",
+    "example": "The academic paper was written in such turgid prose that even colleagues in the field found it hard to read."
+  },
+  {
+    "word": "unassuming",
+    "meaning": "alçakgönüllü, gösterişsiz",
+    "example": "The unassuming millionaire drove an old car and lived in a modest house, donating most of his wealth to charity."
+  },
+  {
+    "word": "uninhibited",
+    "meaning": "çekinmeyen, rahat",
+    "example": "The children were completely uninhibited at the party, dancing and singing without a care in the world."
+  },
+  {
+    "word": "unremitting",
+    "meaning": "aralıksız, sürekli",
+    "example": "The unremitting rain continued for three weeks, flooding basements and saturating the fields."
+  },
+  {
+    "word": "urbane",
+    "meaning": "kibar, dünya görmüş",
+    "example": "The urbane diplomat charmed every room he entered, moving effortlessly between cultures and languages."
+  },
+  {
+    "word": "veracious",
+    "meaning": "doğru sözlü",
+    "example": "The veracious historian was known for never embellishing facts, even when the truth was inconvenient."
+  },
+  {
+    "word": "verbose",
+    "meaning": "gereğinden fazla söz söyleyen",
+    "example": "The verbose contract ran to three hundred pages and could have said the same thing in a quarter of the length."
+  },
+  {
+    "word": "vitriolic",
+    "meaning": "zehir gibi, çok sert (söz)",
+    "example": "The columnist's vitriolic attack on the actress was widely condemned as cruel and unnecessary."
+  },
+  {
+    "word": "vociferous",
+    "meaning": "yüksek sesle bağıran, gürültücü",
+    "example": "The vociferous protesters chanted slogans outside the building, drawing attention from every passerby."
+  },
+  {
+    "word": "wily",
+    "meaning": "kurnaz, hilekar",
+    "example": "The wily fox managed to outsmart every trap the farmer set, stealing chickens with impunity."
+  },
+  {
+    "word": "winsome",
+    "meaning": "cana yakın, çekici",
+    "example": "The winsome child charmed every adult she met with her bright smile and cheerful disposition."
+  },
+  {
+    "word": "abjure",
+    "meaning": "yeminle vazgeçmek",
+    "example": "The convert abjured his former religion and embraced the new faith with fervent devotion."
+  },
+  {
+    "word": "accost",
+    "meaning": "yanına yaklaşıp laf atmak",
+    "example": "The stranger accosted her on the street, demanding money with an aggressive tone that frightened her."
+  },
+  {
+    "word": "adumbrate",
+    "meaning": "üstünkörü belirtmek, ana hatlarını çizmek",
+    "example": "The report adumbrates the main challenges the company will face in the coming year without going into detail."
+  },
+  {
+    "word": "amass",
+    "meaning": "biriktirmek, yığmak",
+    "example": "Over thirty years, the collector managed to amass one of the finest collections of rare stamps in the world."
+  },
+  {
+    "word": "annul",
+    "meaning": "iptal etmek, feshetmek",
+    "example": "The supreme court voted to annul the election results after evidence of widespread fraud was confirmed."
+  },
+  {
+    "word": "appertain",
+    "meaning": "ilgili olmak, ait olmak",
+    "example": "The rights and responsibilities appertaining to property ownership are outlined in the municipal code."
+  },
+  {
+    "word": "arrogate",
+    "meaning": "haksız yere kendine mal etmek",
+    "example": "The department head arrogated credit for the project, even though her team had done all the actual work."
+  },
+  {
+    "word": "bemoan",
+    "meaning": "yakınmak, dert yanmak",
+    "example": "The old man would bemoan the decline of manners in modern society to anyone who would listen."
+  },
+  {
+    "word": "bequeath",
+    "meaning": "miras bırakmak",
+    "example": "The eccentric millionaire bequeathed his entire estate to the local animal shelter, surprising his relatives."
+  },
+  {
+    "word": "besmirch",
+    "meaning": "lekelemek, karalamak",
+    "example": "The rival politician tried to besmirch her reputation by spreading rumors about her personal life."
+  },
+  {
+    "word": "blandish",
+    "meaning": "pohpohlamak",
+    "example": "The student blandished the professor with compliments about his lectures, hoping for a better grade."
+  },
+  {
+    "word": "bolt",
+    "meaning": "aniden kaçmak",
+    "example": "The horse bolted at the sound of the gunshot, throwing its rider into the dust."
+  },
+  {
+    "word": "bristle",
+    "meaning": "sinirlenmek, tüyleri diken diken olmak",
+    "example": "She bristled at the suggestion that she had only gotten the job because of her father's connections."
+  },
+  {
+    "word": "calumniate",
+    "meaning": "iftira atmak",
+    "example": "The disgruntled employee tried to calumniate his former boss by spreading false stories about embezzlement."
+  },
+  {
+    "word": "cavil",
+    "meaning": "gereksiz itirazlarda bulunmak",
+    "example": "The pedantic reviewer would cavil about minor formatting issues while ignoring the substance of the book."
+  },
+  {
+    "word": "censure",
+    "meaning": "kınamak",
+    "example": "The ethics committee voted to censure the senator for accepting gifts from lobbyists."
+  },
+  {
+    "word": "chide",
+    "meaning": "azarlamak",
+    "example": "The mother chided her daughter for leaving the front door unlocked all night."
+  },
+  {
+    "word": "connote",
+    "meaning": "çağrıştırmak",
+    "example": "The word 'home' connotes warmth, safety, and belonging, beyond its literal meaning of a place to live."
+  },
+  {
+    "word": "contrive",
+    "meaning": "planlamak, tertiplemek",
+    "example": "The students contrived an elaborate scheme to postpone the exam, but the teacher saw through it immediately."
+  },
+  {
+    "word": "corrode",
+    "meaning": "aşındırmak, çürütmek",
+    "example": "Salt water can corrode metal fittings on boats much faster than fresh water."
+  },
+  {
+    "word": "cower",
+    "meaning": "korkudan sinmek, büzülmek",
+    "example": "The dog cowered under the bed during the thunderstorm, trembling with every clap of thunder."
+  },
+  {
+    "word": "decimate",
+    "meaning": "büyük ölçüde yok etmek",
+    "example": "The disease decimated the rabbit population, leaving only a fraction of the original numbers alive."
+  },
+  {
+    "word": "deign",
+    "meaning": "tenezzül etmek",
+    "example": "The aristocrat would not deign to speak to the servants, communicating only through his butler."
+  },
+  {
+    "word": "demur",
+    "meaning": "itiraz etmek, çekimser kalmak",
+    "example": "The board member demurred when asked to approve the proposal, requesting more time to review the details."
+  },
+  {
+    "word": "deploy",
+    "meaning": "konuşlandırmak, kullanıma sokmak",
+    "example": "The general decided to deploy additional troops along the border in response to the escalating threat."
+  },
+  {
+    "word": "derail",
+    "meaning": "raydan çıkarmak, sekteye uğratmak",
+    "example": "A series of scandals derailed the candidate's presidential campaign just weeks before the election."
+  },
+  {
+    "word": "desist",
+    "meaning": "vazgeçmek, durmak",
+    "example": "The court issued an injunction ordering the company to desist from using the patented technology."
+  },
+  {
+    "word": "discountenance",
+    "meaning": "onaylamamak, cesaretini kırmak",
+    "example": "The principal discountenanced the students' plan to hold a protest during school hours."
+  },
+  {
+    "word": "distend",
+    "meaning": "şişmek, genişlemek",
+    "example": "The balloon distended as more air was pumped in, stretching the rubber to its limit."
+  },
+  {
+    "word": "dote",
+    "meaning": "aşırı düşkün olmak",
+    "example": "The grandmother doted on her grandchildren, showering them with gifts and affection at every opportunity."
+  },
+  {
+    "word": "efface",
+    "meaning": "silmek, yok etmek",
+    "example": "Time had effaced the inscription on the old gravestone, leaving the words barely legible."
+  },
+  {
+    "word": "emote",
+    "meaning": "duygu göstermek (abartılı)",
+    "example": "The actor emoted wildly during the dramatic scene, gesturing and weeping with exaggerated passion."
+  },
+  {
+    "word": "enthrall",
+    "meaning": "büyülemek",
+    "example": "The storyteller enthralled the children with tales of dragons and faraway kingdoms, holding them spellbound for hours."
+  },
+  {
+    "word": "eulogize",
+    "meaning": "övgüyle anmak",
+    "example": "The president eulogized the fallen soldier, praising his courage and dedication to his country."
+  },
+  {
+    "word": "evince",
+    "meaning": "açıkça göstermek",
+    "example": "The data evinces a clear correlation between education levels and income across all age groups."
+  },
+  {
+    "word": "exhume",
+    "meaning": "mezardan çıkarmak",
+    "example": "Prosecutors ordered the body to be exhumed for additional forensic testing that was not available at the time of death."
+  },
+  {
+    "word": "expiate",
+    "meaning": "kefaretini ödemek",
+    "example": "He spent years doing community service to expiate the guilt he felt for the accident he had caused."
+  },
+  {
+    "word": "extirpate",
+    "meaning": "kökünden yok etmek",
+    "example": "The campaign to extirpate malaria involved draining swamps and distributing mosquito nets to every household."
+  },
+  {
+    "word": "fathom",
+    "meaning": "kavramak, anlamak",
+    "example": "She couldn't fathom why anyone would deliberately destroy something so beautiful and irreplaceable."
+  },
+  {
+    "word": "filch",
+    "meaning": "ufak çaplı çalmak",
+    "example": "The mischievous boy would filch cookies from the jar when his mother wasn't looking."
+  },
+  {
+    "word": "flounder",
+    "meaning": "bocalamak, zorlanmak",
+    "example": "The witness floundered under cross-examination, contradicting his earlier testimony several times."
+  },
+  {
+    "word": "foist",
+    "meaning": "zorla kabul ettirmek",
+    "example": "The company tried to foist additional charges on customers by burying them in the fine print of the contract."
+  },
+  {
+    "word": "forgo",
+    "meaning": "vazgeçmek",
+    "example": "She decided to forgo the party to spend the evening studying for her final exams."
+  },
+  {
+    "word": "gloat",
+    "meaning": "kötü niyetle sevinmek",
+    "example": "He gloated over his rival's failure, unable to hide his satisfaction at the other man's misfortune."
+  },
+  {
+    "word": "hearten",
+    "meaning": "cesaretlendirmek",
+    "example": "The supportive crowd heartened the team, who went on to win the match after a dismal first half."
+  },
+  {
+    "word": "impart",
+    "meaning": "aktarmak, bildirmek",
+    "example": "The mentor imparted decades of wisdom to his young protégé in their weekly meetings."
+  },
+  {
+    "word": "importune",
+    "meaning": "sıkboğaz etmek, ısrar etmek",
+    "example": "The beggar importuned every passerby for spare change, refusing to take no for an answer."
+  },
+  {
+    "word": "incapacitate",
+    "meaning": "işlevsiz bırakmak",
+    "example": "The stroke managed to incapacitate the right side of his body, requiring months of physical therapy."
+  },
+  {
+    "word": "ingratiate",
+    "meaning": "gözüne girmeye çalışmak",
+    "example": "The new employee tried to ingratiate himself with the boss by working late and complimenting every decision."
+  },
+  {
+    "word": "inundate",
+    "meaning": "sel gibi basmak, boğmak",
+    "example": "After the story went viral, the company was inundated with calls from reporters and curious customers."
+  },
+  {
+    "word": "inveigh",
+    "meaning": "şiddetle eleştirmek",
+    "example": "The columnist inveighed against government corruption in a fiery piece that went viral overnight."
+  },
+  {
+    "word": "lacerate",
+    "meaning": "yaralamak, parçalamak",
+    "example": "The barbed wire managed to lacerate his arm as he climbed over the fence."
+  },
+  {
+    "word": "languish",
+    "meaning": "zayıf düşmek, solmak",
+    "example": "Without proper sunlight and water, the once-thriving plants began to languish on the windowsill."
+  },
+  {
+    "word": "libel",
+    "meaning": "iftira ile karalamak",
+    "example": "The celebrity sued the blogger for attempting to libel her in a series of defamatory posts."
+  },
+  {
+    "word": "meddle",
+    "meaning": "karışmak, burnunu sokmak",
+    "example": "The mother-in-law constantly meddled in the young couple's affairs, offering unsolicited advice at every turn."
+  },
+  {
+    "word": "mollycoddle",
+    "meaning": "aşırı korumak, şımartmak",
+    "example": "The parents mollycoddled their son to the point that he couldn't do anything for himself by the time he was twenty."
+  },
+  {
+    "word": "mourn",
+    "meaning": "yas tutmak",
+    "example": "The entire nation mourned the passing of the beloved leader, flags flying at half-mast for a week."
+  },
+  {
+    "word": "muster",
+    "meaning": "toplamak (güç/cesaret)",
+    "example": "She had to muster all her courage to walk into the room and face the panel of interviewers."
+  },
+  {
+    "word": "nettle",
+    "meaning": "sinirlendirmek",
+    "example": "His constant interruptions nettled the speaker, who finally asked him to let her finish."
+  },
+  {
+    "word": "ordain",
+    "meaning": "buyurmak, atamak",
+    "example": "The church council voted to ordain the young minister after years of training and service."
+  },
+  {
+    "word": "outstrip",
+    "meaning": "geride bırakmak, aşmak",
+    "example": "Demand for the new product outstripped supply within days of the launch, leaving stores empty."
+  },
+  {
+    "word": "overreach",
+    "meaning": "haddini aşmak",
+    "example": "The prosecutor overreached by charging the suspect with a crime the evidence clearly didn't support."
+  },
+  {
+    "word": "palter",
+    "meaning": "yalan söylemek, kaçamak yapmak",
+    "example": "The witness was caught paltering with the court, telling technically true statements designed to mislead."
+  },
+  {
+    "word": "parry",
+    "meaning": "savuşturmak",
+    "example": "The skilled fencer parried every attack with precision, waiting for the right moment to strike back."
+  },
+  {
+    "word": "pillage",
+    "meaning": "yağmalamak",
+    "example": "The invading army pillaged the village, taking everything of value and burning what remained."
+  },
+  {
+    "word": "proffer",
+    "meaning": "sunmak, teklif etmek",
+    "example": "The company proffered a generous settlement to avoid a prolonged and costly legal battle."
+  },
+  {
+    "word": "propitiate",
+    "meaning": "gönlünü almak",
+    "example": "The tribe offered sacrifices to propitiate the gods, hoping for a bountiful harvest in return."
+  },
+  {
+    "word": "pummel",
+    "meaning": "yumruklamak",
+    "example": "The boxer pummeled his opponent relentlessly, landing blow after blow until the referee stopped the fight."
+  },
+  {
+    "word": "quaff",
+    "meaning": "büyük yudumlarla içmek",
+    "example": "The thirsty laborer quaffed the cold water in one long, continuous gulp."
+  },
+  {
+    "word": "quell",
+    "meaning": "bastırmak",
+    "example": "The police were called in to quell the riot that had erupted in the city center."
+  },
+  {
+    "word": "rankle",
+    "meaning": "içini kemirmek, dert olmak",
+    "example": "The unfair dismissal continued to rankle years after he had found a new and better job."
+  },
+  {
+    "word": "ravage",
+    "meaning": "harap etmek",
+    "example": "The wildfire ravaged thousands of acres of forest, leaving behind a charred and barren landscape."
+  },
+  {
+    "word": "recoil",
+    "meaning": "geri çekilmek, ürkmek",
+    "example": "She recoiled in horror when she saw the gruesome scene depicted in the painting."
+  },
+  {
+    "word": "regale",
+    "meaning": "eğlendirmek, ağırlamak",
+    "example": "The grandfather regaled the children with stories of his adventures at sea, complete with sound effects."
+  },
+  {
+    "word": "reprimand",
+    "meaning": "azarlamak",
+    "example": "The sergeant reprimanded the soldier for his uniform being out of regulation during the inspection."
+  },
+  {
+    "word": "resile",
+    "meaning": "geri dönmek, vazgeçmek",
+    "example": "The company initially supported the proposal but resiled when public opinion turned against it."
+  },
+  {
+    "word": "retract",
+    "meaning": "geri almak (söz)",
+    "example": "The newspaper was forced to retract the article after it was proven to be based on fabricated sources."
+  },
+  {
+    "word": "revile",
+    "meaning": "sövmek, kötülemek",
+    "example": "The angry mob reviled the politician as he was escorted from the building by security guards."
+  },
+  {
+    "word": "sate",
+    "meaning": "doyurmak",
+    "example": "After days of hunger, the refugees were finally sated with a simple meal of rice and beans."
+  },
+  {
+    "word": "scoff",
+    "meaning": "alay etmek",
+    "example": "The older students scoffed at the freshman's earnest question, making him feel small and embarrassed."
+  },
+  {
+    "word": "scour",
+    "meaning": "didik didik aramak",
+    "example": "The detectives scoured the crime scene for any trace of evidence that could identify the perpetrator."
+  },
+  {
+    "word": "scrounge",
+    "meaning": "beleşe konmak, gizlice edinmek",
+    "example": "The stray dog would scrounge through trash cans behind the restaurant for scraps of food."
+  },
+  {
+    "word": "seethe",
+    "meaning": "içi içini yemek, öfkeden kaynamak",
+    "example": "She seethed with anger during the entire meeting, barely containing her frustration at being ignored."
+  },
+  {
+    "word": "shirk",
+    "meaning": "kaçmak, kaytarmak",
+    "example": "The employee was known to shirk his responsibilities, leaving colleagues to pick up the slack."
+  },
+  {
+    "word": "shroud",
+    "meaning": "örtmek, gizlemek",
+    "example": "Thick fog shrouded the harbor, making it impossible to see more than a few feet ahead."
+  },
+  {
+    "word": "skulk",
+    "meaning": "sinsice dolaşmak",
+    "example": "The thief skulked in the shadows behind the building, waiting for the last employee to leave."
+  },
+  {
+    "word": "slight",
+    "meaning": "hafife almak, hakaret etmek",
+    "example": "She felt slighted when her contribution to the project was not mentioned during the presentation."
+  },
+  {
+    "word": "smear",
+    "meaning": "karalamak, lekelemek",
+    "example": "The rival campaign tried to smear the candidate with unfounded accusations about his personal life."
+  },
+  {
+    "word": "smite",
+    "meaning": "vurmak, çarpmak",
+    "example": "The hero smote the dragon with one mighty blow of his enchanted sword."
+  },
+  {
+    "word": "snub",
+    "meaning": "küçümseyerek reddetmek",
+    "example": "The ambassador snubbed the reception by leaving after only five minutes, a deliberate insult to the host."
+  },
+  {
+    "word": "squander",
+    "meaning": "har vurup harman savurmak",
+    "example": "The heir squandered his inheritance on lavish parties and expensive cars within two years."
+  },
+  {
+    "word": "stultify",
+    "meaning": "aptallaştırmak, etkisiz kılmak",
+    "example": "The mindless assembly-line work threatened to stultify even the most creative and engaged workers."
+  },
+  {
+    "word": "subsume",
+    "meaning": "içine almak, kapsamak",
+    "example": "The new department will subsume all existing marketing and communications teams under one umbrella."
+  },
+  {
+    "word": "supersede",
+    "meaning": "yerini almak",
+    "example": "The updated regulations will supersede all previous versions as of January first."
+  },
+  {
+    "word": "surmount",
+    "meaning": "üstesinden gelmek",
+    "example": "With determination and hard work, she managed to surmount every obstacle in her path to success."
+  },
+  {
+    "word": "swathe",
+    "meaning": "sarmak, örtmek",
+    "example": "The mother swathed the baby in warm blankets, tucking the edges in carefully against the cold."
+  },
+  {
+    "word": "tarry",
+    "meaning": "oyalanmak, gecikmek",
+    "example": "We tarried too long at the café and missed the last train home."
+  },
+  {
+    "word": "taunt",
+    "meaning": "alay ederek kızdırmak",
+    "example": "The opposing fans taunted the goalkeeper every time he touched the ball, trying to distract him."
+  },
+  {
+    "word": "teem",
+    "meaning": "kaynamak, dolup taşmak",
+    "example": "The river teems with salmon during the spawning season, attracting fishermen from across the country."
+  },
+  {
+    "word": "traduce",
+    "meaning": "iftira atmak",
+    "example": "The defamatory article traduced the doctor's reputation, causing her to lose patients and standing in the community."
+  },
+  {
+    "word": "transgress",
+    "meaning": "sınırı aşmak, günah işlemek",
+    "example": "The soldier was punished for transgressing a direct order from his commanding officer."
+  },
+  {
+    "word": "trounce",
+    "meaning": "ağır yenilgiye uğratmak",
+    "example": "The home team trounced their rivals by a score of five to nothing, dominating every minute of the match."
+  },
+  {
+    "word": "underscore",
+    "meaning": "vurgulamak, altını çizmek",
+    "example": "The CEO underscored the importance of innovation during his keynote address to the entire company."
+  },
+  {
+    "word": "upend",
+    "meaning": "alt üst etmek",
+    "example": "The sudden resignation of the founder upended the company's plans for a public offering."
+  },
+  {
+    "word": "vex",
+    "meaning": "kızdırmak, canını sıkmak",
+    "example": "The constant barking from next door vexed her to the point that she finally called the authorities."
+  },
+  {
+    "word": "vilipend",
+    "meaning": "hor görmek, küçümsemek",
+    "example": "The critic vilipended the young author's debut novel, dismissing it as derivative and poorly written."
+  },
+  {
+    "word": "waft",
+    "meaning": "havada süzülmek, yayılmak",
+    "example": "The scent of jasmine wafted through the open window, filling the room with its sweet fragrance."
+  },
+  {
+    "word": "wane",
+    "meaning": "azalmak, sönmek",
+    "example": "Interest in the project began to wane as setbacks mounted and costs spiraled out of control."
+  },
+  {
+    "word": "wheedle",
+    "meaning": "tatlı dille kandırmak",
+    "example": "The child tried to wheedle an extra dessert out of her grandmother with a charming smile and a hug."
+  },
+  {
+    "word": "wince",
+    "meaning": "acıyla yüzünü buruşturmak",
+    "example": "He winced as the doctor cleaned the wound, the antiseptic stinging sharply against raw skin."
+  },
+  {
+    "word": "wrangle",
+    "meaning": "çekişmek, tartışmak",
+    "example": "The two ranchers wrangled over water rights for months before finally taking the dispute to court."
+  },
+  {
+    "word": "abeyance",
+    "meaning": "askıya alınmış durum",
+    "example": "The project was held in abeyance until additional funding could be secured from the board."
+  },
+  {
+    "word": "adversary",
+    "meaning": "hasım, düşman",
+    "example": "The chess champion regarded his upcoming opponent as a worthy adversary, not to be underestimated."
+  },
+  {
+    "word": "affront",
+    "meaning": "hakaret",
+    "example": "She took it as a personal affront when she was not invited to the wedding along with the rest of the office."
+  },
+  {
+    "word": "alacrity",
+    "meaning": "isteklilik, çabukluk",
+    "example": "He accepted the dinner invitation with alacrity, having been looking forward to trying the new restaurant for weeks."
+  },
+  {
+    "word": "allegiance",
+    "meaning": "sadakat, bağlılık",
+    "example": "New citizens swore allegiance to the flag during a solemn ceremony at the courthouse."
+  },
+  {
+    "word": "amnesty",
+    "meaning": "genel af",
+    "example": "The government declared an amnesty for all political prisoners as part of the peace agreement."
+  },
+  {
+    "word": "anathema",
+    "meaning": "nefret edilen şey, lanet",
+    "example": "The very idea of compromise was anathema to the extremist faction within the party."
+  },
+  {
+    "word": "annals",
+    "meaning": "tarihi kayıtlar",
+    "example": "The discovery will go down in the annals of science as one of the most important of the century."
+  },
+  {
+    "word": "antagonist",
+    "meaning": "hasım, karşıt karakter",
+    "example": "The protagonist and his antagonist were mirror images of each other, each believing he was the hero."
+  },
+  {
+    "word": "appellation",
+    "meaning": "isim, unvan",
+    "example": "The region earned the appellation 'Garden of France' thanks to its rolling vineyards and orchards."
+  },
+  {
+    "word": "apprehension",
+    "meaning": "endişe, korku",
+    "example": "She felt a growing apprehension as the sky darkened and the wind began to howl."
+  },
+  {
+    "word": "aristocracy",
+    "meaning": "aristokrasi, soylular sınıfı",
+    "example": "The French Revolution swept away the aristocracy and reshaped the political landscape of Europe."
+  },
+  {
+    "word": "armistice",
+    "meaning": "ateşkes",
+    "example": "The armistice signed on November eleventh ended the fighting, though the formal treaty took months to finalize."
+  },
+  {
+    "word": "artifice",
+    "meaning": "hile, kurnazlık",
+    "example": "The magician's artifice was so clever that even close-up viewers couldn't see how the trick was done."
+  },
+  {
+    "word": "ascendancy",
+    "meaning": "üstünlük, hakimiyet",
+    "example": "The party gained ascendancy in the polls after the debate, surging to a commanding lead."
+  },
+  {
+    "word": "aspersion",
+    "meaning": "iftira, karalama",
+    "example": "The rival cast aspersions on the judge's integrity, implying that the verdict had been bought."
+  },
+  {
+    "word": "avarice",
+    "meaning": "açgözlülük",
+    "example": "The corporate raider's avarice was legendary; he would dismantle companies and sell the parts for profit."
+  },
+  {
+    "word": "bane",
+    "meaning": "belanın kaynağı",
+    "example": "Noise pollution was the bane of the neighborhood, with constant traffic making sleep nearly impossible."
+  },
+  {
+    "word": "bedlam",
+    "meaning": "kargaşa, curcuna",
+    "example": "The classroom erupted into bedlam when the teacher stepped out for two minutes."
+  },
+  {
+    "word": "belligerent",
+    "meaning": "savaşan taraf",
+    "example": "The belligerents agreed to a temporary ceasefire to allow humanitarian aid into the war zone."
+  },
+  {
+    "word": "bereavement",
+    "meaning": "yakın kaybı, matem",
+    "example": "The company granted her a week of bereavement leave following the sudden death of her father."
+  },
+  {
+    "word": "bombast",
+    "meaning": "tumturaklı söz",
+    "example": "The speech was full of bombast but contained not a single concrete proposal or plan of action."
+  },
+  {
+    "word": "bravado",
+    "meaning": "yapmacık cesaret gösterisi",
+    "example": "His bravado crumbled the moment he stepped onto the stage and faced the audience of five hundred."
+  },
+  {
+    "word": "bulwark",
+    "meaning": "siper, koruma duvarı",
+    "example": "The ancient wall served as a bulwark against invaders for centuries, protecting the city within."
+  },
+  {
+    "word": "bureaucrat",
+    "meaning": "bürokrat",
+    "example": "The bureaucrat insisted that every form be filled out in triplicate before the application could proceed."
+  },
+  {
+    "word": "cabal",
+    "meaning": "gizli grup, entrika çevresi",
+    "example": "A cabal of senior officers plotted to remove the general from command, meeting in secret at night."
+  },
+  {
+    "word": "cache",
+    "meaning": "gizli depo, stok",
+    "example": "Hikers discovered a cache of supplies hidden in the cave, left by a previous expedition."
+  },
+  {
+    "word": "calamity",
+    "meaning": "felaket",
+    "example": "The earthquake was a calamity of unprecedented scale, leveling entire neighborhoods in seconds."
+  },
+  {
+    "word": "calumny",
+    "meaning": "iftira",
+    "example": "The tabloid was fined heavily for publishing a calumny about the actor's personal life."
+  },
+  {
+    "word": "camaraderie",
+    "meaning": "dostluk, birlik ruhu",
+    "example": "Years of shared hardship forged a deep camaraderie among the soldiers in the unit."
+  },
+  {
+    "word": "canon",
+    "meaning": "kabul görmüş kurallar bütünü",
+    "example": "The novel has become part of the literary canon, studied in universities around the world."
+  },
+  {
+    "word": "capitulation",
+    "meaning": "teslim olma",
+    "example": "The general's capitulation ended the siege, though many considered it premature and dishonorable."
+  },
+  {
+    "word": "caprice",
+    "meaning": "kapris, ani heves",
+    "example": "The designer's latest collection was driven by caprice rather than any coherent artistic vision."
+  },
+  {
+    "word": "carnage",
+    "meaning": "katliam",
+    "example": "The battlefield was a scene of carnage, with bodies scattered across the muddy ground as far as the eye could see."
+  },
+  {
+    "word": "caveat",
+    "meaning": "uyarı, şart",
+    "example": "The contract includes a caveat that allows either party to terminate the agreement with thirty days' notice."
+  },
+  {
+    "word": "chagrin",
+    "meaning": "hayal kırıklığı, üzüntü",
+    "example": "To her chagrin, she discovered that the antique she had bought at auction was a clever forgery."
+  },
+  {
+    "word": "chasm",
+    "meaning": "uçurum, derin ayrılık",
+    "example": "A chasm has opened between the two political parties, making bipartisan cooperation nearly impossible."
+  },
+  {
+    "word": "chicanery",
+    "meaning": "hile, dolandırıcılık",
+    "example": "The investigation uncovered years of chicanery at the highest levels of the corporation."
+  },
+  {
+    "word": "clamor",
+    "meaning": "gürültü, yaygara",
+    "example": "A clamor arose from the crowd when the singer announced this would be her final performance."
+  },
+  {
+    "word": "cognizance",
+    "meaning": "farkındalık, bilgi",
+    "example": "The manager took cognizance of the complaints and promised to address them at the next staff meeting."
+  },
+  {
+    "word": "commotion",
+    "meaning": "kargaşa, telaş",
+    "example": "A commotion broke out in the back of the hall when a protester stood and began shouting at the speaker."
+  },
+  {
+    "word": "compunction",
+    "meaning": "vicdan azabı",
+    "example": "He felt no compunction about revealing his colleague's role in the scandal, believing the public had a right to know."
+  },
+  {
+    "word": "conceit",
+    "meaning": "kendini beğenme",
+    "example": "The architect's conceit was evident in every building he designed, each topped with his initials in gold."
+  },
+  {
+    "word": "conjecture",
+    "meaning": "tahmin, varsayım",
+    "example": "Without solid evidence, any explanation of the phenomenon remains pure conjecture."
+  },
+  {
+    "word": "conundrum",
+    "meaning": "bilmece, çözümsüz sorun",
+    "example": "The mayor faced a conundrum: how to balance the budget without cutting essential services or raising taxes."
+  },
+  {
+    "word": "corollary",
+    "meaning": "doğal sonuç",
+    "example": "A corollary of increased automation is the displacement of workers whose jobs can be done by machines."
+  },
+  {
+    "word": "cortege",
+    "meaning": "cenaze alayı",
+    "example": "The cortege wound slowly through the streets, with hundreds of mourners walking behind the coffin."
+  },
+  {
+    "word": "coterie",
+    "meaning": "dar, kapalı grup",
+    "example": "The literary coterie met monthly to discuss poetry, welcoming only those who shared their particular aesthetic."
+  },
+  {
+    "word": "credence",
+    "meaning": "inanma, güven",
+    "example": "The leaked documents gave credence to the rumors that the company had been aware of the defect for years."
+  },
+  {
+    "word": "culpability",
+    "meaning": "suçluluk",
+    "example": "The jury found the corporation's culpability beyond reasonable doubt, holding it responsible for the environmental disaster."
+  },
+  {
+    "word": "debauchery",
+    "meaning": "sefahat, ahlaksız yaşam",
+    "example": "The Roman Empire's decline was often attributed to the debauchery of its ruling class."
+  },
+  {
+    "word": "debris",
+    "meaning": "enkaz, döküntü",
+    "example": "Rescue workers sifted through the debris for hours, searching for any signs of survivors."
+  },
+  {
+    "word": "degeneracy",
+    "meaning": "yozlaşmışlık",
+    "example": "The committee attributed the school's declining standards to a general degeneracy in educational values."
+  },
+  {
+    "word": "demeanor",
+    "meaning": "tavır, davranış",
+    "example": "The suspect's calm demeanor during the interrogation struck the detective as suspicious."
+  },
+  {
+    "word": "depravity",
+    "meaning": "ahlaki çöküntü",
+    "example": "The serial killer's depravity shocked even the most seasoned detectives on the force."
+  },
+  {
+    "word": "derision",
+    "meaning": "alay",
+    "example": "The proposal was met with derision by the board, who dismissed it as naive and impractical."
+  },
+  {
+    "word": "despondency",
+    "meaning": "umutsuzluk",
+    "example": "A wave of despondency swept over the team when their star player was injured in the first half."
+  },
+  {
+    "word": "detriment",
+    "meaning": "zarar",
+    "example": "Working late into the night every day was to the detriment of both his health and his family life."
+  },
+  {
+    "word": "diatribe",
+    "meaning": "ağır eleştiri, çıkışma",
+    "example": "The review degenerated into a personal diatribe against the author rather than a critique of the book itself."
+  },
+  {
+    "word": "disillusionment",
+    "meaning": "hayal kırıklığı",
+    "example": "The scandal caused widespread disillusionment among voters who had placed their faith in the reform movement."
+  },
+  {
+    "word": "dissonance",
+    "meaning": "uyumsuzluk, ahenksizlik",
+    "example": "There was a dissonance between what the company claimed to value and how it actually treated its employees."
+  },
+  {
+    "word": "doctrine",
+    "meaning": "öğreti, doktrin",
+    "example": "The president's foreign policy doctrine emphasized diplomacy over military intervention."
+  },
+  {
+    "word": "dogmatism",
+    "meaning": "dogmacılık",
+    "example": "The professor's dogmatism stifled discussion, as students learned it was futile to challenge his views."
+  },
+  {
+    "word": "dominion",
+    "meaning": "hakimiyet, egemenlik alanı",
+    "example": "The empire extended its dominion over three continents at the height of its power."
+  },
+  {
+    "word": "drudgery",
+    "meaning": "angarya, bıktırıcı iş",
+    "example": "She dreamed of escaping the drudgery of factory work and opening her own small business."
+  },
+  {
+    "word": "edict",
+    "meaning": "ferman, buyruk",
+    "example": "The emperor issued an edict declaring that all citizens must pay tribute to the state religion."
+  },
+  {
+    "word": "effigy",
+    "meaning": "kukla, temsili heykel",
+    "example": "Protesters burned an effigy of the president in the central square, chanting slogans against the regime."
+  },
+  {
+    "word": "elixir",
+    "meaning": "iksir, mucizevi ilaç",
+    "example": "The alchemist claimed to have discovered an elixir that would grant eternal youth to anyone who drank it."
+  },
+  {
+    "word": "embargo",
+    "meaning": "ambargo",
+    "example": "The United Nations imposed an arms embargo on the country in response to its aggressive military actions."
+  },
+  {
+    "word": "emissary",
+    "meaning": "elçi, temsilci",
+    "example": "The president sent an emissary to negotiate a peace treaty with the rebel forces."
+  },
+  {
+    "word": "encumbrance",
+    "meaning": "engel, yük",
+    "example": "The old mortgage was an encumbrance that prevented the family from selling the property at a fair price."
+  },
+  {
+    "word": "enigma",
+    "meaning": "muamma, bilmece",
+    "example": "The woman's true identity remains an enigma, despite years of investigation by historians."
+  },
+  {
+    "word": "ensemble",
+    "meaning": "topluluk, bütün",
+    "example": "The orchestra played as a cohesive ensemble, every instrument blending perfectly with the others."
+  },
+  {
+    "word": "entourage",
+    "meaning": "maiyet, çevre",
+    "example": "The pop star traveled with an entourage of assistants, bodyguards, and stylists wherever she went."
+  },
+  {
+    "word": "epiphany",
+    "meaning": "ani aydınlanma",
+    "example": "Sitting in the rain, she had an epiphany about what truly mattered in her life and decided to change everything."
+  },
+  {
+    "word": "epitaph",
+    "meaning": "mezar yazıtı",
+    "example": "The soldier's epitaph, written by his widow, simply read: 'He gave everything for those he loved.'"
+  },
+  {
+    "word": "epithet",
+    "meaning": "sıfat, lakap",
+    "example": "The king was known by the epithet 'the Cruel,' a name earned through decades of ruthless rule."
+  },
+  {
+    "word": "erudition",
+    "meaning": "engin bilgi",
+    "example": "The professor's erudition was legendary; he could quote from memory passages in a dozen languages."
+  },
+  {
+    "word": "escapade",
+    "meaning": "maceralı davranış",
+    "example": "The prince's latest escapade involved sneaking out of the palace to attend a rock concert in disguise."
+  },
+  {
+    "word": "euphony",
+    "meaning": "kulağa hoş gelen ses",
+    "example": "The poet aimed for euphony in every line, choosing words for their musical quality as much as their meaning."
+  },
+  {
+    "word": "exhilaration",
+    "meaning": "coşku, heyecan",
+    "example": "She felt a rush of exhilaration as she crested the summit and looked out at the valley below."
+  },
+  {
+    "word": "exigency",
+    "meaning": "acil ihtiyaç, zaruret",
+    "example": "The exigency of the situation required immediate action, with no time for committee deliberation."
+  },
+  {
+    "word": "exodus",
+    "meaning": "toplu göç, kaçış",
+    "example": "The announcement triggered an exodus of employees, with half the department resigning within a week."
+  },
+  {
+    "word": "expletive",
+    "meaning": "küfür, argo söz",
+    "example": "The live broadcast was nearly cut off when the guest let slip an expletive in a moment of frustration."
+  },
+  {
+    "word": "extremity",
+    "meaning": "aşırı uç, uzuv",
+    "example": "In the extremity of the crisis, the government resorted to measures that would have been unthinkable in normal times."
+  },
+  {
+    "word": "facsimile",
+    "meaning": "aynı kopya, suret",
+    "example": "The museum displayed a facsimile of the ancient manuscript while the original was kept in a climate-controlled vault."
+  },
+  {
+    "word": "faction",
+    "meaning": "hizip, klik",
+    "example": "The party was split into rival factions, each vying for control ahead of the leadership convention."
+  },
+  {
+    "word": "famine",
+    "meaning": "kıtlık",
+    "example": "The famine devastated the region, with international aid agencies struggling to reach remote communities."
+  },
+  {
+    "word": "farce",
+    "meaning": "gülünç durum, saçmalık",
+    "example": "The trial became a farce when the judge fell asleep during the prosecution's key argument."
+  },
+  {
+    "word": "fervour",
+    "meaning": "ateşlilik, coşku",
+    "example": "The crowd's fervour reached a peak when the band played their most famous song."
+  },
+  {
+    "word": "fiasco",
+    "meaning": "büyük başarısızlık",
+    "example": "The product launch was a complete fiasco, with the item malfunctioning during the live demonstration."
+  },
+  {
+    "word": "figment",
+    "meaning": "hayal ürünü",
+    "example": "The monster under the bed was a figment of the child's imagination, fed by scary stories and a dark room."
+  },
+  {
+    "word": "finesse",
+    "meaning": "incelik, ustalık",
+    "example": "She handled the delicate negotiation with finesse, managing to satisfy both parties without either feeling shortchanged."
+  },
+  {
+    "word": "flotsam",
+    "meaning": "denizde sürüklenen enkaz",
+    "example": "The beach was littered with flotsam washed ashore by the storm, including crates, planks, and fishing gear."
+  },
+  {
+    "word": "foible",
+    "meaning": "küçük kusur, zayıflık",
+    "example": "One of his few foibles was an obsession with perfectly aligned picture frames in every room."
+  },
+  {
+    "word": "folly",
+    "meaning": "aptallık, akılsızlık",
+    "example": "Building the house on a known flood plain was an act of folly that cost the developer dearly."
+  },
+  {
+    "word": "forbearance",
+    "meaning": "sabır, hoşgörü",
+    "example": "The creditor showed forbearance by extending the loan deadline, giving the business one last chance to recover."
+  },
+  {
+    "word": "fracas",
+    "meaning": "gürültülü kavga",
+    "example": "A fracas broke out in the bar when two patrons disagreed about the outcome of the football match."
+  },
+  {
+    "word": "frailty",
+    "meaning": "zayıflık, kırılganlık",
+    "example": "The novel explores the frailty of human memory and how easily we convince ourselves of things that never happened."
+  },
+  {
+    "word": "furor",
+    "meaning": "büyük öfke, hiddet",
+    "example": "The decision to close the community center caused a furor among residents who had relied on its services."
+  },
+  {
+    "word": "gambit",
+    "meaning": "hamle, taktik",
+    "example": "Opening with a controversial statement was a gambit designed to grab the audience's attention immediately."
+  },
+  {
+    "word": "gauntlet",
+    "meaning": "meydan okuma, zorlu sınav",
+    "example": "The new recruit had to run the gauntlet of hazing rituals before being accepted by the team."
+  },
+  {
+    "word": "gentry",
+    "meaning": "kibar/soylu sınıf",
+    "example": "The country gentry gathered at the estate for the annual fox hunt, a tradition spanning generations."
+  },
+  {
+    "word": "grievance",
+    "meaning": "şikayet, mağduriyet",
+    "example": "The workers filed a formal grievance against the supervisor for creating a hostile work environment."
+  },
+  {
+    "word": "guile",
+    "meaning": "kurnazlık, hile",
+    "example": "The scam artist used guile and charm to gain the trust of his victims before stealing their savings."
+  },
+  {
+    "word": "harbinger",
+    "meaning": "haberci, ön belirti",
+    "example": "The arrival of the first robin was a harbinger of spring after a long and brutal winter."
+  },
+  {
+    "word": "havoc",
+    "meaning": "yıkım, kargaşa",
+    "example": "The hurricane wreaked havoc along the coast, destroying homes and flooding entire towns."
+  },
+  {
+    "word": "heyday",
+    "meaning": "en parlak dönem",
+    "example": "During its heyday in the 1950s, the factory employed over five thousand workers from the surrounding area."
+  },
+  {
+    "word": "iconoclast",
+    "meaning": "gelenek karşıtı kişi",
+    "example": "The art critic was an iconoclast who delighted in demolishing the reputations of revered painters."
+  },
+  {
+    "word": "imprudence",
+    "meaning": "tedbirsizlik",
+    "example": "His imprudence in investing all his savings in a single stock cost him everything when the company went bankrupt."
+  },
+  {
+    "word": "incarnation",
+    "meaning": "beden bulma, cisimleşme",
+    "example": "The Dalai Lama is believed by his followers to be the incarnation of a bodhisattva of compassion."
+  },
+  {
+    "word": "incursion",
+    "meaning": "akın, saldırı",
+    "example": "The country condemned the military incursion across its border as a blatant violation of sovereignty."
+  },
+  {
+    "word": "indolence",
+    "meaning": "tembellik",
+    "example": "His indolence was such that he would rather go hungry than walk to the kitchen to make a sandwich."
+  },
+  {
+    "word": "ingenue",
+    "meaning": "saf/toy genç kız (rol)",
+    "example": "The young actress was typecast as the ingenue, playing innocent country girls in a string of romantic comedies."
+  },
+  {
+    "word": "innuendo",
+    "meaning": "üstü kapalı imalı söz",
+    "example": "The article was filled with innuendo about the mayor's personal life, without making any direct accusations."
+  },
+  {
+    "word": "insurrection",
+    "meaning": "isyan, ayaklanma",
+    "example": "The government crushed the insurrection swiftly, arresting the ringleaders before dawn the next day."
+  },
+  {
+    "word": "interloper",
+    "meaning": "davetsiz misafir, işgüzar",
+    "example": "The family treated the new stepfather as an interloper, refusing to include him in their holiday traditions."
+  },
+  {
+    "word": "interregnum",
+    "meaning": "iktidar boşluğu dönemi",
+    "example": "During the interregnum between kings, the council of nobles governed the kingdom as best they could."
+  },
+  {
+    "word": "invective",
+    "meaning": "sert sözlü saldırı",
+    "example": "The debate descended into invective, with both candidates trading personal insults rather than discussing policy."
+  },
+  {
+    "word": "jargon",
+    "meaning": "meslek dili, jargon",
+    "example": "The report was written in legal jargon that was incomprehensible to anyone without a law degree."
+  },
+  {
+    "word": "jest",
+    "meaning": "şaka",
+    "example": "The comment was made in jest, but the recipient took it seriously and was deeply offended."
+  },
+  {
+    "word": "junta",
+    "meaning": "askeri yönetim",
+    "example": "The military junta suspended the constitution and ruled by decree for over a decade."
+  },
+  {
+    "word": "juxtaposition",
+    "meaning": "yan yana koyma, karşılaştırma",
+    "example": "The juxtaposition of modern skyscrapers and ancient temples gives the city its unique character."
+  },
+  {
+    "word": "laceration",
+    "meaning": "yırtık, kesik yara",
+    "example": "The patient was treated for a deep laceration on his forearm that required twelve stitches."
+  },
+  {
+    "word": "largesse",
+    "meaning": "cömertlik",
+    "example": "The billionaire's largesse funded the construction of three new hospitals in the developing world."
+  },
+  {
+    "word": "libertine",
+    "meaning": "sefih kişi",
+    "example": "The notorious libertine spent his fortune on gambling, drink, and scandalous affairs."
+  },
+  {
+    "word": "longevity",
+    "meaning": "uzun ömürlülük",
+    "example": "The family was known for its longevity, with several members living well past one hundred."
+  },
+  {
+    "word": "lucre",
+    "meaning": "kazanç, para (olumsuz anlamda)",
+    "example": "He abandoned his principles for the sake of filthy lucre, accepting bribes from anyone willing to pay."
+  },
+  {
+    "word": "malady",
+    "meaning": "hastalık, dert",
+    "example": "Corruption was a malady that infected every level of the country's government."
+  },
+  {
+    "word": "malfeasance",
+    "meaning": "görevi kötüye kullanma",
+    "example": "The official was charged with malfeasance after it was revealed he had been accepting kickbacks for years."
+  },
+  {
+    "word": "maverick",
+    "meaning": "bağımsız düşünen kişi",
+    "example": "The senator was a maverick who frequently voted against his own party on matters of principle."
+  },
+  {
+    "word": "melee",
+    "meaning": "kargaşa, arbede",
+    "example": "A melee broke out in the stands when fans of the opposing teams began throwing objects at each other."
+  },
+  {
+    "word": "mendicant",
+    "meaning": "dilenci",
+    "example": "The mendicant sat at the temple gate, holding out a bowl and silently asking for alms."
+  },
+  {
+    "word": "mettle",
+    "meaning": "cesaret, karakter gücü",
+    "example": "The marathon tested the runners' mettle, with steep hills and brutal heat weeding out the unprepared."
+  },
+  {
+    "word": "minutiae",
+    "meaning": "ayrıntılar",
+    "example": "The lawyer obsessed over the minutiae of the contract, convinced that a critical clause was buried somewhere in the fine print."
+  },
+  {
+    "word": "mirage",
+    "meaning": "serap, yanılsama",
+    "example": "The shimmering water on the horizon was a mirage, vanishing as the travelers drew closer."
+  },
+  {
+    "word": "miscreant",
+    "meaning": "kötü niyetli kişi, alçak",
+    "example": "The judge showed no leniency to the miscreant, sentencing him to the maximum term allowed by law."
+  },
+  {
+    "word": "modicum",
+    "meaning": "az miktar",
+    "example": "A modicum of common sense would have prevented the entire disaster from unfolding."
+  },
+  {
+    "word": "morass",
+    "meaning": "bataklık, karmaşık durum",
+    "example": "The legal case had become a morass of conflicting claims and counterclaims that would take years to sort out."
+  },
+  {
+    "word": "mores",
+    "meaning": "toplumsal örf ve adetler",
+    "example": "The novel challenged the strict mores of Victorian society, shocking readers with its frank depictions."
+  },
+  {
+    "word": "nadir",
+    "meaning": "en düşük nokta",
+    "example": "The team's nadir came with a ten-game losing streak that seemed to drain all hope from the season."
+  },
+  {
+    "word": "nemesis",
+    "meaning": "baş düşman, ezeli rakip",
+    "example": "The superhero finally confronted her nemesis in a battle that would determine the fate of the city."
+  },
+  {
+    "word": "nihilism",
+    "meaning": "hiççilik",
+    "example": "The philosopher's nihilism held that life had no inherent meaning, a view that many found bleak and disturbing."
+  },
+  {
+    "word": "nostrum",
+    "meaning": "sahte ilaç, mucize çözüm",
+    "example": "The traveling salesman peddled a nostrum that he claimed could cure everything from baldness to arthritis."
+  },
+  {
+    "word": "oblivion",
+    "meaning": "unutulma, yok olma",
+    "example": "The once-famous actor faded into oblivion, his name forgotten by all but the most devoted film historians."
+  },
+  {
+    "word": "obloquy",
+    "meaning": "kötüleme, karalama",
+    "example": "The disgraced politician endured years of public obloquy before finally clearing his name."
+  },
+  {
+    "word": "odyssey",
+    "meaning": "uzun ve maceralı yolculuk",
+    "example": "The refugee family's odyssey took them through five countries before they finally found a place to call home."
+  },
+  {
+    "word": "omen",
+    "meaning": "kehanet, uğursuz işaret",
+    "example": "Many in the ancient world saw the eclipse as an omen of impending disaster and war."
+  },
+  {
+    "word": "onslaught",
+    "meaning": "şiddetli saldırı",
+    "example": "The castle walls held firm against the onslaught, repelling wave after wave of attackers."
+  },
+  {
+    "word": "opprobrium",
+    "meaning": "ayıplama, utanç",
+    "example": "The corrupt official was subjected to public opprobrium, hounded by protesters wherever he went."
+  },
+  {
+    "word": "orator",
+    "meaning": "hatip, güzel konuşan",
+    "example": "The civil rights leader was a powerful orator whose speeches could move audiences to tears and action."
+  },
+  {
+    "word": "ostracism",
+    "meaning": "dışlanma",
+    "example": "The whistleblower faced ostracism from colleagues, who treated her as a traitor for speaking out."
+  },
+  {
+    "word": "outcast",
+    "meaning": "toplum dışına itilmiş kişi",
+    "example": "After the scandal, he became an outcast, shunned by former friends and colleagues alike."
+  },
+  {
+    "word": "pageantry",
+    "meaning": "gösterişli tören",
+    "example": "The opening ceremony was a display of pageantry unlike anything the city had seen before."
+  },
+  {
+    "word": "pandemonium",
+    "meaning": "kargaşa, curcuna",
+    "example": "Pandemonium erupted in the stadium when the underdog team scored the winning goal in the final seconds."
+  },
+  {
+    "word": "pariah",
+    "meaning": "toplum dışı bırakılmış kişi",
+    "example": "After testifying against the crime boss, he became a pariah in the neighborhood where he had grown up."
+  },
+  {
+    "word": "penchant",
+    "meaning": "eğilim, düşkünlük",
+    "example": "She had a penchant for vintage clothing, scouring thrift shops for unique pieces from every era."
+  },
+  {
+    "word": "perdition",
+    "meaning": "mahvolma, ebedi lanet",
+    "example": "The preacher warned that sinners who did not repent would face eternal perdition."
+  },
+  {
+    "word": "perjury",
+    "meaning": "yalan yere yemin",
+    "example": "The witness was charged with perjury after it was proven she had lied under oath about her whereabouts."
+  },
+  {
+    "word": "pittance",
+    "meaning": "çok az ücret",
+    "example": "The apprentice worked twelve-hour days for a pittance, barely enough to cover his rent and meals."
+  },
+  {
+    "word": "platitude",
+    "meaning": "basmakalıp söz",
+    "example": "The politician's speech was full of platitudes about hard work and family values, but offered no specific solutions."
+  },
+  {
+    "word": "plaudits",
+    "meaning": "alkış, övgü",
+    "example": "The young pianist earned plaudits from every critic in the city after her stunning debut performance."
+  },
+  {
+    "word": "plethora",
+    "meaning": "aşırı bolluk",
+    "example": "The website offers a plethora of information on the topic, which can be overwhelming for a newcomer."
+  },
+  {
+    "word": "ploy",
+    "meaning": "hile, taktik",
+    "example": "The dramatic resignation was a ploy to force the board's hand and secure a better compensation package."
+  },
+  {
+    "word": "poise",
+    "meaning": "denge, vakar",
+    "example": "The ballerina maintained her poise even when her costume malfunctioned, continuing the performance without missing a step."
+  },
+  {
+    "word": "polemic",
+    "meaning": "sert tartışma yazısı",
+    "example": "The author's latest book is a polemic against the modern education system and its many failings."
+  },
+  {
+    "word": "posterity",
+    "meaning": "gelecek nesiller",
+    "example": "The time capsule was sealed and buried with instructions that it not be opened for posterity to discover."
+  },
+  {
+    "word": "potentate",
+    "meaning": "hükümdar, güçlü yönetici",
+    "example": "The visiting potentate arrived with a retinue of fifty servants and enough luggage to fill three trucks."
+  },
+  {
+    "word": "premonition",
+    "meaning": "önsezi",
+    "example": "She had a premonition of danger as she boarded the plane, a feeling she couldn't shake for the entire flight."
+  },
+  {
+    "word": "pretence",
+    "meaning": "yapmacıklık, bahane",
+    "example": "His friendship was merely a pretence, a calculated strategy to gain access to the family's wealth."
+  },
+  {
+    "word": "pretext",
+    "meaning": "bahane",
+    "example": "The officer used a routine traffic stop as a pretext to search the vehicle for drugs."
+  },
+  {
+    "word": "proclivity",
+    "meaning": "eğilim",
+    "example": "The student had a proclivity for asking provocative questions that often derailed the lecture."
+  },
+  {
+    "word": "prodigy",
+    "meaning": "harika çocuk, dahi",
+    "example": "The math prodigy was solving university-level equations by the age of eight, astonishing his teachers."
+  },
+  {
+    "word": "profligacy",
+    "meaning": "savurganlık, sefahat",
+    "example": "The company's profligacy during the boom years left it with nothing to fall back on when the market crashed."
+  },
+  {
+    "word": "prowess",
+    "meaning": "üstün beceri, yiğitlik",
+    "example": "The warrior's prowess in battle was legendary, with songs composed about his victories over rival clans."
+  },
+  {
+    "word": "purview",
+    "meaning": "yetki/görev alanı",
+    "example": "The matter fell outside the committee's purview and had to be referred to a higher authority."
+  },
+  {
+    "word": "quagmire",
+    "meaning": "bataklık, çıkmaz durum",
+    "example": "The military campaign turned into a quagmire, with no clear path to victory or withdrawal."
+  },
+  {
+    "word": "rabble",
+    "meaning": "ayaktakımı",
+    "example": "The revolution was led not by organized revolutionaries but by an angry rabble that stormed the palace gates."
+  },
+  {
+    "word": "rancor",
+    "meaning": "kin",
+    "example": "The two brothers had not spoken in twenty years, the rancor between them too deep to overcome."
+  },
+  {
+    "word": "rapprochement",
+    "meaning": "yakınlaşma (siyasi)",
+    "example": "After decades of hostility, the two nations began a cautious rapprochement that surprised the world."
+  },
+  {
+    "word": "recluse",
+    "meaning": "inzivaya çekilmiş kişi",
+    "example": "The author became a recluse after her last novel, refusing all interviews and never appearing in public."
+  },
+  {
+    "word": "redemption",
+    "meaning": "kurtuluş, bedelini ödeme",
+    "example": "The former criminal sought redemption through years of volunteer work at the community center."
+  },
+  {
+    "word": "remonstration",
+    "meaning": "itiraz, protesto",
+    "example": "The citizens' remonstration against the new tax was delivered to parliament in the form of a petition with fifty thousand signatures."
+  },
+  {
+    "word": "renegade",
+    "meaning": "dönek, hain",
+    "example": "The renegade soldier joined the enemy forces, bringing with him valuable intelligence about defensive positions."
+  },
+  {
+    "word": "reprieve",
+    "meaning": "erteleme, mühlet",
+    "example": "The governor granted a last-minute reprieve, staying the execution pending further review of the case."
+  },
+  {
+    "word": "reprisal",
+    "meaning": "misilleme",
+    "example": "The bombing was in reprisal for a previous attack that had killed civilians in the border town."
+  },
+  {
+    "word": "repudiation",
+    "meaning": "reddetme",
+    "example": "The statement was a clear repudiation of everything the party had previously stood for."
+  },
+  {
+    "word": "requiem",
+    "meaning": "ağıt, ölüler için ayin",
+    "example": "The composer wrote a requiem for the victims of the war, a haunting piece that was performed at the memorial service."
+  },
+  {
+    "word": "resurgence",
+    "meaning": "yeniden canlanma",
+    "example": "The city experienced a cultural resurgence, with new galleries, theaters, and restaurants opening every month."
+  },
+  {
+    "word": "retinue",
+    "meaning": "maiyet, refakatçiler",
+    "example": "The queen traveled with a retinue of ladies-in-waiting, guards, and advisors wherever she went."
+  },
+  {
+    "word": "retribution",
+    "meaning": "ceza, karşılık",
+    "example": "Many believed the natural disaster was a form of divine retribution for the city's sins."
+  },
+  {
+    "word": "revelry",
+    "meaning": "eğlence, cümbüş",
+    "example": "The New Year's revelry continued until dawn, with music and laughter echoing through the streets."
+  },
+  {
+    "word": "rhetoric",
+    "meaning": "hitabet, retorik",
+    "example": "The candidate's rhetoric was inspiring, but critics noted a distinct lack of policy detail behind the soaring phrases."
+  },
+  {
+    "word": "sabotage",
+    "meaning": "sabotaj",
+    "example": "The factory fire was traced to deliberate sabotage by a disgruntled former employee."
+  },
+  {
+    "word": "sanctimony",
+    "meaning": "riyakâr dindarlık",
+    "example": "The televangelist's sanctimony was exposed when recordings of his private conversations were leaked to the press."
+  },
+  {
+    "word": "scapegoat",
+    "meaning": "günah keçisi",
+    "example": "The finance director was made the scapegoat for the company's collapse, even though others shared the blame."
+  },
+  {
+    "word": "scourge",
+    "meaning": "bela, felaket kaynağı",
+    "example": "Malaria remains a scourge in many tropical regions, despite decades of eradication efforts."
+  },
+  {
+    "word": "semblance",
+    "meaning": "görünüş, benzerlik",
+    "example": "The team maintained a semblance of order even as the project collapsed around them, refusing to show panic."
+  },
+  {
+    "word": "shambles",
+    "meaning": "darmadağınık hal",
+    "example": "After the party, the house was a shambles, with broken glasses, stains on the carpet, and furniture overturned."
+  },
+  {
+    "word": "skepticism",
+    "meaning": "şüphecilik",
+    "example": "The announcement was met with skepticism by analysts who had heard similar promises from the company before."
+  },
+  {
+    "word": "sordidness",
+    "meaning": "iğrençlik, pislik",
+    "example": "The tabloid exposed the sordidness of the politician's private life, with details that shocked even cynical readers."
+  },
+  {
+    "word": "specter",
+    "meaning": "hayalet, ürkütücü olasılık",
+    "example": "The specter of unemployment haunted the workers as the company announced plans to restructure."
+  },
+  {
+    "word": "squalor",
+    "meaning": "pislik, sefalet",
+    "example": "The family lived in squalor, the apartment infested with rats and the plumbing broken for months."
+  },
+  {
+    "word": "stratagem",
+    "meaning": "hile, plan",
+    "example": "The general devised a stratagem to lure the enemy into a trap, feigning a retreat to draw them out of their fortifications."
+  },
+  {
+    "word": "surfeit",
+    "meaning": "aşırılık, fazlalık",
+    "example": "A surfeit of choices can be paralyzing, as anyone who has spent hours scrolling through a streaming service can attest."
+  },
+  {
+    "word": "sycophant",
+    "meaning": "yağcı, dalkavuk",
+    "example": "The king surrounded himself with sycophants who told him only what he wanted to hear, never the truth."
+  },
+  {
+    "word": "temerity",
+    "meaning": "cüret, gözü peklik",
+    "example": "He had the temerity to ask for a promotion after being on the job for only three weeks."
+  },
+  {
+    "word": "throng",
+    "meaning": "kalabalık",
+    "example": "A throng of fans gathered outside the theater, hoping to catch a glimpse of the star as she arrived."
+  },
+  {
+    "word": "torment",
+    "meaning": "işkence, eziyet",
+    "example": "The prisoner endured years of torment, both physical and psychological, before finally being released."
+  },
+  {
+    "word": "travail",
+    "meaning": "zahmet, sıkıntılı çaba",
+    "example": "After months of travail, the research team finally achieved the breakthrough they had been seeking."
+  },
+  {
+    "word": "tumult",
+    "meaning": "gürültü, kargaşa",
+    "example": "The announcement caused a tumult in the hall, with delegates shouting and stamping their feet in protest."
+  },
+  {
+    "word": "tutelage",
+    "meaning": "vesayet, gözetim",
+    "example": "Under the maestro's tutelage, the young violinist developed into a world-class performer within five years."
+  },
+  {
+    "word": "umbrage",
+    "meaning": "gücenme, kızgınlık",
+    "example": "She took umbrage at the suggestion that she was too old for the role, and said so in no uncertain terms."
+  },
+  {
+    "word": "vagary",
+    "meaning": "kapris, beklenmedik değişim",
+    "example": "The vagaries of the stock market make it impossible to predict returns with any certainty."
+  },
+  {
+    "word": "vendetta",
+    "meaning": "kan davası, husumet",
+    "example": "The feud between the two families was a vendetta that had spanned three generations and claimed many lives."
+  },
+  {
+    "word": "veneration",
+    "meaning": "büyük saygı",
+    "example": "The old cathedral was held in veneration by the townspeople, who had worshipped there for centuries."
+  },
+  {
+    "word": "vestige",
+    "meaning": "iz, kalıntı",
+    "example": "Not a vestige of the original settlement remained after the floodwaters receded."
+  },
+  {
+    "word": "vicissitude",
+    "meaning": "iniş çıkış, değişim",
+    "example": "The company survived the vicissitudes of the market by adapting its strategy to each new challenge."
+  },
+  {
+    "word": "vigil",
+    "meaning": "nöbet, uyanık bekleme",
+    "example": "The family kept a vigil at the hospital bedside, taking turns sitting with the patient through the long nights."
+  },
+  {
+    "word": "virtuoso",
+    "meaning": "usta sanatçı",
+    "example": "The violin virtuoso performed a solo that brought the audience to its feet in a standing ovation."
+  },
+  {
+    "word": "wanderlust",
+    "meaning": "gezme tutkusu",
+    "example": "Her wanderlust took her to over fifty countries before she finally settled down in a small coastal town."
+  },
+  {
+    "word": "wraith",
+    "meaning": "hayalet",
+    "example": "A pale wraith seemed to drift through the fog, though on closer inspection it was merely a trick of the light."
+  },
+  {
+    "word": "zenith",
+    "meaning": "doruk nokta",
+    "example": "At the zenith of her career, the singer had three albums on the charts simultaneously and a world tour sold out."
+  }
+]
