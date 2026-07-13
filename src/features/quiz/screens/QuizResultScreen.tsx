@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 
 import { Button, Card, Loading, ProgressBar } from '@/components';
 import { useQuizStore } from '@/store/quiz.store';
@@ -27,6 +29,7 @@ function quizTypeLabel(quizType: string | null): string {
 
 export default function QuizResultScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const {
     answers,
     score,
@@ -75,7 +78,10 @@ export default function QuizResultScreen() {
 
   return (
     <View className="flex-1 bg-background">
-      <View className="items-center pt-xl pb-lg px-md border-b border-border bg-card">
+      <View
+        className="items-center pb-lg px-md border-b border-border bg-card"
+        style={{ paddingTop: insets.top + 16 }}
+      >
         <Text className="text-xs font-semibold text-primary uppercase tracking-wider mb-sm">
           {quizTypeLabel(quizType)}
         </Text>
@@ -88,12 +94,12 @@ export default function QuizResultScreen() {
         <ProgressBar progress={percentage} className="w-full max-w-xs" />
 
         <View className="flex-row w-full max-w-xs mt-md gap-sm">
-          <Card className="flex-1 items-center border border-success/30 bg-success/5 py-sm">
-            <Text className="text-2xl font-bold text-success">{score}</Text>
+          <Card className="flex-1 items-center border border-green-600/30 bg-green-50/50 dark:bg-green-950/20 py-sm">
+            <Text className="text-2xl font-bold text-green-600 dark:text-green-400">{score}</Text>
             <Text className="text-xs text-muted-foreground">Doğru</Text>
           </Card>
-          <Card className="flex-1 items-center border border-error/30 bg-error/5 py-sm">
-            <Text className="text-2xl font-bold text-error">{incorrectCount}</Text>
+          <Card className="flex-1 items-center border border-red-600/30 bg-red-50/50 dark:bg-red-950/20 py-sm">
+            <Text className="text-2xl font-bold text-red-600 dark:text-red-400">{incorrectCount}</Text>
             <Text className="text-xs text-muted-foreground">Yanlış</Text>
           </Card>
         </View>
@@ -112,7 +118,9 @@ export default function QuizResultScreen() {
             key={`${record.wordId}-${index}`}
             className={[
               'mb-sm border',
-              record.isCorrect ? 'border-success/40 bg-success/5' : 'border-error/40 bg-error/5',
+              record.isCorrect
+                ? 'border-green-600/30 bg-green-50/20 dark:border-green-500/20 dark:bg-green-950/10'
+                : 'border-red-600/30 bg-red-50/20 dark:border-red-500/20 dark:bg-red-950/10',
             ].join(' ')}
           >
             <View className="flex-row items-start justify-between">
@@ -122,7 +130,9 @@ export default function QuizResultScreen() {
                   Cevabınız:{' '}
                   <Text
                     className={
-                      record.isCorrect ? 'text-success font-semibold' : 'text-error font-semibold'
+                      record.isCorrect
+                        ? 'text-green-600 dark:text-green-400 font-semibold'
+                        : 'text-red-600 dark:text-red-400 font-semibold'
                     }
                   >
                     {record.userAnswer || '—'}
@@ -131,17 +141,28 @@ export default function QuizResultScreen() {
                 {!record.isCorrect && (
                   <Text className="text-sm text-muted-foreground mt-xs">
                     Doğru:{' '}
-                    <Text className="text-success font-semibold">{record.correctAnswer}</Text>
+                    <Text className="text-green-600 dark:text-green-400 font-semibold">
+                      {record.correctAnswer}
+                    </Text>
                   </Text>
                 )}
               </View>
-              <Text className="text-lg">{record.isCorrect ? '✓' : '✗'}</Text>
+              <View className="pt-0.5">
+                {record.isCorrect ? (
+                  <Ionicons name="checkmark-circle" size={18} color="#10B981" />
+                ) : (
+                  <Ionicons name="close-circle" size={18} color="#EF4444" />
+                )}
+              </View>
             </View>
           </Card>
         ))}
       </ScrollView>
 
-      <View className="p-md border-t border-border bg-card">
+      <View
+        className="px-md pt-md border-t border-border bg-card"
+        style={{ paddingBottom: insets.bottom > 0 ? insets.bottom + 12 : 24 }}
+      >
         <Button title="Tekrar Dene" onPress={handleRetry} className="w-full mb-sm" />
         <Button
           title="Tekrara Dön"

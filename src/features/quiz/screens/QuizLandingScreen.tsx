@@ -85,6 +85,13 @@ export default function QuizLandingScreen() {
             colors={['#3b82f6', '#1e293b']}
             onPress={handleStartTyping}
           />
+
+          <QuizModeCard
+            title="Kelime Eşleştirme"
+            icon="grid"
+            colors={['#10b981', '#059669']}
+            onPress={() => router.push('/quiz/matching')}
+          />
         </View>
 
         {/* Geri Dön Linki */}

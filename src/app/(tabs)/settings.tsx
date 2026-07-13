@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, Text, ScrollView, Switch, Platform, Pressable, Alert, Modal } from 'react-native';
+import { View, Text, ScrollView, Switch, Platform, Pressable, Alert, Modal, ActivityIndicator } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import DateTimePicker, { DateTimePickerChangeEvent } from '@react-native-community/datetimepicker';
@@ -52,6 +52,94 @@ function parseTime(timeString: string): { hour: number; minute: number } {
   }
   
   return { hour, minute };
+}
+
+type SettingRowProps = {
+  icon: keyof typeof Ionicons.glyphMap;
+  iconColor: string;
+  iconBg: string;
+  title: string;
+  subtitle?: string;
+  rightElement?: React.ReactNode;
+  onPress?: () => void;
+  disabled?: boolean;
+  isLast?: boolean;
+  danger?: boolean;
+};
+
+function SettingRow({
+  icon,
+  iconColor,
+  iconBg,
+  title,
+  subtitle,
+  rightElement,
+  onPress,
+  disabled,
+  isLast,
+  danger,
+}: SettingRowProps) {
+  const { colors } = useTheme();
+
+  const content = (
+    <View className="flex-row items-center px-md py-3">
+      {/* Icon Container */}
+      <View className={`mr-md h-8 w-8 items-center justify-center rounded-lg ${iconBg}`}>
+        <Ionicons name={icon} size={16} color={iconColor} />
+      </View>
+      
+      {/* Text Info */}
+      <View className="flex-1 pr-md">
+        <Text className={`text-[15px] font-semibold ${danger ? 'text-red-500' : 'text-foreground'}`}>
+          {title}
+        </Text>
+        {subtitle ? (
+          <Text className="text-[11px] text-muted-foreground mt-0.5 leading-normal" numberOfLines={2}>
+            {subtitle}
+          </Text>
+        ) : null}
+      </View>
+
+      {/* Right Element & Optional Chevron */}
+      <View className="flex-row items-center">
+        {rightElement}
+        {onPress && !danger && (
+          <Ionicons name="chevron-forward" size={14} color={colors.mutedForeground} className="ml-xs" />
+        )}
+      </View>
+    </View>
+  );
+
+  if (onPress) {
+    return (
+      <Pressable
+        onPress={onPress}
+        disabled={disabled}
+        accessibilityRole="button"
+        className={`active:opacity-60 ${isLast ? '' : 'border-b border-border'}`}
+      >
+        {content}
+      </Pressable>
+    );
+  }
+
+  return <View className={isLast ? '' : 'border-b border-border'}>{content}</View>;
+}
+
+type SectionHeaderProps = {
+  title: string;
+  icon: keyof typeof Ionicons.glyphMap;
+};
+
+function SectionHeader({ title, icon }: SectionHeaderProps) {
+  return (
+    <View className="flex-row items-center gap-2 mb-sm px-xs mt-sm">
+      <Ionicons name={icon} size={14} color="#94a3b8" />
+      <Text className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        {title}
+      </Text>
+    </View>
+  );
 }
 
 function SettingsScreen() {
@@ -430,195 +518,166 @@ function SettingsScreen() {
 
         {/* Tercihler Bölümü */}
         <View className="px-md mb-lg">
-          <Text className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-sm px-xs">
-            Tercihler
-          </Text>
+          <SectionHeader title="Tercihler" icon="options-outline" />
           <View className="rounded-2xl border border-border bg-card overflow-hidden">
-            {/* Günlük Bildirim */}
-            <View className="flex-row items-center justify-between px-md py-md border-b border-border">
-              <View className="flex-1 pr-md">
-                <Text className="text-base font-medium text-foreground">Günlük Bildirim</Text>
-                <Text className="text-sm text-muted-foreground mt-xs">
-                  Her gün kelimeleri tekrar etmeniz için hatırlatma alın
-                </Text>
-              </View>
-              <Switch
-                value={notificationEnabled}
-                onValueChange={toggleNotifications}
-                disabled={isSaving}
-                trackColor={{ false: colors.muted, true: colors.primary }}
-              />
-            </View>
+            <SettingRow
+              icon="notifications-outline"
+              iconColor="#f43f5e"
+              iconBg="bg-rose-50 dark:bg-rose-950/20"
+              title="Günlük Bildirim"
+              subtitle="Her gün kelimeleri tekrar etmeniz için hatırlatma alın"
+              rightElement={
+                <Switch
+                  value={notificationEnabled}
+                  onValueChange={toggleNotifications}
+                  disabled={isSaving}
+                  trackColor={{ false: colors.muted, true: colors.primary }}
+                />
+              }
+            />
 
-            {/* Hatırlatma Saati */}
-            {notificationEnabled ? (
-              <Pressable
+            {notificationEnabled && (
+              <SettingRow
+                icon="time-outline"
+                iconColor="#3b82f6"
+                iconBg="bg-blue-50 dark:bg-blue-950/20"
+                title="Hatırlatma Saati"
+                subtitle="Bildirimin gönderileceği zamanı belirleyin"
+                rightElement={
+                  <Text className="text-sm text-muted-foreground">{notificationTime}</Text>
+                }
                 onPress={openTimePicker}
-                accessibilityRole="button"
-                accessibilityLabel="Hatırlatma saati seç"
-                className="flex-row items-center justify-between px-md py-md border-b border-border active:opacity-60"
-              >
-                <Text className="text-base font-medium text-foreground">Hatırlatma Saati</Text>
-                <View className="flex-row items-center">
-                  <Text className="text-sm text-muted-foreground mr-xs">
-                    {notificationTime}
-                  </Text>
-                  <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
-                </View>
-              </Pressable>
-            ) : null}
-
-            {/* Karanlık Mod */}
-            <View className="flex-row items-center justify-between px-md py-md border-b border-border">
-              <View className="flex-1 pr-md">
-                <Text className="text-base font-medium text-foreground">Karanlık Mod</Text>
-                <Text className="text-sm text-muted-foreground mt-xs">
-                  Açık ve koyu tema arasında geçiş yapın
-                </Text>
-              </View>
-              <Switch
-                value={themeMode === 'dark'}
-                onValueChange={toggleTheme}
-                trackColor={{ false: colors.muted, true: colors.primary }}
               />
-            </View>
+            )}
 
-            {/* Konuşma Hızı */}
-            <Pressable
+            <SettingRow
+              icon="moon-outline"
+              iconColor="#d97706"
+              iconBg="bg-amber-50 dark:bg-amber-950/20"
+              title="Karanlık Mod"
+              subtitle="Açık ve koyu tema arasında geçiş yapın"
+              rightElement={
+                <Switch
+                  value={themeMode === 'dark'}
+                  onValueChange={toggleTheme}
+                  trackColor={{ false: colors.muted, true: colors.primary }}
+                />
+              }
+            />
+
+            <SettingRow
+              icon="speedometer-outline"
+              iconColor="#6366f1"
+              iconBg="bg-indigo-50 dark:bg-indigo-950/20"
+              title="Konuşma Hızı"
+              subtitle="Kelimelerin seslendirilme temposunu ayarlayın"
+              rightElement={
+                <Text className="text-sm text-muted-foreground">{speechSpeed.toFixed(1)}x</Text>
+              }
               onPress={() => setActiveSheet('speechSpeed')}
-              accessibilityRole="button"
-              accessibilityLabel="Konuşma hızı seç"
-              className="flex-row items-center justify-between px-md py-md border-b border-border active:opacity-60"
-            >
-              <Text className="text-base font-medium text-foreground">Konuşma Hızı</Text>
-              <View className="flex-row items-center">
-                <Text className="text-sm text-muted-foreground mr-xs">
-                  {speechSpeed.toFixed(1)}x
-                </Text>
-                <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
-              </View>
-            </Pressable>
+            />
 
-            {/* Öğrenme Hedefleri */}
-            <Pressable
+            <SettingRow
+              icon="flag-outline"
+              iconColor="#10b981"
+              iconBg="bg-emerald-50 dark:bg-emerald-950/20"
+              title="Öğrenme Hedefleri"
+              subtitle="Günlük hedef kelime miktarını belirleyin"
+              rightElement={
+                <Text className="text-sm text-muted-foreground">{dailyGoal} kelime</Text>
+              }
               onPress={() => setActiveSheet('dailyGoal')}
-              accessibilityRole="button"
-              accessibilityLabel="Günlük kelime hedefi seç"
-              className="flex-row items-center justify-between px-md py-md active:opacity-60"
-            >
-              <Text className="text-base font-medium text-foreground">Öğrenme Hedefleri</Text>
-              <View className="flex-row items-center">
-                <Text className="text-sm text-muted-foreground mr-xs">
-                  {dailyGoal} kelime
-                </Text>
-                <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
-              </View>
-            </Pressable>
+              isLast={true}
+            />
           </View>
         </View>
 
         {/* Destek Bölümü */}
         <View className="px-md mb-lg">
-          <Text className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-sm px-xs">
-            Destek
-          </Text>
+          <SectionHeader title="Destek" icon="help-circle-outline" />
           <View className="rounded-2xl border border-border bg-card overflow-hidden">
-            {/* Kelime İçe Aktar */}
-            <Pressable
+            <SettingRow
+              icon="download-outline"
+              iconColor="#8b5cf6"
+              iconBg="bg-violet-50 dark:bg-violet-950/20"
+              title="Kelime İçe Aktar"
+              subtitle="Cihazınızdaki PDF veya CSV dosyalarından kelimeleri yükleyin"
+              rightElement={
+                importMutation.isPending ? (
+                  <ActivityIndicator size="small" color={colors.primary} className="mr-xs" />
+                ) : null
+              }
               onPress={() => setActiveSheet('import')}
-              accessibilityRole="button"
-              accessibilityLabel="Kelime içe aktar"
-              className="flex-row items-center justify-between px-md py-md border-b border-border active:opacity-60"
-            >
-              <Text className="text-base font-medium text-foreground">Kelime İçe Aktar</Text>
-              <View className="flex-row items-center">
-                {importMutation.isPending ? (
-                  <Text className="text-xs text-muted-foreground mr-xs">İçe aktarılıyor...</Text>
-                ) : null}
-                <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
-              </View>
-            </Pressable>
+            />
 
-            {/* Çevrimdışı Kontrolü */}
-            <Pressable
+            <SettingRow
+              icon="wifi-outline"
+              iconColor="#ea580c"
+              iconBg="bg-orange-50 dark:bg-orange-950/20"
+              title="Çevrimdışı Kontrolü"
+              subtitle="Cihazın internet bağlantı durumunu ve servisleri test edin"
+              rightElement={
+                isCheckingOffline ? (
+                  <ActivityIndicator size="small" color={colors.primary} className="mr-xs" />
+                ) : null
+              }
               onPress={handleOfflineCheck}
-              accessibilityRole="button"
-              accessibilityLabel="Çevrimdışı kontrolü çalıştır"
-              disabled={isCheckingOffline}
-              className="flex-row items-center justify-between px-md py-md border-b border-border active:opacity-60"
-            >
-              <Text className="text-base font-medium text-foreground">Çevrimdışı Kontrolü</Text>
-              <View className="flex-row items-center">
-                {isCheckingOffline ? (
-                  <Text className="text-xs text-muted-foreground mr-xs">Kontrol ediliyor...</Text>
-                ) : null}
-                <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
-              </View>
-            </Pressable>
+            />
 
-            {/* Geri Bildirim Gönder */}
-            <Pressable
+            <SettingRow
+              icon="chatbubble-outline"
+              iconColor="#db2777"
+              iconBg="bg-pink-50 dark:bg-pink-950/20"
+              title="Geri Bildirim Gönder"
+              subtitle="Uygulamayı geliştirmemiz için görüş ve önerilerinizi paylaşın"
               onPress={handleFeedback}
-              accessibilityRole="button"
-              accessibilityLabel="Geri bildirim gönder"
-              className="flex-row items-center justify-between px-md py-md active:opacity-60"
-            >
-              <Text className="text-base font-medium text-sky-500">Geri Bildirim Gönder</Text>
-              <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
-            </Pressable>
+              isLast={true}
+            />
           </View>
         </View>
 
         {/* Hesap veya Veri Bölümü */}
         <View className="px-md mb-lg">
-          <Text className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-sm px-xs">
-            Hesap veya Veri
-          </Text>
+          <SectionHeader title="Hesap veya Veri" icon="server-outline" />
           <View className="rounded-2xl border border-border bg-card overflow-hidden">
-            {/* Yedek Dışa Aktar */}
-            <Pressable
+            <SettingRow
+              icon="cloud-upload-outline"
+              iconColor="#0ea5e9"
+              iconBg="bg-sky-50 dark:bg-sky-950/20"
+              title="Yedek Dışa Aktar"
+              subtitle="Kütüphanenizi ve tüm ilerlemenizi dosya olarak yedekleyin"
+              rightElement={
+                isExporting ? (
+                  <ActivityIndicator size="small" color={colors.primary} className="mr-xs" />
+                ) : null
+              }
               onPress={handleExportBackup}
-              accessibilityRole="button"
-              accessibilityLabel="Yedek dışa aktar"
-              disabled={isExporting}
-              className="flex-row items-center justify-between px-md py-md border-b border-border active:opacity-60"
-            >
-              <Text className="text-base font-medium text-foreground">Yedek Dışa Aktar</Text>
-              <View className="flex-row items-center">
-                {isExporting ? (
-                  <Text className="text-xs text-muted-foreground mr-xs">Dışa aktarılıyor...</Text>
-                ) : null}
-                <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
-              </View>
-            </Pressable>
+            />
 
-            {/* Yedek Geri Yükle */}
-            <Pressable
+            <SettingRow
+              icon="cloud-download-outline"
+              iconColor="#14b8a6"
+              iconBg="bg-teal-50 dark:bg-teal-950/20"
+              title="Yedek Geri Yükle"
+              subtitle="Daha önce aldığınız yedek dosyasını uygulamaya yükleyin"
+              rightElement={
+                isBackupRestoring ? (
+                  <ActivityIndicator size="small" color={colors.primary} className="mr-xs" />
+                ) : null
+              }
               onPress={handleImportBackup}
-              accessibilityRole="button"
-              accessibilityLabel="Yedek geri yükle"
-              disabled={isBackupRestoring}
-              className="flex-row items-center justify-between px-md py-md border-b border-border active:opacity-60"
-            >
-              <Text className="text-base font-medium text-foreground">Yedek Geri Yükle</Text>
-              <View className="flex-row items-center">
-                {isBackupRestoring ? (
-                  <Text className="text-xs text-muted-foreground mr-xs">Yükleniyor...</Text>
-                ) : null}
-                <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
-              </View>
-            </Pressable>
+            />
 
-            {/* Tüm İlerlemeyi Sıfırla */}
-            <Pressable
+            <SettingRow
+              icon="trash-outline"
+              iconColor="#ef4444"
+              iconBg="bg-red-50 dark:bg-red-950/20"
+              title="Tüm İlerlemeyi Sıfırla"
+              subtitle="Kelimelerinizi, quiz skorlarınızı ve tüm çalışma verilerinizi kalıcı olarak silin"
               onPress={handleResetProgress}
-              accessibilityRole="button"
-              accessibilityLabel="Tüm ilerlemeyi sıfırla"
-              className="flex-row items-center justify-between px-md py-md active:opacity-60"
-            >
-              <Text className="text-base font-medium text-red-500">Tüm İlerlemeyi Sıfırla</Text>
-              <Ionicons name="chevron-forward" size={16} color={colors.mutedForeground} />
-            </Pressable>
+              danger={true}
+              isLast={true}
+            />
           </View>
         </View>
 

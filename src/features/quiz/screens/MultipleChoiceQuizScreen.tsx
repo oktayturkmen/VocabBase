@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { View, Text, Pressable, Alert } from 'react-native';
+import { View, Text, Pressable, Alert, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button, Card, Loading, ProgressBar } from '@/components';
 import { useQuizStore } from '@/store/quiz.store';
@@ -9,6 +10,7 @@ import { useTheme } from '@/theme/useTheme';
 
 export default function MultipleChoiceQuizScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const { colors } = useTheme();
   const {
     questions,
@@ -53,99 +55,113 @@ export default function MultipleChoiceQuizScreen() {
   const isAnswered = selectedAnswer !== null;
 
   return (
-    <View className="flex-1 justify-between p-md bg-background">
-      {/* Header and Progress */}
-      <View className="mt-sm">
-        <View className="flex-row justify-between items-center mb-xs">
-          <Text className="text-sm font-semibold text-slate-400">Çoktan Seçmeli Quiz</Text>
-          <View className="flex-row items-center gap-2">
-            <Text className="text-sm font-semibold text-primary">
-              {currentIndex + 1}. / {questions.length} Soru
-            </Text>
-            <Pressable
-              onPress={() => {
-                Alert.alert(
-                  'Quizi Sonlandır?',
-                  'Quizi sonlandırmak istediğinizden emin misiniz?',
-                  [
-                    { text: 'Hayır', style: 'cancel' },
-                    {
-                      text: 'Evet',
-                      style: 'destructive',
-                      onPress: () => {
-                        resetQuiz();
-                        router.back();
-                      },
-                    },
-                  ],
-                );
-              }}
-              hitSlop={8}
-              className="ml-2"
-            >
-              <Ionicons name="close" size={24} color={colors.mutedForeground} />
-            </Pressable>
-          </View>
-        </View>
-        <ProgressBar progress={((currentIndex + 1) / questions.length) * 100} className="mt-xs" />
-      </View>
-
-      {/* Question Card */}
-      <Card className="flex-1 justify-center my-lg border border-border shadow-sm p-lg bg-card rounded-2xl">
-        <View className="items-center justify-center mb-md">
-          <Text className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-xs">
-            Şu kelimenin anlamı nedir:
-          </Text>
-          <Text className="text-4xl font-extrabold text-foreground text-center tracking-wide">
-            {currentQuestion.word}
-          </Text>
-        </View>
-
-        {/* Options */}
-        <View className="w-full space-y-3 mt-md">
-          {currentQuestion.options.map((option, index) => {
-            const isSelected = selectedAnswer === option;
-            const isCorrectOption = option === currentQuestion.correctAnswer;
-
-            let optionClassName = 'border border-border bg-quizBackground py-4 px-md rounded-xl mb-sm';
-            let textClassName = 'text-base font-medium text-foreground';
-
-            if (isAnswered) {
-              if (isCorrectOption) {
-                // Correct option highlights green
-                optionClassName = 'border-success bg-success/15 py-4 px-md rounded-xl mb-sm';
-                textClassName = 'text-base font-semibold text-success';
-              } else if (isSelected) {
-                // Incorrect selected option highlights red
-                optionClassName = 'border-error bg-error/15 py-4 px-md rounded-xl mb-sm';
-                textClassName = 'text-base font-semibold text-error';
-              } else {
-                // Other options are dimmed
-                optionClassName = 'border-border/30 bg-slate-50 py-4 px-md rounded-xl mb-sm opacity-50';
-                textClassName = 'text-base text-foreground/50';
-              }
-            }
-
-            return (
+    <View
+      className="flex-1 bg-background justify-between px-md"
+      style={{
+        paddingTop: insets.top + 8,
+        paddingBottom: insets.bottom > 0 ? insets.bottom + 8 : 20,
+      }}
+    >
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        className="flex-grow-0"
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+        {/* Header and Progress */}
+        <View className="mt-sm">
+          <View className="flex-row justify-between items-center mb-xs">
+            <Text className="text-sm font-semibold text-slate-400">Çoktan Seçmeli Quiz</Text>
+            <View className="flex-row items-center gap-2">
+              <Text className="text-sm font-semibold text-primary">
+                {currentIndex + 1}. / {questions.length} Soru
+              </Text>
               <Pressable
-                key={index}
-                onPress={() => !isAnswered && submitAnswer(option)}
-                className={optionClassName}
-                disabled={isAnswered}
+                onPress={() => {
+                  Alert.alert(
+                    'Quizi Sonlandır?',
+                    'Quizi sonlandırmak istediğinizden emin misiniz?',
+                    [
+                      { text: 'Hayır', style: 'cancel' },
+                      {
+                        text: 'Evet',
+                        style: 'destructive',
+                        onPress: () => {
+                          resetQuiz();
+                          router.back();
+                        },
+                      },
+                    ],
+                  );
+                }}
+                hitSlop={8}
+                className="ml-2"
               >
-                <Text className={textClassName}>{option}</Text>
-                {isAnswered && isCorrectOption && <Text className="text-success text-base">✓</Text>}
-                {isAnswered && isSelected && !isCorrectOption && (
-                  <Text className="text-error text-base">✗</Text>
-                )}
+                <Ionicons name="close" size={24} color={colors.mutedForeground} />
               </Pressable>
-            );
-          })}
+            </View>
+          </View>
+          <ProgressBar progress={((currentIndex + 1) / questions.length) * 100} className="mt-xs" />
         </View>
-      </Card>
+
+        {/* Question Card */}
+        <Card className="my-md border border-border shadow-sm p-md bg-card rounded-2xl">
+          <View className="items-center justify-center mb-md pt-sm">
+            <Text className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-xs">
+              Şu kelimenin anlamı nedir:
+            </Text>
+            <Text className="text-3xl font-extrabold text-foreground text-center tracking-wide">
+              {currentQuestion.word}
+            </Text>
+          </View>
+
+          {/* Options */}
+          <View className="w-full gap-y-2.5 mt-sm">
+            {currentQuestion.options.map((option, index) => {
+              const isSelected = selectedAnswer === option;
+              const isCorrectOption = option === currentQuestion.correctAnswer;
+
+              let optionClassName = 'border border-border bg-card py-3 px-md rounded-xl mb-xs';
+              let textClassName = 'text-base font-medium text-foreground';
+
+              if (isAnswered) {
+                if (isCorrectOption) {
+                  // Correct option highlights green
+                  optionClassName = 'border-green-600 bg-green-50 dark:border-green-500 dark:bg-green-950/30 py-3 px-md rounded-xl mb-xs';
+                  textClassName = 'text-base font-semibold text-green-600 dark:text-green-400';
+                } else if (isSelected) {
+                  // Incorrect selected option highlights red
+                  optionClassName = 'border-red-600 bg-red-50 dark:border-red-500 dark:bg-red-950/20 py-3 px-md rounded-xl mb-xs';
+                  textClassName = 'text-base font-semibold text-red-600 dark:text-red-400';
+                } else {
+                  // Other options are dimmed
+                  optionClassName = 'border-border/30 bg-slate-50 dark:bg-slate-900/40 py-3 px-md rounded-xl mb-xs opacity-40';
+                  textClassName = 'text-base text-foreground/40';
+                }
+              }
+
+              return (
+                <Pressable
+                  key={index}
+                  onPress={() => !isAnswered && submitAnswer(option)}
+                  className={`flex-row justify-between items-center ${optionClassName}`}
+                  disabled={isAnswered}
+                >
+                  <Text className={`flex-1 pr-sm ${textClassName}`}>{option}</Text>
+                  {isAnswered && isCorrectOption && (
+                    <Ionicons name="checkmark-circle" size={20} color="#10B981" />
+                  )}
+                  {isAnswered && isSelected && !isCorrectOption && (
+                    <Ionicons name="close-circle" size={20} color="#EF4444" />
+                  )}
+                </Pressable>
+              );
+            })}
+          </View>
+        </Card>
+      </ScrollView>
 
       {/* Footer Actions */}
-      <View className="mb-sm">
+      <View className="pt-sm">
         {isAnswered ? (
           <Button
             title={currentIndex + 1 === questions.length ? 'Quizi Bitir' : 'Sonraki Soru'}

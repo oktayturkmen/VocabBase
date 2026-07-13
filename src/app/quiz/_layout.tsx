@@ -20,6 +20,7 @@ export default function QuizLayout() {
         options={{ title: 'Multiple Choice Quiz', headerShown: false }}
       />
       <Stack.Screen name="typing" options={{ title: 'Typing Quiz', headerShown: false }} />
+      <Stack.Screen name="matching" options={{ title: 'Matching Quiz', headerShown: false }} />
       <Stack.Screen name="result" options={{ title: 'Quiz Results', headerShown: false }} />
     </Stack>
   );

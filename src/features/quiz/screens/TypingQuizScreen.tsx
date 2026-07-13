@@ -1,16 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { View, Text, TextInput, Keyboard, Pressable, Alert } from 'react-native';
+import { View, Text, TextInput, Keyboard, Pressable, Alert, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button, Card, Loading, ProgressBar } from '@/components';
 import { normaliseAnswer } from '@/features/quiz/utils/answer.utils';
-import { colors } from '@/theme/colors';
 import { useQuizStore } from '@/store/quiz.store';
 import { useTheme } from '@/theme/useTheme';
 
 export default function TypingQuizScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const { colors } = useTheme();
   const [inputValue, setInputValue] = useState('');
   const inputRef = useRef<TextInput>(null);
@@ -75,96 +76,121 @@ export default function TypingQuizScreen() {
   };
 
   return (
-    <View className="flex-1 justify-between p-md bg-background">
-      {/* Header and Progress */}
-      <View className="mt-sm">
-        <View className="flex-row justify-between items-center mb-xs">
-          <Text className="text-sm font-semibold text-slate-400">Yazma Quiz</Text>
-          <View className="flex-row items-center gap-2">
-            <Text className="text-sm font-semibold text-primary">
-              {currentIndex + 1}. / {questions.length} Soru
-            </Text>
-            <Pressable
-              onPress={() => {
-                Alert.alert(
-                  'Quizi Sonlandır?',
-                  'Quizi sonlandırmak istediğinizden emin misiniz?',
-                  [
-                    { text: 'Hayır', style: 'cancel' },
-                    {
-                      text: 'Evet',
-                      style: 'destructive',
-                      onPress: () => {
-                        resetQuiz();
-                        router.back();
+    <View
+      className="flex-1 bg-background justify-between px-md"
+      style={{
+        paddingTop: insets.top + 8,
+        paddingBottom: insets.bottom > 0 ? insets.bottom + 8 : 20,
+      }}
+    >
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        className="flex-grow-0"
+        contentContainerStyle={{ flexGrow: 1 }}
+        keyboardShouldPersistTaps="handled"
+      >
+        {/* Header and Progress */}
+        <View className="mt-sm">
+          <View className="flex-row justify-between items-center mb-xs">
+            <Text className="text-sm font-semibold text-slate-400">Yazma Quiz</Text>
+            <View className="flex-row items-center gap-2">
+              <Text className="text-sm font-semibold text-primary">
+                {currentIndex + 1}. / {questions.length} Soru
+              </Text>
+              <Pressable
+                onPress={() => {
+                  Alert.alert(
+                    'Quizi Sonlandır?',
+                    'Quizi sonlandırmak istediğinizden emin misiniz?',
+                    [
+                      { text: 'Hayır', style: 'cancel' },
+                      {
+                        text: 'Evet',
+                        style: 'destructive',
+                        onPress: () => {
+                          resetQuiz();
+                          router.back();
+                        },
                       },
-                    },
-                  ],
-                );
-              }}
-              hitSlop={8}
-              className="ml-2"
-            >
-              <Ionicons name="close" size={24} color={colors.mutedForeground} />
-            </Pressable>
+                    ],
+                  );
+                }}
+                hitSlop={8}
+                className="ml-2"
+              >
+                <Ionicons name="close" size={24} color={colors.mutedForeground} />
+              </Pressable>
+            </View>
           </View>
-        </View>
-        <ProgressBar progress={((currentIndex + 1) / questions.length) * 100} className="mt-xs" />
-      </View>
-
-      {/* Question Card */}
-      <Card className="flex-1 justify-start my-lg border border-border shadow-sm p-lg bg-card rounded-2xl">
-        <View className="items-center mt-md mb-md space-y-5">
-          <Text className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-xs">
-            Şu kelimenin Türkçe anlamını yazın:
-          </Text>
-          <Text className="text-4xl font-extrabold text-foreground text-center tracking-wide">
-            {currentQuestion.word}
-          </Text>
+          <ProgressBar progress={((currentIndex + 1) / questions.length) * 100} className="mt-xs" />
         </View>
 
-        {/* Input area */}
-        <TextInput
-          ref={inputRef}
-          value={inputValue}
-          onChangeText={isAnswered ? undefined : setInputValue}
-          onSubmitEditing={!isAnswered ? handleSubmit : undefined}
-          editable={!isAnswered}
-          returnKeyType="done"
-          autoCorrect={false}
-          autoCapitalize="none"
-          placeholder="Anlamı buraya yazın..."
-          placeholderTextColor={colors.mutedForeground}
-          className={[
-            'rounded-2xl border px-md py-4 text-lg text-foreground text-center mb-md',
-            !isAnswered && 'border-border bg-quizBackground',
-            isAnswered && isCorrect && 'border-success bg-success/10 text-success',
-            isAnswered && !isCorrect && 'border-error bg-error/10 text-error',
-          ]
-            .filter(Boolean)
-            .join(' ')}
-        />
-
-        {/* Feedback */}
-        {isAnswered && (
-          <View className="items-center mt-xs">
-            {isCorrect ? (
-              <Text className="text-success text-base font-semibold">✓ Doğru!</Text>
-            ) : (
-              <View className="items-center">
-                <Text className="text-error text-base font-semibold mb-xs">✗ Yanlış</Text>
-                <Text className="text-sm text-muted-foreground">
-                  Doğru cevap:{' '}
-                  <Text className="font-bold text-foreground">{currentQuestion.correctAnswer}</Text>
-                </Text>
-              </View>
-            )}
+        {/* Question Card */}
+        <Card className="my-md border border-border shadow-sm p-md bg-card rounded-2xl">
+          <View className="items-center mt-md mb-md pt-sm">
+            <Text className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-xs">
+              Şu kelimenin Türkçe anlamını yazın:
+            </Text>
+            <Text className="text-3xl font-extrabold text-foreground text-center tracking-wide">
+              {currentQuestion.word}
+            </Text>
           </View>
-        )}
-      </Card>
+
+          {/* Input area */}
+          <TextInput
+            ref={inputRef}
+            value={inputValue}
+            onChangeText={isAnswered ? undefined : setInputValue}
+            onSubmitEditing={!isAnswered ? handleSubmit : undefined}
+            editable={!isAnswered}
+            returnKeyType="done"
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Anlamı buraya yazın..."
+            placeholderTextColor={colors.mutedForeground}
+            className={[
+              'rounded-2xl border px-md py-3 text-lg text-foreground text-center mb-md',
+              !isAnswered && 'border-border bg-card',
+              isAnswered &&
+                isCorrect &&
+                'border-green-600 bg-green-50 dark:border-green-500 dark:bg-green-950/20 text-green-600 dark:text-green-400',
+              isAnswered &&
+                !isCorrect &&
+                'border-red-600 bg-red-50 dark:border-red-500 dark:bg-red-950/20 text-red-600 dark:text-red-400',
+            ]
+              .filter(Boolean)
+              .join(' ')}
+          />
+
+          {/* Feedback */}
+          {isAnswered && (
+            <View className="items-center mt-xs">
+              {isCorrect ? (
+                <View className="flex-row items-center gap-1.5">
+                  <Ionicons name="checkmark-circle" size={18} color="#10B981" />
+                  <Text className="text-green-600 dark:text-green-400 text-base font-semibold">Doğru!</Text>
+                </View>
+              ) : (
+                <View className="items-center">
+                  <View className="flex-row items-center gap-1.5 mb-xs">
+                    <Ionicons name="close-circle" size={18} color="#EF4444" />
+                    <Text className="text-red-600 dark:text-red-400 text-base font-semibold">Yanlış</Text>
+                  </View>
+                  <Text className="text-sm text-muted-foreground mt-0.5">
+                    Doğru cevap:{' '}
+                    <Text className="font-bold text-green-600 dark:text-green-400">
+                      {currentQuestion.correctAnswer}
+                    </Text>
+                  </Text>
+                </View>
+              )}
+            </View>
+          )}
+        </Card>
+      </ScrollView>
 
       {/* Footer Actions */}
-      <View className="mb-sm">
+      <View className="pt-sm">
         {!isAnswered ? (
           <Button
             title="Cevabı Gönder"
