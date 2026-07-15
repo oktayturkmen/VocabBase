@@ -3,8 +3,6 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 import { TABLES } from '@/database/tables';
 import { BackupDataSchema, type BackupData } from '@/types/backup';
 
-const INSTALLED_PACKAGES_TABLE = 'installed_packages';
-
 export async function restoreBackup(
   database: SQLiteDatabase,
   backupData: unknown
@@ -20,7 +18,7 @@ export async function restoreBackup(
       DELETE FROM ${TABLES.AI_EXAMPLE_CACHE};
       DELETE FROM ${TABLES.WORDS};
       DELETE FROM ${TABLES.LISTS};
-      DELETE FROM ${INSTALLED_PACKAGES_TABLE};
+      DELETE FROM ${TABLES.INSTALLED_PACKAGES};
     `);
 
     // Restore words
@@ -136,7 +134,7 @@ export async function restoreBackup(
     // Restore installed packages
     for (const pkg of validatedData.installed_packages) {
       await database.runAsync(
-        `INSERT INTO ${INSTALLED_PACKAGES_TABLE} (id, package_name, is_active, installed_at)
+        `INSERT INTO ${TABLES.INSTALLED_PACKAGES} (id, package_name, is_active, installed_at)
          VALUES (?, ?, ?, ?)
          ON CONFLICT(package_name) DO UPDATE SET
            is_active = excluded.is_active,

@@ -1,5 +1,6 @@
 import { getDatabase } from '@/database/client';
 import { TABLES } from '@/database/tables';
+import { getGroqApiKey, GROQ_CHAT_ENDPOINT, GROQ_MODEL } from './utils';
 
 export class AIExampleGenerationError extends Error {
   constructor(
@@ -19,28 +20,6 @@ export class AICacheError extends Error {
     super(message);
     this.name = 'AICacheError';
   }
-}
-
-// ─── Groq API Ayarları ────────────────────────────────────────────────────
-// Groq, OpenAI uyumlu bir API sunar. Ücretsiz, çok hızlı ve Llama 3 tabanlıdır.
-// Google Gemini SDK'sı tamamen devreden çıkarılmıştır.
-//
-// Not: API anahtarı modül yükleme anında (module load time) sabit olarak
-// değerlendirilmez; bunun yerine her çağrıda (call time) process.env üzerinden
-// okunur. Bu, Expo'nun ortam değişkeni timing'i ile ilgili potansiyel sorunları
-// önler ve anahtarın her zaman güncel değerle okunmasını sağlar.
-const GROQ_BASE_URL = 'https://api.groq.com/openai/v1';
-const GROQ_MODEL = 'llama-3.1-8b-instant';
-const GROQ_CHAT_ENDPOINT = `${GROQ_BASE_URL}/chat/completions`;
-
-/**
- * Groq API anahtarını process.env'den okur.
- * Her çağrıda okunarak module load time caching sorunları önlenir.
- *
- * @returns Groq API anahtarı veya undefined
- */
-function getGroqApiKey(): string | undefined {
-  return process.env.EXPO_PUBLIC_GROQ_API_KEY;
 }
 
 interface GroqChatMessage {
@@ -139,9 +118,10 @@ export class AIService {
 
       await this.cacheExample(word, example);
       return example;
-    } catch {
+    } catch (error) {
       // API hatası durumunda güvenli fallback döndür ve cache'le.
       // Uygulamayı çökertmek yerine kullanıcının örneği görmesi sağlanır.
+      console.error('[AIService] Error generating example sentence:', error);
       const fallback = `The word "${word}" means "${meaning}".`;
       await this.cacheExample(word, fallback);
       return fallback;
@@ -215,12 +195,12 @@ export class AIService {
         throw error;
       }
 
-      console.error('❌ [GERÇEK_HATA_DETAYI] API isteği tam olarak şu yüzden patladı:', error);
+      console.error('[AIService] Error generating story:', error);
 
       // API hatası durumunda akıllı fallback
       const highlightedWords = words.map((w) => `**${w}**`).join(', ');
       const fallbackStory = `Once upon a time, a student discovered that learning new things was a beautiful journey. By using ${highlightedWords}, they managed to improve their English step by step. Every day was a new opportunity to practice and achieve great success.`;
-      console.warn('⚠️ [AI_FALLBACK] Canlı API isteği bypass edildi veya başarısız oldu, akıllı hazır hikaye devreye girdi.');
+      console.warn('[AIService] Using fallback story due to API error');
       return fallbackStory;
     }
   }
@@ -235,6 +215,7 @@ export class AIService {
         Date.now(),
       );
     } catch (error) {
+      console.error('[AIService] Error caching example:', error);
       throw new AICacheError(
         error instanceof Error ? error.message : 'Örnek önbelleğe alınamadı',
         error,
@@ -251,6 +232,7 @@ export class AIService {
       );
       return row?.example || null;
     } catch (error) {
+      console.error('[AIService] Error getting cached example:', error);
       throw new AICacheError(
         error instanceof Error ? error.message : 'Önbelleğe alınmış örnek alınamadı',
         error,
@@ -263,6 +245,7 @@ export class AIService {
       const database = await getDatabase();
       await database.runAsync(`DELETE FROM ${TABLES.AI_EXAMPLE_CACHE}`);
     } catch (error) {
+      console.error('[AIService] Error clearing cache:', error);
       throw new AICacheError(
         error instanceof Error ? error.message : 'Önbellek temizlenemedi',
         error,
@@ -278,6 +261,7 @@ export class AIService {
       );
       return result?.count ?? 0;
     } catch (error) {
+      console.error('[AIService] Error getting cache size:', error);
       throw new AICacheError(
         error instanceof Error ? error.message : 'Önbellek boyutu alınamadı',
         error,

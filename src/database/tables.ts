@@ -5,6 +5,7 @@ export const TABLES = {
   REVIEWS: 'reviews',
   STATISTICS: 'statistics',
   AI_EXAMPLE_CACHE: 'ai_example_cache',
+  INSTALLED_PACKAGES: 'installed_packages',
 } as const;
 
 export type TableName = (typeof TABLES)[keyof typeof TABLES];

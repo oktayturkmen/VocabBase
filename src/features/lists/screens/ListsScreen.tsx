@@ -27,7 +27,7 @@ function ListCard({ list, onDelete, onEditWords }: ListCardProps) {
             <Text className="text-sm text-muted-foreground mb-xs">{list.description}</Text>
           ) : null}
           <Text className="text-xs font-medium text-muted-foreground">
-            {list.wordCount} {list.wordCount === 1 ? 'kelime' : 'kelime'}
+            {list.wordCount} kelime
           </Text>
         </View>
         <View className="flex-row items-center gap-sm ml-sm">

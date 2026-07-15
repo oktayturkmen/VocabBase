@@ -4,8 +4,6 @@ import { DATABASE_VERSION } from '@/constants/database';
 import { TABLES } from '@/database/tables';
 import type { BackupData } from '@/types/backup';
 
-const INSTALLED_PACKAGES_TABLE = 'installed_packages';
-
 export async function createBackup(database: SQLiteDatabase): Promise<BackupData> {
   const words = await database.getAllAsync(`
     SELECT id, word, meaning, example, pronunciation, package_name, created_at, updated_at
@@ -39,7 +37,7 @@ export async function createBackup(database: SQLiteDatabase): Promise<BackupData
 
   const installedPackages = await database.getAllAsync(`
     SELECT id, package_name, is_active, installed_at
-    FROM ${INSTALLED_PACKAGES_TABLE}
+    FROM ${TABLES.INSTALLED_PACKAGES}
   `);
 
   return {

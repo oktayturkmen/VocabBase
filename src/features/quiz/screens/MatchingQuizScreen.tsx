@@ -10,11 +10,14 @@ import { getQuizService } from '@/services/quiz/quiz.service';
 import { useGamificationStore } from '@/store/gamification.store';
 import { useStatisticStore } from '@/store/statistic.store';
 import { getLocalDateString } from '@/utils/date';
+import { shuffleArray } from '@/utils/shuffle';
 
 type MatchItem = {
   id: number;
   text: string;
 };
+
+const MATCHING_QUIZ_WORD_COUNT = 5;
 
 export default function MatchingQuizScreen() {
   const router = useRouter();
@@ -46,21 +49,21 @@ export default function MatchingQuizScreen() {
         const service = await getQuizService();
         const totalCount = await service.getWordCount();
         
-        if (totalCount < 5) {
+        if (totalCount < MATCHING_QUIZ_WORD_COUNT) {
           setError('Eşleştirme oyunu için kütüphanenizde en az 5 kelime bulunmalıdır. Lütfen daha fazla kelime ekleyin.');
           setIsLoading(false);
           return;
         }
 
-        const quizWords = await service.getQuizWords(5);
+        const quizWords = await service.getQuizWords(MATCHING_QUIZ_WORD_COUNT);
 
-        // Shuffle English items
+        // Shuffle English items (Fisher-Yates)
         const english = quizWords.map(w => ({ id: w.id, text: w.word }));
-        const shuffledEnglish = [...english].sort(() => Math.random() - 0.5);
+        const shuffledEnglish = shuffleArray(english);
 
-        // Shuffle Turkish items
+        // Shuffle Turkish items (Fisher-Yates)
         const turkish = quizWords.map(w => ({ id: w.id, text: w.meaning }));
-        const shuffledTurkish = [...turkish].sort(() => Math.random() - 0.5);
+        const shuffledTurkish = shuffleArray(turkish);
 
         setEnglishItems(shuffledEnglish);
         setTurkishItems(shuffledTurkish);
@@ -108,7 +111,7 @@ export default function MatchingQuizScreen() {
         setSelectedTurkishId(null);
 
         // Game completed?
-        if (newMatched.length === 5) {
+        if (newMatched.length === MATCHING_QUIZ_WORD_COUNT) {
           const gameEndTime = Date.now();
           setEndTime(gameEndTime);
 
@@ -163,7 +166,7 @@ export default function MatchingQuizScreen() {
     );
   }
 
-  const isCompleted = matchedIds.length === 5;
+  const isCompleted = matchedIds.length === MATCHING_QUIZ_WORD_COUNT;
   const totalSeconds = endTime ? Math.floor((endTime - startTime) / 1000) : 0;
   const xpEarned = 20 + (mistakeCount === 0 ? 10 : 0);
 
@@ -322,7 +325,7 @@ export default function MatchingQuizScreen() {
             Hata: <Text className="font-bold text-foreground">{mistakeCount}</Text>
           </Text>
           <Text className="text-xs font-bold text-primary">
-            Eşleşen: {matchedIds.length} / 5
+            Eşleşen: {matchedIds.length} / {MATCHING_QUIZ_WORD_COUNT}
           </Text>
         </View>
       )}

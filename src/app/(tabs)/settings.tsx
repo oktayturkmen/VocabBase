@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { View, Text, ScrollView, Switch, Platform, Pressable, Alert, Modal, ActivityIndicator } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import DateTimePicker, { DateTimePickerChangeEvent } from '@react-native-community/datetimepicker';
 
 import { FadeIn } from '@/components/animations/FadeIn';
 import { useImportWords } from '@/hooks/useImportWords';
@@ -142,6 +141,189 @@ function SectionHeader({ title, icon }: SectionHeaderProps) {
   );
 }
 
+const ITEM_HEIGHT = 44;
+
+type TimeWheelProps = {
+  items: string[];
+  selectedValue: string;
+  onValueChange: (value: string) => void;
+};
+
+function TimeWheel({ items, selectedValue, onValueChange }: TimeWheelProps) {
+  const scrollViewRef = useRef<ScrollView>(null);
+  const selectedIndex = items.indexOf(selectedValue);
+  const displayItems = ['', '', ...items, '', ''];
+
+  useEffect(() => {
+    if (selectedIndex !== -1) {
+      const timer = setTimeout(() => {
+        scrollViewRef.current?.scrollTo({
+          y: selectedIndex * ITEM_HEIGHT,
+          animated: false,
+        });
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleScrollEnd = (event: any) => {
+    const yOffset = event.nativeEvent.contentOffset.y;
+    const index = Math.round(yOffset / ITEM_HEIGHT);
+    const safeIndex = Math.max(0, Math.min(items.length - 1, index));
+    const newVal = items[safeIndex];
+    if (newVal !== selectedValue) {
+      onValueChange(newVal);
+    }
+  };
+
+  const handleScrollEndDrag = (event: any) => {
+    if (!event.nativeEvent.decelerating) {
+      handleScrollEnd(event);
+    }
+  };
+
+  return (
+    <View style={{ height: ITEM_HEIGHT * 5, width: 70 }}>
+      <ScrollView
+        ref={scrollViewRef}
+        showsVerticalScrollIndicator={false}
+        snapToInterval={ITEM_HEIGHT}
+        decelerationRate="fast"
+        onMomentumScrollEnd={handleScrollEnd}
+        onScrollEndDrag={handleScrollEndDrag}
+        scrollEventThrottle={16}
+        contentContainerStyle={{ paddingVertical: 0 }}
+      >
+        {displayItems.map((val, idx) => {
+          const isSelected = val === selectedValue;
+          return (
+            <View
+              key={idx}
+              style={{ height: ITEM_HEIGHT }}
+              className="items-center justify-center"
+            >
+              <Text
+                className={`text-lg ${isSelected ? 'text-foreground font-bold text-xl' : 'text-muted-foreground/30 text-base'}`}
+              >
+                {val}
+              </Text>
+            </View>
+          );
+        })}
+      </ScrollView>
+    </View>
+  );
+}
+
+type TimePickerModalProps = {
+  visible: boolean;
+  initialTime: string;
+  onClose: () => void;
+  onSave: (hour: number, minute: number) => void;
+  onDisable: () => void;
+};
+
+function TimePickerModal({ visible, initialTime, onClose, onSave, onDisable }: TimePickerModalProps) {
+  const insets = useSafeAreaInsets();
+  
+  const [selectedHour, setSelectedHour] = useState('20');
+  const [selectedMinute, setSelectedMinute] = useState('00');
+
+  useEffect(() => {
+    if (visible) {
+      const { hour, minute } = parseTime(initialTime);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setSelectedHour(String(hour).padStart(2, '0'));
+      setSelectedMinute(String(minute).padStart(2, '0'));
+    }
+  }, [visible, initialTime]);
+
+  const handleSave = () => {
+    const hours = parseInt(selectedHour, 10);
+    const minutes = parseInt(selectedMinute, 10);
+    onSave(hours, minutes);
+  };
+
+  return (
+    <Modal
+      visible={visible}
+      transparent
+      animationType="slide"
+      onRequestClose={onClose}
+    >
+      <View className="flex-1 justify-end relative">
+        {/* Background Overlay */}
+        <Pressable 
+          className="absolute inset-0 bg-black/40" 
+          onPress={onClose} 
+        />
+        
+        {/* Sheet Content */}
+        <View
+          className="rounded-t-3xl bg-card px-md z-10"
+          style={{ paddingBottom: insets.bottom > 0 ? insets.bottom + 16 : 24 }}
+        >
+          {/* Top Indicator */}
+          <View className="self-center w-12 h-1.5 rounded-full bg-muted-foreground/20 mt-sm mb-lg" />
+          
+          {/* Time Selector Area */}
+          <View className="flex-row items-center justify-center relative w-full my-md">
+            {/* Highlight Box Overlay */}
+            <View 
+              className="absolute left-6 right-6 h-[46px] bg-muted/10 dark:bg-muted/20 rounded-xl" 
+              pointerEvents="none" 
+              style={{ top: ITEM_HEIGHT * 2 }} 
+            />
+            
+            <View className="flex-row items-center justify-center">
+              {/* Hour Wheel */}
+              <TimeWheel 
+                items={Array.from({ length: 24 }, (_, i) => String(i).padStart(2, '0'))} 
+                selectedValue={selectedHour} 
+                onValueChange={setSelectedHour} 
+              />
+              
+              {/* Text "saat" */}
+              <Text className="text-base font-semibold text-foreground ml-xs z-10" style={{ pointerEvents: 'none' }}>saat</Text>
+              
+              {/* Spacer */}
+              <View style={{ width: 24 }} />
+              
+              {/* Minute Wheel */}
+              <TimeWheel 
+                items={Array.from({ length: 60 }, (_, i) => String(i).padStart(2, '0'))} 
+                selectedValue={selectedMinute} 
+                onValueChange={setSelectedMinute} 
+              />
+              
+              {/* Text "dk." */}
+              <Text className="text-base font-semibold text-foreground ml-xs z-10" style={{ pointerEvents: 'none' }}>dk.</Text>
+            </View>
+          </View>
+
+          {/* Buttons */}
+          <View className="w-full mt-lg">
+            <Pressable 
+              onPress={handleSave} 
+              className="bg-[#3b82f6] rounded-full py-4 items-center justify-center w-full mb-sm shadow-sm active:opacity-90"
+            >
+              <Text className="text-white text-base font-bold">Kaydet</Text>
+            </Pressable>
+            
+            <Pressable 
+              onPress={onDisable} 
+              className="bg-blue-50/70 dark:bg-blue-950/20 rounded-full py-4 items-center justify-center w-full active:opacity-90"
+            >
+              <Text className="text-[#3b82f6] text-base font-bold">Devre dışı</Text>
+            </Pressable>
+          </View>
+        </View>
+      </View>
+    </Modal>
+  );
+}
+
 function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const [permissionStatus, setPermissionStatus] = useState<string | null>(null);
@@ -149,9 +331,9 @@ function SettingsScreen() {
   const [isCheckingOffline, setIsCheckingOffline] = useState(false);
   const [isBackupRestoring, setIsBackupRestoring] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
+  const [isResetting, setIsResetting] = useState(false);
   const [activeSheet, setActiveSheet] = useState<SheetType>(null);
   const [showTimePicker, setShowTimePicker] = useState(false);
-  const [tempTime, setTempTime] = useState<Date>(new Date(2000, 0, 1, 20, 0));
 
   const importMutation = useImportWords();
   const { exportBackup, importBackup } = useBackupRestore();
@@ -251,40 +433,7 @@ function SettingsScreen() {
   };
 
   const openTimePicker = () => {
-    const { hour, minute } = parseTime(notificationTime);
-    setTempTime(new Date(2000, 0, 1, hour, minute));
     setShowTimePicker(true);
-  };
-
-  // Android: Kullanıcı saat seçtiğinde (OK butonuna bastığında) tetiklenir
-  const handleAndroidTimeChange = (_event: DateTimePickerChangeEvent, selectedDate?: Date) => {
-    setShowTimePicker(false);
-    if (!selectedDate) {
-      return;
-    }
-    const hours = selectedDate.getHours();
-    const minutes = selectedDate.getMinutes();
-    void updateTime(hours, minutes);
-  };
-
-  // Android: Kullanıcı picker'ı iptal ettiğinde tetiklenir
-  const handleAndroidTimeDismiss = () => {
-    setShowTimePicker(false);
-  };
-
-  // iOS: Spinner'da kullanıcı kaydırma yaptıkça tetiklenir (canlı güncelleme)
-  const handleIOSTimeChange = (_event: DateTimePickerChangeEvent, selectedDate?: Date) => {
-    if (selectedDate) {
-      setTempTime(selectedDate);
-    }
-  };
-
-  const confirmTimePicker = () => {
-    setShowTimePicker(false);
-    // Use local time methods to get the actual selected time
-    const hours = tempTime.getHours();
-    const minutes = tempTime.getMinutes();
-    void updateTime(hours, minutes);
   };
 
   const handleOfflineCheck = async () => {
@@ -374,7 +523,7 @@ function SettingsScreen() {
   };
 
   const performResetProgress = async () => {
-    setIsSaving(true);
+    setIsResetting(true);
     try {
       // 1. SQLite veritabanındaki ilerleme verilerini temizle
       const database = await getDatabase();
@@ -408,7 +557,7 @@ function SettingsScreen() {
         error instanceof Error ? error.message : 'İlerleme sıfırlanamadı.',
       );
     } finally {
-      setIsSaving(false);
+      setIsResetting(false);
     }
   };
 
@@ -615,7 +764,7 @@ function SettingsScreen() {
               iconColor="#ea580c"
               iconBg="bg-orange-50 dark:bg-orange-950/20"
               title="Çevrimdışı Kontrolü"
-              subtitle="Cihazın internet bağlantı durumunu ve servisleri test edin"
+              subtitle="Veritabanı ve ayar depolamasının çevrimdışı çalışmaya hazır olduğunu doğrulayın"
               rightElement={
                 isCheckingOffline ? (
                   <ActivityIndicator size="small" color={colors.primary} className="mr-xs" />
@@ -673,8 +822,14 @@ function SettingsScreen() {
               iconColor="#ef4444"
               iconBg="bg-red-50 dark:bg-red-950/20"
               title="Tüm İlerlemeyi Sıfırla"
-              subtitle="Kelimelerinizi, quiz skorlarınızı ve tüm çalışma verilerinizi kalıcı olarak silin"
+              subtitle="Tekrarlar, quiz skorları ve istatistikler silinir. Kelimeleriniz ve listeleriniz korunur"
+              rightElement={
+                isResetting ? (
+                  <ActivityIndicator size="small" color={colors.primary} className="mr-xs" />
+                ) : null
+              }
               onPress={handleResetProgress}
+              disabled={isResetting}
               danger={true}
               isLast={true}
             />
@@ -766,50 +921,20 @@ function SettingsScreen() {
         </Pressable>
       </Modal>
 
-      {/* Android: DateTimePicker native dialog */}
-      {showTimePicker && Platform.OS === 'android' ? (
-        <DateTimePicker
-          value={tempTime}
-          mode="time"
-          display="default"
-          onValueChange={handleAndroidTimeChange}
-          onDismiss={handleAndroidTimeDismiss}
-        />
-      ) : null}
-
-      {/* iOS: DateTimePicker bottom sheet */}
-      <Modal
-        visible={showTimePicker && Platform.OS === 'ios'}
-        transparent
-        animationType="slide"
-        onRequestClose={() => setShowTimePicker(false)}
-      >
-        <Pressable className="flex-1 bg-black/40" onPress={() => setShowTimePicker(false)}>
-          <Pressable
-            className="absolute bottom-0 left-0 right-0 rounded-t-2xl bg-card"
-            style={{ paddingBottom: insets.bottom + 16 }}
-            onPress={(e) => e.stopPropagation()}
-          >
-            <View className="self-center w-10 h-1 rounded-full bg-muted-foreground/30 mt-sm mb-md" />
-            <View className="flex-row items-center justify-between px-md pb-md">
-              <Pressable onPress={() => setShowTimePicker(false)} hitSlop={8}>
-                <Text className="text-base text-muted-foreground">İptal</Text>
-              </Pressable>
-              <Text className="text-lg font-bold text-foreground">Hatırlatma Saati</Text>
-              <Pressable onPress={confirmTimePicker} hitSlop={8}>
-                <Text className="text-base text-primary font-semibold">Tamam</Text>
-              </Pressable>
-            </View>
-            <DateTimePicker
-              value={tempTime}
-              mode="time"
-              display="spinner"
-              onValueChange={handleIOSTimeChange}
-              style={{ height: 200 }}
-            />
-          </Pressable>
-        </Pressable>
-      </Modal>
+      {/* Custom time picker bottom sheet */}
+      <TimePickerModal
+        visible={showTimePicker}
+        initialTime={notificationTime}
+        onClose={() => setShowTimePicker(false)}
+        onSave={(hour, minute) => {
+          void updateTime(hour, minute);
+          setShowTimePicker(false);
+        }}
+        onDisable={async () => {
+          setShowTimePicker(false);
+          await toggleNotifications(false);
+        }}
+      />
     </View>
   );
 }

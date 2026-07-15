@@ -8,8 +8,6 @@ import type { LocalPackageWord } from '@/constants/word-packages';
 import { mapRowToWord } from './word.mapper';
 import { validateCreateWordInput, validateUpdateWordInput } from './word.validation';
 
-const INSTALLED_PACKAGES_TABLE = 'installed_packages';
-
 export class PackageAlreadyLoadedError extends Error {
   constructor(packageName: string) {
     super(`"${packageName}" paketi zaten yüklü.`);
@@ -20,6 +18,18 @@ export class PackageAlreadyLoadedError extends Error {
 export class WordService {
   constructor(private readonly database: SQLiteDatabase) {}
 
+  /**
+   * Paketin kelimelerinin yüklenip yüklenmediğini kontrol eder.
+   * Bu fonksiyon WORDS tablosunu (actual data tablosu) kontrol eder.
+   * Paketin kelime verilerinin veritabanında gerçekten bulunup bulunmadığını kontrol eder.
+   *
+   * Not: isPackageInstalled() fonksiyonundan farklıdır:
+   * - isPackageInstalled: Paketin kurulum kaydı var mı (metadata)
+   * - isPackageLoaded: Paketin kelimeleri yüklenmiş mi (actual data)
+   *
+   * @param packageName - Kontrol edilecek paket adı
+   * @returns Paket kelimeleri yüklenmişse true, değilse false
+   */
   async isPackageLoaded(packageName: string): Promise<boolean> {
     const result = await this.database.getFirstAsync<{ count: number }>(
       `SELECT COUNT(*) AS count FROM ${TABLES.WORDS} WHERE package_name = ?`,
@@ -111,9 +121,31 @@ export class WordService {
     return rows.map(mapRowToWord);
   }
 
-  async getAll(): Promise<Word[]> {
+  async getAll(limit?: number): Promise<Word[]> {
     const rows = await this.database.getAllAsync<WordRow>(
-      `SELECT * FROM ${TABLES.WORDS} ORDER BY created_at DESC`,
+      `SELECT * FROM ${TABLES.WORDS} ORDER BY created_at DESC${limit ? ` LIMIT ${limit}` : ''}`,
+    );
+
+    return rows.map(mapRowToWord);
+  }
+
+  /**
+   * Kelime metnine göre (case-insensitive) arama yapar.
+   * Tüm kelimeleri memory'e yüklemek yerine doğrudan SQL LIKE kullanır.
+   *
+   * @param query - Arama metni
+   * @param limit - Maksimum sonuç sayısı
+   * @returns Eşleşen kelimeler
+   */
+  async searchWords(query: string, limit: number = 100): Promise<Word[]> {
+    const searchTerm = `%${query.trim()}%`;
+    const rows = await this.database.getAllAsync<WordRow>(
+      `SELECT * FROM ${TABLES.WORDS}
+       WHERE word LIKE ? COLLATE NOCASE
+       ORDER BY created_at DESC
+       LIMIT ?`,
+      searchTerm,
+      limit,
     );
 
     return rows.map(mapRowToWord);

@@ -74,7 +74,9 @@ export const useGamificationStore = create<GamificationStore>((set, get) => ({
         });
       }
     } catch (error) {
-      console.error('Failed to load gamification data from storage:', error);
+      // Storage hatası durumunda başlangıç değerleri kullanılır
+      // Kullanıcı deneyimi bozulmaz, sadece loglanır
+      console.error('[GamificationStore] Failed to load data from storage:', error instanceof Error ? error.message : error);
     }
   },
 
@@ -84,7 +86,10 @@ export const useGamificationStore = create<GamificationStore>((set, get) => ({
       const dataToStore = { xp, level, badges };
       storage.set(GAMIFICATION_STORAGE_KEY, JSON.stringify(dataToStore));
     } catch (error) {
-      console.error('Failed to save gamification data to storage:', error);
+      // Storage hatası durumunda XP kaybı olabilir ama uygulama çökmez
+      // Kullanıcıya bildirim verilebilir veya retry mekanizması eklenebilir
+      console.error('[GamificationStore] Failed to save data to storage:', error instanceof Error ? error.message : error);
+      // Gelecekte buraya kullanıcı bildirimi veya retry mekanizması eklenebilir
     }
   },
 

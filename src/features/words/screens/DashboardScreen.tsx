@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -17,10 +17,15 @@ import {
   getXpToNextLevel,
 } from '@/store/gamification.store';
 import { usePackageStore } from '@/store/package.store';
+import { getKeyValueStorage } from '@/services/storage/key-value-storage.service';
 import type { StatisticRow } from '@/types/statistic';
 import { getLocalDateString } from '@/utils/date';
 import { getDatabase } from '@/database/client';
 import { TABLES } from '@/database/tables';
+
+// Günlük bonus'un gün içinde tekrar verilmesini önlemek için kullanılan storage.
+// Anahtar formatı: daily_bonus_YYYY-MM-DD
+const dailyBonusStorage = getKeyValueStorage({ id: 'gamification' });
 
 // ─── Yardımcı Fonksiyonlar ──────────────────────────────────────────────────
 
@@ -194,7 +199,6 @@ export default function DashboardScreen() {
   const { checkAndUnlockBadge, level, xp } = useGamificationStore();
   const { activePackageName } = usePackageStore();
 
-  const dailyBonusAwardedRef = useRef(false);
   const [packageProgress, setPackageProgress] = useState<{
     totalCount: number;
     learnedCount: number;
@@ -250,11 +254,16 @@ export default function DashboardScreen() {
   }, [activePackageName]);
 
   useEffect(() => {
-    if (!dailyBonusAwardedRef.current && recentStatistics.length > 0) {
+    if (recentStatistics.length > 0) {
       const streakCount = calculateStreak(recentStatistics);
-      if (streakCount > 0) {
+      const todayKey = `daily_bonus_${getLocalDateString()}`;
+
+      // Bugün bonus daha önce verilmiş mi?
+      const alreadyAwardedToday = dailyBonusStorage.getString(todayKey) === 'true';
+
+      if (streakCount > 0 && !alreadyAwardedToday) {
         void useGamificationStore.getState().addXp(50);
-        dailyBonusAwardedRef.current = true;
+        dailyBonusStorage.set(todayKey, 'true');
       }
       void checkAndUnlockBadge('streak_7', streakCount >= 7);
     }

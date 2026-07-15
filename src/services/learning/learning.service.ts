@@ -6,10 +6,8 @@ import { mapRowToWord } from '@/services/word/word.mapper';
 import type { Word, WordRow } from '@/types/word';
 import { getLocalDateString } from '@/utils/date';
 
-const INSTALLED_PACKAGES_TABLE = 'installed_packages';
-
 function buildActivePackageClause(): string {
-  return `package_name IN (SELECT package_name FROM ${INSTALLED_PACKAGES_TABLE} WHERE is_active = 1)`;
+  return `package_name IN (SELECT package_name FROM ${TABLES.INSTALLED_PACKAGES} WHERE is_active = 1)`;
 }
 
 export class LearningService {

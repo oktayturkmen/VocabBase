@@ -100,15 +100,32 @@ function PackageCard({
       {/* Aksiyon Butonu (Aktif Olmayan Paketler İçin Tekli Buton ve Çöp Kutusu) */}
       {!isActive && (
         <View className="mt-lg flex-row gap-sm">
-          <Button
-            title={isLoaded ? 'Aktif Et' : 'Yükle'}
-            onPress={isLoaded ? handleSetActive : handlePress}
-            loading={isLoading}
-            className={`flex-1 rounded-xl py-2.5 ${
-              isLoaded ? 'bg-primary/10 border border-primary/25' : 'bg-primary'
-            }`}
-            textClassName={`font-bold ${isLoaded ? 'text-primary text-sm' : 'text-white text-sm'}`}
-          />
+          {isLoaded ? (
+            <Pressable
+              onPress={handleSetActive}
+              disabled={isLoading}
+              accessibilityRole="button"
+              accessibilityLabel="Aktif Et"
+              accessibilityState={{ disabled: isLoading, busy: isLoading }}
+              className="flex-1 flex-row items-center justify-center rounded-xl py-2.5 bg-transparent border-[1.5px] border-primary active:bg-primary/10"
+            >
+              {isLoading ? (
+                <ActivityIndicator color={colors.primary} />
+              ) : (
+                <Text style={{ color: colors.primary }} className="text-sm font-semibold">
+                  Aktif Et
+                </Text>
+              )}
+            </Pressable>
+          ) : (
+            <Button
+              title="Yükle"
+              onPress={handlePress}
+              loading={isLoading}
+              className="flex-1 rounded-xl py-2.5 bg-primary"
+              textClassName="font-semibold text-white text-sm"
+            />
+          )}
           {isLoaded && (
             <Pressable
               onPress={() => onUninstall(pkg)}

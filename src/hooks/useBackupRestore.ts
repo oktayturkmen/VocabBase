@@ -55,7 +55,12 @@ export function useBackupRestore() {
     const file = new File(result.assets[0].uri);
     const fileContent = await file.text();
 
-    const parsedData = JSON.parse(fileContent);
+    let parsedData: unknown;
+    try {
+      parsedData = JSON.parse(fileContent);
+    } catch {
+      throw new Error('Seçilen dosya geçerli bir yedekleme dosyası (JSON) değil.');
+    }
     const validatedData = BackupDataSchema.parse(parsedData);
 
     await restoreBackup(database, validatedData);

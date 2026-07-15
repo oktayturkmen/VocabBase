@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import * as Speech from 'expo-speech';
-import { useRouter } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -13,6 +13,8 @@ import type { ListWithWordCount } from '@/services/list';
 import { getSpeechRecognitionService } from '@/services/speech-recognition';
 import { getDatabase } from '@/database/client';
 import { createWordService } from '@/services/word';
+import { isPackageInstalled } from '@/services/package/package-install.service';
+import { WORD_PACKAGES, type WordPackageDefinition } from '@/constants/word-packages';
 import { useAppSettingsStore } from '@/store/app-settings.store';
 import { useLearningStore } from '@/store/learning.store';
 import { useListStore } from '@/store/list.store';
@@ -134,7 +136,7 @@ export function LearnAndQuizHub() {
   const { startRandomSession, startSessionWithAllListWords } = useLearningStore();
   const { lists, fetchLists } = useListStore();
   const { speechSpeed } = useAppSettingsStore();
-  const { activePackageName } = usePackageStore();
+  const { activePackageName, setActivePackageName } = usePackageStore();
   const [showListModal, setShowListModal] = useState(false);
   const [exerciseMode, setExerciseMode] = useState<MemoryExerciseMode | null>(null);
   const [activeExercise, setActiveExercise] = useState<MemoryExerciseMode | null>(null);
@@ -152,6 +154,10 @@ export function LearnAndQuizHub() {
   const [showStory, setShowStory] = useState(false);
   const [selectedWordForDetail, setSelectedWordForDetail] = useState<string | null>(null);
 
+  // Hybrid Package Switcher state
+  const [showPackageSwitcher, setShowPackageSwitcher] = useState(false);
+  const [installedPackages, setInstalledPackages] = useState<WordPackageDefinition[]>([]);
+
   const currentExerciseWord = exerciseWords[currentExerciseIndex] ?? null;
   const listeningLoopActiveRef = useRef(false);
   const listeningTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -160,6 +166,38 @@ export function LearnAndQuizHub() {
   useEffect(() => {
     void fetchLists();
   }, [fetchLists]);
+
+  // Load installed packages when screen gains focus
+  useFocusEffect(
+    useCallback(() => {
+      const loadInstalledPackages = async () => {
+        try {
+          const database = await getDatabase();
+          const wordService = createWordService(database);
+          const installed: WordPackageDefinition[] = [];
+          for (const pkg of WORD_PACKAGES) {
+            const inst = await isPackageInstalled(database, pkg.packageName);
+            const dbLoaded = await wordService.isPackageLoaded(pkg.packageName);
+            if (inst || dbLoaded) {
+              installed.push(pkg);
+            }
+          }
+          setInstalledPackages(installed);
+        } catch {
+          // silently fail – packages will show empty
+        }
+      };
+      void loadInstalledPackages();
+    }, []),
+  );
+
+  const handleSwitchPackage = useCallback(
+    (packageName: string) => {
+      setActivePackageName(packageName);
+      setShowPackageSwitcher(false);
+    },
+    [setActivePackageName],
+  );
 
   const handleOpenListModal = useCallback(() => {
     setShowListModal(true);
@@ -671,13 +709,29 @@ export function LearnAndQuizHub() {
             </View>
 
             <ScrollView className="max-h-80" showsVerticalScrollIndicator={false}>
-              <ListSelectionItem
-                onPress={handleStartExerciseAll}
-                icon="layers-outline"
-                title="Aktif Paket Kelimeleri"
-                subtitle={`Aktif: ${activePackageName}`}
-                disabled={isLoadingExercise}
-              />
+              <View className="flex-row items-center justify-between rounded-2xl px-md py-md active:bg-muted/50">
+                <Pressable
+                  onPress={handleStartExerciseAll}
+                  disabled={isLoadingExercise}
+                  className="flex-row items-center flex-1"
+                >
+                  <View className="mr-md h-11 w-11 items-center justify-center rounded-xl bg-muted">
+                    <Ionicons name="layers-outline" size={20} color={colors.mutedForeground} />
+                  </View>
+                  <View className="flex-1">
+                    <Text className="text-base font-semibold text-foreground">Aktif Paket</Text>
+                    <Text className="text-xs text-muted-foreground">Aktif: {activePackageName}</Text>
+                  </View>
+                  <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+                </Pressable>
+                <Pressable
+                  onPress={() => { closeExerciseSourceModal(); setShowPackageSwitcher(true); }}
+                  hitSlop={8}
+                  className="ml-sm"
+                >
+                  <Text className="text-xs font-semibold text-primary">(Değiştir)</Text>
+                </Pressable>
+              </View>
 
               {lists.length > 0 ? (
                 lists.map((list) => (
@@ -851,12 +905,28 @@ export function LearnAndQuizHub() {
             </View>
 
             <ScrollView className="max-h-80" showsVerticalScrollIndicator={false}>
-              <ListSelectionItem
-                onPress={handleSelectAllLists}
-                icon="layers-outline"
-                title="Aktif Paket Kelimeleri"
-                subtitle={`Aktif: ${activePackageName}`}
-              />
+              <View className="flex-row items-center justify-between rounded-2xl px-md py-md active:bg-muted/50">
+                <Pressable
+                  onPress={handleSelectAllLists}
+                  className="flex-row items-center flex-1"
+                >
+                  <View className="mr-md h-11 w-11 items-center justify-center rounded-xl bg-muted">
+                    <Ionicons name="layers-outline" size={20} color={colors.mutedForeground} />
+                  </View>
+                  <View className="flex-1">
+                    <Text className="text-base font-semibold text-foreground">Aktif Paket</Text>
+                    <Text className="text-xs text-muted-foreground">Aktif: {activePackageName}</Text>
+                  </View>
+                  <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+                </Pressable>
+                <Pressable
+                  onPress={() => { setShowListModal(false); setShowPackageSwitcher(true); }}
+                  hitSlop={8}
+                  className="ml-sm"
+                >
+                  <Text className="text-xs font-semibold text-primary">(Değiştir)</Text>
+                </Pressable>
+              </View>
 
               {lists.length > 0 ? (
                 lists.map((list) => (
@@ -882,59 +952,57 @@ export function LearnAndQuizHub() {
       {/* AI Story Modal */}
       <Modal
         animationType="slide"
-        transparent
         visible={showStory}
         onRequestClose={handleCloseStory}
       >
-        <Pressable className="flex-1 bg-black/50" onPress={handleCloseStory}>
-          <Pressable
-            className="absolute bottom-0 left-0 right-0 rounded-t-3xl bg-card shadow-xl"
-            style={{ paddingBottom: insets.bottom + 16, maxHeight: '80%' }}
-            onPress={(e) => e.stopPropagation()}
-          >
-            {/* Grab handle */}
-            <View className="self-center w-10 h-1 rounded-full bg-muted-foreground/30 mt-sm mb-md" />
-
-            {/* Header */}
-            <View className="flex-row items-center justify-between px-md pb-md">
-              <View className="flex-row items-center gap-2">
-                <Ionicons name="bookmarks" size={24} color="#4f46e5" />
-                <Text className="text-lg font-bold text-foreground">AI Öykü Modu</Text>
+        <View 
+          className="flex-1 bg-background"
+          style={{ paddingTop: insets.top, paddingBottom: Math.max(insets.bottom, 16) }}
+        >
+          {/* Header */}
+          <View className="flex-row items-center justify-between px-lg py-md border-b border-border bg-card">
+            <View className="flex-row items-center gap-2">
+              <View className="h-9 w-9 items-center justify-center rounded-xl bg-indigo-50 dark:bg-indigo-950/30">
+                <Ionicons name="bookmarks" size={18} color="#4f46e5" />
               </View>
-              <Pressable
-                onPress={handleCloseStory}
-                accessibilityRole="button"
-                accessibilityLabel="Kapat"
-                hitSlop={8}
-                className="h-9 w-9 items-center justify-center rounded-full bg-muted"
-              >
-                <Ionicons name="close" size={20} color={colors.foreground} />
-              </Pressable>
+              <View>
+                <Text className="text-base font-bold text-foreground">AI Öykü Modu</Text>
+                <Text className="text-[11px] text-muted-foreground mt-0.5">Kelimeleri hikaye içinde okuyarak öğrenin</Text>
+              </View>
             </View>
-
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 16 }}
+            <Pressable
+              onPress={handleCloseStory}
+              accessibilityRole="button"
+              accessibilityLabel="Kapat"
+              hitSlop={12}
+              className="h-8 w-8 items-center justify-center rounded-full bg-muted/60 active:bg-muted"
             >
-              {isLoadingStory ? (
-                <View className="py-xl">
-                  <Loading message="Hikaye üretiliyor..." />
-                </View>
-              ) : story ? (
-                <View>
-                  <StoryCard story={story} onWordPress={handleWordPressInStory} />
-                  <Text className="mt-md text-center text-xs text-muted-foreground">
-                    Kalın yazılı kelimelere dokunarak anlamını görebilirsin.
-                  </Text>
-                </View>
-              ) : (
-                <Text className="text-center text-sm text-muted-foreground py-lg">
-                  Hikaye bulunamadı.
+              <Ionicons name="close" size={18} color={colors.foreground} />
+            </Pressable>
+          </View>
+
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingHorizontal: 24, paddingVertical: 24 }}
+          >
+            {isLoadingStory ? (
+              <View className="py-xl">
+                <Loading message="Hikaye üretiliyor..." />
+              </View>
+            ) : story ? (
+              <View className="pb-xl">
+                <StoryCard story={story} onWordPress={handleWordPressInStory} />
+                <Text className="mt-md text-center text-xs text-muted-foreground">
+                  Kalın yazılı kelimelere dokunarak anlamını görebilirsin.
                 </Text>
-              )}
-            </ScrollView>
-          </Pressable>
-        </Pressable>
+              </View>
+            ) : (
+              <Text className="text-center text-sm text-muted-foreground py-lg">
+                Hikaye bulunamadı.
+              </Text>
+            )}
+          </ScrollView>
+        </View>
       </Modal>
 
       {/* Word Detail Bottom Sheet */}
@@ -943,6 +1011,116 @@ export function LearnAndQuizHub() {
         word={selectedWordForDetail}
         onClose={handleCloseWordDetailSheet}
       />
+
+      {/* Package Switcher Modal */}
+      <Modal
+        animationType="fade"
+        transparent
+        visible={showPackageSwitcher}
+        onRequestClose={() => setShowPackageSwitcher(false)}
+      >
+        <Pressable
+          className="flex-1 justify-end bg-black/50"
+          onPress={() => setShowPackageSwitcher(false)}
+        >
+          <Pressable
+            className="rounded-t-3xl bg-card px-lg pt-lg"
+            style={{ paddingBottom: Math.max(insets.bottom, 16) + 8 }}
+            onPress={(e) => e.stopPropagation()}
+          >
+            {/* Handle Indicator */}
+            <View className="self-center w-12 h-1.5 rounded-full bg-muted-foreground/20 mb-lg" />
+
+            {/* Header */}
+            <View className="flex-row items-center justify-between mb-md">
+              <View>
+                <Text className="text-xl font-bold text-foreground">Seviye Değiştir</Text>
+                <Text className="text-sm text-muted-foreground mt-xs">
+                  Çalışmak istediğin seviyeyi seç
+                </Text>
+              </View>
+              <Pressable
+                onPress={() => setShowPackageSwitcher(false)}
+                hitSlop={8}
+                className="h-9 w-9 items-center justify-center rounded-full bg-muted"
+              >
+                <Ionicons name="close" size={20} color={colors.foreground} />
+              </Pressable>
+            </View>
+
+            {/* Installed Package List */}
+            <View className="gap-xs">
+              {installedPackages.length === 0 ? (
+                <View className="py-lg items-center">
+                  <Ionicons name="cube-outline" size={40} color={colors.mutedForeground} />
+                  <Text className="text-sm text-muted-foreground mt-md text-center">
+                    Henüz bir paket yüklenmedi.
+                  </Text>
+                </View>
+              ) : (
+                installedPackages.map((pkg) => {
+                  const isActive = pkg.packageName === activePackageName;
+                  return (
+                    <Pressable
+                      key={pkg.id}
+                      onPress={() => handleSwitchPackage(pkg.packageName)}
+                      className={`flex-row items-center rounded-2xl p-md ${
+                        isActive
+                          ? 'bg-primary/10 border border-primary/30'
+                          : 'bg-card border border-border active:bg-muted/50'
+                      }`}
+                    >
+                      <View
+                        className={`mr-md h-11 w-11 items-center justify-center rounded-xl ${
+                          isActive ? 'bg-primary/20' : 'bg-muted'
+                        }`}
+                      >
+                        <Ionicons
+                          name={pkg.icon}
+                          size={22}
+                          color={isActive ? colors.primary : colors.mutedForeground}
+                        />
+                      </View>
+                      <View className="flex-1">
+                        <Text
+                          className={`text-base font-semibold ${
+                            isActive ? 'text-primary' : 'text-foreground'
+                          }`}
+                        >
+                          {pkg.displayTitle}
+                        </Text>
+                        <Text className="text-xs text-muted-foreground">{pkg.description}</Text>
+                      </View>
+                      {isActive ? (
+                        <View className="flex-row items-center gap-1 rounded-full bg-primary/15 px-sm py-xs">
+                          <Ionicons name="checkmark-circle" size={14} color={colors.primary} />
+                          <Text className="text-xs font-bold text-primary">Aktif</Text>
+                        </View>
+                      ) : (
+                        <Ionicons name="chevron-forward" size={18} color={colors.mutedForeground} />
+                      )}
+                    </Pressable>
+                  );
+                })
+              )}
+            </View>
+
+            {/* Footer Link */}
+            <Pressable
+              onPress={() => {
+                setShowPackageSwitcher(false);
+                router.push('/packages');
+              }}
+              className="mt-lg flex-row items-center justify-center gap-xs py-sm active:opacity-70"
+            >
+              <Ionicons name="add-circle-outline" size={18} color={colors.primary} />
+              <Text className="text-sm font-semibold text-primary">
+                Yeni Paket Yükle veya Yönet
+              </Text>
+            </Pressable>
+          </Pressable>
+        </Pressable>
+      </Modal>
     </View>
   );
 }

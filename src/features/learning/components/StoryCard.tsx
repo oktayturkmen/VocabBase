@@ -59,7 +59,7 @@ export const StoryCard = React.memo(function StoryCard({
   const wordCount = segments.filter((s) => s.type === 'word').length;
 
   return (
-    <View className="relative overflow-hidden rounded-3xl bg-indigo-50/80 dark:bg-indigo-950/40 p-xl border border-indigo-200/50 dark:border-indigo-800/30 shadow-sm">
+    <View className="relative overflow-hidden rounded-3xl bg-indigo-50/80 dark:bg-indigo-950/40 p-8 border border-indigo-200/50 dark:border-indigo-800/30 shadow-sm">
       <View className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-indigo-200/20 dark:bg-indigo-800/10" />
 
       <View className="relative flex-row items-center mb-md">
@@ -76,7 +76,7 @@ export const StoryCard = React.memo(function StoryCard({
         </View>
       </View>
 
-      <Text className="relative text-base leading-7 text-foreground">
+      <Text className="relative text-[17px] leading-8 text-foreground/90 font-medium">
         {segments.map((segment, index) => {
           if (segment.type === 'word') {
             return (

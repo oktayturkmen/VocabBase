@@ -18,6 +18,12 @@ export type ImportResult = {
   errors: string[];
 };
 
+// Import edilen kelimeler için maksimum uzunluk sınırları
+const MAX_WORD_LENGTH = 150;
+const MAX_MEANING_LENGTH = 800;
+const MAX_EXAMPLE_LENGTH = 1000;
+const MAX_PRONUNCIATION_LENGTH = 200;
+
 export type ParsedWord = {
   word: string;
   meaning: string;
@@ -166,11 +172,29 @@ export class ImportService {
         }
 
         if (row.length >= 2) {
+          const word = row[0].trim();
+          const meaning = row[1].trim();
+          const example = row[2]?.trim();
+          const pronunciation = row[3]?.trim();
+
+          // Uzunluk sınırlarını kontrol et
+          if (word.length > MAX_WORD_LENGTH || meaning.length > MAX_MEANING_LENGTH) {
+            continue; // Sınırı aşan kelimeleri atla
+          }
+
+          if (example && example.length > MAX_EXAMPLE_LENGTH) {
+            continue; // Sınırı aşan örnekleri atla
+          }
+
+          if (pronunciation && pronunciation.length > MAX_PRONUNCIATION_LENGTH) {
+            continue; // Sınırı aşan telaffuzları atla
+          }
+
           words.push({
-            word: row[0].trim(),
-            meaning: row[1].trim(),
-            example: row[2]?.trim(),
-            pronunciation: row[3]?.trim(),
+            word,
+            meaning,
+            example: example || undefined,
+            pronunciation: pronunciation || undefined,
           });
         }
       }
@@ -341,7 +365,11 @@ export class ImportService {
         }
       }
 
+      // Uzunluk sınırlarını kontrol et
       if (parsed && parsed.word && parsed.meaning) {
+        if (parsed.word.length > MAX_WORD_LENGTH || parsed.meaning.length > MAX_MEANING_LENGTH) {
+          continue; // Sınırı aşan kelimeleri atla
+        }
         words.push(parsed);
       }
     }
